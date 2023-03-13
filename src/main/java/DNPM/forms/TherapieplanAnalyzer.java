@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Diese Klasse implementiert ein Plugin, welches Aktionen nach Bearbeitung eines Therapieplans durchführt.
@@ -98,10 +97,12 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
      *
      * @param procedure Die Prozedur mit Hauptformular
      */
-    // TODO: 13.03.23 Nicht ausführen, wenn durch Einstellung verboten
     // TODO: 13.03.23 Onkostar führt nach Speicherung eines Unterformulars erneut eine Speicherung des Hauptformulars aus - ggf eigene Speicher-Methode ohne Verwendung der Onkostar-API implementieren.
     private void updateMtbInSubforms(Procedure procedure) {
-        logger.info("Run 'updateMtbInSubforms'");
+        if (onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode").equals("true")) {
+            return;
+        }
+
         var mtbReference = procedure.getValue("referstemtb").getInt();
         var mtbDate = procedure.getValue("datum").getDate();
 
