@@ -20,7 +20,9 @@ public class DefaultStudienService implements StudienService {
         var sql = "SELECT property_catalogue_version.version_number, pcve.code, pcve.shortdesc, pcve.description FROM property_catalogue "
         + "JOIN property_catalogue_version ON property_catalogue.id = property_catalogue_version.datacatalog_id "
         + "JOIN property_catalogue_version_entry pcve ON property_catalogue_version.id = pcve.property_version_id "
-        + "WHERE property_catalogue.name = 'OS.Studien';";
+        + "JOIN studie ON studie.property_version_entry = pcve.id "
+        + "WHERE property_catalogue.name = 'OS.Studien' "
+        + "AND studie.aktiv;";
 
         return this.jdbcTemplate.query(sql, (resultSet, i) -> new Studie(
                 resultSet.getString(1),
@@ -35,7 +37,11 @@ public class DefaultStudienService implements StudienService {
         var sql = "SELECT property_catalogue_version.version_number, pcve.code, pcve.shortdesc, pcve.description FROM property_catalogue "
                 + "JOIN property_catalogue_version ON property_catalogue.id = property_catalogue_version.datacatalog_id "
                 + "JOIN property_catalogue_version_entry pcve ON property_catalogue_version.id = pcve.property_version_id "
-                + "WHERE property_catalogue.name = 'OS.Studien' AND (pcve.shortdesc LIKE ? OR pcve.description LIKE ?);";
+                + "JOIN studie ON studie.property_version_entry = pcve.id "
+                + "WHERE property_catalogue.name = 'OS.Studien' "
+                + "AND studie.aktiv "
+                + "AND (pcve.shortdesc LIKE ? "
+                + "OR pcve.description LIKE ?);";
 
         var like = String.format("%%%s%%", query);
 
