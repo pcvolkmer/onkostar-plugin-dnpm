@@ -1,18 +1,28 @@
 package DNPM.services;
 
 public class Studie {
+    private final String kategorieName;
     private final String code;
     private final String studiennummer;
     private final String shortDesc;
     private final String description;
     private final int version;
 
-    public Studie(final String code, final String studiennummer, final String shortDesc, final String description, final int version) {
+    public Studie(final String kategorieName, final int version, final String code, final String studiennummer, final String shortDesc, final String description) {
+        this.kategorieName = kategorieName;
+        this.version = version;
         this.code = code;
         this.studiennummer = studiennummer;
         this.shortDesc = shortDesc;
         this.description = description;
-        this.version = version;
+    }
+
+    public String getKategorieName() {
+        return kategorieName;
+    }
+
+    public int getVersion() {
+        return version;
     }
 
     public String getCode() {
@@ -29,10 +39,6 @@ public class Studie {
 
     public String getDescription() {
         return description;
-    }
-
-    public int getVersion() {
-        return version;
     }
 
     public Type getType() {
