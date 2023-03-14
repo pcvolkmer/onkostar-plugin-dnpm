@@ -1,6 +1,7 @@
 package ATCCodes.services;
 
 import ATCCodes.AgentCode;
+import ATCCodes.AtcCode;
 import ATCCodes.UnregisteredCode;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -47,8 +48,14 @@ public class OnkostarAgentCodeService implements AgentCodeService {
         return jdbcTemplate.query(
                 sql,
                 new Object[]{query + "%", "%" + query + "%", "%" + query + "%"},
-                (resultSet, i) ->
-                        new UnregisteredCode(resultSet.getString("code"), resultSet.getString("shortdesc"))
+                (resultSet, i) -> {
+                    var code = resultSet.getString("code");
+                    var shortdesc = resultSet.getString("shortdesc");
+                    if (AtcCode.isAtcCode(code)) {
+                        return new AtcCode(code, shortdesc);
+                    }
+                    return new UnregisteredCode(code, shortdesc);
+                }
         );
     }
 }
