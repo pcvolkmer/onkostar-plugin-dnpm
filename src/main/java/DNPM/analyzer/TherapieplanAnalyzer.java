@@ -1,6 +1,8 @@
 package DNPM.analyzer;
 
 import DNPM.services.FormService;
+import DNPM.services.Studie;
+import DNPM.services.StudienService;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Item;
@@ -13,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -30,9 +34,12 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
 
     private final FormService formService;
 
-    public TherapieplanAnalyzer(final IOnkostarApi onkostarApi, final FormService formService) {
+    private final StudienService studienService;
+
+    public TherapieplanAnalyzer(final IOnkostarApi onkostarApi, final FormService formService, final StudienService studienService) {
         this.onkostarApi = onkostarApi;
         this.formService = formService;
+        this.studienService = studienService;
     }
 
     @Override
@@ -91,6 +98,33 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
     public void analyze(Procedure procedure, Disease disease) {
         updateMtbInSections(procedure);
         updateMtbInSubforms(procedure);
+    }
+
+
+    /**
+     * Übergibt alle Studien, deren (Kurz-)Beschreibung oder NCT-Nummer den übergebenen Eingabewert <code>q</code> enthält
+     *
+     * <p>Wurde der Eingabewert nicht angegeben oder ist leer, werden alle Studien übergeben.
+     *
+     * <p>Beispiel zur Nutzung in einem Formularscript
+     * <pre>
+     * executePluginMethod(
+     *   'TherapieplanAnalyzer',
+     *   'getStudien',
+     *   { q: 'NCT-12' },
+     *   (response) => console.log(response),
+     *   false
+     * );
+     * </pre>
+     * @param input Map mit Eingabewerten
+     */
+    public List<Studie> getStudien(Map<String, Object> input) {
+        var query = input.get("q");
+
+        if (null == query || query.toString().isBlank()) {
+            return studienService.findAll();
+        }
+        return studienService.findByQuery(query.toString());
     }
 
     /**

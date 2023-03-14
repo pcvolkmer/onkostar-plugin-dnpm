@@ -1,6 +1,7 @@
 package DNPM.analyzer;
 
 import DNPM.services.FormService;
+import DNPM.services.StudienService;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Item;
 import de.itc.onkostar.api.Procedure;
@@ -8,11 +9,15 @@ import de.itc.onkostar.api.constants.JaNeinUnbekannt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -25,11 +30,14 @@ public class TherapieplanAnalyzerTest {
     @Mock
     private FormService formService;
 
+    @Mock
+    private StudienService studienService;
+
     private TherapieplanAnalyzer therapieplanAnalyzer;
 
     @BeforeEach
     void setUp() {
-        this.therapieplanAnalyzer = new TherapieplanAnalyzer(onkostarApi, formService);
+        this.therapieplanAnalyzer = new TherapieplanAnalyzer(onkostarApi, formService, studienService);
     }
 
     @Test
@@ -65,6 +73,32 @@ public class TherapieplanAnalyzerTest {
         this.therapieplanAnalyzer.analyze(testProcedure, null);
 
         verify(onkostarApi, never()).saveProcedure(any(Procedure.class), anyBoolean());
+    }
+
+    @Test
+    void shouldRequestAllStudienForEmptyQueryString() {
+        var input = Map.of("q", (Object)"   ");
+        this.therapieplanAnalyzer.getStudien(input);
+
+        verify(studienService, times(1)).findAll();
+    }
+
+    @Test
+    void shouldRequestAllStudienForEmptyInputMap() {
+        var input = new HashMap<String, Object>();
+        this.therapieplanAnalyzer.getStudien(input);
+
+        verify(studienService, times(1)).findAll();
+    }
+
+    @Test
+    void shouldRequestFilteredStudien() {
+        var input = Map.of("q", (Object)"NCT-123");
+        this.therapieplanAnalyzer.getStudien(input);
+
+        var captor = ArgumentCaptor.forClass(String.class);
+        verify(studienService, times(1)).findByQuery(captor.capture());
+        assertThat(captor.getValue()).isEqualTo("NCT-123");
     }
 
 }
