@@ -9,7 +9,7 @@ INSERT INTO einstellung (name, wert, kategorie, optionen, beschreibung)
 VALUES (
  'mehrere_mtb_in_mtbepisode',
  'true',
- 'Dokumentation',
+ 'DNPM',
  '[{"key": "true", "value": "Ja"},{"key": "false", "value": "Nein"}]',
  'Angabe, ob mehrere MTBs je MTB-Episode verwendet werden.'
 );
