@@ -112,15 +112,22 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
 
         var mtbReference = procedure.getValue("referstemtb").getInt();
         var mtbDate = procedure.getValue("datum").getDate();
+        var noUpdateRequired = true;
 
         if (mtbReference != procedure.getValue("reftkhumangenber").getInt() && !mtbDate.equals(procedure.getValue("datumtkhumangenber").getDate())) {
             procedure.setValue("reftkhumangenber", new Item("ref_tk_humangenber", mtbReference));
             procedure.setValue("datumtkhumangenber", new Item("datum_tk_humangenber", mtbDate));
+            noUpdateRequired = false;
         }
 
         if (mtbReference != procedure.getValue("reftkreevaluation").getInt() && !mtbDate.equals(procedure.getValue("datumtkreevaluation").getDate())) {
             procedure.setValue("reftkreevaluation", new Item("ref_tk_reevaluation", mtbReference));
             procedure.setValue("datumtkreevaluation", new Item("datum_tk_reevaluation", mtbDate));
+            noUpdateRequired = false;
+        }
+
+        if (noUpdateRequired) {
+            return;
         }
 
         try {
