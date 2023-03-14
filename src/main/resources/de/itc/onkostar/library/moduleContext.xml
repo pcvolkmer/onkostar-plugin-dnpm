@@ -16,6 +16,7 @@
 
 	<context:component-scan base-package="ATCCodes" />
     <context:component-scan base-package="DNPM.forms" />
+    <context:component-scan base-package="DNPM.services" />
 
     <mvc:resources mapping="/app/lib/umr/**" location="classpath:/app/lib/umr/" />
 </beans>
