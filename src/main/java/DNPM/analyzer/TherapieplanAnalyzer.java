@@ -1,4 +1,4 @@
-package DNPM.forms;
+package DNPM.analyzer;
 
 import DNPM.services.FormService;
 import de.itc.onkostar.api.Disease;
