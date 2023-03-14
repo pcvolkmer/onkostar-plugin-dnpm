@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import ATCCodes.AtcCode;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -185,7 +187,7 @@ public class DNPMHelper implements IProcedureAnalyzer{
             Map<String, String> SubstanzenCodes = new HashMap<String, String>();
             // Index des Codes (Substanz)
             Index = Arrays.asList((SubformularWerte.keySet().toArray())).indexOf("Substanz");
-            if (SubformularWerte.values().toArray()[Index].toString().matches("[A-V]0[1-9][A-Z]{2}[0-9]{0,2}")) {
+            if (AtcCode.isAtcCode(SubformularWerte.values().toArray()[Index].toString())) {
               SubstanzenCodes.put("system", "ATC");
             } else {
               SubstanzenCodes.put("system", "other");
