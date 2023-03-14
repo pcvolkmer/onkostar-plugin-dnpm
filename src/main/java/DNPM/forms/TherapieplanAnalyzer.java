@@ -89,7 +89,45 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
 
     @Override
     public void analyze(Procedure procedure, Disease disease) {
+        updateMtbInSections(procedure);
         updateMtbInSubforms(procedure);
+    }
+
+    /**
+     * Verlinke MTB und Übernahme Datum aus Hauptformular in weiteren Bereichen
+     * "Humangenetische Beratung" und "Reevaluation", wenn erforderlich.
+     *
+     * @param procedure Die Prozedur mit Hauptformular
+     */
+    private void updateMtbInSections(Procedure procedure) {
+        if (
+                null != onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode")
+                        && onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode").equals("true")
+                        ||
+                        !procedure.getValue("humangenberatung").getString().equals("1")
+                                && !procedure.getValue("reevaluation").getString().equals("1")
+        ) {
+            return;
+        }
+
+        var mtbReference = procedure.getValue("referstemtb").getInt();
+        var mtbDate = procedure.getValue("datum").getDate();
+
+        if (mtbReference != procedure.getValue("reftkhumangenber").getInt() && !mtbDate.equals(procedure.getValue("datumtkhumangenber").getDate())) {
+            procedure.setValue("reftkhumangenber", new Item("ref_tk_humangenber", mtbReference));
+            procedure.setValue("datumtkhumangenber", new Item("datum_tk_humangenber", mtbDate));
+        }
+
+        if (mtbReference != procedure.getValue("reftkreevaluation").getInt() && !mtbDate.equals(procedure.getValue("datumtkreevaluation").getDate())) {
+            procedure.setValue("reftkreevaluation", new Item("ref_tk_reevaluation", mtbReference));
+            procedure.setValue("datumtkreevaluation", new Item("datum_tk_reevaluation", mtbDate));
+        }
+
+        try {
+            onkostarApi.saveProcedure(procedure, false);
+        } catch (Exception e) {
+            logger.error("Formular 'DNPM Therapieplan' konnte nicht aktualisiert werden", e);
+        }
     }
 
     /**
@@ -97,9 +135,11 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
      *
      * @param procedure Die Prozedur mit Hauptformular
      */
-    // TODO: 13.03.23 Onkostar führt nach Speicherung eines Unterformulars erneut eine Speicherung des Hauptformulars aus - ggf eigene Speicher-Methode ohne Verwendung der Onkostar-API implementieren.
     private void updateMtbInSubforms(Procedure procedure) {
-        if (onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode").equals("true")) {
+        if (
+                null != onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode")
+                        && onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode").equals("true")
+        ) {
             return;
         }
 
