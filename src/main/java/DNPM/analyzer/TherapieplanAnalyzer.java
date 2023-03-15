@@ -11,6 +11,7 @@ import de.itc.onkostar.api.analysis.AnalyseTriggerEvent;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
 import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
 import de.itc.onkostar.api.analysis.OnkostarPluginType;
+import de.itc.onkostar.api.constants.JaNeinUnbekannt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -135,27 +136,56 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
      */
     private void updateMtbInSections(Procedure procedure) {
         if (
-                null != onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode")
-                        && onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode").equals("true")
-                        ||
-                        !procedure.getValue("humangenberatung").getString().equals("1")
-                                && !procedure.getValue("reevaluation").getString().equals("1")
+                this.hasMultipleMtbsEnabled() || (
+                        !isYes(procedure, "humangenberatung") && !isYes(procedure, "reevaluation")
+                )
         ) {
             return;
         }
+
+        var a = procedure.getValue("humangenberatung").getString();
+        var b = procedure.getValue("reevaluation").getString();
 
         var mtbReference = procedure.getValue("referstemtb").getInt();
         var mtbDate = procedure.getValue("datum").getDate();
         var noUpdateRequired = true;
 
-        if (mtbReference != procedure.getValue("reftkhumangenber").getInt() && !mtbDate.equals(procedure.getValue("datumtkhumangenber").getDate())) {
+        if (
+                isYes(procedure, "humangenberatung") && (
+                        !hasValue(procedure, "reftkhumangenber")
+                                || mtbReference != procedure.getValue("reftkhumangenber").getInt()
+                )
+        ) {
             procedure.setValue("reftkhumangenber", new Item("ref_tk_humangenber", mtbReference));
+            noUpdateRequired = false;
+        }
+
+        if (
+                isYes(procedure, "humangenberatung") && (
+                        !hasValue(procedure, "datumtkhumangenber")
+                                || !mtbDate.equals(procedure.getValue("datumtkhumangenber").getDate())
+                )
+        ) {
             procedure.setValue("datumtkhumangenber", new Item("datum_tk_humangenber", mtbDate));
             noUpdateRequired = false;
         }
 
-        if (mtbReference != procedure.getValue("reftkreevaluation").getInt() && !mtbDate.equals(procedure.getValue("datumtkreevaluation").getDate())) {
+        if (
+                isYes(procedure, "reevaluation") && (
+                        !hasValue(procedure, "reftkreevaluation")
+                                || mtbReference != procedure.getValue("reftkreevaluation").getInt()
+                )
+        ) {
             procedure.setValue("reftkreevaluation", new Item("ref_tk_reevaluation", mtbReference));
+            noUpdateRequired = false;
+        }
+
+        if (
+                isYes(procedure, "reevaluation") && (
+                        !hasValue(procedure, "datumtkreevaluation")
+                                || !mtbDate.equals(procedure.getValue("datumtkreevaluation").getDate())
+                )
+        ) {
             procedure.setValue("datumtkreevaluation", new Item("datum_tk_reevaluation", mtbDate));
             noUpdateRequired = false;
         }
@@ -177,10 +207,7 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
      * @param procedure Die Prozedur mit Hauptformular
      */
     private void updateMtbInSubforms(Procedure procedure) {
-        if (
-                null != onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode")
-                        && onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode").equals("true")
-        ) {
+        if (this.hasMultipleMtbsEnabled()) {
             return;
         }
 
@@ -217,5 +244,19 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
                         }
                     }
                 });
+    }
+
+    private boolean hasMultipleMtbsEnabled() {
+        return null != onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode")
+                && onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode").equals("true");
+    }
+
+    private boolean hasValue(final Procedure procedure, final String fieldName) {
+        return null != procedure.getValue(fieldName);
+    }
+
+    private boolean isYes(final Procedure procedure, final String fieldName) {
+        return hasValue(procedure, fieldName)
+                && procedure.getValue(fieldName).getString().equals(JaNeinUnbekannt.JA.getCode());
     }
 }
