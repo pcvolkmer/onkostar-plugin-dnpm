@@ -1,7 +1,6 @@
 package DNPM.services;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -11,7 +10,6 @@ import java.util.List;
  *
  * @since 0.0.2
  */
-@Service
 public class DefaultStudienService implements StudienService {
 
     private final JdbcTemplate jdbcTemplate;

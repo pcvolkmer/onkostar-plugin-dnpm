@@ -15,8 +15,7 @@
     <bean id="ConsentManager" class="DNPM.ConsentManager" />
 
 	<context:component-scan base-package="ATCCodes" />
-    <context:component-scan base-package="DNPM.analyzer" />
-    <context:component-scan base-package="DNPM.services" />
+    <context:component-scan base-package="DNPM.config" />
 
     <mvc:resources mapping="/app/lib/umr/**" location="classpath:/app/lib/umr/" />
 </beans>

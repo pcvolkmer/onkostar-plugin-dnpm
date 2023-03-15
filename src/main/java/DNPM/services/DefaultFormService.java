@@ -2,12 +2,15 @@ package DNPM.services;
 
 import DNPM.exceptions.FormException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.util.List;
 
-@Service
+/**
+ * Standardimplementierung zum Ermitteln von Unter- und Hauptformularen
+ *
+ * @since 0.0.2
+ */
 public class DefaultFormService implements FormService {
 
     private final JdbcTemplate jdbcTemplate;
