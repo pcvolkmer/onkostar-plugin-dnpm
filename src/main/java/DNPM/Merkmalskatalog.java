@@ -1,98 +1,112 @@
 package DNPM;
 
-import java.util.List;
-import java.util.Map;
-
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.type.StandardBasicTypes;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
 import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
 import de.itc.onkostar.api.analysis.OnkostarPluginType;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.type.StandardBasicTypes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class Merkmalskatalog implements IProcedureAnalyzer{
-  @Autowired
-  private IOnkostarApi onkostarApi;
+import java.util.List;
+import java.util.Map;
 
-  @Override
-  public OnkostarPluginType getType() {
-    return OnkostarPluginType.BACKEND_SERVICE;
-  }
+public class Merkmalskatalog implements IProcedureAnalyzer {
 
-  @Override
-  public String getVersion() {
-    return "1";
-  }
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-  @Override
-  public String getName() {
-    return "UMR Merkmalskatalog";
-  }
+    @Autowired
+    private IOnkostarApi onkostarApi;
 
-  @Override
-  public String getDescription() {
-    return "Methoden für Merkmalskataloge";
-  }
+    @Override
+    public OnkostarPluginType getType() {
+        return OnkostarPluginType.BACKEND_SERVICE;
+    }
 
-  @Override
-  public boolean isRelevantForDeletedProcedure() {
-    return false;
-  }
+    @Override
+    public String getVersion() {
+        return "1";
+    }
 
-  @Override
-  public boolean isSynchronous() {
-    return true;
-  }
+    @Override
+    public String getName() {
+        return "UMR Merkmalskatalog";
+    }
 
-  @Override
-  public AnalyzerRequirement getRequirement() {
-    return AnalyzerRequirement.PROCEDURE;
-  }
-	 
-  @Override
-  public boolean isRelevantForAnalyzer(Procedure procedure, Disease currentDisease) {
-    return false;
-  }
+    @Override
+    public String getDescription() {
+        return "Methoden für Merkmalskataloge";
+    }
 
-  @Override
-  public void analyze(Procedure procedurea, Disease disease) {}
+    @Override
+    public boolean isRelevantForDeletedProcedure() {
+        return false;
+    }
 
-  public Object getMerkmalskatalog(final Map<String, Object> input) {
-    String Merkmalskatalog = (String) input.get("Merkmalskatalog");
-    String Spalten = (String) input.get("Spalten");
-    String[] SpaltenArray = Spalten.split("\\s*,\\s*");
-    String sql;
-    try {
-      SessionFactory sessionFactory = onkostarApi.getSessionFactory();
-      Session session = sessionFactory.getCurrentSession();	
-      try {
-        sql = "SELECT p.id, p.code, p.shortdesc, p.description, p.note, p.synonyms " 
-                  + "FROM property_catalogue "
-                  + "LEFT JOIN property_catalogue_version ON property_catalogue_version.datacatalog_id = property_catalogue.id "
-                  + "LEFT JOIN property_catalogue_version_entry p ON p.property_version_id = property_catalogue_version.id "
-                  + "WHERE name = '" + Merkmalskatalog + "' AND aktiv = 1 "
-                  + "ORDER BY position ASC";
-	    	
-        SQLQuery query = session.createSQLQuery(sql);
+    @Override
+    public boolean isSynchronous() {
+        return true;
+    }
 
-        for (int i = 0; i < SpaltenArray.length; i++) {
-          query.addScalar(SpaltenArray[i], StandardBasicTypes.STRING);
+    @Override
+    public AnalyzerRequirement getRequirement() {
+        return AnalyzerRequirement.PROCEDURE;
+    }
+
+    @Override
+    public boolean isRelevantForAnalyzer(Procedure procedure, Disease currentDisease) {
+        return false;
+    }
+
+    @Override
+    public void analyze(Procedure procedurea, Disease disease) {
+    }
+
+    public List<String[]> getMerkmalskatalog(final Map<String, Object> input) {
+        var merkmalskatalog = input.get("Merkmalskatalog");
+        var spalten = input.get("Spalten");
+
+        if (null == merkmalskatalog || merkmalskatalog.toString().isBlank()) {
+            logger.error("Kein Merkmalskatalog angegeben!");
+            return null;
         }
 
-        @SuppressWarnings("unchecked")
-        List<String[]> rows = query.list();
-        return rows;
-      } catch (Exception e) {
-        return null;
-      }
-    } catch (Exception e) {
-      return null;
-    }	    		
-  }
+        if (null == spalten || spalten.toString().isBlank()) {
+            logger.error("Keine Spalten angegeben!");
+            return null;
+        }
+
+        String[] spaltenArray = spalten.toString().split("\\s*,\\s*");
+
+        try {
+            SessionFactory sessionFactory = onkostarApi.getSessionFactory();
+            Session session = sessionFactory.getCurrentSession();
+
+            String sql = "SELECT p.id, p.code, p.shortdesc, p.description, p.note, p.synonyms "
+                    + "FROM property_catalogue "
+                    + "LEFT JOIN property_catalogue_version ON property_catalogue_version.datacatalog_id = property_catalogue.id "
+                    + "LEFT JOIN property_catalogue_version_entry p ON p.property_version_id = property_catalogue_version.id "
+                    + "WHERE name = '" + merkmalskatalog + "' AND aktiv = 1 "
+                    + "ORDER BY position ASC";
+
+            SQLQuery query = session.createSQLQuery(sql);
+
+            for (String s : spaltenArray) {
+                query.addScalar(s, StandardBasicTypes.STRING);
+            }
+
+            @SuppressWarnings("unchecked")
+            List<String[]> rows = query.list();
+            return rows;
+        } catch (Exception e) {
+            logger.error("Fehler bei der Ausführung von getMerkmalskatalog()", e);
+            return null;
+        }
+    }
 }
