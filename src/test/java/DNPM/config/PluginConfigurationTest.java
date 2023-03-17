@@ -1,8 +1,7 @@
 package DNPM.config;
 
-import DNPM.services.DefaultTherapieplanService;
 import DNPM.services.FormService;
-import DNPM.services.MultipleMtbTherapieplanService;
+import DNPM.services.TherapieplanServiceFactory;
 import de.itc.onkostar.api.IOnkostarApi;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,9 +10,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class PluginConfigurationTest {
@@ -32,41 +28,8 @@ public class PluginConfigurationTest {
     }
 
     @Test
-    void testShouldReturnDefaultTherapieplanServiceIfSettingIsFalse() {
-        doAnswer(invocationOnMock -> {
-            var settingName = invocationOnMock.getArgument(0, String.class);
-            if (settingName.equals("mehrere_mtb_in_mtbepisode")) {
-                return "false";
-            }
-            return null;
-        }).when(onkostarApi).getGlobalSetting(anyString());
-
-        var actual = this.configuration.therapieplanService(onkostarApi, formService);
-
-        assertThat(actual).isInstanceOf(DefaultTherapieplanService.class);
-    }
-
-    @Test
-    void testShouldReturnDefaultTherapieplanServiceIfNoSetting() {
-        when(onkostarApi.getGlobalSetting(anyString())).thenReturn(null);
-
-        var actual = this.configuration.therapieplanService(onkostarApi, formService);
-
-        assertThat(actual).isInstanceOf(DefaultTherapieplanService.class);
-    }
-
-    @Test
-    void testShouldReturnMultipleMtbTherapieplanServiceIfSettingIsTrue() {
-        doAnswer(invocationOnMock -> {
-            var settingName = invocationOnMock.getArgument(0, String.class);
-            if (settingName.equals("mehrere_mtb_in_mtbepisode")) {
-                return "true";
-            }
-            return null;
-        }).when(onkostarApi).getGlobalSetting(anyString());
-
-        var actual = this.configuration.therapieplanService(onkostarApi, formService);
-
-        assertThat(actual).isInstanceOf(MultipleMtbTherapieplanService.class);
+    void testShouldReturnTherapieplanServiceFactory() {
+        var actual = this.configuration.therapieplanServiceFactory(onkostarApi, formService);
+        assertThat(actual).isInstanceOf(TherapieplanServiceFactory.class);
     }
 }

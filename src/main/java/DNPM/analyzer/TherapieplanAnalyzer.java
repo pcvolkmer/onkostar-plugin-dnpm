@@ -2,7 +2,7 @@ package DNPM.analyzer;
 
 import DNPM.services.Studie;
 import DNPM.services.StudienService;
-import DNPM.services.TherapieplanService;
+import DNPM.services.TherapieplanServiceFactory;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyseTriggerEvent;
@@ -25,14 +25,14 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
 
     private final StudienService studienService;
 
-    private final TherapieplanService therapieplanService;
+    private final TherapieplanServiceFactory therapieplanServiceFactory;
 
     public TherapieplanAnalyzer(
             final StudienService studienService,
-            final TherapieplanService therapieplanService
+            final TherapieplanServiceFactory therapieplanServiceFactory
     ) {
         this.studienService = studienService;
-        this.therapieplanService = therapieplanService;
+        this.therapieplanServiceFactory = therapieplanServiceFactory;
     }
 
     @Override
@@ -89,7 +89,7 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
 
     @Override
     public void analyze(Procedure procedure, Disease disease) {
-        therapieplanService.updateRequiredMtbEntries(procedure);
+        therapieplanServiceFactory.currentUsableinstance().updateRequiredMtbEntries(procedure);
     }
 
 
@@ -108,6 +108,7 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
      *   false
      * );
      * </pre>
+     *
      * @param input Map mit Eingabewerten
      */
     public List<Studie> getStudien(Map<String, Object> input) {

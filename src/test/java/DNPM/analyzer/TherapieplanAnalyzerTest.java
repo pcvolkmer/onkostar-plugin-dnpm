@@ -1,7 +1,8 @@
 package DNPM.analyzer;
 
+import DNPM.services.MultipleMtbTherapieplanService;
 import DNPM.services.StudienService;
-import DNPM.services.TherapieplanService;
+import DNPM.services.TherapieplanServiceFactory;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Procedure;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,9 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class TherapieplanAnalyzerTest {
@@ -29,25 +28,27 @@ public class TherapieplanAnalyzerTest {
     private StudienService studienService;
 
     @Mock
-    private TherapieplanService therapieplanService;
+    private TherapieplanServiceFactory therapieplanServiceFactory;
 
     private TherapieplanAnalyzer therapieplanAnalyzer;
 
     @BeforeEach
     void setUp() {
-        this.therapieplanAnalyzer = new TherapieplanAnalyzer(studienService, therapieplanService);
+        this.therapieplanAnalyzer = new TherapieplanAnalyzer(studienService, therapieplanServiceFactory);
     }
 
     @Test
     void shouldRunServiceMethodsOnAnalyzeCalled() {
+        when(this.therapieplanServiceFactory.currentUsableinstance()).thenReturn(new MultipleMtbTherapieplanService());
+
         this.therapieplanAnalyzer.analyze(new Procedure(onkostarApi), null);
 
-        verify(this.therapieplanService, times(1)).updateRequiredMtbEntries(any(Procedure.class));
+        verify(this.therapieplanServiceFactory, times(1)).currentUsableinstance();
     }
 
     @Test
     void shouldRequestAllStudienForEmptyQueryString() {
-        var input = Map.of("q", (Object)"   ");
+        var input = Map.of("q", (Object) "   ");
         this.therapieplanAnalyzer.getStudien(input);
 
         verify(studienService, times(1)).findAll();
@@ -63,7 +64,7 @@ public class TherapieplanAnalyzerTest {
 
     @Test
     void shouldRequestFilteredStudien() {
-        var input = Map.of("q", (Object)"NCT-123");
+        var input = Map.of("q", (Object) "NCT-123");
         this.therapieplanAnalyzer.getStudien(input);
 
         var captor = ArgumentCaptor.forClass(String.class);

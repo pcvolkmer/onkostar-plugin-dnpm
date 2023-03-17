@@ -28,15 +28,8 @@ public class PluginConfiguration {
     }
 
     @Bean
-    public TherapieplanService therapieplanService(final IOnkostarApi onkostarApi, final FormService formService) {
-        if (
-                null != onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode")
-                && onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode").equals("true")
-        ) {
-            return new MultipleMtbTherapieplanService();
-        }
-
-        return new DefaultTherapieplanService(onkostarApi, formService);
+    public TherapieplanServiceFactory therapieplanServiceFactory(final IOnkostarApi onkostarApi, final FormService formService) {
+        return new TherapieplanServiceFactory(onkostarApi, formService);
     }
 
 }
