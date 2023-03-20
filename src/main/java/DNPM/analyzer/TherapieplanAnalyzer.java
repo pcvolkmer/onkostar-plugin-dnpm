@@ -3,6 +3,7 @@ package DNPM.analyzer;
 import DNPM.services.Studie;
 import DNPM.services.StudienService;
 import DNPM.services.TherapieplanServiceFactory;
+import DNPM.services.mtb.MtbService;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyseTriggerEvent;
@@ -27,12 +28,16 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
 
     private final TherapieplanServiceFactory therapieplanServiceFactory;
 
+    private final MtbService mtbService;
+
     public TherapieplanAnalyzer(
             final StudienService studienService,
-            final TherapieplanServiceFactory therapieplanServiceFactory
+            final TherapieplanServiceFactory therapieplanServiceFactory,
+            final MtbService mtbService
     ) {
         this.studienService = studienService;
         this.therapieplanServiceFactory = therapieplanServiceFactory;
+        this.mtbService = mtbService;
     }
 
     @Override
@@ -110,6 +115,7 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
      * </pre>
      *
      * @param input Map mit Eingabewerten
+     * @return Liste mit Studien
      */
     public List<Studie> getStudien(Map<String, Object> input) {
         var query = input.get("q");
@@ -118,6 +124,40 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
             return studienService.findAll();
         }
         return studienService.findByQuery(query.toString());
+    }
+
+    /**
+     * Übergibt den Text der referenzierten MTBs für den Protokollauszug
+     *
+     * <p>Wurde der Eingabewert <code>id</code> nicht übergeben, wird ein leerer String zurück gegeben.
+     *
+     * <p>Beispiel zur Nutzung in einem Formularscript
+     * <pre>
+     * executePluginMethod(
+     *   'TherapieplanAnalyzer',
+     *   'getProtokollauszug',
+     *   { id: 12345 },
+     *   (response) => console.log(response),
+     *   false
+     * );
+     * </pre>
+     *
+     * @param input Map mit Eingabewerten
+     * @return Zeichenkette mit Protokollauszug
+     */
+    public String getProtokollauszug(Map<String, Object> input) {
+        var id = input.get("id");
+
+        if (null == id || 0 == Integer.parseInt(id.toString())) {
+            return "";
+        }
+
+        var procedureId = Integer.parseInt(id.toString());
+        return mtbService.getProtocol(
+                therapieplanServiceFactory
+                        .currentUsableInstance()
+                        .findReferencedMtbs(procedureId)
+        );
     }
 
 }

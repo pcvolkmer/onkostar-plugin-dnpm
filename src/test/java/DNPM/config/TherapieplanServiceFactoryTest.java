@@ -33,7 +33,6 @@ public class TherapieplanServiceFactoryTest {
     @Test
     void testShouldReturnDefaultTherapieplanServiceIfSettingIsFalse() {
         when(settingsService.multipleMtbsInMtbEpisode()).thenReturn(false);
-        var actual = this.therapieplanServiceFactory.currentUsableInstance();
 
         var actual = this.therapieplanServiceFactory.currentUsableInstance();
 
