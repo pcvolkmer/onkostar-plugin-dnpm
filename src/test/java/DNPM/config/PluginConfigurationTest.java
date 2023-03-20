@@ -1,6 +1,7 @@
 package DNPM.config;
 
 import DNPM.services.FormService;
+import DNPM.services.SettingsService;
 import DNPM.services.TherapieplanServiceFactory;
 import de.itc.onkostar.api.IOnkostarApi;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +19,9 @@ public class PluginConfigurationTest {
     private IOnkostarApi onkostarApi;
 
     @Mock
+    private SettingsService settingsService;
+
+    @Mock
     private FormService formService;
 
     private PluginConfiguration configuration;
@@ -29,7 +33,7 @@ public class PluginConfigurationTest {
 
     @Test
     void testShouldReturnTherapieplanServiceFactory() {
-        var actual = this.configuration.therapieplanServiceFactory(onkostarApi, formService);
+        var actual = this.configuration.therapieplanServiceFactory(onkostarApi, settingsService, formService);
         assertThat(actual).isInstanceOf(TherapieplanServiceFactory.class);
     }
 }

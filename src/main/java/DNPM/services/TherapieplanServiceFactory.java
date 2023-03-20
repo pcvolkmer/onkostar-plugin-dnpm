@@ -6,18 +6,22 @@ public class TherapieplanServiceFactory {
 
     private final IOnkostarApi onkostarApi;
 
+    private final SettingsService settingsService;
+
     private final FormService formService;
 
-    public TherapieplanServiceFactory(IOnkostarApi onkostarApi, FormService formService) {
+    public TherapieplanServiceFactory(
+            final IOnkostarApi onkostarApi,
+            final SettingsService settingsService,
+            final FormService formService
+    ) {
         this.onkostarApi = onkostarApi;
+        this.settingsService = settingsService;
         this.formService = formService;
     }
 
     public TherapieplanService currentUsableInstance() {
-        if (
-                null != onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode")
-                        && onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode").equals("true")
-        ) {
+        if (settingsService.multipleMtbsInMtbEpisode()) {
             return new MultipleMtbTherapieplanService();
         }
 
