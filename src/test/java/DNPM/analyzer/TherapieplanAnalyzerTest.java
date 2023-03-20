@@ -1,9 +1,9 @@
 package DNPM.analyzer;
 
-import DNPM.services.MultipleMtbTherapieplanService;
-import DNPM.services.StudienService;
-import DNPM.services.TherapieplanServiceFactory;
+import DNPM.services.*;
+import DNPM.services.mtb.MtbService;
 import de.itc.onkostar.api.IOnkostarApi;
+import de.itc.onkostar.api.Item;
 import de.itc.onkostar.api.Procedure;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,21 +26,31 @@ public class TherapieplanAnalyzerTest {
     private IOnkostarApi onkostarApi;
 
     @Mock
+    private FormService formService;
+
+    @Mock
     private StudienService studienService;
 
     @Mock
     private TherapieplanServiceFactory therapieplanServiceFactory;
 
+    @Mock
+    private TherapieplanService therapieplanService;
+
+    @Mock
+    private MtbService mtbService;
+
     private TherapieplanAnalyzer therapieplanAnalyzer;
 
     @BeforeEach
     void setUp() {
-        this.therapieplanAnalyzer = new TherapieplanAnalyzer(studienService, therapieplanServiceFactory);
+        this.therapieplanAnalyzer = new TherapieplanAnalyzer(studienService, therapieplanServiceFactory, mtbService);
     }
 
     @Test
     void shouldRunServiceMethodsOnAnalyzeCalled() {
-        when(this.therapieplanServiceFactory.currentUsableInstance()).thenReturn(new MultipleMtbTherapieplanService());
+        when(this.therapieplanServiceFactory.currentUsableInstance())
+                .thenReturn(new MultipleMtbTherapieplanService(onkostarApi, formService));
 
         this.therapieplanAnalyzer.analyze(new Procedure(onkostarApi), null);
 
@@ -70,6 +81,25 @@ public class TherapieplanAnalyzerTest {
         var captor = ArgumentCaptor.forClass(String.class);
         verify(studienService, times(1)).findByQuery(captor.capture());
         assertThat(captor.getValue()).isEqualTo("NCT-123");
+    }
+
+    @Test
+    void shouldRequestProtokollauszug() {
+        doAnswer(invocationOnMock -> {
+            var procedure = new Procedure(onkostarApi);
+            procedure.setValue("referstemtb", new Item("referstemtb", 2345));
+            return List.of(procedure);
+        }).when(this.therapieplanService).findReferencedMtbs(anyInt());
+
+        when(this.therapieplanServiceFactory.currentUsableInstance())
+                .thenReturn(therapieplanService);
+
+        var input = Map.of("id", (Object) 1234);
+        this.therapieplanAnalyzer.getProtokollauszug(input);
+
+        var captor = ArgumentCaptor.forClass(List.class);
+        verify(mtbService, times(1)).getProtocol(captor.capture());
+        assertThat(captor.getValue()).hasSize(1);
     }
 
 }

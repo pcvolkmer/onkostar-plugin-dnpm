@@ -1,10 +1,14 @@
 package DNPM.config;
 
+import DNPM.database.SettingsRepository;
 import DNPM.services.*;
+import DNPM.services.mtb.DefaultMtbService;
+import DNPM.services.mtb.MtbService;
 import de.itc.onkostar.api.IOnkostarApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.sql.DataSource;
 
@@ -15,6 +19,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @ComponentScan(basePackages = "DNPM.analyzer")
+@EnableJpaRepositories(basePackages = "DNPM.database")
 public class PluginConfiguration {
 
     @Bean
@@ -28,8 +33,22 @@ public class PluginConfiguration {
     }
 
     @Bean
-    public TherapieplanServiceFactory therapieplanServiceFactory(final IOnkostarApi onkostarApi, final FormService formService) {
-        return new TherapieplanServiceFactory(onkostarApi, formService);
+    public SettingsService settingsService(final SettingsRepository settingsRepository) {
+        return new SettingsService(settingsRepository);
+    }
+
+    @Bean
+    public MtbService mtbService(final SettingsService settingsService) {
+        return new DefaultMtbService(settingsService);
+    }
+
+    @Bean
+    public TherapieplanServiceFactory therapieplanServiceFactory(
+            final IOnkostarApi onkostarApi,
+            final SettingsService settingsService,
+            final FormService formService
+    ) {
+        return new TherapieplanServiceFactory(onkostarApi, settingsService, formService);
     }
 
 }
