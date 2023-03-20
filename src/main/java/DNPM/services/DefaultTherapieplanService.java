@@ -6,6 +6,7 @@ import de.itc.onkostar.api.Procedure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.Objects;
 
 import static DNPM.services.FormService.hasValue;
@@ -34,6 +35,40 @@ public class DefaultTherapieplanService implements TherapieplanService {
     public void updateRequiredMtbEntries(Procedure procedure) {
         this.updateMtbInSections(procedure);
         this.updateMtbInSubforms(procedure);
+    }
+
+    /**
+     * Finde verlinkte MTBs in Hauptformular und Unterformularen
+     *
+     * @param procedure Die Prozedur mit Hauptformular
+     * @return Liste mit verlinkten MTBs
+     */
+    @Override
+    public List<Procedure> findReferencedMtbs(Procedure procedure) {
+        if (!hasValue(procedure, "referstemtb")) {
+            return List.of();
+        }
+
+        var mtbProcedure = this.onkostarApi.getProcedure(procedure.getValue("referstemtb").getInt());
+        if (null == mtbProcedure) {
+            return List.of();
+        }
+        return List.of(mtbProcedure);
+    }
+
+    /**
+     * Finde verlinkte MTBs in Hauptformular und Unterformularen
+     *
+     * @param procedureId ID der Prozedur mit Hauptformular
+     * @return Liste mit verlinkten MTBs
+     */
+    @Override
+    public List<Procedure> findReferencedMtbs(int procedureId) {
+        var procedure = this.onkostarApi.getProcedure(procedureId);
+        if (null == procedure) {
+            return List.of();
+        }
+        return findReferencedMtbs(procedure);
     }
 
     private void updateMtbInSections(Procedure procedure) {

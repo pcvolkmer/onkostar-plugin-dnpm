@@ -22,7 +22,7 @@ public class TherapieplanServiceFactory {
 
     public TherapieplanService currentUsableInstance() {
         if (settingsService.multipleMtbsInMtbEpisode()) {
-            return new MultipleMtbTherapieplanService();
+            return new MultipleMtbTherapieplanService(onkostarApi, formService);
         }
 
         return new DefaultTherapieplanService(onkostarApi, formService);

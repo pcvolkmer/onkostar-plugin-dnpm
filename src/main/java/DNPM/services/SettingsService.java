@@ -41,7 +41,7 @@ public class SettingsService {
      * @return Übergibt <code>true</code>, wenn <code>mehrere_mtb_in_mtbepisode</code> auf "Ja" gesetzt ist.
      */
     public boolean multipleMtbsInMtbEpisode() {
-        var setting = getSetting("SID");
+        var setting = getSetting("mehrere_mtb_in_mtbepisode");
         return setting.isPresent() && setting.get().equals("true");
     }
 }

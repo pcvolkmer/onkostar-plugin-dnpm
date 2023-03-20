@@ -2,6 +2,8 @@ package DNPM.config;
 
 import DNPM.database.SettingsRepository;
 import DNPM.services.*;
+import DNPM.services.mtb.DefaultMtbService;
+import DNPM.services.mtb.MtbService;
 import de.itc.onkostar.api.IOnkostarApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -33,6 +35,11 @@ public class PluginConfiguration {
     @Bean
     public SettingsService settingsService(final SettingsRepository settingsRepository) {
         return new SettingsService(settingsRepository);
+    }
+
+    @Bean
+    public MtbService mtbService(final SettingsService settingsService) {
+        return new DefaultMtbService(settingsService);
     }
 
     @Bean
