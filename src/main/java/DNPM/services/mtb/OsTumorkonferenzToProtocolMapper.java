@@ -21,7 +21,7 @@ public class OsTumorkonferenzToProtocolMapper implements ProcedureToProtocolMapp
                 null != fragestellung && !fragestellung.getString().isBlank()
                 && null != empfehlung && !empfehlung.getString().isBlank()
         ) {
-            return Optional.of(String.format("%s\n%s", fragestellung.getString(), empfehlung.getString()));
+            return Optional.of(String.format("Fragestellung:\n%s\n\nEmpfehlung:\n%s", fragestellung.getString(), empfehlung.getString()));
         } else if (null != fragestellung && !fragestellung.getString().isBlank()) {
             return Optional.of(fragestellung.getString());
         } else if (null != empfehlung && !empfehlung.getString().isBlank()) {

@@ -22,22 +22,24 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class DefaultMtbServiceTest {
 
-    @Mock
     private IOnkostarApi onkostarApi;
 
-    @Mock
     private SettingsService settingsService;
 
     private DefaultMtbService service;
 
     @BeforeEach
-    void setup() {
+    void setup(
+            @Mock IOnkostarApi onkostarApi,
+            @Mock SettingsService settingsService
+    ) {
+        this.onkostarApi = onkostarApi;
+        this.settingsService = settingsService;
         this.service = new DefaultMtbService(settingsService);
     }
 
     @Test
     void testShouldReturnMtbProtocolForDefaultImplementation() {
-
         when(settingsService.getSID()).thenReturn(Optional.of("12345"));
         when(settingsService.multipleMtbsInMtbEpisode()).thenReturn(false);
 
@@ -53,12 +55,11 @@ public class DefaultMtbServiceTest {
 
         var actual = service.getProtocol(procedures);
 
-        assertThat(actual).isEqualTo("Test ok?\nRerun Test if not ok!");
+        assertThat(actual).isEqualTo("Fragestellung:\nTest ok?\n\nEmpfehlung:\nRerun Test if not ok!");
     }
 
     @Test
     void testShouldReturnEmptyMtbProtocolForMultipleMtb() {
-
         when(settingsService.getSID()).thenReturn(Optional.of("12345"));
         when(settingsService.multipleMtbsInMtbEpisode()).thenReturn(true);
 
@@ -103,7 +104,8 @@ public class DefaultMtbServiceTest {
         var actual = service.getProtocol(procedures);
 
         assertThat(actual).isEqualTo(
-                "Test ok?\nRerun Test if not ok!\nTest immer noch ok?\nDo not rerun Test if ok!"
+                "Fragestellung:\nTest ok?\n\nEmpfehlung:\nRerun Test if not ok!\n\n" +
+                        "Fragestellung:\nTest immer noch ok?\n\nEmpfehlung:\nDo not rerun Test if ok!"
         );
     }
 

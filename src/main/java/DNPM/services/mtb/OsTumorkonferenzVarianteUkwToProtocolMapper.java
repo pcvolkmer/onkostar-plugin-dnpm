@@ -24,14 +24,14 @@ public class OsTumorkonferenzVarianteUkwToProtocolMapper implements ProcedureToP
                     null != fragestellung && !fragestellung.getString().isBlank()
                             && null != empfehlung && !empfehlung.getString().isBlank()
             ) {
-                return String.format("%s\n%s", fragestellung.getString(), empfehlung.getString());
+                return String.format("Fragestellung:\n%s\n\nEmpfehlung:\n%s", fragestellung.getString().trim(), empfehlung.getString().trim());
             } else if (null != fragestellung && !fragestellung.getString().isBlank()) {
-                return fragestellung.getString();
+                return fragestellung.getString().trim();
             } else if (null != empfehlung && !empfehlung.getString().isBlank()) {
-                return empfehlung.getString();
+                return empfehlung.getString().trim();
             }
             return "";
-        }).collect(Collectors.joining("\n"));
+        }).collect(Collectors.joining("\n\n"));
 
         if (!result.isBlank()) {
             return Optional.of(result);
