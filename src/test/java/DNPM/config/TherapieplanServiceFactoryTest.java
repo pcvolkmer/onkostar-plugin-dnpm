@@ -42,7 +42,7 @@ public class TherapieplanServiceFactoryTest {
             return null;
         }).when(onkostarApi).getGlobalSetting(anyString());
 
-        var actual = this.therapieplanServiceFactory.currentUsableinstance();
+        var actual = this.therapieplanServiceFactory.currentUsableInstance();
 
         assertThat(actual).isInstanceOf(DefaultTherapieplanService.class);
     }
@@ -51,7 +51,7 @@ public class TherapieplanServiceFactoryTest {
     void testShouldReturnDefaultTherapieplanServiceIfNoSetting() {
         when(onkostarApi.getGlobalSetting(anyString())).thenReturn(null);
 
-        var actual = this.therapieplanServiceFactory.currentUsableinstance();
+        var actual = this.therapieplanServiceFactory.currentUsableInstance();
 
         assertThat(actual).isInstanceOf(DefaultTherapieplanService.class);
     }
@@ -66,7 +66,7 @@ public class TherapieplanServiceFactoryTest {
             return null;
         }).when(onkostarApi).getGlobalSetting(anyString());
 
-        var actual = this.therapieplanServiceFactory.currentUsableinstance();
+        var actual = this.therapieplanServiceFactory.currentUsableInstance();
 
         assertThat(actual).isInstanceOf(MultipleMtbTherapieplanService.class);
     }

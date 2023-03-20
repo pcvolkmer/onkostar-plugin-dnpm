@@ -39,11 +39,11 @@ public class TherapieplanAnalyzerTest {
 
     @Test
     void shouldRunServiceMethodsOnAnalyzeCalled() {
-        when(this.therapieplanServiceFactory.currentUsableinstance()).thenReturn(new MultipleMtbTherapieplanService());
+        when(this.therapieplanServiceFactory.currentUsableInstance()).thenReturn(new MultipleMtbTherapieplanService());
 
         this.therapieplanAnalyzer.analyze(new Procedure(onkostarApi), null);
 
-        verify(this.therapieplanServiceFactory, times(1)).currentUsableinstance();
+        verify(this.therapieplanServiceFactory, times(1)).currentUsableInstance();
     }
 
     @Test

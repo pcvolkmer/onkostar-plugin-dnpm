@@ -89,7 +89,7 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
 
     @Override
     public void analyze(Procedure procedure, Disease disease) {
-        therapieplanServiceFactory.currentUsableinstance().updateRequiredMtbEntries(procedure);
+        therapieplanServiceFactory.currentUsableInstance().updateRequiredMtbEntries(procedure);
     }
 
 

@@ -13,7 +13,7 @@ public class TherapieplanServiceFactory {
         this.formService = formService;
     }
 
-    public TherapieplanService currentUsableinstance() {
+    public TherapieplanService currentUsableInstance() {
         if (
                 null != onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode")
                         && onkostarApi.getGlobalSetting("mehrere_mtb_in_mtbepisode").equals("true")

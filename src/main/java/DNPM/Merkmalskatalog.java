@@ -65,7 +65,7 @@ public class Merkmalskatalog implements IProcedureAnalyzer {
     }
 
     @Override
-    public void analyze(Procedure procedurea, Disease disease) {
+    public void analyze(Procedure procedure, Disease disease) {
     }
 
     public List<String[]> getMerkmalskatalog(final Map<String, Object> input) {
