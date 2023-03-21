@@ -84,4 +84,53 @@ public class MrMtbAnmeldungToProtocolMapperTest {
         );
     }
 
+    @Test
+    void testShouldMapFormWithMissingEinzelempfehlungen() {
+        var anmeldung = new Procedure(onkostarApi);
+        anmeldung.setId(1);
+        anmeldung.setFormName("MR.MTB_Anmeldung");
+        anmeldung.setValue("Fragestellung", new Item("Fragestellung", "Frage?"));
+        anmeldung.setValue("Empfehlung", new Item("Empfehlung", 2));
+
+        var empfehlung = new Procedure(onkostarApi);
+        empfehlung.setId(2);
+        empfehlung.setFormName("MR.MTB_Empfehlung");
+
+        doAnswer(invocationOnMock -> {
+            var procedureId = invocationOnMock.getArgument(0, Integer.class);
+            if (2 == procedureId) {
+                return empfehlung;
+            }
+            return null;
+        }).when(onkostarApi).getProcedure(anyInt());
+
+        var actual = this.mapper.apply(anmeldung);
+
+        assertThat(actual).isPresent();
+        assertThat(actual.get()).isEqualTo("Fragestellung:\nFrage?");
+    }
+
+    @Test
+    void testShouldMapFormWithMissingEmpfehlung() {
+        var anmeldung = new Procedure(onkostarApi);
+        anmeldung.setId(1);
+        anmeldung.setFormName("MR.MTB_Anmeldung");
+        anmeldung.setValue("Fragestellung", new Item("Fragestellung", "Frage?"));
+
+        var actual = this.mapper.apply(anmeldung);
+
+        assertThat(actual).isPresent();
+        assertThat(actual.get()).isEqualTo("Fragestellung:\nFrage?");
+    }
+
+    @Test
+    void testShouldMapFormWithMissingFragestellungAndEmpfehlung() {
+        var anmeldung = new Procedure(onkostarApi);
+        anmeldung.setId(1);
+        anmeldung.setFormName("MR.MTB_Anmeldung");
+
+        var actual = this.mapper.apply(anmeldung);
+
+        assertThat(actual).isEmpty();
+    }
 }
