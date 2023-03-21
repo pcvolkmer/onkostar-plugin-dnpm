@@ -38,8 +38,8 @@ public class PluginConfiguration {
     }
 
     @Bean
-    public MtbService mtbService(final SettingsService settingsService) {
-        return new DefaultMtbService(settingsService);
+    public MtbService mtbService() {
+        return new DefaultMtbService();
     }
 
     @Bean

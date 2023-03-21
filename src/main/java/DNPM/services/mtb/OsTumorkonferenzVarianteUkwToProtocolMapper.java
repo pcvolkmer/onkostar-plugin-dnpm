@@ -2,41 +2,31 @@ package DNPM.services.mtb;
 
 import de.itc.onkostar.api.Procedure;
 
-import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
+/**
+ * Mapper zum Ermitteln des Protokollauszugs für Formular "OS.Tumorkonferenz.VarianteUKW"
+ *
+ * @since 0.0.2
+ */
 public class OsTumorkonferenzVarianteUkwToProtocolMapper implements ProcedureToProtocolMapper {
     @Override
-    public Optional<String> apply(List<Procedure> procedures) {
-        procedures.forEach(procedure -> {
-            assert (procedure.getFormName().equals("OS.Tumorkonferenz.VarianteUKW"));
-        });
+    public Optional<String> apply(Procedure procedure) {
+        assert (procedure.getFormName().equals("OS.Tumorkonferenz.VarianteUKW"));
 
-        procedures.sort(Comparator.comparing(Procedure::getStartDate));
+        var fragestellung = procedure.getValue("Fragestellung");
+        var empfehlung = procedure.getValue("Empfehlung");
 
-        var result = procedures.stream().map(procedure -> {
-            var fragestellung = procedure.getValue("Fragestellung");
-            var empfehlung = procedure.getValue("Empfehlung");
-
-            if (
-                    null != fragestellung && !fragestellung.getString().isBlank()
-                            && null != empfehlung && !empfehlung.getString().isBlank()
-            ) {
-                return String.format("Fragestellung:\n%s\n\nEmpfehlung:\n%s", fragestellung.getString().trim(), empfehlung.getString().trim());
-            } else if (null != fragestellung && !fragestellung.getString().isBlank()) {
-                return fragestellung.getString().trim();
-            } else if (null != empfehlung && !empfehlung.getString().isBlank()) {
-                return empfehlung.getString().trim();
-            }
-            return "";
-        }).collect(Collectors.joining("\n\n"));
-
-        if (!result.isBlank()) {
-            return Optional.of(result);
+        if (
+                null != fragestellung && !fragestellung.getString().isBlank()
+                        && null != empfehlung && !empfehlung.getString().isBlank()
+        ) {
+            return Optional.of(String.format("Fragestellung:\n%s\n\nEmpfehlung:\n%s", fragestellung.getString().trim(), empfehlung.getString().trim()));
+        } else if (null != fragestellung && !fragestellung.getString().isBlank()) {
+            return Optional.of(fragestellung.getString().trim());
+        } else if (null != empfehlung && !empfehlung.getString().isBlank()) {
+            return Optional.of(empfehlung.getString().trim());
         }
-
         return Optional.empty();
     }
 }
