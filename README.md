@@ -17,10 +17,11 @@ VALUES (
 
 ## Mapping MTB zu Therapieplan-Protokollauszug
 
-Das Plugin ermöglicht die Übernahme von Inhalten aus einem MTB in den Protokollauszug des DNPM Therapieplans. Für die beiden Formulare
+Das Plugin ermöglicht die Übernahme von Inhalten aus einem MTB in den Protokollauszug des DNPM Therapieplans. Für die Formulare
 
 * `OS.Tumorkonferenz`
 * `OS.Tumorkonferenz.VarianteUKW`
+* `MR.MTB_Anmeldung`
 
 liegen bereits Implementierungen vor. Um eigene Implementierungen vorzunehmen, die sich an andere Formulare oder Formularvarianten richtet,
 muss hierzu das Interface `ProcedureToProtocolMapper` implementiert werden. Dazu muss die Methode `apply(Procedure)` derart implementiert werden,
@@ -29,7 +30,7 @@ sodass aus einer Prozedur ein entsprechender Abschnitt als Text für den Protoko
 Als Rückgabewert wird hierbei ein Wert vom Typ `Optional<String>` erwartet, dabei z.B. `Optional.of("Text")`, wenn ein zu verwendender Text oder
 z.B. `Optional.empty()` wenn kein zu verwendender Text zurückgegeben wird.
 
-Anschließend ist das Mapping im Interface `MtbService` in der Methode `procedureToProtocolMapper(Procedure)` einzutragen, beispielsweise durch
+Anschließend ist das Mapping in `DefaultMtbService` in der Methode `procedureToProtocolMapper(Procedure)` einzutragen, beispielsweise durch
 
 ```
 ...

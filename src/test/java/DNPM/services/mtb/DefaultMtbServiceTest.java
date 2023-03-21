@@ -6,13 +6,13 @@ import de.itc.onkostar.api.Procedure;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.Instant;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,7 +28,26 @@ public class DefaultMtbServiceTest {
             @Mock IOnkostarApi onkostarApi
     ) {
         this.onkostarApi = onkostarApi;
-        this.service = new DefaultMtbService();
+        this.service = new DefaultMtbService(onkostarApi);
+    }
+
+    private static Set<Map.Entry<String, Class<? extends ProcedureToProtocolMapper>>> expectedMappings() {
+        return Map.ofEntries(
+                Map.entry("OS.Tumorkonferenz", OsTumorkonferenzToProtocolMapper.class),
+                Map.entry("OS.Tumorkonferenz.VarianteUKW", OsTumorkonferenzVarianteUkwToProtocolMapper.class),
+                Map.entry("MR.MTB_Anmeldung", MrMtbAnmeldungToProtocolMapper.class)
+        ).entrySet();
+    }
+
+    @ParameterizedTest
+    @MethodSource("expectedMappings")
+    void testShouldMapFormNameToMapper(Map.Entry<String, Class<?>> expectedMapping) {
+        var procedure = new Procedure(onkostarApi);
+        procedure.setFormName(expectedMapping.getKey());
+
+        var actual = service.procedureToProtocolMapper(procedure);
+
+        assertThat(actual).isExactlyInstanceOf(expectedMapping.getValue());
     }
 
     @Test

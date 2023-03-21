@@ -38,8 +38,8 @@ public class PluginConfiguration {
     }
 
     @Bean
-    public MtbService mtbService() {
-        return new DefaultMtbService();
+    public MtbService mtbService(final IOnkostarApi onkostarApi) {
+        return new DefaultMtbService(onkostarApi);
     }
 
     @Bean
