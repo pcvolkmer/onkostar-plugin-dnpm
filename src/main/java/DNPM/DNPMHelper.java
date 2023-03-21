@@ -1,36 +1,30 @@
 package DNPM;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import ATCCodes.AtcCode;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.itc.onkostar.api.Disease;
+import de.itc.onkostar.api.IOnkostarApi;
+import de.itc.onkostar.api.Item;
+import de.itc.onkostar.api.Procedure;
+import de.itc.onkostar.api.analysis.AnalyzerRequirement;
+import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
+import de.itc.onkostar.api.analysis.OnkostarPluginType;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.transform.Transformers;
 import org.hibernate.type.StandardBasicTypes;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.itc.onkostar.api.Disease;
-import de.itc.onkostar.api.IOnkostarApi;
-import de.itc.onkostar.api.Item;
-import de.itc.onkostar.api.Procedure;
-
-import de.itc.onkostar.api.analysis.AnalyzerRequirement;
-import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
-import de.itc.onkostar.api.analysis.OnkostarPluginType;
+import java.util.*;
 
 public class DNPMHelper implements IProcedureAnalyzer{
 
-  // Laden der API
-  @Autowired
-  private IOnkostarApi onkostarApi;
+  private final IOnkostarApi onkostarApi;
+
+  public DNPMHelper(final IOnkostarApi onkostarApi) {
+    this.onkostarApi = onkostarApi;
+  }
 
   @Override
   public OnkostarPluginType getType() {
