@@ -20,6 +20,7 @@ public class DefaultMtbService implements MtbService {
 
         if (sid.isPresent()) {
             switch (sid.get()) {
+                case "2011":
                 case "20119":
                     mapper = new OsTumorkonferenzVarianteUkwToProtocolMapper();
                 default:
