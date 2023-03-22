@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.sql.Date;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,28 +65,32 @@ public class DNPMHelperTest {
 
         assertThat(actual).isNotNull();
         assertThat(actual).isExactlyInstanceOf(ArrayList.class);
+        assertThat(actual).hasSize(1);
 
-        @SuppressWarnings("unchecked")
-        var actualList = (ArrayList<Map<String, Object>>) actual;
-        assertThat(actualList).hasSize(1);
-
-        assertThat(actualList.get(0).get("Beginn"))
+        assertThat(actual.get(0).get("Beginn"))
                 .isEqualTo(Date.from(Instant.parse("2023-01-01T00:00:00Z")).toString());
-        assertThat(actualList.get(0).get("Ende"))
+        assertThat(actual.get(0).get("Ende"))
                 .isEqualTo(Date.from(Instant.parse("2023-01-31T00:00:00Z")).toString());
-        assertThat(actualList.get(0).get("Beendigung"))
+        assertThat(actual.get(0).get("Beendigung"))
                 .isEqualTo("E");
-        assertThat(actualList.get(0).get("Ergebnis"))
+        assertThat(actual.get(0).get("Ergebnis"))
                 .isEqualTo("T");
-        assertThat(actualList.get(0).get("Wirkstoffe"))
+        assertThat(actual.get(0).get("Wirkstoffe"))
                 .isEqualTo("Testsubstanz, cyclophosphamide");
-        assertThat(actualList.get(0).get("WirkstoffCodes"))
+        assertThat(actual.get(0).get("WirkstoffCodes"))
                 .isEqualTo(
                         "[" +
                                 "{\"system\":\"other\",\"code\":\"Testsubstanz\",\"substance\":\"Testsubstanz\"}," +
                                 "{\"system\":\"ATC\",\"code\":\"L01AA01\",\"substance\":\"cyclophosphamide\"}" +
                                 "]"
                 );
+    }
+
+    @Test
+    void testShouldReturnNullIfNoDiagnoseId() {
+        var actual = dnpmHelper.getSystemischeTherapienFromDiagnose(new HashMap<>());
+
+        assertThat(actual).isNull();
     }
 
 }
