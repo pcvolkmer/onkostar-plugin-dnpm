@@ -1,6 +1,6 @@
 package DNPM;
 
-import ATCCodes.AtcCode;
+import DNPM.services.systemtherapie.SystemtherapieService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.itc.onkostar.api.Disease;
@@ -18,7 +18,10 @@ import org.hibernate.type.StandardBasicTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DNPMHelper implements IProcedureAnalyzer {
 
@@ -26,8 +29,11 @@ public class DNPMHelper implements IProcedureAnalyzer {
 
     private final IOnkostarApi onkostarApi;
 
-    public DNPMHelper(final IOnkostarApi onkostarApi) {
+    private final SystemtherapieService systemtherapieService;
+
+    public DNPMHelper(final IOnkostarApi onkostarApi, final SystemtherapieService systemtherapieService) {
         this.onkostarApi = onkostarApi;
+        this.systemtherapieService = systemtherapieService;
     }
 
     @Override
@@ -144,70 +150,7 @@ public class DNPMHelper implements IProcedureAnalyzer {
             return null;
         }
 
-        List<Map<String, String>> result = new ArrayList<>();
-        for (Procedure Prozedur : onkostarApi.getProceduresForDiseaseByForm(Integer.parseInt(diagnoseId.toString()), "OS.Systemische Therapie")) {
-            result.add(getProzedurwerte(Prozedur));
-        }
-        return result;
-    }
-
-    private static Map<String, String> getProzedurwerte(Procedure Prozedur) {
-        List<String> wirkstoffListe = new ArrayList<>();
-        // SubstanzenCodesListe enthält die Liste der SubstanzenCodes
-        List<Map<String, String>> substanzenCodesListe = new ArrayList<>();
-
-        // alle Werte der Prozedur auslesen
-        Map<String, Item> alleWerte = Prozedur.getAllValues();
-        // Prozedurwerte enthält nur die interessanten Werte
-        Map<String, String> prozedurwerte = new HashMap<>();
-        // alle Werte durchgehen und die interessanten übernehmen
-        if (alleWerte.containsKey("Beendigung")) {
-            prozedurwerte.put("Beendigung", alleWerte.get("Beendigung").getValue());
-        }
-        if (alleWerte.containsKey("Ergebnis")) {
-            prozedurwerte.put("Ergebnis", alleWerte.get("Ergebnis").getValue());
-        }
-        if (alleWerte.containsKey("Beginn")) {
-            prozedurwerte.put("Beginn", alleWerte.get("Beginn").getString());
-        }
-        if (alleWerte.containsKey("Ende")) {
-            prozedurwerte.put("Ende", alleWerte.get("Ende").getString());
-        }
-        if (alleWerte.containsKey("SubstanzenList")) {
-            List<Map<String, String>> substanzList = alleWerte.get("SubstanzenList").getValue();
-            for (var substanz : substanzList) {
-                var substanzCodes = getSubstanzCode(substanz);
-                substanzenCodesListe.add(substanzCodes);
-                wirkstoffListe.add(substanzCodes.get("substance"));
-            }
-        }
-
-        prozedurwerte.put("Wirkstoffe", String.join(", ", wirkstoffListe));
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            prozedurwerte.put("WirkstoffCodes", mapper.writeValueAsString(substanzenCodesListe));
-        } catch (JsonProcessingException e) {
-            logger.error("Kann 'WirkstoffCodes' nicht in JSON-String mappen", e);
-        }
-
-        return prozedurwerte;
-    }
-
-    private static Map<String, String> getSubstanzCode(Map<String, String> substanz) {
-        Map<String, String> substanzCode = new HashMap<>();
-        if (substanz.containsKey("Substanz")) {
-            if (AtcCode.isAtcCode(substanz.get("Substanz"))) {
-                substanzCode.put("system", "ATC");
-            } else {
-                substanzCode.put("system", "other");
-            }
-            substanzCode.put("code", substanz.get("Substanz"));
-
-        }
-        if (substanz.containsKey("Substanz_shortDescription")) {
-            substanzCode.put("substance", substanz.get("Substanz_shortDescription"));
-        }
-        return substanzCode;
+        return systemtherapieService.getSystemischeTherapienFromDiagnose(Integer.parseInt(diagnoseId.toString()));
     }
 
     public Object getProzedurenFromDiagnose(final Map<String, Object> input) {

@@ -4,6 +4,8 @@ import DNPM.database.SettingsRepository;
 import DNPM.services.*;
 import DNPM.services.mtb.DefaultMtbService;
 import DNPM.services.mtb.MtbService;
+import DNPM.services.systemtherapie.DefaultSystemtherapieService;
+import DNPM.services.systemtherapie.SystemtherapieService;
 import de.itc.onkostar.api.IOnkostarApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -40,6 +42,14 @@ public class PluginConfiguration {
     @Bean
     public MtbService mtbService(final IOnkostarApi onkostarApi) {
         return new DefaultMtbService(onkostarApi);
+    }
+
+    @Bean
+    public SystemtherapieService systemtherapieService(
+            final IOnkostarApi onkostarApi,
+            final SettingsService settingsService
+    ) {
+        return new DefaultSystemtherapieService(onkostarApi, settingsService);
     }
 
     @Bean

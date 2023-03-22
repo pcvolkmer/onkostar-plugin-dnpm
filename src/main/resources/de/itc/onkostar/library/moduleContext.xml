@@ -12,6 +12,7 @@
  
     <bean id="DNPMHelper" class="DNPM.DNPMHelper">
         <constructor-arg ref="localOnkostarApi" />
+        <constructor-arg ref="systemtherapieService" />
     </bean>
     <bean id="Merkmalskatalog" class="DNPM.Merkmalskatalog" />
     <bean id="ConsentManager" class="DNPM.ConsentManager" />
