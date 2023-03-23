@@ -1,5 +1,6 @@
 /.idea/
-/libs/
 /target/
+
+libs/*.jar
 
 .project
