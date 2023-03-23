@@ -1,6 +1,7 @@
 /.idea/
 /target/
 
+.mvn/wrapper/maven-wrapper.jar
 libs/*.jar
 
 .project
