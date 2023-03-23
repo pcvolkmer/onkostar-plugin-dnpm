@@ -93,6 +93,10 @@ public class FollowUpAnalyzer implements IProcedureAnalyzer {
      * @param procedure Das FollowUp
      */
     private void backlinkToEinzelempfehlung(Procedure procedure) {
+        if (null == procedure.getValue("LinkTherapieempfehlung")) {
+            return;
+        }
+
         var referencedProcedureId = procedure.getValue("LinkTherapieempfehlung").getInt();
         if (referencedProcedureId == 0) {
             // Alles gut, es ist keine Einzelempfehlung angegeben
