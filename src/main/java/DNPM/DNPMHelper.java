@@ -189,34 +189,35 @@ public class DNPMHelper implements IProcedureAnalyzer {
     }
 
     public Object getEmpfehlung(final Map<String, Object> input) {
-        // Auslesen der Parameter aus 'input'
-        int ProcedureID = (int) input.get("ProcedureID");
+        var procedureID = input.get("ProcedureID");
 
-        String sql;
+        if (null == procedureID || Integer.parseInt(procedureID.toString()) == 0) {
+            logger.error("Kein Parameter 'ProcedureID' angegeben, gebe 'null' zurück");
+            return null;
+        }
+
         try {
             SessionFactory sessionFactory = onkostarApi.getSessionFactory();
             Session session = sessionFactory.getCurrentSession();
-            try {
-                sql = "SELECT * FROM prozedur "
-                        + "LEFT JOIN dk_mtb_einzelempfehlung em ON em.id = prozedur.id "
-                        + "WHERE prozedur.hauptprozedur_id = " + ProcedureID + " AND prozedur.geloescht = 0 AND prozedur.data_form_id = 489 "
-                        + "ORDER BY beginndatum";
+            var sql = "SELECT * FROM prozedur "
+                    + "LEFT JOIN dk_mtb_einzelempfehlung em ON em.id = prozedur.id "
+                    // TODO data_form_id immer 489?
+                    + "WHERE prozedur.hauptprozedur_id = " + Integer.parseInt(procedureID.toString()) + " AND prozedur.geloescht = 0 AND prozedur.data_form_id = 489 "
+                    + "ORDER BY beginndatum";
 
-                SQLQuery query = session.createSQLQuery(sql)
-                        .addScalar("id", StandardBasicTypes.STRING)
-                        .addScalar("genname", StandardBasicTypes.STRING)
-                        .addScalar("geneid", StandardBasicTypes.STRING)
-                        .addScalar("geneidlink", StandardBasicTypes.STRING)
-                        .addScalar("empfehlung", StandardBasicTypes.STRING)
-                        .addScalar("beginndatum", StandardBasicTypes.STRING);
+            SQLQuery query = session.createSQLQuery(sql)
+                    .addScalar("id", StandardBasicTypes.STRING)
+                    .addScalar("genname", StandardBasicTypes.STRING)
+                    .addScalar("geneid", StandardBasicTypes.STRING)
+                    .addScalar("geneidlink", StandardBasicTypes.STRING)
+                    .addScalar("empfehlung", StandardBasicTypes.STRING)
+                    .addScalar("beginndatum", StandardBasicTypes.STRING);
 
-                @SuppressWarnings("unchecked")
-                List<String[]> rows = query.list();
-                return rows;
-            } catch (Exception e) {
-                return null;
-            }
+            @SuppressWarnings("unchecked")
+            List<String[]> rows = query.list();
+            return rows;
         } catch (Exception e) {
+            logger.error("Fehler bei Abfrage von Empfehlungen", e);
             return null;
         }
     }
