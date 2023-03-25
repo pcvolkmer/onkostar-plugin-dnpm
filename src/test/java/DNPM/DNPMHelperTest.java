@@ -17,7 +17,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class DNPMHelperTest {
+class DNPMHelperTest {
 
     private SystemtherapieService systemtherapieService;
 
@@ -42,8 +42,15 @@ public class DNPMHelperTest {
     }
 
     @Test
-    void testShouldReturnNullIfNoDiagnoseId() {
+    void testShouldReturnNullIfNoDiagnoseIdCallingGetSystemischeTherapienFromDiagnose() {
         var actual = dnpmHelper.getSystemischeTherapienFromDiagnose(new HashMap<>());
+
+        assertThat(actual).isNull();
+    }
+
+    @Test
+    void testShouldReturnNullIfNoProcedureIdCallingGetEmpfehlung() {
+        var actual = dnpmHelper.getEmpfehlung(new HashMap<>());
 
         assertThat(actual).isNull();
     }
