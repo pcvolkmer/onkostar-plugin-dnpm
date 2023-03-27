@@ -199,10 +199,10 @@ public class DNPMHelper implements IProcedureAnalyzer {
         try {
             SessionFactory sessionFactory = onkostarApi.getSessionFactory();
             Session session = sessionFactory.getCurrentSession();
-            var sql = "SELECT * FROM prozedur "
+            var sql = "SELECT prozedur.id, genname, geneid, geneidlink, empfehlung, beginndatum FROM prozedur "
                     + "LEFT JOIN dk_mtb_einzelempfehlung em ON em.id = prozedur.id "
-                    // TODO data_form_id immer 489?
-                    + "WHERE prozedur.hauptprozedur_id = " + Integer.parseInt(procedureID.toString()) + " AND prozedur.geloescht = 0 AND prozedur.data_form_id = 489 "
+                    + "JOIN data_form df ON prozedur.data_form_id = df.id AND df.name = 'MR.MTB_Einzelempfehlung' "
+                    + "WHERE prozedur.hauptprozedur_id = " + Integer.parseInt(procedureID.toString()) + " AND prozedur.geloescht = 0 "
                     + "ORDER BY beginndatum";
 
             SQLQuery query = session.createSQLQuery(sql)
