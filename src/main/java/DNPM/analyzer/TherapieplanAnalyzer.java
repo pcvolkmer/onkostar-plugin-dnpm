@@ -118,12 +118,12 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
      * @return Liste mit Studien
      */
     public List<Studie> getStudien(Map<String, Object> input) {
-        var query = input.get("q");
+        var query = AnalyzerUtils.getRequiredValue(input, "q", String.class);
 
-        if (null == query || query.toString().isBlank()) {
+        if (query.isEmpty() || query.get().isBlank()) {
             return studienService.findAll();
         }
-        return studienService.findByQuery(query.toString());
+        return studienService.findByQuery(query.get());
     }
 
     /**
@@ -146,17 +146,16 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
      * @return Zeichenkette mit Protokollauszug
      */
     public String getProtokollauszug(Map<String, Object> input) {
-        var id = input.get("id");
+        var procedureId = AnalyzerUtils.getRequiredId(input, "id");
 
-        if (null == id || 0 == Integer.parseInt(id.toString())) {
+        if (procedureId.isEmpty()) {
             return "";
         }
 
-        var procedureId = Integer.parseInt(id.toString());
         return mtbService.getProtocol(
                 therapieplanServiceFactory
                         .currentUsableInstance()
-                        .findReferencedMtbs(procedureId)
+                        .findReferencedMtbs(procedureId.get())
         );
     }
 

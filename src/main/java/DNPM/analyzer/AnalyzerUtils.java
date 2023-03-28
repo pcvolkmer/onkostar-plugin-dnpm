@@ -104,7 +104,7 @@ public class AnalyzerUtils {
      * @return <code>true</code>>, wenn ein Wert gefunden wurde, der dem RegExp entspricht
      */
     public static boolean requiredValueIsId(final Map<String, Object> input, final String key) {
-        return requiredValuePresent(input, key, Integer.class) && Integer.valueOf(input.get(key).toString()) > 0;
+        return requiredValuePresent(input, key, Integer.class) && Integer.parseInt(input.get(key).toString()) > 0;
     }
 
     /**
