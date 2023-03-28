@@ -11,7 +11,7 @@ import java.util.Optional;
 public class AnalyzerUtils {
 
     /**
-     * Prüft, ob ein Optional mit Wert, wenn in InputMap ein Eintrag mit key <code>key</code> und Typ <code>type</code>
+     * Prüft, ob in InputMap einen Eintrag mit key <code>key</code> und Typ <code>type</code>
      * gefunden wurde.
      *
      * @param input InputMap
@@ -62,7 +62,7 @@ public class AnalyzerUtils {
     }
 
     /**
-     * Prüft, ob ein Wert als Zeichenkette dem angegebenen RegExp entspricht
+     * Prüft, ob ein Wert in der InputMap als Zeichenkette dem angegebenen RegExp entspricht
      *
      * @param input InputMap
      * @param key Key des Werts
@@ -97,7 +97,7 @@ public class AnalyzerUtils {
     }
 
     /**
-     * Prüft, ob ein Wert eine ID ist und damit eine Zahl größer Null ist.
+     * Prüft, ob ein Wert in der InputMap eine ID ist und damit eine Zahl größer Null ist.
      *
      * @param input InputMap
      * @param key Key des Werts
