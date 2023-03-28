@@ -6,6 +6,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -60,57 +61,122 @@ class DNPMHelperTest {
         assertThat(actual).isNull();
     }
 
-    @Test
-    void testShouldReturnFalseIfNoRidAndNoBdCallingUpdateEmpfehlungPrio() {
-        var actual = dnpmHelper.updateEmpfehlungPrio(new HashMap<>());
+    @Nested
+    class UpdateEmpfehlungPrioTests {
 
-        assertThat(actual).isEqualTo(false);
+        @Test
+        void testShouldReturnFalseIfNoRidAndNoBdCallingUpdateEmpfehlungPrio() {
+            var actual = dnpmHelper.updateEmpfehlungPrio(new HashMap<>());
+
+            assertThat(actual).isEqualTo(false);
+        }
+
+        @Test
+        void testShouldReturnFalseIfNoRidCallingUpdateEmpfehlungPrio() {
+            var actual = dnpmHelper.updateEmpfehlungPrio(Map.of("bd", "2023-01-01"));
+
+            assertThat(actual).isEqualTo(false);
+        }
+
+        @Test
+        void testShouldReturnFalseIfNoBdCallingUpdateEmpfehlungPrio() {
+            var actual = dnpmHelper.updateEmpfehlungPrio(Map.of("rid", 1234));
+
+            assertThat(actual).isEqualTo(false);
+        }
+
+        @Test
+        void testShouldReturnTrueIfRidAndBdPresentCallingUpdateEmpfehlungPrio() {
+            var sessionFactory = mock(SessionFactory.class);
+            var session = mock(Session.class);
+            var query = mock(SQLQuery.class);
+
+            when(onkostarApi.getSessionFactory()).thenReturn(sessionFactory);
+            when(sessionFactory.getCurrentSession()).thenReturn(session);
+            when(session.createSQLQuery(anyString())).thenReturn(query);
+
+            var actual = dnpmHelper.updateEmpfehlungPrio(Map.of("rid", 1234, "bd", "2023-01-01"));
+
+            assertThat(actual).isEqualTo(true);
+        }
+
+        @Test
+        void testShouldCreateSqlQueryWithRidAndBdCallingUpdateEmpfehlungPrio() {
+            var sessionFactory = mock(SessionFactory.class);
+            var session = mock(Session.class);
+            var query = mock(SQLQuery.class);
+
+            when(onkostarApi.getSessionFactory()).thenReturn(sessionFactory);
+            when(sessionFactory.getCurrentSession()).thenReturn(session);
+            when(session.createSQLQuery(anyString())).thenReturn(query);
+
+            dnpmHelper.updateEmpfehlungPrio(Map.of("rid", 1234, "bd", "2023-01-01"));
+
+            var argumentCaptor = ArgumentCaptor.forClass(String.class);
+            verify(session, times(1)).createSQLQuery(argumentCaptor.capture());
+            assertThat(argumentCaptor.getValue()).isEqualTo("UPDATE prozedur SET beginndatum = '2023-01-01' WHERE id = '1234' ");
+        }
+
     }
 
-    @Test
-    void testShouldReturnFalseIfNoRidCallingUpdateEmpfehlungPrio() {
-        var actual = dnpmHelper.updateEmpfehlungPrio(Map.of("bd", "2023-01-01"));
+    @Nested
+    class GetProzedurenFromDiagnoseTests {
+        @Test
+        void testShouldReturnEmptyStringOnParamCheckIfNoDataFormParamGiven() {
+            var actual = dnpmHelper.getProzedurenFromDiagnose(Map.of("DiagnoseId", 1, "PatientId", 2));
+            assertThat(actual).isEqualTo("");
 
-        assertThat(actual).isEqualTo(false);
+            verify(onkostarApi, times(0)).getProceduresByPatientId(anyInt());
+        }
+
+        @Test
+        void testShouldReturnEmptyStringOnParamCheckIfNoDiagnoseIdParamGiven() {
+            var actual = dnpmHelper.getProzedurenFromDiagnose(Map.of("dataForm", "OS.Example", "PatientId", 2));
+            assertThat(actual).isEqualTo("");
+
+            verify(onkostarApi, times(0)).getProceduresByPatientId(anyInt());
+        }
+
+        @Test
+        void testShouldReturnEmptyStringOnParamCheckIfNoPatientIdParamGiven() {
+            var actual = dnpmHelper.getProzedurenFromDiagnose(Map.of("dataForm", "OS.Example", "DiagnoseId", 1));
+            assertThat(actual).isEqualTo("");
+
+            verify(onkostarApi, times(0)).getProceduresByPatientId(anyInt());
+        }
+
+        @Test
+        void testShouldRequestProceduresIfRequiredParamsGiven() {
+            dnpmHelper.getProzedurenFromDiagnose(Map.of("dataForm", "OS.Example", "DiagnoseId", 1, "PatientId", 2));
+            verify(onkostarApi, times(1)).getProceduresByPatientId(anyInt());
+        }
     }
 
-    @Test
-    void testShouldReturnFalseIfNoBdCallingUpdateEmpfehlungPrio() {
-        var actual = dnpmHelper.updateEmpfehlungPrio(Map.of("rid", 1234));
+    @Nested
+    class GetVerweiseTests {
 
-        assertThat(actual).isEqualTo(false);
-    }
+        @Test
+        void testShouldReturnEmptyArrayIfNoProcedureIdParamGiven() {
+            var actual = dnpmHelper.getVerweise(Map.of("PatientId", 2));
+            assertThat(actual).isNull();
 
-    @Test
-    void testShouldReturnTrueIfRidAndBdPresentCallingUpdateEmpfehlungPrio() {
-        var sessionFactory = mock(SessionFactory.class);
-        var session = mock(Session.class);
-        var query = mock(SQLQuery.class);
+            verify(onkostarApi, times(0)).getSessionFactory();
+        }
 
-        when(onkostarApi.getSessionFactory()).thenReturn(sessionFactory);
-        when(sessionFactory.getCurrentSession()).thenReturn(session);
-        when(session.createSQLQuery(anyString())).thenReturn(query);
+        @Test
+        void testShouldReturnEmptyArrayIfNoPatientIdParamGiven() {
+            var actual = dnpmHelper.getVerweise(Map.of("ProcedureId", 1));
+            assertThat(actual).isNull();
 
-        var actual = dnpmHelper.updateEmpfehlungPrio(Map.of("rid", 1234, "bd", "2023-01-01"));
+            verify(onkostarApi, times(0)).getSessionFactory();
+        }
 
-        assertThat(actual).isEqualTo(true);
-    }
+        @Test
+        void testShouldRequestSessionFactoryIfRequiredParamsGiven() {
+            dnpmHelper.getVerweise(Map.of("ProcedureId", 1, "PatientId", 2));
+            verify(onkostarApi, times(1)).getSessionFactory();
+        }
 
-    @Test
-    void testShouldCreateSqlQueryWithRidAndBdCallingUpdateEmpfehlungPrio() {
-        var sessionFactory = mock(SessionFactory.class);
-        var session = mock(Session.class);
-        var query = mock(SQLQuery.class);
-
-        when(onkostarApi.getSessionFactory()).thenReturn(sessionFactory);
-        when(sessionFactory.getCurrentSession()).thenReturn(session);
-        when(session.createSQLQuery(anyString())).thenReturn(query);
-
-        dnpmHelper.updateEmpfehlungPrio(Map.of("rid", 1234, "bd", "2023-01-01"));
-
-        var argumentCaptor = ArgumentCaptor.forClass(String.class);
-        verify(session, times(1)).createSQLQuery(argumentCaptor.capture());
-        assertThat(argumentCaptor.getValue()).isEqualTo("UPDATE prozedur SET beginndatum = '2023-01-01' WHERE id = '1234' ");
     }
 
 }

@@ -83,11 +83,16 @@ public class DNPMHelper implements IProcedureAnalyzer {
     }
 
     @SuppressWarnings("unchecked")
-    public Object getVerweise(final Map<String, Object> input) {
-        int ProcedureId = (int) input.get("ProcedureId");
-        int PatientId = (int) input.get("PatientId");
+    public List<Map<String, String>> getVerweise(final Map<String, Object> input) {
+        var procedureId = AnalyzerUtils.getRequiredId(input, "ProcedureId");
+        var patientId = AnalyzerUtils.getRequiredId(input, "PatientId");
+
+        if (procedureId.isEmpty() || patientId.isEmpty()) {
+            return null;
+        }
+
         int value = 0;
-        List<Map<String, String>> VerbundeneFormulare = new ArrayList<Map<String, String>>();
+        var VerbundeneFormulare = new ArrayList<Map<String, String>>();
 
         try {
             SessionFactory sessionFactory = onkostarApi.getSessionFactory();
@@ -99,7 +104,7 @@ public class DNPMHelper implements IProcedureAnalyzer {
                         "LEFT JOIN data_catalogue_entry ON data_catalogue_entry.data_catalogue_id = data_form_data_catalogue.data_catalogue_id " +
                         "LEFT JOIN data_catalogue ON data_catalogue.id = data_catalogue_entry.data_catalogue_id " +
                         "LEFT JOIN data_form ON data_form.id = prozedur.data_form_id " +
-                        "WHERE patient_id = " + PatientId + " " +
+                        "WHERE patient_id = " + patientId.get() + " " +
                         "AND geloescht = 0 " +
                         "AND data_catalogue_entry.type = 'formReference' " +
                         "GROUP BY prozedur.id, prozedur.data_form_id, data_catalogue.name, data_catalogue_entry.name";
@@ -122,7 +127,7 @@ public class DNPMHelper implements IProcedureAnalyzer {
                         if (query.uniqueResult() != null) {
                             value = (Integer) query.uniqueResult();
                         }
-                        if (value == ProcedureId) {
+                        if (value == procedureId.get()) {
                             VerbundeneFormulare.add(Map.of("formular", var.getVerbundenesFormular()));
                             value = 0;
                         }
@@ -150,18 +155,22 @@ public class DNPMHelper implements IProcedureAnalyzer {
         return systemtherapieService.getSystemischeTherapienFromDiagnose(diagnoseId.get());
     }
 
-    public Object getProzedurenFromDiagnose(final Map<String, Object> input) {
-        String dataForm = (String) input.get("dataForm");
-        int DiagnoseId = (int) input.get("DiagnoseId");
-        int PatientId = (int) input.get("PatientId");
+    public String getProzedurenFromDiagnose(final Map<String, Object> input) {
         // Prozedur, Feldname, Wert
+        var dataForm = AnalyzerUtils.getRequiredValue(input, "dataForm", String.class);
+        var diagnoseId = AnalyzerUtils.getRequiredId(input, "DiagnoseId");
+        var patientId = AnalyzerUtils.getRequiredId(input, "PatientId");
+
+        if (dataForm.isEmpty() || diagnoseId.isEmpty() || patientId.isEmpty()) {
+            return "";
+        }
 
         List<Object> Formulare = new ArrayList<Object>();
         String jsonStr = "";
-        List<Procedure> Prozeduren = onkostarApi.getProceduresByPatientId(PatientId);
+        List<Procedure> Prozeduren = onkostarApi.getProceduresByPatientId(patientId.get());
         for (Procedure Prozedur : Prozeduren) {
             // Formular gehört zur aktuellen Diagnose und hat den angegebenen Namen
-            if (Prozedur.getDiseaseIds().contains(DiagnoseId) && Prozedur.getFormName().contains(dataForm)) {
+            if (Prozedur.getDiseaseIds().contains(diagnoseId.get()) && Prozedur.getFormName().contains(dataForm.get())) {
                 // alle Werte auslesen
                 Map<String, Item> Werte = Prozedur.getAllValues();
                 Map<String, Object> Values = new HashMap<>();
