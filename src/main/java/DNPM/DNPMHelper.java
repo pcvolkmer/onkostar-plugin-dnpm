@@ -223,25 +223,28 @@ public class DNPMHelper implements IProcedureAnalyzer {
     }
 
     public Object updateEmpfehlungPrio(final Map<String, Object> input) {
-        // Auslesen der Parameter aus 'input'
-        //int rid = (int) input.get("rid");
-        Object rid = input.get("rid");
-        Object strDate = input.get("bd");
-        SQLQuery result = null;
+        // Auslesen und Prüfen der Parameter aus 'input'
+        var rid = input.get("rid");
+        if (null == rid || Integer.parseInt(rid.toString()) == 0) {
+            logger.error("Kein Parameter 'rid' angegeben, gebe 'false' zurück");
+            return false;
+        }
+
+        var strDate = input.get("bd");
+        if (null == strDate || !strDate.toString().matches("[\\d]{4}-[\\d]{2}-[\\d]{2}")) {
+            logger.error("Kein oder ungültiger Parameter 'bd' angegeben, gebe 'false' zurück");
+            return false;
+        }
 
         //String strD = strDate.toString();
         //String CompareDate = strD.substring(1, 11);
-
         //DateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
 
-        String sql;
-
         try {
-            sql = "UPDATE prozedur SET beginndatum = '" + strDate + "' WHERE id = '" + rid + "' ";
-            result = onkostarApi.getSessionFactory().getCurrentSession().createSQLQuery(sql);
+            String sql = "UPDATE prozedur SET beginndatum = '" + strDate + "' WHERE id = '" + rid + "' ";
+            SQLQuery result = onkostarApi.getSessionFactory().getCurrentSession().createSQLQuery(sql);
             result.executeUpdate();
             return true;
-
         } catch (Exception e) {
             return "Achtung: Ein Fehler ist aufgetreten, Änderung konnte nicht gespeichert werden!";
             //return null;

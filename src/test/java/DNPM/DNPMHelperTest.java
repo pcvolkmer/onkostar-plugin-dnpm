@@ -2,6 +2,9 @@ package DNPM;
 
 import DNPM.services.systemtherapie.SystemtherapieService;
 import de.itc.onkostar.api.IOnkostarApi;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,11 +16,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class DNPMHelperTest {
+
+    private IOnkostarApi onkostarApi;
 
     private SystemtherapieService systemtherapieService;
 
@@ -28,6 +32,7 @@ class DNPMHelperTest {
             @Mock IOnkostarApi onkostarApi,
             @Mock SystemtherapieService systemtherapieService
     ) {
+        this.onkostarApi = onkostarApi;
         this.systemtherapieService = systemtherapieService;
         this.dnpmHelper = new DNPMHelper(onkostarApi, systemtherapieService);
     }
@@ -53,6 +58,59 @@ class DNPMHelperTest {
         var actual = dnpmHelper.getEmpfehlung(new HashMap<>());
 
         assertThat(actual).isNull();
+    }
+
+    @Test
+    void testShouldReturnFalseIfNoRidAndNoBdCallingUpdateEmpfehlungPrio() {
+        var actual = dnpmHelper.updateEmpfehlungPrio(new HashMap<>());
+
+        assertThat(actual).isEqualTo(false);
+    }
+
+    @Test
+    void testShouldReturnFalseIfNoRidCallingUpdateEmpfehlungPrio() {
+        var actual = dnpmHelper.updateEmpfehlungPrio(Map.of("bd", "2023-01-01"));
+
+        assertThat(actual).isEqualTo(false);
+    }
+
+    @Test
+    void testShouldReturnFalseIfNoBdCallingUpdateEmpfehlungPrio() {
+        var actual = dnpmHelper.updateEmpfehlungPrio(Map.of("rid", 1234));
+
+        assertThat(actual).isEqualTo(false);
+    }
+
+    @Test
+    void testShouldReturnTrueIfRidAndBdPresentCallingUpdateEmpfehlungPrio() {
+        var sessionFactory = mock(SessionFactory.class);
+        var session = mock(Session.class);
+        var query = mock(SQLQuery.class);
+
+        when(onkostarApi.getSessionFactory()).thenReturn(sessionFactory);
+        when(sessionFactory.getCurrentSession()).thenReturn(session);
+        when(session.createSQLQuery(anyString())).thenReturn(query);
+
+        var actual = dnpmHelper.updateEmpfehlungPrio(Map.of("rid", 1234, "bd", "2023-01-01"));
+
+        assertThat(actual).isEqualTo(true);
+    }
+
+    @Test
+    void testShouldCreateSqlQueryWithRidAndBdCallingUpdateEmpfehlungPrio() {
+        var sessionFactory = mock(SessionFactory.class);
+        var session = mock(Session.class);
+        var query = mock(SQLQuery.class);
+
+        when(onkostarApi.getSessionFactory()).thenReturn(sessionFactory);
+        when(sessionFactory.getCurrentSession()).thenReturn(session);
+        when(session.createSQLQuery(anyString())).thenReturn(query);
+
+        dnpmHelper.updateEmpfehlungPrio(Map.of("rid", 1234, "bd", "2023-01-01"));
+
+        var argumentCaptor = ArgumentCaptor.forClass(String.class);
+        verify(session, times(1)).createSQLQuery(argumentCaptor.capture());
+        assertThat(argumentCaptor.getValue()).isEqualTo("UPDATE prozedur SET beginndatum = '2023-01-01' WHERE id = '1234' ");
     }
 
 }
