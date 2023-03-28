@@ -1,5 +1,6 @@
 package DNPM;
 
+import DNPM.analyzer.AnalyzerUtils;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,10 +19,7 @@ import org.hibernate.type.StandardBasicTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DNPMHelper implements IProcedureAnalyzer {
 
@@ -143,14 +141,13 @@ public class DNPMHelper implements IProcedureAnalyzer {
     }
 
     public List<Map<String, String>> getSystemischeTherapienFromDiagnose(final Map<String, Object> input) {
-        var diagnoseId = input.get("DiagnoseId");
-
-        if (null == diagnoseId || Integer.parseInt(diagnoseId.toString()) == 0) {
+        var diagnoseId = AnalyzerUtils.getRequiredId(input, "DiagnoseId");
+        if (diagnoseId.isEmpty()) {
             logger.error("Kein Parameter 'DiagnoseId' angegeben, gebe 'null' zurück");
             return null;
         }
 
-        return systemtherapieService.getSystemischeTherapienFromDiagnose(Integer.parseInt(diagnoseId.toString()));
+        return systemtherapieService.getSystemischeTherapienFromDiagnose(diagnoseId.get());
     }
 
     public Object getProzedurenFromDiagnose(final Map<String, Object> input) {
@@ -189,9 +186,9 @@ public class DNPMHelper implements IProcedureAnalyzer {
     }
 
     public Object getEmpfehlung(final Map<String, Object> input) {
-        var procedureID = input.get("ProcedureID");
+        var procedureID = AnalyzerUtils.getRequiredId(input, "ProcedureID");
 
-        if (null == procedureID || Integer.parseInt(procedureID.toString()) == 0) {
+        if (procedureID.isEmpty()) {
             logger.error("Kein Parameter 'ProcedureID' angegeben, gebe 'null' zurück");
             return null;
         }
@@ -202,7 +199,7 @@ public class DNPMHelper implements IProcedureAnalyzer {
             var sql = "SELECT prozedur.id, genname, geneid, geneidlink, empfehlung, beginndatum FROM prozedur "
                     + "LEFT JOIN dk_mtb_einzelempfehlung em ON em.id = prozedur.id "
                     + "JOIN data_form df ON prozedur.data_form_id = df.id AND df.name = 'MR.MTB_Einzelempfehlung' "
-                    + "WHERE prozedur.hauptprozedur_id = " + Integer.parseInt(procedureID.toString()) + " AND prozedur.geloescht = 0 "
+                    + "WHERE prozedur.hauptprozedur_id = " + procedureID.get() + " AND prozedur.geloescht = 0 "
                     + "ORDER BY beginndatum";
 
             SQLQuery query = session.createSQLQuery(sql)
@@ -224,14 +221,14 @@ public class DNPMHelper implements IProcedureAnalyzer {
 
     public Object updateEmpfehlungPrio(final Map<String, Object> input) {
         // Auslesen und Prüfen der Parameter aus 'input'
-        var rid = input.get("rid");
-        if (null == rid || Integer.parseInt(rid.toString()) == 0) {
+        var rid = AnalyzerUtils.getRequiredId(input, "rid");
+        if (rid.isEmpty()) {
             logger.error("Kein Parameter 'rid' angegeben, gebe 'false' zurück");
             return false;
         }
 
-        var strDate = input.get("bd");
-        if (null == strDate || !strDate.toString().matches("[\\d]{4}-[\\d]{2}-[\\d]{2}")) {
+        var strDate = AnalyzerUtils.getRequiredValueMatching(input, "bd", "[\\d]{4}-[\\d]{2}-[\\d]{2}");
+        if (strDate.isEmpty()) {
             logger.error("Kein oder ungültiger Parameter 'bd' angegeben, gebe 'false' zurück");
             return false;
         }
@@ -241,7 +238,7 @@ public class DNPMHelper implements IProcedureAnalyzer {
         //DateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            String sql = "UPDATE prozedur SET beginndatum = '" + strDate + "' WHERE id = '" + rid + "' ";
+            String sql = "UPDATE prozedur SET beginndatum = '" + strDate.get() + "' WHERE id = '" + rid.get() + "' ";
             SQLQuery result = onkostarApi.getSessionFactory().getCurrentSession().createSQLQuery(sql);
             result.executeUpdate();
             return true;
