@@ -26,6 +26,14 @@
             <systemPath>${project.basedir}/libs/onkostar-api-2.11.1.1.jar</systemPath>
         </dependency>
 
+        <dependency>
+            <groupId>de.ukw</groupId>
+            <artifactId>onkostar-plugin-atccodes</artifactId>
+            <version>0.4.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/onkostar-plugin-atccodes-0.4.0.jar</systemPath>
+        </dependency>
+
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -142,6 +150,30 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.5.0</version>
+                <configuration>
+                    <outputDirectory>
+                        ${project.build.directory}/classes/
+                    </outputDirectory>
+                    <includes>
+                        de/ukw/ccc/**/*.class
+                    </includes>
+                    <excludeTransitive>true</excludeTransitive>
+                    <includeScope>system</includeScope>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 

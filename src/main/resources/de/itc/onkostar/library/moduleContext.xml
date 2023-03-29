@@ -22,7 +22,7 @@
         <constructor-arg ref="consentManagerServiceFactory" />
     </bean>
 
-	<context:component-scan base-package="ATCCodes" />
+	<context:component-scan base-package="de.ukw.ccc.onkostar.atccodes" />
     <context:component-scan base-package="DNPM.config" />
 
     <mvc:resources mapping="/app/lib/umr/**" location="classpath:/app/lib/umr/" />
