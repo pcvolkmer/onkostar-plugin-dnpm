@@ -6,7 +6,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
-import de.itc.onkostar.api.Item;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
 import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
@@ -165,33 +164,26 @@ public class DNPMHelper implements IProcedureAnalyzer {
             return "";
         }
 
-        List<Object> Formulare = new ArrayList<Object>();
-        String jsonStr = "";
-        List<Procedure> Prozeduren = onkostarApi.getProceduresByPatientId(patientId.get());
-        for (Procedure Prozedur : Prozeduren) {
+        var formulare = new ArrayList<Map<String, Object>>();
+        List<Procedure> prozeduren = onkostarApi.getProceduresByPatientId(patientId.get());
+        for (Procedure Prozedur : prozeduren) {
             // Formular gehört zur aktuellen Diagnose und hat den angegebenen Namen
             if (Prozedur.getDiseaseIds().contains(diagnoseId.get()) && Prozedur.getFormName().contains(dataForm.get())) {
                 // alle Werte auslesen
-                Map<String, Item> Werte = Prozedur.getAllValues();
-                Map<String, Object> Values = new HashMap<>();
-                for (Map.Entry<String, Item> WerteListe : Werte.entrySet()) {
-                    Values.put(WerteListe.getKey(), WerteListe.getValue());
-//          System.out.println(WerteListe.getKey() + ": " + WerteListe.getValue());
-                }
-                Map<String, Object> Formular = new HashMap<>();
-                Formular.put("Formular", Prozedur.getFormName());
-                Formular.put("Felder", Values);
-                Formulare.add(Formular);
+                // System.out.println(WerteListe.getKey() + ": " + WerteListe.getValue());
+                formulare.add(Map.of(
+                        "Formular", Prozedur.getFormName(),
+                        "Felder", new HashMap<>(Prozedur.getAllValues())
+                ));
             }
         }
-        ObjectMapper Obj = new ObjectMapper();
         try {
-            jsonStr = Obj.writeValueAsString(Formulare);
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.writeValueAsString(formulare);
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error("Kann Formulare nicht in JSON mappen", e);
         }
-        return jsonStr;
+        return "";
     }
 
     public Object getEmpfehlung(final Map<String, Object> input) {
