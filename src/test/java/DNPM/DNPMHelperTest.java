@@ -2,6 +2,8 @@ package DNPM;
 
 import DNPM.services.systemtherapie.SystemtherapieService;
 import de.itc.onkostar.api.IOnkostarApi;
+import de.itc.onkostar.api.Item;
+import de.itc.onkostar.api.Procedure;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +15,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -149,6 +153,53 @@ class DNPMHelperTest {
         void testShouldRequestProceduresIfRequiredParamsGiven() {
             dnpmHelper.getProzedurenFromDiagnose(Map.of("dataForm", "OS.Example", "DiagnoseId", 1, "PatientId", 2));
             verify(onkostarApi, times(1)).getProceduresByPatientId(anyInt());
+        }
+
+        @Test
+        void testShouldNotReturnProceduresNotRelatedToDisease() {
+            doAnswer(invocationOnMock -> {
+                var procedure = new Procedure(onkostarApi);
+                procedure.setFormName("OS.Example1");
+                procedure.setId(11);
+                procedure.addDiseaseId(4711);
+                procedure.setValue("formfield", new Item("formfield", "Wert11"));
+
+                return List.of(procedure);
+            }).when(onkostarApi).getProceduresByPatientId(anyInt());
+
+            var actual = dnpmHelper.getProzedurenFromDiagnose(Map.of("dataForm", "OS.Example", "DiagnoseId", 1, "PatientId", 2));
+            assertThat(actual).isEqualTo("[]");
+        }
+
+        @Test
+        void testShouldReturnProcedures() {
+            doAnswer(invocationOnMock -> {
+                var procedure1 = new Procedure(onkostarApi);
+                procedure1.setFormName("OS.Example1");
+                procedure1.setId(11);
+                procedure1.addDiseaseId(1);
+                procedure1.setStartDate(new Date());
+                procedure1.setValue("formfield", new Item("formfield", "Wert11"));
+
+                var procedure2 = new Procedure(onkostarApi);
+                procedure2.setFormName("OS.Example2");
+                procedure2.setId(21);
+                procedure2.addDiseaseId(1);
+                procedure2.setStartDate(new Date());
+                procedure2.setValue("formfield", new Item("formfield", "Wert21"));
+
+                var procedure3 = new Procedure(onkostarApi);
+                procedure3.setFormName("OS.Example1");
+                procedure3.setId(12);
+                procedure3.addDiseaseId(1);
+                procedure3.setStartDate(new Date());
+                procedure3.setValue("formfield", new Item("formfield", "Wert12"));
+
+                return List.of(procedure1, procedure2, procedure3);
+            }).when(onkostarApi).getProceduresByPatientId(anyInt());
+
+            var actual = dnpmHelper.getProzedurenFromDiagnose(Map.of("dataForm", "OS.Example", "DiagnoseId", 1, "PatientId", 2));
+            assertThat(actual).contains("OS.Example1", "OS.Example2", "Wert11", "Wert21", "Wert12");
         }
     }
 
