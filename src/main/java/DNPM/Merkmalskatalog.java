@@ -1,5 +1,6 @@
 package DNPM;
 
+import DNPM.analyzer.AnalyzerUtils;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Procedure;
@@ -12,7 +13,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.type.StandardBasicTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
@@ -21,8 +21,11 @@ public class Merkmalskatalog implements IProcedureAnalyzer {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private IOnkostarApi onkostarApi;
+    private final IOnkostarApi onkostarApi;
+
+    public Merkmalskatalog(final IOnkostarApi onkostarApi) {
+        this.onkostarApi = onkostarApi;
+    }
 
     @Override
     public OnkostarPluginType getType() {
@@ -69,20 +72,20 @@ public class Merkmalskatalog implements IProcedureAnalyzer {
     }
 
     public List<String[]> getMerkmalskatalog(final Map<String, Object> input) {
-        var merkmalskatalog = input.get("Merkmalskatalog");
-        var spalten = input.get("Spalten");
+        var merkmalskatalog = AnalyzerUtils.getRequiredValue(input, "Merkmalskatalog", String.class);
+        var spalten = AnalyzerUtils.getRequiredValue(input, "Spalten", String.class);
 
-        if (null == merkmalskatalog || merkmalskatalog.toString().isBlank()) {
+        if (merkmalskatalog.isEmpty()) {
             logger.error("Kein Merkmalskatalog angegeben!");
             return null;
         }
 
-        if (null == spalten || spalten.toString().isBlank()) {
+        if (spalten.isEmpty()) {
             logger.error("Keine Spalten angegeben!");
             return null;
         }
 
-        String[] spaltenArray = spalten.toString().split("\\s*,\\s*");
+        String[] spaltenArray = spalten.get().split("\\s*,\\s*");
 
         try {
             SessionFactory sessionFactory = onkostarApi.getSessionFactory();
@@ -92,7 +95,7 @@ public class Merkmalskatalog implements IProcedureAnalyzer {
                     + "FROM property_catalogue "
                     + "LEFT JOIN property_catalogue_version ON property_catalogue_version.datacatalog_id = property_catalogue.id "
                     + "LEFT JOIN property_catalogue_version_entry p ON p.property_version_id = property_catalogue_version.id "
-                    + "WHERE name = '" + merkmalskatalog + "' AND aktiv = 1 "
+                    + "WHERE name = '" + merkmalskatalog.get() + "' AND aktiv = 1 "
                     + "ORDER BY position ASC";
 
             SQLQuery query = session.createSQLQuery(sql);

@@ -14,7 +14,9 @@
         <constructor-arg ref="localOnkostarApi" />
         <constructor-arg ref="systemtherapieService" />
     </bean>
-    <bean id="Merkmalskatalog" class="DNPM.Merkmalskatalog" />
+    <bean id="Merkmalskatalog" class="DNPM.Merkmalskatalog">
+        <constructor-arg ref="localOnkostarApi" />
+    </bean>
     <bean id="ConsentManager" class="DNPM.ConsentManager" />
 
 	<context:component-scan base-package="ATCCodes" />
