@@ -18,7 +18,10 @@ import org.hibernate.type.StandardBasicTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DNPMHelper implements IProcedureAnalyzer {
 
@@ -90,58 +93,55 @@ public class DNPMHelper implements IProcedureAnalyzer {
             return null;
         }
 
-        int value = 0;
-        var VerbundeneFormulare = new ArrayList<Map<String, String>>();
+        var verbundeneFormulare = new ArrayList<Map<String, String>>();
 
         try {
             SessionFactory sessionFactory = onkostarApi.getSessionFactory();
             Session session = sessionFactory.getCurrentSession();
+
+            String sql = "SELECT prozedur.id AS procedure_id, prozedur.data_form_id, data_catalogue.name AS data_catalogue, data_catalogue_entry.name AS data_catalogue_entry, data_form.description AS formname, prozedur.beginndatum AS datum " +
+                    "FROM prozedur " +
+                    "LEFT JOIN data_form_data_catalogue ON data_form_data_catalogue.data_form_id = prozedur.data_form_id " +
+                    "LEFT JOIN data_catalogue_entry ON data_catalogue_entry.data_catalogue_id = data_form_data_catalogue.data_catalogue_id " +
+                    "LEFT JOIN data_catalogue ON data_catalogue.id = data_catalogue_entry.data_catalogue_id " +
+                    "LEFT JOIN data_form ON data_form.id = prozedur.data_form_id " +
+                    "WHERE patient_id = " + patientId.get() + " " +
+                    "AND geloescht = 0 " +
+                    "AND data_catalogue_entry.type = 'formReference' " +
+                    "GROUP BY prozedur.id, prozedur.data_form_id, data_catalogue.name, data_catalogue_entry.name";
+
+            SQLQuery query = session.createSQLQuery(sql)
+                    .addScalar("procedure_id", StandardBasicTypes.INTEGER)
+                    .addScalar("data_form_id", StandardBasicTypes.INTEGER)
+                    .addScalar("data_catalogue", StandardBasicTypes.STRING)
+                    .addScalar("data_catalogue_entry", StandardBasicTypes.STRING)
+                    .addScalar("formname", StandardBasicTypes.STRING)
+                    .addScalar("datum", StandardBasicTypes.DATE);
+
+            query.setResultTransformer(Transformers.aliasToBean(VerweisVon.class));
+            List<VerweisVon> result = query.list();
             try {
-                String sql = "SELECT prozedur.id AS procedure_id, prozedur.data_form_id, data_catalogue.name AS data_catalogue, data_catalogue_entry.name AS data_catalogue_entry, data_form.description AS formname, prozedur.beginndatum AS datum " +
-                        "FROM prozedur " +
-                        "LEFT JOIN data_form_data_catalogue ON data_form_data_catalogue.data_form_id = prozedur.data_form_id " +
-                        "LEFT JOIN data_catalogue_entry ON data_catalogue_entry.data_catalogue_id = data_form_data_catalogue.data_catalogue_id " +
-                        "LEFT JOIN data_catalogue ON data_catalogue.id = data_catalogue_entry.data_catalogue_id " +
-                        "LEFT JOIN data_form ON data_form.id = prozedur.data_form_id " +
-                        "WHERE patient_id = " + patientId.get() + " " +
-                        "AND geloescht = 0 " +
-                        "AND data_catalogue_entry.type = 'formReference' " +
-                        "GROUP BY prozedur.id, prozedur.data_form_id, data_catalogue.name, data_catalogue_entry.name";
-
-                SQLQuery query = session.createSQLQuery(sql)
-                        .addScalar("procedure_id", StandardBasicTypes.INTEGER)
-                        .addScalar("data_form_id", StandardBasicTypes.INTEGER)
-                        .addScalar("data_catalogue", StandardBasicTypes.STRING)
-                        .addScalar("data_catalogue_entry", StandardBasicTypes.STRING)
-                        .addScalar("formname", StandardBasicTypes.STRING)
-                        .addScalar("datum", StandardBasicTypes.DATE);
-
-                query.setResultTransformer(Transformers.aliasToBean(VerweisVon.class));
-                List<VerweisVon> result = query.list();
-                try {
-                    for (VerweisVon var : result) {
-                        sql = var.getSQL();
-                        query = session.createSQLQuery(sql)
-                                .addScalar("value", StandardBasicTypes.INTEGER);
-                        if (query.uniqueResult() != null) {
-                            value = (Integer) query.uniqueResult();
-                        }
-                        if (value == procedureId.get()) {
-                            VerbundeneFormulare.add(Map.of("formular", var.getVerbundenesFormular()));
-                            value = 0;
-                        }
+                int value = 0;
+                for (VerweisVon verweisVon : result) {
+                    sql = verweisVon.getSQL();
+                    query = session.createSQLQuery(sql)
+                            .addScalar("value", StandardBasicTypes.INTEGER);
+                    if (query.uniqueResult() != null) {
+                        value = (Integer) query.uniqueResult();
                     }
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    if (value == procedureId.get()) {
+                        verbundeneFormulare.add(Map.of("formular", verweisVon.getVerbundenesFormular()));
+                        value = 0;
+                    }
                 }
             } catch (Exception e) {
-                return null;
+                logger.warn("Fehler beim Hinzufügen eines Formularverweises", e);
             }
         } catch (Exception e) {
+            logger.error("Fehler beim Ermitteln der Formularverweise", e);
             return null;
         }
-        return VerbundeneFormulare;
+        return verbundeneFormulare;
     }
 
     public List<Map<String, String>> getSystemischeTherapienFromDiagnose(final Map<String, Object> input) {

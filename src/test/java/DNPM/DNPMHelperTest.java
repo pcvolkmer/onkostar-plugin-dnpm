@@ -228,6 +228,23 @@ class DNPMHelperTest {
             verify(onkostarApi, times(1)).getSessionFactory();
         }
 
+        @Test
+        void testShouldCreateSqlQueryWithPatientId() {
+            var sessionFactory = mock(SessionFactory.class);
+            var session = mock(Session.class);
+            var query = mock(SQLQuery.class);
+
+            when(onkostarApi.getSessionFactory()).thenReturn(sessionFactory);
+            when(sessionFactory.getCurrentSession()).thenReturn(session);
+            when(session.createSQLQuery(anyString())).thenReturn(query);
+
+            dnpmHelper.getVerweise(Map.of("ProcedureId", 1, "PatientId", 2));
+
+            var argumentCaptor = ArgumentCaptor.forClass(String.class);
+            verify(session, times(1)).createSQLQuery(argumentCaptor.capture());
+            assertThat(argumentCaptor.getValue()).contains("WHERE patient_id = 2 AND geloescht = 0");
+        }
+
     }
 
 }
