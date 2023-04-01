@@ -17,7 +17,9 @@
     <bean id="Merkmalskatalog" class="DNPM.Merkmalskatalog">
         <constructor-arg ref="localOnkostarApi" />
     </bean>
-    <bean id="ConsentManager" class="DNPM.ConsentManager" />
+    <bean id="ConsentManager" class="DNPM.ConsentManager">
+        <constructor-arg ref="localOnkostarApi" />
+    </bean>
 
 	<context:component-scan base-package="ATCCodes" />
     <context:component-scan base-package="DNPM.config" />

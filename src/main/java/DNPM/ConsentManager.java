@@ -14,7 +14,6 @@ import org.hibernate.transform.Transformers;
 import org.hibernate.type.StandardBasicTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
@@ -23,8 +22,11 @@ public class ConsentManager implements IProcedureAnalyzer {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private IOnkostarApi onkostarApi;
+    private final IOnkostarApi onkostarApi;
+
+    public ConsentManager(final IOnkostarApi onkostarApi) {
+        this.onkostarApi = onkostarApi;
+    }
 
     @Override
     public String getDescription() {
@@ -52,8 +54,8 @@ public class ConsentManager implements IProcedureAnalyzer {
     }
 
     @Override
-    public boolean isRelevantForAnalyzer(Procedure Prozedur, Disease Erkrankung) {
-        return Prozedur.getFormName().equals(onkostarApi.getGlobalSetting("consentform"));
+    public boolean isRelevantForAnalyzer(Procedure prozedur, Disease erkrankung) {
+        return prozedur.getFormName().equals(onkostarApi.getGlobalSetting("consentform"));
     }
 
     @Override
@@ -78,7 +80,7 @@ public class ConsentManager implements IProcedureAnalyzer {
             SQLQuery query1 = session.createSQLQuery(sql1)
                     .addScalar("id", StandardBasicTypes.INTEGER)
                     .addScalar("datum", StandardBasicTypes.TIMESTAMP);
-            System.out.println(query1.uniqueResult().toString());
+            logger.info("Wert-Check: {}", query1.uniqueResult());
 
             String sql = "SELECT prozedur.id AS procedure_id, prozedur.data_form_id, data_catalogue.name AS data_catalogue, data_catalogue_entry.name AS data_catalogue_entry, data_form.description AS formname, prozedur.beginndatum AS datum " +
                     "FROM prozedur " +
@@ -104,43 +106,49 @@ public class ConsentManager implements IProcedureAnalyzer {
             @SuppressWarnings("unchecked")
             List<VerweisVon> result = query.list();
 
-            for (VerweisVon var : result) {
-                sql = var.getSQL();
+            for (VerweisVon verweisVon : result) {
+                sql = verweisVon.getSQL();
                 query = session.createSQLQuery(sql)
                         .addScalar("value", StandardBasicTypes.INTEGER);
                 if (query.uniqueResult() != null) {
                     value = (Integer) query.uniqueResult();
                 }
                 if (value == prozedur.getId()) {
-                    Procedure andereprozedur = onkostarApi.getProcedure(var.getProcedure_id());
-                    try {
-                        Map<String, Item> felder = prozedur.getAllValues();
-                        for (Map.Entry<String, Item> feld : felder.entrySet()) {
-                            if (feld.getKey().startsWith("Consent")) {
-                                if (feld.getKey().equals("ConsentStatusEinwilligungDNPM")) {
-                                    switch (feld.getValue().getValue().toString()) {
-                                        case "z":
-                                            andereprozedur.setValue(feld.getKey(), new Item(feld.getKey(), "active"));
-                                            break;
-                                        case "a":
-                                        case "w":
-                                            andereprozedur.setValue(feld.getKey(), new Item(feld.getKey(), "rejected"));
-                                            break;
-                                    }
-                                } else {
-                                    andereprozedur.setValue(feld.getKey(), prozedur.getValue(feld.getKey()));
-                                }
-                            }
-                        }
-                        onkostarApi.saveProcedure(andereprozedur);
-                    } catch (Exception e) {
-                        logger.error("Kann Prozedur nicht speichern", e);
-                    }
+                    saveReferencedProcedure(prozedur, verweisVon);
                     value = 0;
                 }
             }
         } catch (RuntimeException e) {
             logger.error("Sonstiger Fehler bei der Ausführung von analyze()", e);
+        }
+    }
+
+    private void saveReferencedProcedure(Procedure prozedur, VerweisVon verweisVon) {
+        Procedure andereprozedur = onkostarApi.getProcedure(verweisVon.getProcedure_id());
+        try {
+            Map<String, Item> felder = prozedur.getAllValues();
+            for (Map.Entry<String, Item> feld : felder.entrySet()) {
+                if (feld.getKey().startsWith("Consent")) {
+                    if (feld.getKey().equals("ConsentStatusEinwilligungDNPM")) {
+                        switch (feld.getValue().getValue().toString()) {
+                            case "z":
+                                andereprozedur.setValue(feld.getKey(), new Item(feld.getKey(), "active"));
+                                break;
+                            case "a":
+                            case "w":
+                                andereprozedur.setValue(feld.getKey(), new Item(feld.getKey(), "rejected"));
+                                break;
+                            default:
+                                break;
+                        }
+                    } else {
+                        andereprozedur.setValue(feld.getKey(), prozedur.getValue(feld.getKey()));
+                    }
+                }
+            }
+            onkostarApi.saveProcedure(andereprozedur);
+        } catch (Exception e) {
+            logger.error("Kann Prozedur nicht speichern", e);
         }
     }
 
