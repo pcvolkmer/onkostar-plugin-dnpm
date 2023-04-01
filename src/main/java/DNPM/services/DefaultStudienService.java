@@ -28,12 +28,12 @@ public class DefaultStudienService implements StudienService {
         + "WHERE property_catalogue.name = 'OS.Studien';";
 
         return this.jdbcTemplate.query(sql, (resultSet, i) -> new Studie(
-                resultSet.getString(0),
-                resultSet.getInt(1),
-                resultSet.getString(2),
-                resultSet.getString(3),
-                resultSet.getString(4),
-                resultSet.getString(5)
+                resultSet.getString("name"),
+                resultSet.getInt("version_number"),
+                resultSet.getString("studien_nummer"),
+                resultSet.getString("code"),
+                resultSet.getString("shortdesc"),
+                resultSet.getString("description")
         ));
     }
 
@@ -49,12 +49,12 @@ public class DefaultStudienService implements StudienService {
         var like = String.format("%%%s%%", query);
 
         return this.jdbcTemplate.query(sql, new Object[]{like, like, like}, (resultSet, i) -> new Studie(
-                resultSet.getString(0),
-                resultSet.getInt(1),
-                resultSet.getString(2),
-                resultSet.getString(3),
-                resultSet.getString(4),
-                resultSet.getString(5)
+                resultSet.getString("name"),
+                resultSet.getInt("version_number"),
+                resultSet.getString("studien_nummer"),
+                resultSet.getString("code"),
+                resultSet.getString("shortdesc"),
+                resultSet.getString("description")
         ));
     }
 }
