@@ -13,7 +13,7 @@ import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.doAnswer;
 
 @ExtendWith(MockitoExtension.class)
-public class SettingsServiceTest {
+class SettingsServiceTest {
 
     @Mock
     private SettingsRepository settingsRepository;
@@ -36,8 +36,9 @@ public class SettingsServiceTest {
         }).when(settingsRepository).findByName(anyString());
 
         var actual = service.getSID();
-        assertThat(actual).isPresent();
-        assertThat(actual.get()).isEqualTo("12345");
+        assertThat(actual)
+                .isPresent()
+                .contains("12345");
     }
 
     @Test
@@ -51,8 +52,9 @@ public class SettingsServiceTest {
         }).when(settingsRepository).findByName(anyString());
 
         var actual = service.getSetting("SID");
-        assertThat(actual).isPresent();
-        assertThat(actual.get()).isEqualTo("12345");
+        assertThat(actual)
+                .isPresent()
+                .contains("12345");
     }
 
 }

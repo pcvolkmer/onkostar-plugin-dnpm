@@ -17,7 +17,7 @@ import java.util.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-public class DefaultMtbServiceTest {
+class DefaultMtbServiceTest {
 
     private IOnkostarApi onkostarApi;
 

@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class TherapieplanAnalyzerTest {
+class TherapieplanAnalyzerTest {
 
     @Mock
     private IOnkostarApi onkostarApi;

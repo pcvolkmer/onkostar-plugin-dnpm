@@ -20,7 +20,7 @@ import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class DefaultSystemtherapieServiceTest {
+class DefaultSystemtherapieServiceTest {
 
     private IOnkostarApi onkostarApi;
 
@@ -29,20 +29,14 @@ public class DefaultSystemtherapieServiceTest {
     private DefaultSystemtherapieService service;
 
     @BeforeEach
-    void setup(
-            @Mock IOnkostarApi onkostarApi,
-            @Mock SettingsService settingsService
-    ) {
+    void setup(@Mock IOnkostarApi onkostarApi, @Mock SettingsService settingsService) {
         this.onkostarApi = onkostarApi;
         this.settingsService = settingsService;
         this.service = new DefaultSystemtherapieService(onkostarApi, settingsService);
     }
 
     private static Set<Map.Entry<String, Class<OsSystemischeTherapieToProzedurwerteMapper>>> expectedMapperMappings() {
-        return Map.ofEntries(
-                Map.entry("OS.Systemische Therapie", OsSystemischeTherapieToProzedurwerteMapper.class),
-                Map.entry("OS.Systemische Therapie.VarianteUKW", OsSystemischeTherapieToProzedurwerteMapper.class)
-        ).entrySet();
+        return Map.ofEntries(Map.entry("OS.Systemische Therapie", OsSystemischeTherapieToProzedurwerteMapper.class), Map.entry("OS.Systemische Therapie.VarianteUKW", OsSystemischeTherapieToProzedurwerteMapper.class)).entrySet();
     }
 
     @ParameterizedTest
@@ -57,11 +51,7 @@ public class DefaultSystemtherapieServiceTest {
     }
 
     private static Set<Map.Entry<String, String>> expectedFormnameMappings() {
-        return Map.ofEntries(
-                Map.entry("2011", "OS.Systemische Therapie.VarianteUKW"),
-                Map.entry("20119", "OS.Systemische Therapie.VarianteUKW"),
-                Map.entry("Defaultwert", "OS.Systemische Therapie")
-        ).entrySet();
+        return Map.ofEntries(Map.entry("2011", "OS.Systemische Therapie.VarianteUKW"), Map.entry("20119", "OS.Systemische Therapie.VarianteUKW"), Map.entry("Defaultwert", "OS.Systemische Therapie")).entrySet();
     }
 
     @ParameterizedTest
@@ -83,8 +73,9 @@ public class DefaultSystemtherapieServiceTest {
 
         var actual = service.getSystemischeTherapienFromDiagnose(1);
 
-        assertThat(actual).isNotNull();
-        assertThat(actual).isExactlyInstanceOf(ArrayList.class);
-        assertThat(actual).hasSize(1);
+        assertThat(actual)
+                .isNotNull()
+                .isExactlyInstanceOf(ArrayList.class)
+                .hasSize(1);
     }
 }

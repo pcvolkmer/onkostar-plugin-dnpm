@@ -17,7 +17,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-public class ProzedurToProzedurwerteMapperTest {
+class ProzedurToProzedurwerteMapperTest {
 
     private IOnkostarApi onkostarApi;
 
@@ -55,18 +55,12 @@ public class ProzedurToProzedurwerteMapperTest {
 
         assertThat(actual).isPresent();
 
-        assertThat(actual.get().get("Beginn"))
-                .isEqualTo(Date.from(Instant.parse("2023-01-01T00:00:00Z")).toString());
-        assertThat(actual.get().get("Ende"))
-                .isEqualTo(Date.from(Instant.parse("2023-01-31T00:00:00Z")).toString());
-        assertThat(actual.get().get("Beendigung"))
-                .isEqualTo("E");
-        assertThat(actual.get().get("Ergebnis"))
-                .isEqualTo("T");
-        assertThat(actual.get().get("Wirkstoffe"))
-                .isEqualTo("Testsubstanz, cyclophosphamide");
-        assertThat(actual.get().get("WirkstoffCodes"))
-                .isEqualTo(
+        assertThat(actual.get()).containsEntry("Beginn", Date.from(Instant.parse("2023-01-01T00:00:00Z")).toString());
+        assertThat(actual.get()).containsEntry("Ende", Date.from(Instant.parse("2023-01-31T00:00:00Z")).toString());
+        assertThat(actual.get()).containsEntry("Beendigung", "E");
+        assertThat(actual.get()).containsEntry("Ergebnis", "T");
+        assertThat(actual.get()).containsEntry("Wirkstoffe", "Testsubstanz, cyclophosphamide");
+        assertThat(actual.get()).containsEntry("WirkstoffCodes",
                         "[" +
                                 "{\"system\":\"other\",\"code\":\"Testsubstanz\",\"substance\":\"Testsubstanz\"}," +
                                 "{\"system\":\"ATC\",\"code\":\"L01AA01\",\"substance\":\"cyclophosphamide\"}" +

@@ -128,7 +128,7 @@ class DNPMHelperTest {
         @Test
         void testShouldReturnEmptyStringOnParamCheckIfNoDataFormParamGiven() {
             var actual = dnpmHelper.getProzedurenFromDiagnose(Map.of("DiagnoseId", 1, "PatientId", 2));
-            assertThat(actual).isEqualTo("");
+            assertThat(actual).isExactlyInstanceOf(String.class).isEmpty();
 
             verify(onkostarApi, times(0)).getProceduresByPatientId(anyInt());
         }
@@ -136,7 +136,7 @@ class DNPMHelperTest {
         @Test
         void testShouldReturnEmptyStringOnParamCheckIfNoDiagnoseIdParamGiven() {
             var actual = dnpmHelper.getProzedurenFromDiagnose(Map.of("dataForm", "OS.Example", "PatientId", 2));
-            assertThat(actual).isEqualTo("");
+            assertThat(actual).isExactlyInstanceOf(String.class).isEmpty();
 
             verify(onkostarApi, times(0)).getProceduresByPatientId(anyInt());
         }
@@ -144,7 +144,7 @@ class DNPMHelperTest {
         @Test
         void testShouldReturnEmptyStringOnParamCheckIfNoPatientIdParamGiven() {
             var actual = dnpmHelper.getProzedurenFromDiagnose(Map.of("dataForm", "OS.Example", "DiagnoseId", 1));
-            assertThat(actual).isEqualTo("");
+            assertThat(actual).isExactlyInstanceOf(String.class).isEmpty();
 
             verify(onkostarApi, times(0)).getProceduresByPatientId(anyInt());
         }

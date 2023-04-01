@@ -16,7 +16,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doAnswer;
 
 @ExtendWith(MockitoExtension.class)
-public class MrMtbAnmeldungToProtocolMapperTest {
+class MrMtbAnmeldungToProtocolMapperTest {
 
     private IOnkostarApi onkostarApi;
 
@@ -76,12 +76,13 @@ public class MrMtbAnmeldungToProtocolMapperTest {
 
         var actual = this.mapper.apply(anmeldung);
 
-        assertThat(actual).isPresent();
-        assertThat(actual.get()).isEqualTo(
-                "Fragestellung:\nFrage?\n\n" +
-                "Empfehlung:\nEmpfehlung1\n\n" +
-                "Empfehlung:\nEmpfehlung2"
-        );
+        assertThat(actual)
+                .isPresent()
+                .contains(
+                        "Fragestellung:\nFrage?\n\n"
+                                + "Empfehlung:\nEmpfehlung1\n\n"
+                                + "Empfehlung:\nEmpfehlung2"
+                );
     }
 
     @Test
@@ -106,8 +107,9 @@ public class MrMtbAnmeldungToProtocolMapperTest {
 
         var actual = this.mapper.apply(anmeldung);
 
-        assertThat(actual).isPresent();
-        assertThat(actual.get()).isEqualTo("Fragestellung:\nFrage?");
+        assertThat(actual)
+                .isPresent()
+                .contains("Fragestellung:\nFrage?");
     }
 
     @Test
@@ -119,8 +121,9 @@ public class MrMtbAnmeldungToProtocolMapperTest {
 
         var actual = this.mapper.apply(anmeldung);
 
-        assertThat(actual).isPresent();
-        assertThat(actual.get()).isEqualTo("Fragestellung:\nFrage?");
+        assertThat(actual)
+                .isPresent()
+                .contains("Fragestellung:\nFrage?");
     }
 
     @Test

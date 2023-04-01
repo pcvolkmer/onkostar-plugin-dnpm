@@ -10,7 +10,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AnalyzerUtilsTest {
+class AnalyzerUtilsTest {
 
     private final Map<String, Object> input = Map.of("value1", 1, "valueA", "A", "valueTrue", true);
 

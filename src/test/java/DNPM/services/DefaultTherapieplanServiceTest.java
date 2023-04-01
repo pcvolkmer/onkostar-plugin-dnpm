@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class DefaultTherapieplanServiceTest {
+class DefaultTherapieplanServiceTest {
 
     @Mock
     private IOnkostarApi onkostarApi;

@@ -15,7 +15,7 @@ import java.util.Date;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-public class OsTumorkonferenzToProtocolMapperTest {
+class OsTumorkonferenzToProtocolMapperTest {
 
     private IOnkostarApi onkostarApi;
 
@@ -39,8 +39,9 @@ public class OsTumorkonferenzToProtocolMapperTest {
 
         var actual = mapper.apply(procedure);
 
-        assertThat(actual).isPresent();
-        assertThat(actual.get()).isEqualTo("Fragestellung:\nTest ok?\n\nEmpfehlung:\nRerun Test if not ok!");
+        assertThat(actual)
+                .isPresent()
+                .contains("Fragestellung:\nTest ok?\n\nEmpfehlung:\nRerun Test if not ok!");
     }
 
 }

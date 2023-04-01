@@ -15,7 +15,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class FollowUpAnalyzerTest {
+class FollowUpAnalyzerTest {
 
     private IOnkostarApi onkostarApi;
 
