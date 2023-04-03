@@ -19,6 +19,7 @@
     </bean>
     <bean id="ConsentManager" class="DNPM.ConsentManager">
         <constructor-arg ref="localOnkostarApi" />
+        <constructor-arg ref="consentManagerServiceFactory" />
     </bean>
 
 	<context:component-scan base-package="ATCCodes" />
