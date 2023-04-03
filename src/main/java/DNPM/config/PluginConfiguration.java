@@ -2,6 +2,7 @@ package DNPM.config;
 
 import DNPM.database.SettingsRepository;
 import DNPM.services.*;
+import DNPM.services.consent.ConsentManagerServiceFactory;
 import DNPM.services.mtb.DefaultMtbService;
 import DNPM.services.mtb.MtbService;
 import DNPM.services.systemtherapie.DefaultSystemtherapieService;
@@ -50,6 +51,11 @@ public class PluginConfiguration {
             final SettingsService settingsService
     ) {
         return new DefaultSystemtherapieService(onkostarApi, settingsService);
+    }
+
+    @Bean
+    public ConsentManagerServiceFactory consentManagerServiceFactory(final IOnkostarApi onkostarApi) {
+        return new ConsentManagerServiceFactory(onkostarApi);
     }
 
     @Bean
