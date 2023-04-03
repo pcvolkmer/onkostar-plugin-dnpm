@@ -15,7 +15,7 @@ import java.util.Comparator;
  */
 public class UkwConsentManagerService implements ConsentManagerService {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final IOnkostarApi onkostarApi;
 
@@ -48,10 +48,10 @@ public class UkwConsentManagerService implements ConsentManagerService {
                 .ifPresent(lastConsent -> {
                     var date = lastConsent.getStartDate();
                     var status = lastConsent.getValue("status");
-                    if (null == status) {
+                    if (null == date || null == status || status.getString().isBlank()) {
                         logger.warn("Kein DNPM-Einwilligungstatus angegeben");
                         return;
-                    };
+                    }
 
                     dnpmKlinikAnamnese.setValue("ConsentStatusEinwilligungDNPM", new Item("Einwilligung", status.getString()));
                     dnpmKlinikAnamnese.setValue("ConsentDatumEinwilligungDNPM", new Item("DatumEinwilligung", date));

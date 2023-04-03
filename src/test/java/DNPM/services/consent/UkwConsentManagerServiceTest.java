@@ -52,6 +52,58 @@ public class UkwConsentManagerServiceTest {
     }
 
     @Test
+    void testShouldSkipUpdateRelatedDnpmKlinikAnamneseFormIfNoConsentDateAvailable() throws Exception {
+
+        var consentSubForm = new Procedure(this.onkostarApi);
+        consentSubForm.setId(1);
+        consentSubForm.setPatientId(123);
+        consentSubForm.setValue("status", new Item("status", "accepted"));
+
+
+        var excelForm = new Procedure(this.onkostarApi);
+        excelForm.setId(111);
+        excelForm.setPatientId(123);
+        excelForm.setValue("refdnpmklinikanamnese", new Item("refdnpmklinikanamnese", 2));
+        excelForm.addSubProcedure("ufdnpmconsent", consentSubForm);
+
+        var dnpmKlinikAnamneseForm = new Procedure(this.onkostarApi);
+        dnpmKlinikAnamneseForm.setId(2);
+        dnpmKlinikAnamneseForm.setPatientId(123);
+
+        when(onkostarApi.getProcedure(anyInt())).thenReturn(dnpmKlinikAnamneseForm);
+
+        this.service.applyConsent(excelForm);
+
+        verify(onkostarApi, times(0)).saveProcedure(any(Procedure.class), anyBoolean());
+    }
+
+    @Test
+    void testShouldSkipUpdateRelatedDnpmKlinikAnamneseFormIfNoConsentValueAvailable() throws Exception {
+
+        var consentSubForm = new Procedure(this.onkostarApi);
+        consentSubForm.setId(1);
+        consentSubForm.setPatientId(123);
+        consentSubForm.setStartDate(Date.from(Instant.parse("2023-04-03T12:00:00Z")));
+        consentSubForm.setValue("datum", new Item("datum", Date.from(Instant.parse("2023-04-03T12:00:00Z"))));
+
+        var excelForm = new Procedure(this.onkostarApi);
+        excelForm.setId(111);
+        excelForm.setPatientId(123);
+        excelForm.setValue("refdnpmklinikanamnese", new Item("refdnpmklinikanamnese", 2));
+        excelForm.addSubProcedure("ufdnpmconsent", consentSubForm);
+
+        var dnpmKlinikAnamneseForm = new Procedure(this.onkostarApi);
+        dnpmKlinikAnamneseForm.setId(2);
+        dnpmKlinikAnamneseForm.setPatientId(123);
+
+        when(onkostarApi.getProcedure(anyInt())).thenReturn(dnpmKlinikAnamneseForm);
+
+        this.service.applyConsent(excelForm);
+
+        verify(onkostarApi, times(0)).saveProcedure(any(Procedure.class), anyBoolean());
+    }
+
+    @Test
     void testShouldUpdateRelatedDnpmKlinikAnamneseFormOnFormSave() throws Exception {
 
         var consentSubForm = new Procedure(this.onkostarApi);
