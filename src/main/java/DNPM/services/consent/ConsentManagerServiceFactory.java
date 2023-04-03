@@ -16,6 +16,8 @@ public class ConsentManagerServiceFactory {
         var consentFormName = onkostarApi.getGlobalSetting("consentform");
 
         switch (consentFormName) {
+            case "Excel-Formular":
+                return new UkwConsentManagerService(this.onkostarApi);
             case "MR.Consent":
             default:
                 return new MrConsentManagerService(this.onkostarApi);

@@ -1,7 +1,9 @@
 package DNPM.config;
 
+import DNPM.services.consent.ConsentManagerService;
 import DNPM.services.consent.ConsentManagerServiceFactory;
 import DNPM.services.consent.MrConsentManagerService;
+import DNPM.services.consent.UkwConsentManagerService;
 import de.itc.onkostar.api.IOnkostarApi;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,9 +34,10 @@ class ConsentManagerServiceFactoryTest {
         this.consentManagerServiceFactory = new ConsentManagerServiceFactory(onkostarApi);
     }
 
-    private static Set<Map.Entry<String, Class<MrConsentManagerService>>> expectedMappings() {
+    private static Set<Map.Entry<String, Class<? extends ConsentManagerService>>> expectedMappings() {
         return Map.ofEntries(
-                Map.entry("MR.Consent", MrConsentManagerService.class)
+                Map.entry("MR.Consent", MrConsentManagerService.class),
+                Map.entry("Excel-Formular", UkwConsentManagerService.class)
         ).entrySet();
     }
 
