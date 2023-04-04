@@ -1,6 +1,5 @@
-package DNPM.config;
+package DNPM.services;
 
-import DNPM.services.*;
 import de.itc.onkostar.api.IOnkostarApi;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
