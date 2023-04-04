@@ -19,8 +19,9 @@ public class ConsentManagerServiceFactory {
             case "Excel-Formular":
                 return new UkwConsentManagerService(this.onkostarApi);
             case "MR.Consent":
-            default:
                 return new MrConsentManagerService(this.onkostarApi);
+            default:
+                return procedure -> {};
         }
     }
 

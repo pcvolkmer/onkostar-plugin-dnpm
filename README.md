@@ -19,6 +19,9 @@ VALUES (
 Aktuell werden folgende Consent-Formulare unterstützt:
 
 * `MR.Consent`
+* `Excel-Formular` (UKW - Beinhaltet Consent-Angaben)
+
+Eine Übernahme von Consent-Daten aus unbekannten Formularen ist nur manuell möglich.
 
 
 ## Therapieplan
