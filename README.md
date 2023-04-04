@@ -11,7 +11,6 @@ VALUES (
  'consentform',
  'MR.Consent',
  'DNPM',
- '',
  'Zu verwendendes Consent-Formular'
 );
 ```
