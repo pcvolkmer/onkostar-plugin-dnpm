@@ -35,12 +35,28 @@ class ConsentManagerTest {
     void shouldRunServiceMethodsOnAnalyzeCalled() {
         var consentManagerServiceMock = mock(MrConsentManagerService.class);
 
+        when(consentManagerServiceMock.canApply(any(Procedure.class))).thenReturn(true);
+
         when(this.consentManagerServiceFactory.currentUsableInstance())
                 .thenReturn(consentManagerServiceMock);
 
         this.consentManager.analyze(new Procedure(onkostarApi), null);
 
         verify(consentManagerServiceMock, times(1)).applyConsent(any(Procedure.class));
+    }
+
+    @Test
+    void shouldNotRunServiceMethodsIfProcedureCannotBeAppliesForForm() {
+        var consentManagerServiceMock = mock(MrConsentManagerService.class);
+
+        when(consentManagerServiceMock.canApply(any(Procedure.class))).thenReturn(false);
+
+        when(this.consentManagerServiceFactory.currentUsableInstance())
+                .thenReturn(consentManagerServiceMock);
+
+        this.consentManager.analyze(new Procedure(onkostarApi), null);
+
+        verify(consentManagerServiceMock, times(0)).applyConsent(any(Procedure.class));
     }
 
 }

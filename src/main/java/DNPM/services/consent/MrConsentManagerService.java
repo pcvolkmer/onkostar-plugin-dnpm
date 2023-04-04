@@ -22,12 +22,17 @@ import java.util.Map;
  */
 public class MrConsentManagerService implements ConsentManagerService {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final IOnkostarApi onkostarApi;
 
     public MrConsentManagerService(final IOnkostarApi onkostarApi) {
         this.onkostarApi = onkostarApi;
+    }
+
+    @Override
+    public boolean canApply(Procedure procedure) {
+        return null != procedure && procedure.getFormName().equals("MR.Consent");
     }
 
     /**

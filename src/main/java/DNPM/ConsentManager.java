@@ -69,7 +69,12 @@ public class ConsentManager implements IProcedureAnalyzer {
 
     @Override
     public void analyze(Procedure prozedur, Disease erkrankung) {
-        consentManagerServiceFactory.currentUsableInstance().applyConsent(prozedur);
+        var consentManagerService = consentManagerServiceFactory.currentUsableInstance();
+        if (! consentManagerService.canApply(prozedur)) {
+            logger.error("Fehler im ConsentManagement: Kann Prozedur mit Formularnamen '{}' nicht anwenden", prozedur.getFormName());
+            return;
+        }
+        consentManagerService.applyConsent(prozedur);
     }
 
 }

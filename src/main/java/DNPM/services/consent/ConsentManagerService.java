@@ -15,4 +15,13 @@ public interface ConsentManagerService {
      */
     void applyConsent(Procedure procedure);
 
+    /**
+     * Optionale Prüfung, ob die angegebene Prozedur angewendet werden kann.
+     * @param procedure Anzuwendende Prozedur
+     * @return Gibt <code>true</code> zurück, wenn die Prozedur angewendet werden kann.
+     */
+    default boolean canApply(Procedure procedure) {
+        return null != procedure;
+    }
+
 }

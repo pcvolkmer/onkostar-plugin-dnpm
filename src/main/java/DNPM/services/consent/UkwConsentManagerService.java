@@ -23,6 +23,11 @@ public class UkwConsentManagerService implements ConsentManagerService {
         this.onkostarApi = onkostarApi;
     }
 
+    @Override
+    public boolean canApply(Procedure procedure) {
+        return null != procedure && procedure.getFormName().equals("Excel-Formular");
+    }
+
     /**
      * Wende Consent an, wenn dieses Consent-Formular gespeichert wird
      *
