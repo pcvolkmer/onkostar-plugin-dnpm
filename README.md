@@ -62,5 +62,19 @@ Anschließend ist das Mapping in `DefaultMtbService` in der Methode `procedureTo
 
 Idealerweise werden entsprechende UnitTests hinzugefügt.
 
+### Mapping Systemtherapie-Formular zu Prozedurwerten
+
+Das Formular `DNPM KlinikAnamnese` verwendet eine Backend-Service-Funktion zum Ermitteln vorliegender Therapielinien. Für die Formulare
+
+* `OS.Systemische Therapie`
+* `OS.Systemische Therapie.VarianteUKW`
+
+wird analog zum Mapping MTB auf Therapieplan-Protokollauszug eine formularspezifische Entscheidung getroffen, welcher Mapper zur
+Laufzeit verwendet werden soll. Der Mapper muss hierbei das Interface `ProzedurToProzedurwerteMapper` implementieren.
+
+In der Klasse `DefaultSystemtherapieService` wird zur Laufzeit der erforderliche Mapper für das verwendete Formular ausgewählt.
+
+An dieser Stelle kann auch eine eigene Implementierung - eine neue Klasse, die das Interface `ProzedurToProzedurwerteMapper` implementiert - integriert werden, indem das zu verwendende Formular (Formularname) je `SID` und die zu verwendende Mapping-Klasse für den Formularnamen angegeben wird.
+
 
 
