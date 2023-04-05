@@ -29,9 +29,9 @@
         <dependency>
             <groupId>de.ukw</groupId>
             <artifactId>onkostar-plugin-atccodes</artifactId>
-            <version>0.4.0</version>
+            <version>0.5.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/onkostar-plugin-atccodes-0.4.0.jar</systemPath>
+            <systemPath>${project.basedir}/libs/onkostar-plugin-atccodes-0.5.0.jar</systemPath>
         </dependency>
 
         <!-- Hibernate -->
@@ -159,7 +159,8 @@
                         ${project.build.directory}/classes/
                     </outputDirectory>
                     <includes>
-                        de/ukw/ccc/**/*.class
+                        de/ukw/ccc/**/*.class,
+                        de/ukw/ccc/**/*.js
                     </includes>
                     <excludeTransitive>true</excludeTransitive>
                     <includeScope>system</includeScope>

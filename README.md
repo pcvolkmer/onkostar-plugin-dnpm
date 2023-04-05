@@ -1,5 +1,9 @@
 # Onkostar-Plugin zur Verwendung mit der DNPM-Formularsammlung
 
+## ATC-Codes
+
+Dieses Plugin integriert das ATC-Codes-Plugin vollständig. Dieses kann daher nicht zusätzlich in Onkostar installiert werden.
+
 ## Consent
 
 Das Plugin ist auf die Übernahme des DNPM-Consents ausgelegt. Hierzu muss die Einstellung `consentform` festgelegt werden.
@@ -77,6 +81,26 @@ Laufzeit verwendet werden soll. Der Mapper muss hierbei das Interface `ProzedurT
 In der Klasse `DefaultSystemtherapieService` wird zur Laufzeit der erforderliche Mapper für das verwendete Formular ausgewählt.
 
 An dieser Stelle kann auch eine eigene Implementierung - eine neue Klasse, die das Interface `ProzedurToProzedurwerteMapper` implementiert - integriert werden, indem das zu verwendende Formular (Formularname) je `SID` und die zu verwendende Mapping-Klasse für den Formularnamen angegeben wird.
+
+## Bauen des Plugins
+
+Für das Bauen des Plugins ist zwingend JDK in Version 11 erforderlich.
+Spätere Versionen des JDK beinhalten einige Methoden nicht mehr, die von Onkostar und dort benutzten Libraries verwendet
+werden.
+
+Voraussetzung ist das Kopieren der Datei `onkostar-api-2.11.1.1.jar` (oder neuer) in das Projektverzeichnis `libs`.
+
+Weiterhin verwendet dieses Plugin das [ATC-Codes-Plugin](https://github.com/CCC-MF/onkostar-plugin-atccodes).
+Die zugehörige JAR-Datei muss ebenfalls in das Projektverzeichnis `libs` kopiert werden. Aktuell wird Version 0.5.0 verwendet.
+
+**_Hinweis_**: Bei Verwendung einer neueren Version der Onkostar-API oder des ATC-Codes-Plugins
+muss die Datei `pom.xml` entsprechend angepasst werden.
+
+Danach Ausführen des Befehls:
+
+```shell
+./mvnw package
+```
 
 
 

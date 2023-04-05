@@ -26,4 +26,5 @@
     <context:component-scan base-package="DNPM.config" />
 
     <mvc:resources mapping="/app/lib/umr/**" location="classpath:/app/lib/umr/" />
+    <mvc:resources mapping="/app/plugins/atccodes/**" location="classpath:/de/ukw/ccc/onkostar/atccodes/" />
 </beans>
