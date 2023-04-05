@@ -1,6 +1,7 @@
 package DNPM.config;
 
 import DNPM.database.SettingsRepository;
+import DNPM.security.PersonPoolBasedPermissionEvaluator;
 import DNPM.services.*;
 import DNPM.services.consent.ConsentManagerServiceFactory;
 import DNPM.services.mtb.DefaultMtbService;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.access.PermissionEvaluator;
 
 import javax.sql.DataSource;
 
@@ -24,6 +26,11 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = "DNPM.analyzer")
 @EnableJpaRepositories(basePackages = "DNPM.database")
 public class PluginConfiguration {
+
+    @Bean
+    public PermissionEvaluator personBasedPermissionEvaluator(final DataSource dataSource) {
+        return new PersonPoolBasedPermissionEvaluator(dataSource);
+    }
 
     @Bean
     public FormService formService(final DataSource dataSource) {
