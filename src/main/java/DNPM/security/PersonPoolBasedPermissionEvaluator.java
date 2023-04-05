@@ -64,7 +64,7 @@ public class PersonPoolBasedPermissionEvaluator implements PermissionEvaluator {
                 " JOIN personenstamm p on personenstamm_zugriff.personenstamm_id = p.id " +
                 " WHERE a.login = ? AND a.aktiv AND a.anmelden_moeglich ";
 
-        if (PermissionType.WRITE == permissionType) {
+        if (PermissionType.READ_WRITE == permissionType) {
             sql += " AND personenstamm_zugriff.bearbeiten ";
         }
 

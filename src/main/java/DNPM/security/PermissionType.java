@@ -2,5 +2,5 @@ package DNPM.security;
 
 public enum PermissionType {
     READ,
-    WRITE
+    READ_WRITE
 }
