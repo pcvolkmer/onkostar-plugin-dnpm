@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * Permission-Evaluator zur Auswertung der Berechtigung auf Objekte aufgrund der Personenstammberechtigung
  */
+@Component
 public class PersonPoolBasedPermissionEvaluator implements PermissionEvaluator {
 
     private final JdbcTemplate jdbcTemplate;
@@ -71,7 +73,7 @@ public class PersonPoolBasedPermissionEvaluator implements PermissionEvaluator {
         var userDetails = (UserDetails)authentication.getPrincipal();
 
         return jdbcTemplate
-                .query(sql, new Object[]{userDetails.getUsername()}, (rs, rowNum) -> rs.getString("id"));
+                .query(sql, new Object[]{userDetails.getUsername()}, (rs, rowNum) -> rs.getString("kennung"));
     }
 
 
