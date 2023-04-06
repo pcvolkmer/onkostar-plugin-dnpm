@@ -25,10 +25,4 @@ public interface SystemtherapieService {
      */
     ProzedurToProzedurwerteMapper prozedurToProzedurwerteMapper(Procedure procedure);
 
-    /**
-     * Ermittelt den Formularnamen anhand der SID
-     * @param sid die SID
-     * @return Den ermittelten Formularnamen
-     */
-    String selectFormNameBySID(String sid);
 }

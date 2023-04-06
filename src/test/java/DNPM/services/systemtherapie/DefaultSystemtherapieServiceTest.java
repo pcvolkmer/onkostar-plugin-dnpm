@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -16,8 +17,7 @@ import java.util.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultSystemtherapieServiceTest {
@@ -50,21 +50,37 @@ class DefaultSystemtherapieServiceTest {
         assertThat(actual).isExactlyInstanceOf(expectedMapping.getValue());
     }
 
-    private static Set<Map.Entry<String, String>> expectedFormnameMappings() {
-        return Map.ofEntries(Map.entry("2011", "OS.Systemische Therapie.VarianteUKW"), Map.entry("20119", "OS.Systemische Therapie.VarianteUKW"), Map.entry("Defaultwert", "OS.Systemische Therapie")).entrySet();
+    private static List<String> formnameSetting() {
+        return List.of("OS.Systemische Therapie", "OS.Systemische Therapie.VarianteUKW");
     }
 
     @ParameterizedTest
-    @MethodSource("expectedFormnameMappings")
-    void testShouldMapSidToFormName(Map.Entry<String, String> expectedMapping) {
-        var actual = service.selectFormNameBySID(expectedMapping.getKey());
-        assertThat(actual).isEqualTo(expectedMapping.getValue());
+    @MethodSource("formnameSetting")
+    void testShouldRequestProceduresWithExpectedFormName(String expectedFormName) {
+        when(this.settingsService.getSetting(anyString())).thenReturn(Optional.of(expectedFormName));
+        when(this.onkostarApi.getProceduresForDiseaseByForm(anyInt(), anyString())).thenReturn(List.of());
+
+        service.getSystemischeTherapienFromDiagnose(123);
+
+        var argumentCaptor = ArgumentCaptor.forClass(String.class);
+        verify(onkostarApi, times(1)).getProceduresForDiseaseByForm(anyInt(), argumentCaptor.capture());
+        assertThat(argumentCaptor.getValue()).isEqualTo(expectedFormName);
+    }
+
+    @Test
+    void testShouldRequestProceduresWithDefaultFormName() {
+        when(this.settingsService.getSetting(anyString())).thenReturn(Optional.empty());
+        when(this.onkostarApi.getProceduresForDiseaseByForm(anyInt(), anyString())).thenReturn(List.of());
+
+        service.getSystemischeTherapienFromDiagnose(123);
+
+        var argumentCaptor = ArgumentCaptor.forClass(String.class);
+        verify(onkostarApi, times(1)).getProceduresForDiseaseByForm(anyInt(), argumentCaptor.capture());
+        assertThat(argumentCaptor.getValue()).isEqualTo("OS.Systemische Therapie");
     }
 
     @Test
     void testShouldReturnSystemischeTherapienFromDiagnose() {
-        when(settingsService.getSID()).thenReturn(Optional.of("12345"));
-
         doAnswer(invocationOnMock -> {
             var procedure = new Procedure(onkostarApi);
             procedure.setFormName("OS.Systemische Therapie");

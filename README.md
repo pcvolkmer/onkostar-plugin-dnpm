@@ -80,7 +80,21 @@ Laufzeit verwendet werden soll. Der Mapper muss hierbei das Interface `ProzedurT
 
 In der Klasse `DefaultSystemtherapieService` wird zur Laufzeit der erforderliche Mapper für das verwendete Formular ausgewählt.
 
-An dieser Stelle kann auch eine eigene Implementierung - eine neue Klasse, die das Interface `ProzedurToProzedurwerteMapper` implementiert - integriert werden, indem das zu verwendende Formular (Formularname) je `SID` und die zu verwendende Mapping-Klasse für den Formularnamen angegeben wird.
+An dieser Stelle kann auch eine eigene Implementierung - eine neue Klasse, die das Interface `ProzedurToProzedurwerteMapper` implementiert - 
+integriert werden, indem das zu verwendende Formular (Formularname) und die zu verwendende Mapping-Klasse für den Formularnamen angegeben wird.
+
+Hierbei kann in der Einstellung `systemtherapieform` festgelegt werden, dass ein anderes Formular als "OS.Systemische Therapie" verwendet werden soll.
+Diese Einstellung muss manuell in der Datenbank angelegt werden und kann danach in Onkostar verändert werden.
+
+```
+INSERT INTO einstellung (name, wert, kategorie, beschreibung)
+VALUES (
+ 'systemtherapieform',
+ 'OS.Systemische Therapie',
+ 'DNPM',
+ 'Zu verwendendes Formular für die systemische Therapie'
+);
+```
 
 ## Bauen des Plugins
 
