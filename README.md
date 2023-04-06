@@ -24,8 +24,35 @@ Aktuell werden folgende Consent-Formulare unterstützt:
 * `MR.Consent`
 * `Excel-Formular` (UKW - Beinhaltet Consent-Angaben)
 
-Eine Übernahme von Consent-Daten aus unbekannten Formularen ist nur manuell möglich.
+```mermaid
+classDiagram
+class ConsentManagerService {
+<<Interface>>
+  + applyConsent(Procedure) void
+  + canApply(Procedure) boolean
+}
+class ConsentManagerServiceFactory {
+  + ConsentManagerServiceFactory(IOnkostarApi) 
+  + currentUsableInstance() ConsentManagerService
+}
+class MrConsentManagerService {
+  + MrConsentManagerService(IOnkostarApi) 
+  + canApply(Procedure) boolean
+  + applyConsent(Procedure) void
+}
+class UkwConsentManagerService {
+  + UkwConsentManagerService(IOnkostarApi) 
+  + canApply(Procedure) boolean
+  + applyConsent(Procedure) void
+}
 
+ConsentManagerServiceFactory  ..>  MrConsentManagerService : «create»
+ConsentManagerServiceFactory  ..>  UkwConsentManagerService : «create»
+MrConsentManagerService  ..|>  ConsentManagerService 
+UkwConsentManagerService  ..|>  ConsentManagerService 
+```
+
+Eine Übernahme von Consent-Daten aus unbekannten Formularen ist nur manuell möglich.
 
 ## Therapieplan
 
@@ -64,6 +91,45 @@ Anschließend ist das Mapping in `DefaultMtbService` in der Methode `procedureTo
     case "Custom.Neuekonferenz":
         return new CustomNeuekonferenzToProtocolMapper();
 ...
+```
+
+```mermaid
+classDiagram
+
+class MtbService {
+<<Interface>>
+  + getProtocol(List~Procedure~) String
+  + procedureToProtocolMapper(Procedure) ProcedureToProtocolMapper
+}
+class DefaultMtbService {
+  + DefaultMtbService(IOnkostarApi) 
+  + getProtocol(List~Procedure~) String
+  + procedureToProtocolMapper(Procedure) ProcedureToProtocolMapper
+}
+class MrMtbAnmeldungToProtocolMapper {
+  + MrMtbAnmeldungToProtocolMapper(IOnkostarApi) 
+  + apply(Procedure) Optional~String~
+}
+class OsTumorkonferenzToProtocolMapper {
+  + OsTumorkonferenzToProtocolMapper() 
+  + apply(Procedure) Optional~String~
+}
+class OsTumorkonferenzVarianteUkwToProtocolMapper {
+  + OsTumorkonferenzVarianteUkwToProtocolMapper() 
+  + apply(Procedure) Optional~String~
+}
+class ProcedureToProtocolMapper {
+<<Interface>>
+
+}
+
+DefaultMtbService  ..|>  MtbService 
+DefaultMtbService  ..>  MrMtbAnmeldungToProtocolMapper : «create»
+DefaultMtbService  ..>  OsTumorkonferenzToProtocolMapper : «create»
+DefaultMtbService  ..>  OsTumorkonferenzVarianteUkwToProtocolMapper : «create»
+MrMtbAnmeldungToProtocolMapper  ..|>  ProcedureToProtocolMapper 
+OsTumorkonferenzToProtocolMapper  ..|>  ProcedureToProtocolMapper 
+OsTumorkonferenzVarianteUkwToProtocolMapper  ..|>  ProcedureToProtocolMapper 
 ```
 
 Idealerweise werden entsprechende UnitTests hinzugefügt.
