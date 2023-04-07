@@ -174,7 +174,23 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <!-- Optional output directory. Defaults to './target'  -->
+                    <outputDirectory>target</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
