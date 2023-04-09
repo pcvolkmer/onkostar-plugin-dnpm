@@ -1,5 +1,6 @@
 package DNPM.security;
 
+import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Patient;
 import de.itc.onkostar.api.Procedure;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,9 +19,12 @@ import java.util.List;
 @Component
 public class PersonPoolBasedPermissionEvaluator implements PermissionEvaluator {
 
+    private final IOnkostarApi onkostarApi;
+
     private final JdbcTemplate jdbcTemplate;
 
-    public PersonPoolBasedPermissionEvaluator(final DataSource dataSource) {
+    public PersonPoolBasedPermissionEvaluator(final IOnkostarApi onkostarApi, final DataSource dataSource) {
+        this.onkostarApi = onkostarApi;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -46,19 +50,48 @@ public class PersonPoolBasedPermissionEvaluator implements PermissionEvaluator {
     }
 
     /**
-     * Auswertung nicht anhand der ID möglich. Gibt immer <code>false</code> zurück.
+     * Auswertung anhand der ID und des Namens des Zielobjekts.
      * @param authentication Authentication-Object
      * @param targetId ID des Objekts
-     * @param s
-     * @param o
-     * @return Gibt immer <code>false</code> zurück
+     * @param targetType Name der Zielobjektklasse
+     * @param permissionType Die angeforderte Berechtigung
+     * @return Gibt <code>true</code> zurück, wenn der Benutzer die Berechtigung hat
      */
     @Override
-    public boolean hasPermission(Authentication authentication, Serializable targetId, String s, Object o) {
+    public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permissionType) {
+        if (targetId instanceof Integer) {
+            var personPoolCode = getPersonPoolCode((int)targetId, targetType);
+            if (null != personPoolCode && permissionType instanceof PermissionType) {
+                return getPersonPoolIdsForPermission(authentication, (PermissionType) permissionType).contains(personPoolCode);
+            }
+        }
         return false;
     }
 
-    private List<String> getPersonPoolIdsForPermission(Authentication authentication, PermissionType permissionType) {
+    private String getPersonPoolCode(int id, String type) {
+        Patient patient = null;
+        switch (type) {
+            case "Patient":
+                patient = onkostarApi.getPatient(id);
+                break;
+            case "Procedure":
+                var procedure = onkostarApi.getProcedure(id);
+                if (null != procedure) {
+                    patient = procedure.getPatient();
+                }
+                break;
+            default:
+                break;
+        }
+
+        if (null != patient) {
+            return patient.getPersonPoolCode();
+        }
+
+        return null;
+    }
+
+    List<String> getPersonPoolIdsForPermission(Authentication authentication, PermissionType permissionType) {
         var sql = "SELECT p.kennung FROM personenstamm_zugriff " +
                 " JOIN usergroup u ON personenstamm_zugriff.benutzergruppe_id = u.id " +
                 " JOIN akteur_usergroup au ON u.id = au.usergroup_id " +
