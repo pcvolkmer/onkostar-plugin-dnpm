@@ -21,7 +21,7 @@ import javax.sql.DataSource;
  * @since 0.0.2
  */
 @Configuration
-@ComponentScan(basePackages = "DNPM.analyzer")
+@ComponentScan(basePackages = { "DNPM.analyzer", "DNPM.security" })
 @EnableJpaRepositories(basePackages = "DNPM.database")
 public class PluginConfiguration {
 
