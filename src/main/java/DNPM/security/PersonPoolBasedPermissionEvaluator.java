@@ -3,8 +3,6 @@ package DNPM.security;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Patient;
 import de.itc.onkostar.api.Procedure;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -17,15 +15,10 @@ import java.util.List;
  * Permission-Evaluator zur Auswertung der Berechtigung auf Objekte aufgrund der Personenstammberechtigung
  */
 @Component
-public class PersonPoolBasedPermissionEvaluator implements PermissionEvaluator {
-
-    private final IOnkostarApi onkostarApi;
-
-    private final JdbcTemplate jdbcTemplate;
+public class PersonPoolBasedPermissionEvaluator extends AbstractDelegatedPermissionEvaluator {
 
     public PersonPoolBasedPermissionEvaluator(final IOnkostarApi onkostarApi, final DataSource dataSource) {
-        this.onkostarApi = onkostarApi;
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        super(onkostarApi, dataSource);
     }
 
     /**
@@ -70,18 +63,14 @@ public class PersonPoolBasedPermissionEvaluator implements PermissionEvaluator {
 
     private String getPersonPoolCode(int id, String type) {
         Patient patient = null;
-        switch (type) {
-            case "Patient":
-                patient = onkostarApi.getPatient(id);
-                break;
-            case "Procedure":
-                var procedure = onkostarApi.getProcedure(id);
-                if (null != procedure) {
-                    patient = procedure.getPatient();
-                }
-                break;
-            default:
-                break;
+
+        if (PATIENT.equals(type)) {
+            patient = onkostarApi.getPatient(id);
+        } else if (PROCEDURE.equals(type)) {
+            var procedure = onkostarApi.getProcedure(id);
+            if (null != procedure) {
+                patient = procedure.getPatient();
+            }
         }
 
         if (null != patient) {

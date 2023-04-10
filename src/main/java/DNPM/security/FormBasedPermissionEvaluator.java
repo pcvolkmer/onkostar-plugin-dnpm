@@ -3,8 +3,6 @@ package DNPM.security;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Patient;
 import de.itc.onkostar.api.Procedure;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -17,15 +15,10 @@ import java.util.List;
  * Permission-Evaluator zur Auswertung der Berechtigung auf Objekte aufgrund der Formularberechtigung
  */
 @Component
-public class FormBasedPermissionEvaluator implements PermissionEvaluator {
-
-    private final IOnkostarApi onkostarApi;
-
-    private final JdbcTemplate jdbcTemplate;
+public class FormBasedPermissionEvaluator extends AbstractDelegatedPermissionEvaluator {
 
     public FormBasedPermissionEvaluator(final IOnkostarApi onkostarApi, final DataSource dataSource) {
-        this.onkostarApi = onkostarApi;
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        super(onkostarApi, dataSource);
     }
 
     /**
@@ -63,7 +56,7 @@ public class FormBasedPermissionEvaluator implements PermissionEvaluator {
     @Override
     public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permissionType) {
         if (targetId instanceof Integer) {
-            if ("Patient".equals(targetType)) {
+            if (PATIENT.equals(targetType)) {
                 return true;
             }
             var procedure = this.onkostarApi.getProcedure((int)targetId);
