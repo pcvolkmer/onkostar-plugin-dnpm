@@ -15,13 +15,13 @@ import java.util.Arrays;
 
 @Component
 @Aspect
-public class SecurityAspects {
+public class PersonPoolBasedSecurityAspects {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final PersonPoolBasedPermissionEvaluator permissionEvaluator;
 
-    public SecurityAspects(PersonPoolBasedPermissionEvaluator permissionEvaluator) {
+    public PersonPoolBasedSecurityAspects(PersonPoolBasedPermissionEvaluator permissionEvaluator) {
         this.permissionEvaluator = permissionEvaluator;
     }
 
