@@ -3,10 +3,7 @@ package DNPM.security;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Patient;
 import de.itc.onkostar.api.Procedure;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.access.PermissionEvaluator;
-
-import javax.sql.DataSource;
 
 public abstract class AbstractDelegatedPermissionEvaluator implements PermissionEvaluator {
 
@@ -16,11 +13,11 @@ public abstract class AbstractDelegatedPermissionEvaluator implements Permission
 
     protected final IOnkostarApi onkostarApi;
 
-    protected final JdbcTemplate jdbcTemplate;
+    protected final SecurityService securityService;
 
-    protected AbstractDelegatedPermissionEvaluator(final IOnkostarApi onkostarApi, final DataSource dataSource) {
+    protected AbstractDelegatedPermissionEvaluator(final IOnkostarApi onkostarApi, final SecurityService securityService) {
         this.onkostarApi = onkostarApi;
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.securityService = securityService;
     }
 
 }

@@ -4,12 +4,9 @@ import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Patient;
 import de.itc.onkostar.api.Procedure;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Permission-Evaluator zur Auswertung der Berechtigung auf Objekte aufgrund der Personenstammberechtigung
@@ -17,8 +14,8 @@ import java.util.List;
 @Component
 public class PersonPoolBasedPermissionEvaluator extends AbstractDelegatedPermissionEvaluator {
 
-    public PersonPoolBasedPermissionEvaluator(final IOnkostarApi onkostarApi, final DataSource dataSource) {
-        super(onkostarApi, dataSource);
+    public PersonPoolBasedPermissionEvaluator(final IOnkostarApi onkostarApi, final SecurityService securityService) {
+        super(onkostarApi, securityService);
     }
 
     /**
@@ -32,10 +29,10 @@ public class PersonPoolBasedPermissionEvaluator extends AbstractDelegatedPermiss
     public boolean hasPermission(Authentication authentication, Object targetObject, Object permissionType) {
         if (permissionType instanceof PermissionType) {
             if (targetObject instanceof Patient) {
-                return getPersonPoolIdsForPermission(authentication, (PermissionType)permissionType)
+                return this.securityService.getPersonPoolIdsForPermission(authentication, (PermissionType)permissionType)
                         .contains(((Patient)targetObject).getPersonPoolCode());
             } else if (targetObject instanceof Procedure) {
-                return getPersonPoolIdsForPermission(authentication, (PermissionType)permissionType)
+                return this.securityService.getPersonPoolIdsForPermission(authentication, (PermissionType)permissionType)
                         .contains(((Procedure)targetObject).getPatient().getPersonPoolCode());
             }
         }
@@ -52,10 +49,10 @@ public class PersonPoolBasedPermissionEvaluator extends AbstractDelegatedPermiss
      */
     @Override
     public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permissionType) {
-        if (targetId instanceof Integer) {
+        if (targetId instanceof Integer && permissionType instanceof PermissionType) {
             var personPoolCode = getPersonPoolCode((int)targetId, targetType);
-            if (null != personPoolCode && permissionType instanceof PermissionType) {
-                return getPersonPoolIdsForPermission(authentication, (PermissionType) permissionType).contains(personPoolCode);
+            if (null != personPoolCode) {
+                return this.securityService.getPersonPoolIdsForPermission(authentication, (PermissionType) permissionType).contains(personPoolCode);
             }
         }
         return false;
@@ -78,24 +75,6 @@ public class PersonPoolBasedPermissionEvaluator extends AbstractDelegatedPermiss
         }
 
         return null;
-    }
-
-    List<String> getPersonPoolIdsForPermission(Authentication authentication, PermissionType permissionType) {
-        var sql = "SELECT p.kennung FROM personenstamm_zugriff " +
-                " JOIN usergroup u ON personenstamm_zugriff.benutzergruppe_id = u.id " +
-                " JOIN akteur_usergroup au ON u.id = au.usergroup_id " +
-                " JOIN akteur a ON au.akteur_id = a.id " +
-                " JOIN personenstamm p on personenstamm_zugriff.personenstamm_id = p.id " +
-                " WHERE a.login = ? AND a.aktiv AND a.anmelden_moeglich ";
-
-        if (PermissionType.READ_WRITE == permissionType) {
-            sql += " AND personenstamm_zugriff.bearbeiten ";
-        }
-
-        var userDetails = (UserDetails)authentication.getPrincipal();
-
-        return jdbcTemplate
-                .query(sql, new Object[]{userDetails.getUsername()}, (rs, rowNum) -> rs.getString("kennung"));
     }
 
 
