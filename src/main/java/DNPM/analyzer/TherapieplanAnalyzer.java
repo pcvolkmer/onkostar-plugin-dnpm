@@ -1,5 +1,7 @@
 package DNPM.analyzer;
 
+import DNPM.security.DelegatingDataBasedPermissionEvaluator;
+import DNPM.security.PermissionType;
 import DNPM.services.Studie;
 import DNPM.services.StudienService;
 import DNPM.services.TherapieplanServiceFactory;
@@ -10,6 +12,7 @@ import de.itc.onkostar.api.analysis.AnalyseTriggerEvent;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
 import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
 import de.itc.onkostar.api.analysis.OnkostarPluginType;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -30,14 +33,18 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
 
     private final MtbService mtbService;
 
+    private final DelegatingDataBasedPermissionEvaluator permissionEvaluator;
+
     public TherapieplanAnalyzer(
             final StudienService studienService,
             final TherapieplanServiceFactory therapieplanServiceFactory,
-            final MtbService mtbService
+            final MtbService mtbService,
+            final DelegatingDataBasedPermissionEvaluator permissionEvaluator
     ) {
         this.studienService = studienService;
         this.therapieplanServiceFactory = therapieplanServiceFactory;
         this.mtbService = mtbService;
+        this.permissionEvaluator = permissionEvaluator;
     }
 
     @Override
@@ -152,11 +159,22 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
             return "";
         }
 
-        return mtbService.getProtocol(
-                therapieplanServiceFactory
-                        .currentUsableInstance()
-                        .findReferencedMtbs(procedureId.get())
-        );
+        if (
+                permissionEvaluator.hasPermission(
+                        SecurityContextHolder.getContext().getAuthentication(),
+                        procedureId.get(),
+                        Procedure.class.getSimpleName(),
+                        PermissionType.READ
+                )
+        ) {
+            return mtbService.getProtocol(
+                    therapieplanServiceFactory
+                            .currentUsableInstance()
+                            .findReferencedMtbs(procedureId.get())
+            );
+        }
+
+        return "";
     }
 
 }

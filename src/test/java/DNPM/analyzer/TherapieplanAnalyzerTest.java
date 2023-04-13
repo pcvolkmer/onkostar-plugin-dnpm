@@ -1,5 +1,7 @@
 package DNPM.analyzer;
 
+import DNPM.security.DelegatingDataBasedPermissionEvaluator;
+import DNPM.security.PermissionType;
 import DNPM.services.*;
 import DNPM.services.mtb.MtbService;
 import de.itc.onkostar.api.IOnkostarApi;
@@ -40,11 +42,14 @@ class TherapieplanAnalyzerTest {
     @Mock
     private MtbService mtbService;
 
+    @Mock
+    private DelegatingDataBasedPermissionEvaluator permissionEvaluator;
+
     private TherapieplanAnalyzer therapieplanAnalyzer;
 
     @BeforeEach
     void setUp() {
-        this.therapieplanAnalyzer = new TherapieplanAnalyzer(studienService, therapieplanServiceFactory, mtbService);
+        this.therapieplanAnalyzer = new TherapieplanAnalyzer(studienService, therapieplanServiceFactory, mtbService, permissionEvaluator);
     }
 
     @Test
@@ -94,12 +99,25 @@ class TherapieplanAnalyzerTest {
         when(this.therapieplanServiceFactory.currentUsableInstance())
                 .thenReturn(therapieplanService);
 
+        when(this.permissionEvaluator.hasPermission(any(), anyInt(), anyString(), any(PermissionType.class))).thenReturn(true);
+
         var input = Map.of("id", (Object) 1234);
         this.therapieplanAnalyzer.getProtokollauszug(input);
 
         var captor = ArgumentCaptor.forClass(List.class);
         verify(mtbService, times(1)).getProtocol(captor.capture());
         assertThat(captor.getValue()).hasSize(1);
+    }
+
+    @Test
+    void shouldNotRequestProtokollauszugDueToNoPermission() {
+        when(this.permissionEvaluator.hasPermission(any(), anyInt(), anyString(), any(PermissionType.class)))
+                .thenReturn(false);
+
+        var input = Map.of("id", (Object) 1234);
+        this.therapieplanAnalyzer.getProtokollauszug(input);
+
+        verify(mtbService, times(0)).getProtocol(anyList());
     }
 
 }
