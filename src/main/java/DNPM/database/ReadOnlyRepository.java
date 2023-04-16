@@ -15,6 +15,8 @@ import java.util.List;
 @NoRepositoryBean
 public interface ReadOnlyRepository<T, ID extends Serializable> extends Repository<T, ID> {
 
+    T findById(ID id);
+
     List<T> findAll();
 
 }
