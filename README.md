@@ -162,6 +162,28 @@ VALUES (
 );
 ```
 
+## Berechtigungsprüfung
+
+Dieses Plugin unterstützt eine Berechtigungsprüfung anhand von personenstammbasierten als auch formularbasierten Berechtigungen.
+
+Hierzu können jeweils die implementierten `PermissionEvaluator`en einzeln als auch gemeinsam genutzt werden:
+
+* `PersonPoolBasedPermissionEvaluator`: Berechtigungsprüfung basierend auf dem zugehörigen Personenstamm
+* `FormBasedPermissionEvaluator`: Berechtigungsprüfung basierend auf dem zugehörigen Formular
+* `DelegatingDataBasedPermissionEvaluator`: Berechtigungsprüfung basierend auf allen implementierten Evaluatoren
+
+Zusätzlich sind, basierend auf Spring AOP, folgende Annotationen verfügbar:
+
+* `FormSecured`: Berechtigungsprüfung wird für alle Argumente vom Typ `Procedure` anhand der Berechtigung auf das zugehörige Formular durchgeführt und erlaubt immer Zugriff auf Argumente vom Typ `Patient`
+* `FormSecuredResult`: Berechtigungsprüfung wird für Rückgabewerte vom Typ `Procedure` anhand der Berechtigung auf das zugehörige Formular durchgeführt und erlaubt immer Zugriff auf Rückgabewerte vom Typ `Patient`
+* `PersonPoolSecured`: Berechtigungsprüfung wird für alle Argumente vom Typ `Procedure` und `Procedure` anhand des zugehörigen Personenstamms durchgeführt.
+* `PersonPoolSecuredResult`: Berechtigungsprüfung wird für Rückgabewerte vom Typ `Procedure` und `Procedure` anhand des zugehörigen Personenstamms durchgeführt.
+
+Mögliche Berechtigungsanforderungen sind sowohl für die `PermissionEvaluator`en, als auch die Annotationen:
+
+* `PermissionType.READ`
+* `PermissionType.READ_WRITE`
+
 ## Bauen des Plugins
 
 Für das Bauen des Plugins ist zwingend JDK in Version 11 erforderlich.
