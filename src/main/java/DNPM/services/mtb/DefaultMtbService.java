@@ -21,14 +21,20 @@ public class DefaultMtbService implements MtbService {
         this.onkostarApi = onkostarApi;
     }
 
+    /**
+     * Zusammenfassung der Prozeduren.
+     * Dabei werden alle Prozeduren sortiert, mit ermitteltem Mapper in {@link Optional} eines {@link String}s
+     * gewandelt und, wenn dies erfolgreich war, die Zeichenkette extrahiert.
+     * Im Anschluss wird die Abfolge der Zeichenketten mit den einzelnen Prozedur-Zusammenfassungen in eine
+     * einzige Zusammenfassung zusammengefügt.
+     * @param procedures Prozeduren, die zusammen gefasst werden sollen
+     * @return Text mit Zusammenfassung aller übergebenen Prozeduren
+     */
     @Override
     public String getProtocol(List<Procedure> procedures) {
         return procedures.stream()
                 .sorted(Comparator.comparing(Procedure::getStartDate))
-                .map(procedure -> {
-                    var mapper = procedureToProtocolMapper(procedure);
-                    return mapper.apply(procedure);
-                })
+                .map(procedure -> this.procedureToProtocolMapper(procedure).apply(procedure))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .distinct()
@@ -36,6 +42,13 @@ public class DefaultMtbService implements MtbService {
 
     }
 
+    /**
+     * Übergibt anzuwendenden Mapper für eine Prozedur.
+     * Wurde keine Implementierung festgelegt, wird ein Mapper zurückgegeben, der eine
+     * Prozedur in ein leeres {@link Optional} zurück gibt, übergeben.
+     * @param procedure Prozedur, für die ein Mapper ermittelt werden soll
+     * @return Mapper für diese Prozedur
+     */
     @Override
     public ProcedureToProtocolMapper procedureToProtocolMapper(Procedure procedure) {
         switch (procedure.getFormName()) {

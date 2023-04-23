@@ -10,6 +10,13 @@ import java.util.Optional;
  * @since 0.0.2
  */
 public class OsTumorkonferenzVarianteUkwToProtocolMapper implements ProcedureToProtocolMapper {
+
+    /**
+     * Wandelt eine Prozedur mit Formularnamen "OS.Tumorkonferenz.VarianteUKW" in ein {@link Optional} mit einer
+     * Zeichenkette oder im Fehlerfall in ein leeres Optional um.
+     * @param procedure Die Prozedur, für die eine Zusammenfassung ermittelt werden soll.
+     * @return Das {@link Optional} mit, im Erfolgsfall, der Zusammenfassung für die Prozedur.
+     */
     @Override
     public Optional<String> apply(Procedure procedure) {
         assert (procedure.getFormName().equals("OS.Tumorkonferenz.VarianteUKW"));
