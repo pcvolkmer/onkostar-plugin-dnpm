@@ -3,6 +3,7 @@ package DNPM.services.mtb;
 import de.itc.onkostar.api.Procedure;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MtbService {
     /**
@@ -18,4 +19,13 @@ public interface MtbService {
      * @return Mapper für diese Prozedur
      */
     ProcedureToProtocolMapper procedureToProtocolMapper(Procedure procedure);
+
+    /**
+     * Select mapper using method {@link #procedureToProtocolMapper(Procedure)} and apply procedure
+     * @param procedure The Procedure to select mapper for and apply
+     * @return {@link Optional} with protocol or empty {@link Optional}
+     */
+    default Optional<String> selectAndApplyMapper(Procedure procedure) {
+        return this.procedureToProtocolMapper(procedure).apply(procedure);
+    }
 }

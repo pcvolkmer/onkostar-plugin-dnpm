@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Standardimplementierung des MtbService
@@ -32,14 +33,17 @@ public class DefaultMtbService implements MtbService {
      */
     @Override
     public String getProtocol(List<Procedure> procedures) {
-        return procedures.stream()
+        return this.sortedDistinctProcedureProtocolList(procedures.stream())
+                .collect(Collectors.joining("\n\n"));
+    }
+
+    private Stream<String> sortedDistinctProcedureProtocolList(Stream<Procedure> procedures) {
+        return procedures
                 .sorted(Comparator.comparing(Procedure::getStartDate))
-                .map(procedure -> this.procedureToProtocolMapper(procedure).apply(procedure))
+                .map(this::selectAndApplyMapper)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
-                .distinct()
-                .collect(Collectors.joining("\n\n"));
-
+                .distinct();
     }
 
     /**
