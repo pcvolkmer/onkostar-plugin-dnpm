@@ -32,24 +32,24 @@ class ConsentManagerService {
   + canApply(Procedure) boolean
 }
 class ConsentManagerServiceFactory {
-  + ConsentManagerServiceFactory(IOnkostarApi) 
+  + ConsentManagerServiceFactory(IOnkostarApi)
   + currentUsableInstance() ConsentManagerService
 }
 class MrConsentManagerService {
-  + MrConsentManagerService(IOnkostarApi) 
+  + MrConsentManagerService(IOnkostarApi)
   + canApply(Procedure) boolean
   + applyConsent(Procedure) void
 }
 class UkwConsentManagerService {
-  + UkwConsentManagerService(IOnkostarApi) 
+  + UkwConsentManagerService(IOnkostarApi)
   + canApply(Procedure) boolean
   + applyConsent(Procedure) void
 }
 
 ConsentManagerServiceFactory  ..>  MrConsentManagerService : «create»
 ConsentManagerServiceFactory  ..>  UkwConsentManagerService : «create»
-MrConsentManagerService  ..|>  ConsentManagerService 
-UkwConsentManagerService  ..|>  ConsentManagerService 
+MrConsentManagerService  ..|>  ConsentManagerService
+UkwConsentManagerService  ..|>  ConsentManagerService
 ```
 
 Eine Übernahme von Consent-Daten aus unbekannten Formularen ist nur manuell möglich.
@@ -102,20 +102,20 @@ class MtbService {
   + procedureToProtocolMapper(Procedure) ProcedureToProtocolMapper
 }
 class DefaultMtbService {
-  + DefaultMtbService(IOnkostarApi) 
+  + DefaultMtbService(IOnkostarApi)
   + getProtocol(List~Procedure~) String
   + procedureToProtocolMapper(Procedure) ProcedureToProtocolMapper
 }
 class MrMtbAnmeldungToProtocolMapper {
-  + MrMtbAnmeldungToProtocolMapper(IOnkostarApi) 
+  + MrMtbAnmeldungToProtocolMapper(IOnkostarApi)
   + apply(Procedure) Optional~String~
 }
 class OsTumorkonferenzToProtocolMapper {
-  + OsTumorkonferenzToProtocolMapper() 
+  + OsTumorkonferenzToProtocolMapper()
   + apply(Procedure) Optional~String~
 }
 class OsTumorkonferenzVarianteUkwToProtocolMapper {
-  + OsTumorkonferenzVarianteUkwToProtocolMapper() 
+  + OsTumorkonferenzVarianteUkwToProtocolMapper()
   + apply(Procedure) Optional~String~
 }
 class ProcedureToProtocolMapper {
@@ -123,13 +123,13 @@ class ProcedureToProtocolMapper {
 
 }
 
-DefaultMtbService  ..|>  MtbService 
+DefaultMtbService  ..|>  MtbService
 DefaultMtbService  ..>  MrMtbAnmeldungToProtocolMapper : «create»
 DefaultMtbService  ..>  OsTumorkonferenzToProtocolMapper : «create»
 DefaultMtbService  ..>  OsTumorkonferenzVarianteUkwToProtocolMapper : «create»
-MrMtbAnmeldungToProtocolMapper  ..|>  ProcedureToProtocolMapper 
-OsTumorkonferenzToProtocolMapper  ..|>  ProcedureToProtocolMapper 
-OsTumorkonferenzVarianteUkwToProtocolMapper  ..|>  ProcedureToProtocolMapper 
+MrMtbAnmeldungToProtocolMapper  ..|>  ProcedureToProtocolMapper
+OsTumorkonferenzToProtocolMapper  ..|>  ProcedureToProtocolMapper
+OsTumorkonferenzVarianteUkwToProtocolMapper  ..|>  ProcedureToProtocolMapper
 ```
 
 Idealerweise werden entsprechende UnitTests hinzugefügt.
@@ -146,7 +146,7 @@ Laufzeit verwendet werden soll. Der Mapper muss hierbei das Interface `ProzedurT
 
 In der Klasse `DefaultSystemtherapieService` wird zur Laufzeit der erforderliche Mapper für das verwendete Formular ausgewählt.
 
-An dieser Stelle kann auch eine eigene Implementierung - eine neue Klasse, die das Interface `ProzedurToProzedurwerteMapper` implementiert - 
+An dieser Stelle kann auch eine eigene Implementierung - eine neue Klasse, die das Interface `ProzedurToProzedurwerteMapper` implementiert -
 integriert werden, indem das zu verwendende Formular (Formularname) und die zu verwendende Mapping-Klasse für den Formularnamen angegeben wird.
 
 Hierbei kann in der Einstellung `systemtherapieform` festgelegt werden, dass ein anderes Formular als "OS.Systemische Therapie" verwendet werden soll.
@@ -194,7 +194,7 @@ class DemoAnalyzer implements IProcedureAnalyzer {
     private final DelegatingDataBasedPermissionEvaluator permissionEvaluator;
 
     private final IOnkostarApi onkostarApi;
-    
+
     public DemoAnalyzer(
             DelegatingDataBasedPermissionEvaluator permissionEvaluator,
             IOnkostarApi onkostarApi
@@ -202,9 +202,9 @@ class DemoAnalyzer implements IProcedureAnalyzer {
         this.permissionEvaluator = permissionEvaluator;
         this.onkostarApi = onkostarApi;
     }
-    
+
     // ... übliche Methoden für einen Analyzer
-    
+
     // Beispiel: Gib Formularname zurück, wenn Prozedur mit ID existiert
     // und der aufrufende Benutzer lesenden Zugriff auf diese Prozedur hat.
     // Dabei: Zugriff auf Prozedur anhand Personenstamm und Formulartyp
@@ -216,7 +216,7 @@ class DemoAnalyzer implements IProcedureAnalyzer {
         }
 
         var procedure = onkostarApi.getProcedure(procedureId.get());
-        
+
         if (
                 null != procedure
                 && permissionEvaluator.hasPermission(
@@ -234,7 +234,7 @@ class DemoAnalyzer implements IProcedureAnalyzer {
 }
 ```
 
-### Prüfung der Berechtigung und Absicherung von Methodenaufrufen 
+### Prüfung der Berechtigung und Absicherung von Methodenaufrufen
 
 Zusätzlich zur Prüfung mit einem Permisison Evaluator sind, basierend auf Spring AOP, folgende Annotationen verfügbar:
 
@@ -325,7 +325,7 @@ werden.
 Voraussetzung ist das Kopieren der Datei `onkostar-api-2.11.1.1.jar` (oder neuer) in das Projektverzeichnis `libs`.
 
 Weiterhin verwendet dieses Plugin das [ATC-Codes-Plugin](https://github.com/CCC-MF/onkostar-plugin-atccodes).
-Die zugehörige JAR-Datei muss ebenfalls in das Projektverzeichnis `libs` kopiert werden. Aktuell wird Version 0.5.0 verwendet.
+Die zugehörige JAR-Datei muss ebenfalls in das Projektverzeichnis `libs` kopiert werden. Aktuell wird Version 0.6.0 verwendet.
 
 **_Hinweis_**: Bei Verwendung einer neueren Version der Onkostar-API oder des ATC-Codes-Plugins
 muss die Datei `pom.xml` entsprechend angepasst werden.
@@ -335,6 +335,3 @@ Danach Ausführen des Befehls:
 ```shell
 ./mvnw package
 ```
-
-
-
