@@ -4,7 +4,7 @@ import DNPM.security.DelegatingDataBasedPermissionEvaluator;
 import DNPM.security.PermissionType;
 import DNPM.services.Studie;
 import DNPM.services.StudienService;
-import DNPM.services.TherapieplanServiceFactory;
+import DNPM.services.therapieplan.TherapieplanServiceFactory;
 import DNPM.services.mtb.MtbService;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.Procedure;

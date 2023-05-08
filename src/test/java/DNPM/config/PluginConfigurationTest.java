@@ -2,7 +2,7 @@ package DNPM.config;
 
 import DNPM.services.FormService;
 import DNPM.services.SettingsService;
-import DNPM.services.TherapieplanServiceFactory;
+import DNPM.services.therapieplan.TherapieplanServiceFactory;
 import DNPM.services.consent.ConsentManagerServiceFactory;
 import de.itc.onkostar.api.IOnkostarApi;
 import org.junit.jupiter.api.BeforeEach;

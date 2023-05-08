@@ -7,6 +7,7 @@ import DNPM.services.mtb.DefaultMtbService;
 import DNPM.services.mtb.MtbService;
 import DNPM.services.systemtherapie.DefaultSystemtherapieService;
 import DNPM.services.systemtherapie.SystemtherapieService;
+import DNPM.services.therapieplan.TherapieplanServiceFactory;
 import de.itc.onkostar.api.IOnkostarApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
