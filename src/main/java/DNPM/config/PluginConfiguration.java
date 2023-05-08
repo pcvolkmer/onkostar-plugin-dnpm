@@ -3,6 +3,8 @@ package DNPM.config;
 import DNPM.database.SettingsRepository;
 import DNPM.services.*;
 import DNPM.services.consent.ConsentManagerServiceFactory;
+import DNPM.services.molekulargenetik.MolekulargenetikFormService;
+import DNPM.services.molekulargenetik.OsMolekulargenetikFormService;
 import DNPM.services.mtb.DefaultMtbService;
 import DNPM.services.mtb.MtbService;
 import DNPM.services.systemtherapie.DefaultSystemtherapieService;
@@ -66,6 +68,11 @@ public class PluginConfiguration {
             final FormService formService
     ) {
         return new TherapieplanServiceFactory(onkostarApi, settingsService, formService);
+    }
+
+    @Bean
+    public MolekulargenetikFormService molekulargenetikFormService() {
+        return new OsMolekulargenetikFormService();
     }
 
 }
