@@ -7,22 +7,46 @@ import java.util.Optional;
 public class Variant {
     private final Integer id;
 
-    private final String shortDescription;
+    private final String ergebnis;
+
+    private final String gen;
+
+    private final String exon;
+
+    private final String pathogenitaetsklasse;
 
     private Variant(
             final int id,
-            final String shortDescription
+            final String ergebnis,
+            final String gen,
+            final String exon,
+            final String pathogenitaetsklasse
     ) {
         this.id = id;
-        this.shortDescription = shortDescription.trim();
+        this.ergebnis = ergebnis;
+        this.gen = gen;
+        this.exon = exon;
+        this.pathogenitaetsklasse = pathogenitaetsklasse;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getShortDescription() {
-        return shortDescription;
+    public String getErgebnis() {
+        return ergebnis;
+    }
+
+    public String getGen() {
+        return gen;
+    }
+
+    public String getExon() {
+        return exon;
+    }
+
+    public String getPathogenitaetsklasse() {
+        return pathogenitaetsklasse;
     }
 
     public static Optional<Variant> fromProcedure(Procedure procedure) {
@@ -43,21 +67,30 @@ public class Variant {
             return Optional.of(
                     new Variant(
                             procedure.getId(),
-                            String.format("Einfache Variante: %s, %s, %s", gene.getString(), exon.getString(), pathogenitaetsklasse.getString())
+                            "Einfache Variante",
+                            gene.getString(),
+                            exon.getString(),
+                            pathogenitaetsklasse.getString()
                     )
             );
         } else if (ergebnis.getString().equals("CNV")) {
             return Optional.of(
                     new Variant(
                             procedure.getId(),
-                            String.format("Copy Number Variation: %s, %s, %s", gene.getString(), exon.getString(), pathogenitaetsklasse.getString())
+                            "Copy Number Variation",
+                            gene.getString(),
+                            exon.getString(),
+                            pathogenitaetsklasse.getString()
                     )
             );
         } else if (ergebnis.getString().equals("F")) {
             return Optional.of(
                     new Variant(
                             procedure.getId(),
-                            String.format("Fusion: %s, %s, %s", gene.getString(), exon.getString(), pathogenitaetsklasse.getString())
+                            "Fusion",
+                            gene.getString(),
+                            exon.getString(),
+                            pathogenitaetsklasse.getString()
                     )
             );
         } else {
