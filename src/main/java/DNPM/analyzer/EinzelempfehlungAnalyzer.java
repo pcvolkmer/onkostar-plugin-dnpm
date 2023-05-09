@@ -2,6 +2,7 @@ package DNPM.analyzer;
 
 import DNPM.dto.Variant;
 import DNPM.security.DelegatingDataBasedPermissionEvaluator;
+import DNPM.security.IllegalSecuredObjectAccessException;
 import DNPM.services.molekulargenetik.MolekulargenetikFormService;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
@@ -9,6 +10,8 @@ import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
 import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
 import de.itc.onkostar.api.analysis.OnkostarPluginType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -21,6 +24,8 @@ import java.util.Map;
  */
 @Component
 public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
+
+    private final static Logger logger = LoggerFactory.getLogger(EinzelempfehlungAnalyzer.class);
 
     private final IOnkostarApi onkostarApi;
 
@@ -98,7 +103,12 @@ public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
             return List.of();
         }
 
-        return molekulargenetikFormService.getVariants(procedure);
+        try {
+            return molekulargenetikFormService.getVariants(procedure);
+        } catch (IllegalSecuredObjectAccessException e) {
+            logger.error("Security", e);
+            return List.of();
+        }
     }
 
 }

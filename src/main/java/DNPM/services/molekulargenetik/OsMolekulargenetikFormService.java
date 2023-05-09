@@ -1,7 +1,6 @@
 package DNPM.services.molekulargenetik;
 
 import DNPM.dto.Variant;
-import DNPM.security.FormSecured;
 import DNPM.security.PersonPoolSecured;
 import de.itc.onkostar.api.Procedure;
 
@@ -12,7 +11,6 @@ import java.util.stream.Collectors;
 public class OsMolekulargenetikFormService implements MolekulargenetikFormService {
 
     @Override
-    @FormSecured
     @PersonPoolSecured
     public List<Variant> getVariants(Procedure procedure) {
         if (! "OS.Molekulargenetik".equals(procedure.getFormName())) {
