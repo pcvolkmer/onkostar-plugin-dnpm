@@ -50,7 +50,7 @@ public class Variant {
     }
 
     public static Optional<Variant> fromProcedure(Procedure procedure) {
-        if (! "OS.Molekulargenetische Untersuchung".equals(procedure.getFormName())) {
+        if (!"OS.Molekulargenetische Untersuchung".equals(procedure.getFormName())) {
             return Optional.empty();
         }
 
@@ -67,30 +67,30 @@ public class Variant {
             return Optional.of(
                     new Variant(
                             procedure.getId(),
-                            "Einfache Variante",
-                            gene.getString(),
-                            exon.getString(),
-                            pathogenitaetsklasse.getString()
+                            "Einfache Variante (Mutation)",
+                            gene.getString().isBlank() ? "-" : gene.getString(),
+                            null == exon || exon.getString().isBlank() ? "-" : exon.getString(),
+                            null == pathogenitaetsklasse || pathogenitaetsklasse.getString().isBlank() ? "-" : pathogenitaetsklasse.getString()
                     )
             );
         } else if (ergebnis.getString().equals("CNV")) {
             return Optional.of(
                     new Variant(
                             procedure.getId(),
-                            "Copy Number Variation",
-                            gene.getString(),
-                            exon.getString(),
-                            pathogenitaetsklasse.getString()
+                            "Copy Number Variation (CNV)",
+                            gene.getString().isBlank() ? "-" : gene.getString(),
+                            null == exon || exon.getString().isBlank() ? "-" : exon.getString(),
+                            null == pathogenitaetsklasse || pathogenitaetsklasse.getString().isBlank() ? "-" : pathogenitaetsklasse.getString()
                     )
             );
         } else if (ergebnis.getString().equals("F")) {
             return Optional.of(
                     new Variant(
                             procedure.getId(),
-                            "Fusion",
-                            gene.getString(),
-                            exon.getString(),
-                            pathogenitaetsklasse.getString()
+                            "Fusion (Translokation Inversion Insertion)",
+                            gene.getString().isBlank() ? "-" : gene.getString(),
+                            null == exon || exon.getString().isBlank() ? "-" : exon.getString(),
+                            null == pathogenitaetsklasse || pathogenitaetsklasse.getString().isBlank() ? "-" : pathogenitaetsklasse.getString()
                     )
             );
         } else {

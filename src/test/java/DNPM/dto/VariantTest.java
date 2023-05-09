@@ -23,7 +23,7 @@ public class VariantTest {
 
         assertThat(actual).isPresent();
         assertThat(actual.get().getId()).isEqualTo(12345);
-        assertThat(actual.get().getErgebnis()).isEqualTo("Einfache Variante");
+        assertThat(actual.get().getErgebnis()).isEqualTo("Einfache Variante (Mutation)");
         assertThat(actual.get().getGen()).isEqualTo("BRAF");
         assertThat(actual.get().getExon()).isEqualTo("123");
         assertThat(actual.get().getPathogenitaetsklasse()).isEqualTo("2");
@@ -44,7 +44,7 @@ public class VariantTest {
 
         assertThat(actual).isPresent();
         assertThat(actual.get().getId()).isEqualTo(12345);
-        assertThat(actual.get().getErgebnis()).isEqualTo("Copy Number Variation");
+        assertThat(actual.get().getErgebnis()).isEqualTo("Copy Number Variation (CNV)");
         assertThat(actual.get().getGen()).isEqualTo("BRAF");
         assertThat(actual.get().getExon()).isEqualTo("123");
         assertThat(actual.get().getPathogenitaetsklasse()).isEqualTo("2");
@@ -65,7 +65,7 @@ public class VariantTest {
 
         assertThat(actual).isPresent();
         assertThat(actual.get().getId()).isEqualTo(12345);
-        assertThat(actual.get().getErgebnis()).isEqualTo("Fusion");
+        assertThat(actual.get().getErgebnis()).isEqualTo("Fusion (Translokation Inversion Insertion)");
         assertThat(actual.get().getGen()).isEqualTo("BRAF");
         assertThat(actual.get().getExon()).isEqualTo("123");
         assertThat(actual.get().getPathogenitaetsklasse()).isEqualTo("2");
