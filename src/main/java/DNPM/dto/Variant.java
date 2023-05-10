@@ -4,6 +4,11 @@ import de.itc.onkostar.api.Procedure;
 
 import java.util.Optional;
 
+/**
+ * Ein Auszug der Variante aus dem NGS-Bericht zur Übertragung an das Frontend zur Auswahl der stützenden molekularen Alteration
+ *
+ * @since 0.2.0
+ */
 public class Variant {
     private final Integer id;
 
@@ -49,6 +54,11 @@ public class Variant {
         return pathogenitaetsklasse;
     }
 
+    /**
+     * Erstellt ein Optional einer Variante aus einer Prozedur
+     * @param procedure Die zu verwendende Prozedur
+     * @return Das Optional, wenn die Prozedur verwendet werden kann, ansonsten ein leeres Optional
+     */
     public static Optional<Variant> fromProcedure(Procedure procedure) {
         if (!"OS.Molekulargenetische Untersuchung".equals(procedure.getFormName())) {
             return Optional.empty();

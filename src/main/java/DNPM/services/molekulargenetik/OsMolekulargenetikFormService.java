@@ -10,6 +10,16 @@ import java.util.stream.Collectors;
 
 public class OsMolekulargenetikFormService implements MolekulargenetikFormService {
 
+    /**
+     * Ermittelt alle (unterstützten) Varianten zur Prozedur eines Formulars "OS.Molekulargenetik"
+     * Unterstützte Varianten sind:
+     * <uL>
+     *     <li>Einfache Variante
+     *     <li>CNV
+     *     <li>Fusion
+     * @param procedure Die Prozedur zum Formular "OS.Molekulargenetik"
+     * @return Die unterstützten Varianten oder eine leere Liste, wenn keine Varianten gefunden wurden.
+     */
     @Override
     @PersonPoolSecured
     public List<Variant> getVariants(Procedure procedure) {
