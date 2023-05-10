@@ -1,11 +1,11 @@
 package DNPM.analyzer;
 
+import DNPM.dto.Studie;
 import DNPM.security.DelegatingDataBasedPermissionEvaluator;
 import DNPM.security.PermissionType;
-import DNPM.services.Studie;
 import DNPM.services.StudienService;
-import DNPM.services.therapieplan.TherapieplanServiceFactory;
 import DNPM.services.mtb.MtbService;
+import DNPM.services.therapieplan.TherapieplanServiceFactory;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyseTriggerEvent;

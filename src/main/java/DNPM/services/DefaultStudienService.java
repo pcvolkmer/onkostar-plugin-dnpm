@@ -1,5 +1,6 @@
 package DNPM.services;
 
+import DNPM.dto.Studie;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;

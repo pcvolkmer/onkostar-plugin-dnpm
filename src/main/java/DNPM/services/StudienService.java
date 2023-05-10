@@ -1,5 +1,7 @@
 package DNPM.services;
 
+import DNPM.dto.Studie;
+
 import java.util.List;
 
 public interface StudienService {
