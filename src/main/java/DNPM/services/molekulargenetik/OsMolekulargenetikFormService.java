@@ -1,7 +1,6 @@
 package DNPM.services.molekulargenetik;
 
 import DNPM.dto.Variant;
-import DNPM.security.PersonPoolSecured;
 import de.itc.onkostar.api.Procedure;
 
 import java.util.List;
@@ -21,7 +20,6 @@ public class OsMolekulargenetikFormService implements MolekulargenetikFormServic
      * @return Die unterstützten Varianten oder eine leere Liste, wenn keine Varianten gefunden wurden.
      */
     @Override
-    @PersonPoolSecured
     public List<Variant> getVariants(Procedure procedure) {
         if (! "OS.Molekulargenetik".equals(procedure.getFormName())) {
             return List.of();

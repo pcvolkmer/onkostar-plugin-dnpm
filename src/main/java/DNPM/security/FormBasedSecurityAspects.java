@@ -8,11 +8,11 @@ import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Component
+// TODO Disabled for now - check bytecode reported incompatibility for older OS installations
+//@Component
 @Aspect
 public class FormBasedSecurityAspects {
 

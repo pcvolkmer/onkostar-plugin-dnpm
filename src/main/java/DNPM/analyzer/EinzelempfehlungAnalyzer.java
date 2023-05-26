@@ -1,8 +1,8 @@
 package DNPM.analyzer;
 
 import DNPM.dto.Variant;
-import DNPM.security.DelegatingDataBasedPermissionEvaluator;
-import DNPM.security.IllegalSecuredObjectAccessException;
+import DNPM.security.PermissionType;
+import DNPM.security.PersonPoolBasedPermissionEvaluator;
 import DNPM.services.molekulargenetik.MolekulargenetikFormService;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
@@ -12,13 +12,14 @@ import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
 import de.itc.onkostar.api.analysis.OnkostarPluginType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * Diese Klasse implementiert ein Plugin, welches Funktionen für DNPM UF Einzelempfehlung bereit stellt.
+ * Diese Klasse implementiert ein Plugin, welches Funktionen für DNPM UF Einzelempfehlung bereitstellt.
  *
  * @since 0.2.0
  */
@@ -31,12 +32,12 @@ public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
 
     private final MolekulargenetikFormService molekulargenetikFormService;
 
-    private final DelegatingDataBasedPermissionEvaluator permissionEvaluator;
+    private final PersonPoolBasedPermissionEvaluator permissionEvaluator;
 
     public EinzelempfehlungAnalyzer(
             final IOnkostarApi onkostarApi,
             final MolekulargenetikFormService molekulargenetikFormService,
-            final DelegatingDataBasedPermissionEvaluator permissionEvaluator
+            final PersonPoolBasedPermissionEvaluator permissionEvaluator
     ) {
         this.onkostarApi = onkostarApi;
         this.molekulargenetikFormService = molekulargenetikFormService;
@@ -103,10 +104,10 @@ public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
             return List.of();
         }
 
-        try {
+        if (permissionEvaluator.hasPermission(SecurityContextHolder.getContext().getAuthentication(), procedure, PermissionType.READ)) {
             return molekulargenetikFormService.getVariants(procedure);
-        } catch (IllegalSecuredObjectAccessException e) {
-            logger.error("Security", e);
+        } else {
+            logger.error("Security: No permission to access procedure '{}'", procedure.getId());
             return List.of();
         }
     }

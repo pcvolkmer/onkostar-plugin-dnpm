@@ -1,6 +1,7 @@
 package DNPM.analyzer;
 
-import DNPM.security.DelegatingDataBasedPermissionEvaluator;
+import DNPM.security.PermissionType;
+import DNPM.security.PersonPoolBasedPermissionEvaluator;
 import DNPM.services.molekulargenetik.MolekulargenetikFormService;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Procedure;
@@ -22,22 +23,27 @@ class EinzelempfehlungAnalyzerTest {
 
     private MolekulargenetikFormService molekulargenetikFormService;
 
+    private PersonPoolBasedPermissionEvaluator permissionEvaluator;
+
     private EinzelempfehlungAnalyzer analyzer;
 
     @BeforeEach
     void setup(
             @Mock IOnkostarApi onkostarApi,
             @Mock MolekulargenetikFormService molekulargenetikFormService,
-            @Mock DelegatingDataBasedPermissionEvaluator permissionEvaluator
+            @Mock PersonPoolBasedPermissionEvaluator permissionEvaluator
     ) {
         this.onkostarApi = onkostarApi;
         this.molekulargenetikFormService = molekulargenetikFormService;
+        this.permissionEvaluator = permissionEvaluator;
         this.analyzer = new EinzelempfehlungAnalyzer(onkostarApi, molekulargenetikFormService, permissionEvaluator);
     }
 
     @Test
     void testShouldRequestVariantsFromMolekulargenetikFormService() {
         doAnswer(invocationOnMock -> new Procedure(this.onkostarApi)).when(onkostarApi).getProcedure(anyInt());
+        when(this.permissionEvaluator.hasPermission(any(), any(Procedure.class), any(PermissionType.class)))
+                .thenReturn(true);
 
         analyzer.getVariants(Map.of("id", 123));
         verify(molekulargenetikFormService, times(1)).getVariants(any(Procedure.class));
