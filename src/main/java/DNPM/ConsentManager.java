@@ -48,7 +48,7 @@ public class ConsentManager implements IProcedureAnalyzer {
 
     @Override
     public String getVersion() {
-        return "1";
+        return "0.2.0";
     }
 
     @Override
