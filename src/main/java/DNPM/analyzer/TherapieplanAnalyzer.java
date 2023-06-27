@@ -1,9 +1,7 @@
 package DNPM.analyzer;
 
-import DNPM.dto.Studie;
 import DNPM.security.DelegatingDataBasedPermissionEvaluator;
 import DNPM.security.PermissionType;
-import DNPM.services.StudienService;
 import DNPM.services.mtb.MtbService;
 import DNPM.services.therapieplan.TherapieplanServiceFactory;
 import de.itc.onkostar.api.Disease;
@@ -15,7 +13,6 @@ import de.itc.onkostar.api.analysis.OnkostarPluginType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -27,8 +24,6 @@ import java.util.Set;
 @Component
 public class TherapieplanAnalyzer implements IProcedureAnalyzer {
 
-    private final StudienService studienService;
-
     private final TherapieplanServiceFactory therapieplanServiceFactory;
 
     private final MtbService mtbService;
@@ -36,12 +31,10 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
     private final DelegatingDataBasedPermissionEvaluator permissionEvaluator;
 
     public TherapieplanAnalyzer(
-            final StudienService studienService,
             final TherapieplanServiceFactory therapieplanServiceFactory,
             final MtbService mtbService,
             final DelegatingDataBasedPermissionEvaluator permissionEvaluator
     ) {
-        this.studienService = studienService;
         this.therapieplanServiceFactory = therapieplanServiceFactory;
         this.mtbService = mtbService;
         this.permissionEvaluator = permissionEvaluator;
@@ -102,35 +95,6 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
     @Override
     public void analyze(Procedure procedure, Disease disease) {
         therapieplanServiceFactory.currentUsableInstance().updateRequiredMtbEntries(procedure);
-    }
-
-
-    /**
-     * Übergibt alle Studien, deren (Kurz-)Beschreibung oder NCT-Nummer den übergebenen Eingabewert <code>q</code> enthält
-     *
-     * <p>Wurde der Eingabewert nicht angegeben oder ist leer, werden alle Studien übergeben.
-     *
-     * <p>Beispiel zur Nutzung in einem Formularscript
-     * <pre>
-     * executePluginMethod(
-     *   'TherapieplanAnalyzer',
-     *   'getStudien',
-     *   { q: 'NCT-12' },
-     *   (response) => console.log(response),
-     *   false
-     * );
-     * </pre>
-     *
-     * @param input Map mit Eingabewerten
-     * @return Liste mit Studien
-     */
-    public List<Studie> getStudien(Map<String, Object> input) {
-        var query = AnalyzerUtils.getRequiredValue(input, "q", String.class);
-
-        if (query.isEmpty() || query.get().isBlank()) {
-            return studienService.findAll();
-        }
-        return studienService.findByQuery(query.get());
     }
 
     /**

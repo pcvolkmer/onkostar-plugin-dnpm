@@ -1,8 +1,10 @@
 package DNPM.analyzer;
 
+import DNPM.dto.Studie;
 import DNPM.dto.Variant;
 import DNPM.security.PermissionType;
 import DNPM.security.PersonPoolBasedPermissionEvaluator;
+import DNPM.services.StudienService;
 import DNPM.services.molekulargenetik.MolekulargenetikFormService;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
@@ -32,14 +34,18 @@ public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
 
     private final MolekulargenetikFormService molekulargenetikFormService;
 
+    private final StudienService studienService;
+
     private final PersonPoolBasedPermissionEvaluator permissionEvaluator;
 
     public EinzelempfehlungAnalyzer(
             final IOnkostarApi onkostarApi,
+            final StudienService studienService,
             final MolekulargenetikFormService molekulargenetikFormService,
             final PersonPoolBasedPermissionEvaluator permissionEvaluator
     ) {
         this.onkostarApi = onkostarApi;
+        this.studienService = studienService;
         this.molekulargenetikFormService = molekulargenetikFormService;
         this.permissionEvaluator = permissionEvaluator;
     }
@@ -110,6 +116,34 @@ public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
             logger.error("Security: No permission to access procedure '{}'", procedure.getId());
             return List.of();
         }
+    }
+
+    /**
+     * Übergibt alle Studien, deren (Kurz-)Beschreibung oder NCT-Nummer den übergebenen Eingabewert <code>q</code> enthält
+     *
+     * <p>Wurde der Eingabewert nicht angegeben oder ist leer, werden alle Studien übergeben.
+     *
+     * <p>Beispiel zur Nutzung in einem Formularscript
+     * <pre>
+     * executePluginMethod(
+     *   'TherapieplanAnalyzer',
+     *   'getStudien',
+     *   { q: 'NCT-12' },
+     *   (response) => console.log(response),
+     *   false
+     * );
+     * </pre>
+     *
+     * @param input Map mit Eingabewerten
+     * @return Liste mit Studien
+     */
+    public List<Studie> getStudien(Map<String, Object> input) {
+        var query = AnalyzerUtils.getRequiredValue(input, "q", String.class);
+
+        if (query.isEmpty() || query.get().isBlank()) {
+            return studienService.findAll();
+        }
+        return studienService.findByQuery(query.get());
     }
 
 }
