@@ -41,7 +41,7 @@ const findButtonFieldFormInformation = function(context) {
             return formInfo(formItem.ownerCt, formItem.blockIndex);
         }
 
-        if (formItem.xtype === 'panel') {
+        if (formItem.xtype === 'panel' || formItem.xtype === 'sectionField') {
             return formInfo(formItem.ownerCt, blockIndex);
         }
 
