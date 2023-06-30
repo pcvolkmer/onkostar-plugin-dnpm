@@ -31,8 +31,8 @@ public class DefaultStudienService implements StudienService {
         return this.jdbcTemplate.query(sql, (resultSet, i) -> new Studie(
                 resultSet.getString("name"),
                 resultSet.getInt("version_number"),
-                resultSet.getString("studien_nummer"),
                 resultSet.getString("code"),
+                resultSet.getString("studien_nummer"),
                 resultSet.getString("shortdesc"),
                 resultSet.getString("description")
         ));
@@ -52,8 +52,8 @@ public class DefaultStudienService implements StudienService {
         return this.jdbcTemplate.query(sql, new Object[]{like, like, like}, (resultSet, i) -> new Studie(
                 resultSet.getString("name"),
                 resultSet.getInt("version_number"),
-                resultSet.getString("studien_nummer"),
                 resultSet.getString("code"),
+                resultSet.getString("studien_nummer"),
                 resultSet.getString("shortdesc"),
                 resultSet.getString("description")
         ));
