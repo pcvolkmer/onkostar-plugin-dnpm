@@ -60,6 +60,7 @@ public interface SystemtherapieService {
 
         private boolean isValidEcogCode(String status) {
             switch (status) {
+                case "0":
                 case "1":
                 case "2":
                 case "3":
