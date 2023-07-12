@@ -97,13 +97,13 @@ public class FollowUpAnalyzer implements IProcedureAnalyzer {
             return;
         }
 
-        var referencedProcedureId = procedure.getValue("LinkTherapieempfehlung").getInt();
-        if (referencedProcedureId == 0) {
+        var referencedProcedureId = procedure.getValue("LinkTherapieempfehlung");
+        if (null == referencedProcedureId || referencedProcedureId.getInt() == 0) {
             // Alles gut, es ist keine Einzelempfehlung angegeben
             return;
         }
 
-        var referencedProcedure = onkostarApi.getProcedure(referencedProcedureId);
+        var referencedProcedure = onkostarApi.getProcedure(referencedProcedureId.getInt());
         if (null == referencedProcedure) {
             logger.error("Referenzierte Einzelempfehlung wurde nicht gefunden: {}", referencedProcedureId);
             return;
