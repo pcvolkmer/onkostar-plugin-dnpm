@@ -107,6 +107,10 @@ public class SystemtherapieAnalyzer implements IProcedureAnalyzer {
         }
 
         var ecogFromCompleted = systemtherapieService.ecogSatus(procedure.getPatient());
+        if (ecogFromCompleted.isEmpty()) {
+            // Nothing to do
+            return;
+        }
 
         procedure.getPatient().getDiseases().stream()
                 .flatMap(d -> onkostarApi.getProceduresForDiseaseByForm(d.getId(), "DNPM Klinik/Anamnese").stream())
@@ -114,8 +118,8 @@ public class SystemtherapieAnalyzer implements IProcedureAnalyzer {
                     var ufEcog = p.getValue("ECOGVerlauf");
                     if (null != ufEcog && ufEcog.getValue() instanceof List) {
                         var shouldSave = false;
-                        var existingDates = ((List<Map<String, Object>>) ufEcog.getValue()).stream()
-                                .map(v -> v.get("Datum").toString())
+                        var existingDates = ufEcog.<List<Map<String, String>>>getValue().stream()
+                                .map(v -> v.get("Datum"))
                                 .collect(Collectors.toList());
                         for (var ecog : ecogFromCompleted) {
                             var formattedDate = new SimpleDateFormat("yyyy-MM-dd").format(ecog.getDate());
@@ -134,6 +138,20 @@ public class SystemtherapieAnalyzer implements IProcedureAnalyzer {
                             } catch (Exception e) {
                                 logger.error("Cannot update ECOG for procedure '{}'", p.getId());
                             }
+                        }
+                    } else {
+                        p.setValue("ECOGVerlauf", new Item("ECOGVerlauf", List.of()));
+                        for (var ecog : ecogFromCompleted) {
+                            var newSubProcedure = new Procedure(onkostarApi);
+                            newSubProcedure.setStartDate(ecog.getDate());
+                            newSubProcedure.setValue("Datum", new Item("Datum", ecog.getDate()));
+                            newSubProcedure.setValue("ECOG", new Item("ECOG", ecog.getStatus()));
+                            p.addSubProcedure("ECOGVerlauf", newSubProcedure);
+                        }
+                        try {
+                            onkostarApi.saveProcedure(p, true);
+                        } catch (Exception e) {
+                            logger.error("Create update ECOG for procedure '{}'", p.getId());
                         }
                     }
                 });
