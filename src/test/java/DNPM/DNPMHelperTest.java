@@ -3,6 +3,7 @@ package DNPM;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Item;
+import de.itc.onkostar.api.Patient;
 import de.itc.onkostar.api.Procedure;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -243,6 +244,23 @@ class DNPMHelperTest {
             var argumentCaptor = ArgumentCaptor.forClass(String.class);
             verify(session, times(1)).createSQLQuery(argumentCaptor.capture());
             assertThat(argumentCaptor.getValue()).contains("WHERE patient_id = 2 AND geloescht = 0");
+        }
+
+        @Test
+        void testShouldReturnEcogStatusList() {
+            doAnswer(invocationOnMock -> {
+                var id = invocationOnMock.getArgument(0, Integer.class);
+                var patient = new Patient(onkostarApi);
+                patient.setId(id);
+                return patient;
+            }).when(onkostarApi).getPatient(anyInt());
+
+            dnpmHelper.getEcogStatus(Map.of("PatientId", 42));
+
+            var argumentCaptor = ArgumentCaptor.forClass(Patient.class);
+            verify(systemtherapieService, times(1)).ecogSatus(argumentCaptor.capture());
+            assertThat(argumentCaptor.getValue()).isNotNull();
+            assertThat(argumentCaptor.getValue().getId()).isEqualTo(42);
         }
 
     }

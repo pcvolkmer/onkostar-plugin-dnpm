@@ -45,7 +45,7 @@ public class DNPMHelper implements IProcedureAnalyzer {
 
     @Override
     public String getVersion() {
-        return "0.3.0";
+        return "0.4.0";
     }
 
     @Override
@@ -248,5 +248,22 @@ public class DNPMHelper implements IProcedureAnalyzer {
             //return null;
         }
 
+    }
+
+    // TODO Achtung, keine Sicherheitsprüfung, darüber kann für jeden Patienten die Liste mit ECOG-Status abgerufen werden!
+    public List<SystemtherapieService.EcogStatusWithDate> getEcogStatus(final Map<String, Object> input) {
+        var pid = AnalyzerUtils.getRequiredId(input, "PatientId");
+        if (pid.isEmpty()) {
+            logger.error("Kein Parameter 'PatientId' angegeben, gebe leere Liste zurück");
+            return List.of();
+        }
+
+        var patient = onkostarApi.getPatient(pid.get());
+        if (null == patient) {
+            logger.error("Patient nicht gefunden, gebe leere Liste zurück");
+            return List.of();
+        }
+
+        return systemtherapieService.ecogSatus(patient);
     }
 }
