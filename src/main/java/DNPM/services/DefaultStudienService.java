@@ -21,12 +21,14 @@ public class DefaultStudienService implements StudienService {
 
     @Override
     public List<Studie> findAll() {
-        var sql = "SELECT pcc.name, property_catalogue_version.version_number, studie.studien_nummer, pcve.code, pcve.shortdesc, pcve.description FROM property_catalogue "
-        + "JOIN property_catalogue_version ON property_catalogue.id = property_catalogue_version.datacatalog_id "
-        + "JOIN property_catalogue_version_entry pcve ON property_catalogue_version.id = pcve.property_version_id "
-        + "JOIN property_catalogue_category pcc on property_catalogue_version.id = pcc.version_id "
-        + "LEFT JOIN studie ON pcve.id = studie.property_version_entry AND studie.aktiv "
-        + "WHERE property_catalogue.name = 'OS.Studien';";
+        var sql = "SELECT pcc.name, pcv.version_number, TRIM(studie.studien_nummer) AS studien_nummer, studie.startdatum, studie.endedatum, pcve.code, pcve.shortdesc, pcve.description FROM studie "
+                + "LEFT JOIN category_entry ce ON ce.version_entry_id = studie.property_version_entry "
+                + "LEFT JOIN property_catalogue_category pcc ON pcc.id = ce.category_id "
+                + "JOIN property_catalogue_version_entry pcve ON pcve.id = studie.property_version_entry "
+                + "JOIN property_catalogue_version pcv ON pcv.id = pcve.property_version_id "
+                + "JOIN property_catalogue pc ON pc.id = pcv.datacatalog_id "
+                + "WHERE pc.name = 'OS.Studien'"
+                + "ORDER BY TRIM(studie.studien_nummer)";
 
         return this.jdbcTemplate.query(sql, (resultSet, i) -> new Studie(
                 resultSet.getString("name"),
@@ -40,12 +42,14 @@ public class DefaultStudienService implements StudienService {
 
     @Override
     public List<Studie> findByQuery(String query) {
-        var sql = "SELECT pcc.name, property_catalogue_version.version_number, studie.studien_nummer, pcve.code, pcve.shortdesc, pcve.description FROM property_catalogue "
-                + "JOIN property_catalogue_version ON property_catalogue.id = property_catalogue_version.datacatalog_id "
-                + "JOIN property_catalogue_version_entry pcve ON property_catalogue_version.id = pcve.property_version_id "
-                + "JOIN property_catalogue_category pcc on property_catalogue_version.id = pcc.version_id "
-                + "LEFT JOIN studie ON pcve.id = studie.property_version_entry AND studie.aktiv "
-                + "WHERE property_catalogue.name = 'OS.Studien' AND (pcve.shortdesc LIKE ? OR pcve.description LIKE ? OR studie.studien_nummer LIKE ?);";
+        var sql = "SELECT pcc.name, pcv.version_number, TRIM(studie.studien_nummer) AS studien_nummer, studie.startdatum, studie.endedatum, pcve.code, pcve.shortdesc, pcve.description FROM studie "
+                + "LEFT JOIN category_entry ce ON ce.version_entry_id = studie.property_version_entry "
+                + "LEFT JOIN property_catalogue_category pcc ON pcc.id = ce.category_id "
+                + "JOIN property_catalogue_version_entry pcve ON pcve.id = studie.property_version_entry "
+                + "JOIN property_catalogue_version pcv ON pcv.id = pcve.property_version_id "
+                + "JOIN property_catalogue pc ON pc.id = pcv.datacatalog_id "
+                + "WHERE pc.name = 'OS.Studien' AND (pcve.shortdesc LIKE ? OR pcve.description LIKE ? OR studie.studien_nummer LIKE ?)"
+                + "ORDER BY TRIM(studie.studien_nummer)";
 
         var like = String.format("%%%s%%", query);
 
