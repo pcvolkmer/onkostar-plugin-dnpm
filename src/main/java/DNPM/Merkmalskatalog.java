@@ -34,7 +34,7 @@ public class Merkmalskatalog implements IProcedureAnalyzer {
 
     @Override
     public String getVersion() {
-        return "0.3.0";
+        return "0.3.1";
     }
 
     @Override
