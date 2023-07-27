@@ -32,13 +32,16 @@ public class Studie {
     private final String description;
     private final int version;
 
-    public Studie(final String kategorieName, final int version, final String code, final String studiennummer, final String shortDesc, final String description) {
+    private final boolean active;
+
+    public Studie(final String kategorieName, final int version, final String code, final String studiennummer, final String shortDesc, final String description, final boolean active) {
         this.kategorieName = kategorieName;
         this.version = version;
         this.code = code;
         this.studiennummer = studiennummer;
         this.shortDesc = shortDesc;
         this.description = description;
+        this.active = active;
     }
 
     public String getKategorieName() {
@@ -63,6 +66,10 @@ public class Studie {
 
     public String getDescription() {
         return description;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 
     public Type getType() {

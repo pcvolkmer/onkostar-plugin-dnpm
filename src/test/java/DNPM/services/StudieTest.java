@@ -15,7 +15,8 @@ class StudieTest {
                 null,
                 "Nct-12345678",
                 "Teststudie 1",
-                "Teststudie 1"
+                "Teststudie 1",
+                true
         );
 
         assertThat(studie.getType()).isEqualTo(Studie.Type.NCT);
@@ -29,7 +30,8 @@ class StudieTest {
                 null,
                 "2023-012345-12",
                 "Teststudie 1",
-                "Teststudie 1"
+                "Teststudie 1",
+                true
         );
 
         assertThat(studie.getType()).isEqualTo(Studie.Type.EUDRA_CT);
@@ -43,7 +45,8 @@ class StudieTest {
                 "teststudie1",
                 null,
                 "Teststudie 1",
-                "Teststudie 1"
+                "Teststudie 1",
+                true
         );
 
         assertThat(studie.getType()).isEqualTo(Studie.Type.UNKNOWN);

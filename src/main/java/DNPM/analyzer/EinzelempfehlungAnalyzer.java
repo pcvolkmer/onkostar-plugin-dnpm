@@ -128,7 +128,7 @@ public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
      * executePluginMethod(
      *   'TherapieplanAnalyzer',
      *   'getStudien',
-     *   { q: 'NCT-12' },
+     *   { q: 'NCT-12', inactive: true },
      *   (response) => console.log(response),
      *   false
      * );
@@ -139,11 +139,18 @@ public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
      */
     public List<Studie> getStudien(Map<String, Object> input) {
         var query = AnalyzerUtils.getRequiredValue(input, "q", String.class);
+        var inactive = AnalyzerUtils.getRequiredValue(input, "inactive", Boolean.class).orElse(false);
 
         if (query.isEmpty() || query.get().isBlank()) {
-            return studienService.findAll();
+            if (inactive) {
+                return studienService.findAll();
+            }
+            return studienService.findActive();
         }
-        return studienService.findByQuery(query.get());
+        if (inactive) {
+            return studienService.findByQuery(query.get());
+        }
+        return studienService.findActiveByQuery(query.get());
     }
 
 }

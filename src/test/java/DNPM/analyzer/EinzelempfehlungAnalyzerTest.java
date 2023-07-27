@@ -62,24 +62,42 @@ class EinzelempfehlungAnalyzerTest {
         var input = Map.of("q", (Object) "   ");
         this.analyzer.getStudien(input);
 
-        verify(studienService, times(1)).findAll();
+        verify(studienService, times(1)).findActive();
     }
 
     @Test
-    void shouldRequestAllStudienForEmptyInputMap() {
+    void shouldRequestActiveStudienForEmptyInputMap() {
         var input = new HashMap<String, Object>();
         this.analyzer.getStudien(input);
 
-        verify(studienService, times(1)).findAll();
+        verify(studienService, times(1)).findActive();
     }
 
     @Test
-    void shouldRequestFilteredStudien() {
+    void shouldRequestFilteredActiveStudien() {
         var input = Map.of("q", (Object) "NCT-123");
         this.analyzer.getStudien(input);
 
         var captor = ArgumentCaptor.forClass(String.class);
-        verify(studienService, times(1)).findByQuery(captor.capture());
+        verify(studienService, times(1)).findActiveByQuery(captor.capture());
+        assertThat(captor.getValue()).isEqualTo("NCT-123");
+    }
+
+    @Test
+    void shouldRequestActiveStudien() {
+        var input = Map.of("q", (Object) "");
+        this.analyzer.getStudien(input);
+
+        verify(studienService, times(1)).findActive();
+    }
+
+    @Test
+    void shouldRequestAllFilteredtudien() {
+        var input = Map.of("q", (Object) "NCT-123");
+        this.analyzer.getStudien(input);
+
+        var captor = ArgumentCaptor.forClass(String.class);
+        verify(studienService, times(1)).findActiveByQuery(captor.capture());
         assertThat(captor.getValue()).isEqualTo("NCT-123");
     }
 
