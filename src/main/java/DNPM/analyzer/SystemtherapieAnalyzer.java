@@ -71,7 +71,7 @@ public class SystemtherapieAnalyzer implements IProcedureAnalyzer {
 
     @Override
     public boolean isRelevantForAnalyzer(Procedure procedure, Disease disease) {
-        return null != procedure && (
+        return null != procedure && null != disease && (
                 procedure.getFormName().equals("OS.Systemische Therapie")
                         || procedure.getFormName().equals("OS.Systemische Therapie.VarianteUKW")
         );
@@ -106,7 +106,11 @@ public class SystemtherapieAnalyzer implements IProcedureAnalyzer {
             return;
         }
 
-        var ecogFromCompleted = systemtherapieService.ecogSatus(procedure.getPatient());
+        var ecogFromCompleted = systemtherapieService.ecogSatus(procedure.getPatient())
+                .stream()
+                .filter(ecogStatusWithDate -> ecogStatusWithDate.getDate().after(disease.getDiagnosisDate()))
+                .collect(Collectors.toList());
+
         if (ecogFromCompleted.isEmpty()) {
             // Nothing to do
             return;
