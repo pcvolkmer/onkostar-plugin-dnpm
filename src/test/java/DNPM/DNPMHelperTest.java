@@ -1,5 +1,8 @@
 package DNPM;
 
+import DNPM.security.IllegalSecuredObjectAccessException;
+import DNPM.security.PermissionType;
+import DNPM.security.PersonPoolBasedPermissionEvaluator;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Item;
@@ -22,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,16 +35,20 @@ class DNPMHelperTest {
 
     private SystemtherapieService systemtherapieService;
 
+    private PersonPoolBasedPermissionEvaluator personPoolBasedPermissionEvaluator;
+
     private DNPMHelper dnpmHelper;
 
     @BeforeEach
     void setup(
             @Mock IOnkostarApi onkostarApi,
-            @Mock SystemtherapieService systemtherapieService
+            @Mock SystemtherapieService systemtherapieService,
+            @Mock PersonPoolBasedPermissionEvaluator personPoolBasedPermissionEvaluator
     ) {
         this.onkostarApi = onkostarApi;
         this.systemtherapieService = systemtherapieService;
-        this.dnpmHelper = new DNPMHelper(onkostarApi, systemtherapieService);
+        this.personPoolBasedPermissionEvaluator = personPoolBasedPermissionEvaluator;
+        this.dnpmHelper = new DNPMHelper(onkostarApi, systemtherapieService, personPoolBasedPermissionEvaluator);
     }
 
     @Test
@@ -248,6 +256,9 @@ class DNPMHelperTest {
 
         @Test
         void testShouldReturnEcogStatusList() {
+            when(personPoolBasedPermissionEvaluator.hasPermission(any(), any(Patient.class), any(PermissionType.class)))
+                    .thenReturn(true);
+
             doAnswer(invocationOnMock -> {
                 var id = invocationOnMock.getArgument(0, Integer.class);
                 var patient = new Patient(onkostarApi);
@@ -261,6 +272,21 @@ class DNPMHelperTest {
             verify(systemtherapieService, times(1)).ecogSatus(argumentCaptor.capture());
             assertThat(argumentCaptor.getValue()).isNotNull();
             assertThat(argumentCaptor.getValue().getId()).isEqualTo(42);
+        }
+
+        @Test
+        void testShouldNotReturnEcogStatusListIfNoPermissionGranted() {
+            when(personPoolBasedPermissionEvaluator.hasPermission(any(), any(Patient.class), any(PermissionType.class)))
+                    .thenReturn(false);
+
+            doAnswer(invocationOnMock -> {
+                var id = invocationOnMock.getArgument(0, Integer.class);
+                var patient = new Patient(onkostarApi);
+                patient.setId(id);
+                return patient;
+            }).when(onkostarApi).getPatient(anyInt());
+
+            assertThrows(IllegalSecuredObjectAccessException.class, () -> dnpmHelper.getEcogStatus(Map.of("PatientId", 42)));
         }
 
     }
