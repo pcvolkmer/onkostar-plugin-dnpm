@@ -2,11 +2,12 @@ package DNPM.services.systemtherapie;
 
 import DNPM.services.SettingsService;
 import de.itc.onkostar.api.IOnkostarApi;
+import de.itc.onkostar.api.Patient;
 import de.itc.onkostar.api.Procedure;
+import de.itc.onkostar.api.ProcedureEditStateType;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Standardimplementierung des Systemtherapieservices
@@ -14,6 +15,8 @@ import java.util.Map;
  * @since 0.2.0
  */
 public class DefaultSystemtherapieService implements SystemtherapieService {
+
+    private static final String ECOG_FIELD = "ECOGvorTherapie";
 
     private final IOnkostarApi onkostarApi;
 
@@ -49,6 +52,43 @@ public class DefaultSystemtherapieService implements SystemtherapieService {
     @Override
     public ProzedurToProzedurwerteMapper prozedurToProzedurwerteMapper(Procedure procedure) {
         return new OsSystemischeTherapieToProzedurwerteMapper();
+    }
+
+    /**
+     * Ermittelt den letzten bekannten ECOG-Status aus allen Systemtherapieformularen des Patienten
+     *
+     * @param patient Der zu verwendende Patient
+     * @return Der ECOG-Status als String oder leeres Optional
+     */
+    @Override
+    public Optional<String> latestEcogStatus(Patient patient) {
+        return ecogSatus(patient).stream()
+                .max(Comparator.comparing(EcogStatusWithDate::getDate))
+                .map(EcogStatusWithDate::getStatus);
+    }
+
+    /**
+     * Ermittelt jeden bekannten ECOG-Status aus allen Systemtherapieformularen des Patienten
+     *
+     * @param patient Der zu verwendende Patient
+     * @return Eine Liste mit Datum und ECOG-Status als String
+     */
+    @Override
+    public List<EcogStatusWithDate> ecogSatus(Patient patient) {
+        return patient.getDiseases().stream()
+                .flatMap(disease -> onkostarApi.getProceduresForDiseaseByForm(disease.getId(), getFormName()).stream())
+                .filter(procedure -> procedure.getEditState() == ProcedureEditStateType.COMPLETED)
+                .filter(procedure -> null != procedure.getStartDate())
+                .sorted(Comparator.comparing(Procedure::getStartDate))
+                .map(procedure -> {
+                    try {
+                        return new EcogStatusWithDate(procedure.getStartDate(), procedure.getValue(ECOG_FIELD).getString());
+                    } catch (IllegalArgumentException e) {
+                        return null;
+                    }
+                })
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
 
     private String getFormName() {

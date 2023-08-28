@@ -1,6 +1,9 @@
 package DNPM;
 
 import DNPM.analyzer.AnalyzerUtils;
+import DNPM.security.IllegalSecuredObjectAccessException;
+import DNPM.security.PermissionType;
+import DNPM.security.PersonPoolBasedPermissionEvaluator;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,6 +20,7 @@ import org.hibernate.transform.Transformers;
 import org.hibernate.type.StandardBasicTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,9 +35,16 @@ public class DNPMHelper implements IProcedureAnalyzer {
 
     private final SystemtherapieService systemtherapieService;
 
-    public DNPMHelper(final IOnkostarApi onkostarApi, final SystemtherapieService systemtherapieService) {
+    private final PersonPoolBasedPermissionEvaluator personPoolBasedPermissionEvaluator;
+
+    public DNPMHelper(
+            final IOnkostarApi onkostarApi,
+            final SystemtherapieService systemtherapieService,
+            final PersonPoolBasedPermissionEvaluator permissionEvaluator
+            ) {
         this.onkostarApi = onkostarApi;
         this.systemtherapieService = systemtherapieService;
+        this.personPoolBasedPermissionEvaluator = permissionEvaluator;
     }
 
     @Override
@@ -45,7 +56,7 @@ public class DNPMHelper implements IProcedureAnalyzer {
 
     @Override
     public String getVersion() {
-        return "0.3.0";
+        return "0.4.0";
     }
 
     @Override
@@ -248,5 +259,26 @@ public class DNPMHelper implements IProcedureAnalyzer {
             //return null;
         }
 
+    }
+
+    // TODO Achtung, keine Sicherheitsprüfung, darüber kann für jeden Patienten die Liste mit ECOG-Status abgerufen werden!
+    public List<SystemtherapieService.EcogStatusWithDate> getEcogStatus(final Map<String, Object> input) {
+        var pid = AnalyzerUtils.getRequiredId(input, "PatientId");
+        if (pid.isEmpty()) {
+            logger.error("Kein Parameter 'PatientId' angegeben, gebe leere Liste zurück");
+            return List.of();
+        }
+
+        var patient = onkostarApi.getPatient(pid.get());
+        if (null == patient) {
+            logger.error("Patient nicht gefunden, gebe leere Liste zurück");
+            return List.of();
+        }
+
+        if (personPoolBasedPermissionEvaluator.hasPermission(SecurityContextHolder.getContext().getAuthentication(), patient, PermissionType.READ)) {
+            return systemtherapieService.ecogSatus(patient);
+        }
+
+        throw new IllegalSecuredObjectAccessException("Kein Zugriff auf diesen Patienten");
     }
 }

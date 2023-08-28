@@ -1,8 +1,7 @@
 package DNPM.services.systemtherapie;
 
 import DNPM.services.SettingsService;
-import de.itc.onkostar.api.IOnkostarApi;
-import de.itc.onkostar.api.Procedure;
+import de.itc.onkostar.api.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +11,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.Instant;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -93,5 +93,41 @@ class DefaultSystemtherapieServiceTest {
                 .isNotNull()
                 .isExactlyInstanceOf(ArrayList.class)
                 .hasSize(1);
+    }
+
+    @Test
+    void testShouldReturnListOfEcogStatusWithDate() {
+        doAnswer(invocationOnMock -> {
+            var disease = new Disease(onkostarApi);
+            disease.setId(1);
+            return List.of(disease);
+        }).when(this.onkostarApi).getDiseasesByPatientId(anyInt());
+
+        doAnswer(invocationOnMock -> {
+            var procedure1 = new Procedure(onkostarApi);
+            procedure1.setId(1);
+            procedure1.setFormName("OS.Systemische Therapie");
+            procedure1.setStartDate(Date.from(Instant.parse("2023-07-01T06:00:00Z")));
+            procedure1.setEditState(ProcedureEditStateType.COMPLETED);
+            procedure1.setValue("ECOGvorTherapie", new Item("ECOGvorTherapie", 1));
+
+            var procedure2 = new Procedure(onkostarApi);
+            procedure2.setId(2);
+            procedure2.setFormName("OS.Systemische Therapie");
+            procedure2.setStartDate(Date.from(Instant.parse("2023-07-12T06:00:00Z")));
+            procedure2.setEditState(ProcedureEditStateType.COMPLETED);
+            procedure2.setValue("ECOGvorTherapie", new Item("ECOGvorTherapie", 2));
+            return List.of(procedure1, procedure2);
+        }).when(this.onkostarApi).getProceduresForDiseaseByForm(anyInt(), anyString());
+
+        var patient = new Patient(onkostarApi);
+        patient.setId(1);
+
+        var actual = service.ecogSatus(patient);
+
+        assertThat(actual)
+                .isNotNull()
+                .isExactlyInstanceOf(ArrayList.class)
+                .hasSize(2);
     }
 }
