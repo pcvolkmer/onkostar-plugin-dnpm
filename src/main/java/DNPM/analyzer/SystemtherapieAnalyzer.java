@@ -73,7 +73,7 @@ public class SystemtherapieAnalyzer implements IProcedureAnalyzer {
     public boolean isRelevantForAnalyzer(Procedure procedure, Disease disease) {
         return null != procedure && (
                 procedure.getFormName().equals("OS.Systemische Therapie")
-                || procedure.getFormName().equals("OS.Systemische Therapie.VarianteUKW")
+                        || procedure.getFormName().equals("OS.Systemische Therapie.VarianteUKW")
         );
     }
 
@@ -117,44 +117,52 @@ public class SystemtherapieAnalyzer implements IProcedureAnalyzer {
                 .forEach(p -> {
                     var ufEcog = p.getValue("ECOGVerlauf");
                     if (null != ufEcog && ufEcog.getValue() instanceof List) {
-                        var shouldSave = false;
-                        var existingDates = ufEcog.<List<Map<String, String>>>getValue().stream()
-                                .map(v -> v.get("Datum"))
-                                .collect(Collectors.toList());
-                        for (var ecog : ecogFromCompleted) {
-                            var formattedDate = new SimpleDateFormat("yyyy-MM-dd").format(ecog.getDate());
-                            if (! existingDates.contains(formattedDate)) {
-                                var newSubProcedure = new Procedure(onkostarApi);
-                                newSubProcedure.setStartDate(ecog.getDate());
-                                newSubProcedure.setValue("Datum", new Item("Datum", ecog.getDate()));
-                                newSubProcedure.setValue("ECOG", new Item("ECOG", ecog.getStatus()));
-                                p.addSubProcedure("ECOGVerlauf", newSubProcedure);
-                                shouldSave = true;
-                            }
-                        }
-                        if (shouldSave) {
-                            try {
-                                onkostarApi.saveProcedure(p, true);
-                            } catch (Exception e) {
-                                logger.error("Cannot update ECOG for procedure '{}'", p.getId());
-                            }
-                        }
+                        updateExistingEcogVerlauf(p, ecogFromCompleted, ufEcog);
                     } else {
-                        p.setValue("ECOGVerlauf", new Item("ECOGVerlauf", List.of()));
-                        for (var ecog : ecogFromCompleted) {
-                            var newSubProcedure = new Procedure(onkostarApi);
-                            newSubProcedure.setStartDate(ecog.getDate());
-                            newSubProcedure.setValue("Datum", new Item("Datum", ecog.getDate()));
-                            newSubProcedure.setValue("ECOG", new Item("ECOG", ecog.getStatus()));
-                            p.addSubProcedure("ECOGVerlauf", newSubProcedure);
-                        }
-                        try {
-                            onkostarApi.saveProcedure(p, true);
-                        } catch (Exception e) {
-                            logger.error("Create update ECOG for procedure '{}'", p.getId());
-                        }
+                        newEcogverlauf(p, ecogFromCompleted);
                     }
                 });
+    }
+
+    private void updateExistingEcogVerlauf(Procedure p, List<SystemtherapieService.EcogStatusWithDate> ecogFromCompleted, Item ufEcog) {
+        var shouldSave = false;
+        var existingDates = ufEcog.<List<Map<String, String>>>getValue().stream()
+                .map(v -> v.get("Datum"))
+                .collect(Collectors.toList());
+        for (var ecog : ecogFromCompleted) {
+            var formattedDate = new SimpleDateFormat("yyyy-MM-dd").format(ecog.getDate());
+            if (!existingDates.contains(formattedDate)) {
+                var newSubProcedure = new Procedure(onkostarApi);
+                newSubProcedure.setStartDate(ecog.getDate());
+                newSubProcedure.setValue("Datum", new Item("Datum", ecog.getDate()));
+                newSubProcedure.setValue("ECOG", new Item("ECOG", ecog.getStatus()));
+                p.addSubProcedure("ECOGVerlauf", newSubProcedure);
+                shouldSave = true;
+            }
+        }
+        if (shouldSave) {
+            try {
+                onkostarApi.saveProcedure(p, true);
+            } catch (Exception e) {
+                logger.error("Cannot update ECOG for procedure '{}'", p.getId());
+            }
+        }
+    }
+
+    private void newEcogverlauf(Procedure p, List<SystemtherapieService.EcogStatusWithDate> ecogFromCompleted) {
+        p.setValue("ECOGVerlauf", new Item("ECOGVerlauf", List.of()));
+        for (var ecog : ecogFromCompleted) {
+            var newSubProcedure = new Procedure(onkostarApi);
+            newSubProcedure.setStartDate(ecog.getDate());
+            newSubProcedure.setValue("Datum", new Item("Datum", ecog.getDate()));
+            newSubProcedure.setValue("ECOG", new Item("ECOG", ecog.getStatus()));
+            p.addSubProcedure("ECOGVerlauf", newSubProcedure);
+        }
+        try {
+            onkostarApi.saveProcedure(p, true);
+        } catch (Exception e) {
+            logger.error("Create update ECOG for procedure '{}'", p.getId());
+        }
     }
 
 }
