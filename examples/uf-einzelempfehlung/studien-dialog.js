@@ -12,8 +12,8 @@ const availableStore = new Ext.data.ArrayStore({
 
 let pluginRequestsDisabled = false;
 
-const findButtonFieldFormInformation = function(context) {
-    const findElemId = function(elem) {
+const findButtonFieldFormInformation = function (context) {
+    const findElemId = function (elem) {
         if (elem.tagName === 'BODY') {
             return undefined;
         }
@@ -25,7 +25,7 @@ const findButtonFieldFormInformation = function(context) {
         return findElemId(elem.parentElement);
     }
 
-    const formInfo = function(formItem, blockIndex = undefined) {
+    const formInfo = function (formItem, blockIndex = undefined) {
         if (formItem.xtype === 'buttonField') {
             return formInfo(formItem.ownerCt, formItem.blockIndex);
         }
@@ -56,7 +56,7 @@ const findButtonFieldFormInformation = function(context) {
     if (context.genericEditForm && document.activeElement.tagName === 'BUTTON') {
         let elemId = findElemId(document.activeElement);
         if (elemId) {
-            let formItem = context.genericEditForm.down('#'+elemId);
+            let formItem = context.genericEditForm.down('#' + elemId);
             if (formItem) {
                 return formInfo(formItem);
             }
@@ -66,12 +66,12 @@ const findButtonFieldFormInformation = function(context) {
     return undefined;
 }
 
-const request = function (query) {
+const request = function (query, includeInactive) {
     if (pluginRequestsDisabled) return;
     executePluginMethod(
         'EinzelempfehlungAnalyzer',
         'getStudien',
-        {q: query},
+        includeInactive ? {q: query, inactive: true} : {q: query},
         function (response) {
             if (response.status.code < 0) {
                 onFailure();
@@ -87,7 +87,7 @@ const itemMapping = function (item) {
     return [item.kategorieName, item.version, item.code, item.type, item.studiennummer, item.shortDesc, item.description];
 }
 
-const onFailure = function() {
+const onFailure = function () {
     pluginRequestsDisabled = true;
     Ext.MessageBox.show({
         title: 'Hinweis',
@@ -96,7 +96,7 @@ const onFailure = function() {
     });
 };
 
-const onSuccess = function(d) {
+const onSuccess = function (d) {
     available = d;
     const extData = available.map(itemMapping);
     availableStore.loadData(extData);
@@ -110,6 +110,7 @@ const save = (selectedItemIndex) => {
 const showDialog = function (blockIndex) {
     let selectedItemIndex = -1;
     let queryString = '';
+    let includeInactive = false;
 
     const gridColumns = [
         {header: 'Kategorie', width: 80, sortable: false, dataIndex: 'kategorieName'},
@@ -128,7 +129,20 @@ const showDialog = function (blockIndex) {
         listeners: {
             change: (f) => {
                 queryString = f.value;
-                request(f.value);
+                request(queryString, includeInactive);
+            }
+        }
+    });
+
+    const inactiveSelection = new Ext.form.field.Checkbox({
+        name: 'inactive',
+        fieldLabel: 'Inaktive Studien einschließen',
+        labelWidth: 240,
+        padding: 8,
+        listeners: {
+            handler: (_, checked) => {
+                includeInactive = checked;
+                request(queryString, includeInactive);
             }
         }
     });
@@ -161,7 +175,7 @@ const showDialog = function (blockIndex) {
             type: 'vbox',
             align: 'stretch'
         },
-        items: [query, availableGrid]
+        items: [query, inactiveSelection, availableGrid]
     });
 
     Ext.create('Ext.window.Window', {
