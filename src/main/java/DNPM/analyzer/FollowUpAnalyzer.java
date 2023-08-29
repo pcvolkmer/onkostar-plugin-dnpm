@@ -6,8 +6,6 @@ import de.itc.onkostar.api.Item;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyseTriggerEvent;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
-import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
-import de.itc.onkostar.api.analysis.OnkostarPluginType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -20,7 +18,7 @@ import java.util.Set;
  * @since 0.0.2
  */
 @Component
-public class FollowUpAnalyzer implements IProcedureAnalyzer {
+public class FollowUpAnalyzer extends Analyzer {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -28,21 +26,6 @@ public class FollowUpAnalyzer implements IProcedureAnalyzer {
 
     public FollowUpAnalyzer(IOnkostarApi onkostarApi) {
         this.onkostarApi = onkostarApi;
-    }
-
-    @Override
-    public OnkostarPluginType getType() {
-        return OnkostarPluginType.ANALYZER;
-    }
-
-    @Override
-    public String getVersion() {
-        return "0.4.0";
-    }
-
-    @Override
-    public String getName() {
-        return "DNPM FollowUp Analyzer";
     }
 
     @Override

@@ -8,8 +8,6 @@ import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyseTriggerEvent;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
-import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
-import de.itc.onkostar.api.analysis.OnkostarPluginType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +20,7 @@ import java.util.Set;
  * @since 0.0.2
  */
 @Component
-public class TherapieplanAnalyzer implements IProcedureAnalyzer {
+public class TherapieplanAnalyzer extends Analyzer {
 
     private final TherapieplanServiceFactory therapieplanServiceFactory;
 
@@ -38,21 +36,6 @@ public class TherapieplanAnalyzer implements IProcedureAnalyzer {
         this.therapieplanServiceFactory = therapieplanServiceFactory;
         this.mtbService = mtbService;
         this.permissionEvaluator = permissionEvaluator;
-    }
-
-    @Override
-    public OnkostarPluginType getType() {
-        return OnkostarPluginType.ANALYZER;
-    }
-
-    @Override
-    public String getVersion() {
-        return "0.4.0";
-    }
-
-    @Override
-    public String getName() {
-        return "DNPM Therapieplan Analyzer";
     }
 
     @Override

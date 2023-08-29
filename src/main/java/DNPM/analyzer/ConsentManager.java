@@ -1,16 +1,14 @@
-package DNPM;
+package DNPM.analyzer;
 
 import DNPM.services.consent.ConsentManagerServiceFactory;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
-import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
-import de.itc.onkostar.api.analysis.OnkostarPluginType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ConsentManager implements IProcedureAnalyzer {
+public class ConsentManager extends Analyzer {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -32,23 +30,8 @@ public class ConsentManager implements IProcedureAnalyzer {
     }
 
     @Override
-    public String getName() {
-        return "Consent Manager";
-    }
-
-    @Override
     public AnalyzerRequirement getRequirement() {
         return AnalyzerRequirement.PROCEDURE;
-    }
-
-    @Override
-    public OnkostarPluginType getType() {
-        return OnkostarPluginType.ANALYZER;
-    }
-
-    @Override
-    public String getVersion() {
-        return "0.3.0";
     }
 
     @Override

@@ -1,5 +1,6 @@
 package DNPM;
 
+import DNPM.analyzer.Merkmalskatalog;
 import de.itc.onkostar.api.IOnkostarApi;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;

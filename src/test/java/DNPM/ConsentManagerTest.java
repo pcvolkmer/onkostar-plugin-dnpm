@@ -1,5 +1,6 @@
 package DNPM;
 
+import DNPM.analyzer.ConsentManager;
 import DNPM.services.consent.ConsentManagerServiceFactory;
 import DNPM.services.consent.MrConsentManagerService;
 import de.itc.onkostar.api.IOnkostarApi;
