@@ -1,6 +1,6 @@
-package DNPM;
+package DNPM.analyzer;
 
-import DNPM.analyzer.AnalyzerUtils;
+import DNPM.VerweisVon;
 import DNPM.security.IllegalSecuredObjectAccessException;
 import DNPM.security.PermissionType;
 import DNPM.security.PersonPoolBasedPermissionEvaluator;
@@ -11,8 +11,6 @@ import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
-import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
-import de.itc.onkostar.api.analysis.OnkostarPluginType;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DNPMHelper implements IProcedureAnalyzer {
+public class DNPMHelper extends BackendService {
 
     private static final Logger logger = LoggerFactory.getLogger(DNPMHelper.class);
 
@@ -41,27 +39,10 @@ public class DNPMHelper implements IProcedureAnalyzer {
             final IOnkostarApi onkostarApi,
             final SystemtherapieService systemtherapieService,
             final PersonPoolBasedPermissionEvaluator permissionEvaluator
-            ) {
+    ) {
         this.onkostarApi = onkostarApi;
         this.systemtherapieService = systemtherapieService;
         this.personPoolBasedPermissionEvaluator = permissionEvaluator;
-    }
-
-    @Override
-    public OnkostarPluginType getType() {
-        // Typ des Plugins
-        // Für das Interface IProcedureAnalyzer gültig sind ANALYZER und BACKEND_SERVICE
-        return OnkostarPluginType.BACKEND_SERVICE;
-    }
-
-    @Override
-    public String getVersion() {
-        return "0.4.0";
-    }
-
-    @Override
-    public String getName() {
-        return "UMR DNPM";
     }
 
     @Override
@@ -88,11 +69,6 @@ public class DNPMHelper implements IProcedureAnalyzer {
     public boolean isRelevantForAnalyzer(Procedure entry, Disease currentDisease) {
         // Plugin enthält nur Methoden für Formulare und soll nicht ausgeführt werden
         return false;
-    }
-
-    @Override
-    public void analyze(Procedure entry, Disease currentDisease) {
-        // wird nicht benötigt, da dass Plugin nicht ausgeführt wird
     }
 
     @SuppressWarnings("unchecked")

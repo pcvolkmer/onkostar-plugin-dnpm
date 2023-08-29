@@ -1,5 +1,6 @@
 package DNPM;
 
+import DNPM.analyzer.DNPMHelper;
 import DNPM.security.IllegalSecuredObjectAccessException;
 import DNPM.security.PermissionType;
 import DNPM.security.PersonPoolBasedPermissionEvaluator;

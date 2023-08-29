@@ -1,12 +1,9 @@
-package DNPM;
+package DNPM.analyzer;
 
-import DNPM.analyzer.AnalyzerUtils;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
-import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
-import de.itc.onkostar.api.analysis.OnkostarPluginType;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Map;
 
-public class Merkmalskatalog implements IProcedureAnalyzer {
+public class Merkmalskatalog extends BackendService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -25,21 +22,6 @@ public class Merkmalskatalog implements IProcedureAnalyzer {
 
     public Merkmalskatalog(final IOnkostarApi onkostarApi) {
         this.onkostarApi = onkostarApi;
-    }
-
-    @Override
-    public OnkostarPluginType getType() {
-        return OnkostarPluginType.BACKEND_SERVICE;
-    }
-
-    @Override
-    public String getVersion() {
-        return "0.3.0";
-    }
-
-    @Override
-    public String getName() {
-        return "UMR Merkmalskatalog";
     }
 
     @Override
@@ -65,10 +47,6 @@ public class Merkmalskatalog implements IProcedureAnalyzer {
     @Override
     public boolean isRelevantForAnalyzer(Procedure procedure, Disease currentDisease) {
         return false;
-    }
-
-    @Override
-    public void analyze(Procedure procedure, Disease disease) {
     }
 
     public List<String[]> getMerkmalskatalog(final Map<String, Object> input) {
