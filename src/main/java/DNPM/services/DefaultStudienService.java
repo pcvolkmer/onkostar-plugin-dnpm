@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Standardimplementierung zum Ermitteln von Studien
@@ -21,7 +22,7 @@ public class DefaultStudienService implements StudienService {
 
     @Override
     public List<Studie> findAll() {
-        var sql = "SELECT pcc.name, pcv.version_number, TRIM(studie.studien_nummer) AS studien_nummer, studie.startdatum, studie.endedatum, pcve.code, pcve.shortdesc, pcve.description FROM studie "
+        var sql = "SELECT pcc.name, pcv.version_number, TRIM(studie.studien_nummer) AS studien_nummer, studie.startdatum, studie.endedatum, pcve.code, pcve.shortdesc, pcve.description, studie.aktiv FROM studie "
                 + "LEFT JOIN category_entry ce ON ce.version_entry_id = studie.property_version_entry "
                 + "LEFT JOIN property_catalogue_category pcc ON pcc.id = ce.category_id "
                 + "JOIN property_catalogue_version_entry pcve ON pcve.id = studie.property_version_entry "
@@ -36,13 +37,14 @@ public class DefaultStudienService implements StudienService {
                 resultSet.getString("code"),
                 resultSet.getString("studien_nummer"),
                 resultSet.getString("shortdesc"),
-                resultSet.getString("description")
+                resultSet.getString("description"),
+                resultSet.getBoolean("aktiv")
         ));
     }
 
     @Override
     public List<Studie> findByQuery(String query) {
-        var sql = "SELECT pcc.name, pcv.version_number, TRIM(studie.studien_nummer) AS studien_nummer, studie.startdatum, studie.endedatum, pcve.code, pcve.shortdesc, pcve.description FROM studie "
+        var sql = "SELECT pcc.name, pcv.version_number, TRIM(studie.studien_nummer) AS studien_nummer, studie.startdatum, studie.endedatum, pcve.code, pcve.shortdesc, pcve.description, studie.aktiv FROM studie "
                 + "LEFT JOIN category_entry ce ON ce.version_entry_id = studie.property_version_entry "
                 + "LEFT JOIN property_catalogue_category pcc ON pcc.id = ce.category_id "
                 + "JOIN property_catalogue_version_entry pcve ON pcve.id = studie.property_version_entry "
@@ -59,7 +61,18 @@ public class DefaultStudienService implements StudienService {
                 resultSet.getString("code"),
                 resultSet.getString("studien_nummer"),
                 resultSet.getString("shortdesc"),
-                resultSet.getString("description")
+                resultSet.getString("description"),
+                resultSet.getBoolean("aktiv")
         ));
+    }
+
+    @Override
+    public List<Studie> findActive() {
+        return findAll().stream().filter(Studie::isActive).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Studie> findActiveByQuery(String query) {
+        return findByQuery(query).stream().filter(Studie::isActive).collect(Collectors.toList());
     }
 }
