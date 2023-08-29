@@ -10,8 +10,6 @@ import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
-import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
-import de.itc.onkostar.api.analysis.OnkostarPluginType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,7 +24,7 @@ import java.util.Map;
  * @since 0.2.0
  */
 @Component
-public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
+public class EinzelempfehlungAnalyzer extends BackendService {
 
     private final static Logger logger = LoggerFactory.getLogger(EinzelempfehlungAnalyzer.class);
 
@@ -48,21 +46,6 @@ public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
         this.studienService = studienService;
         this.molekulargenetikFormService = molekulargenetikFormService;
         this.permissionEvaluator = permissionEvaluator;
-    }
-
-    @Override
-    public OnkostarPluginType getType() {
-        return OnkostarPluginType.BACKEND_SERVICE;
-    }
-
-    @Override
-    public String getVersion() {
-        return "0.4.0";
-    }
-
-    @Override
-    public String getName() {
-        return "DNPM Einzelempfehlung Backend Service";
     }
 
     @Override
@@ -91,11 +74,6 @@ public class EinzelempfehlungAnalyzer implements IProcedureAnalyzer {
     @Override
     public AnalyzerRequirement getRequirement() {
         return AnalyzerRequirement.PROCEDURE;
-    }
-
-    @Override
-    public void analyze(Procedure procedure, Disease disease) {
-        // No op
     }
 
     public List<Variant> getVariants(Map<String, Object> input) {
