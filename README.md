@@ -1,5 +1,13 @@
 # Onkostar-Plugin zur Verwendung mit der DNPM-Formularsammlung
 
+Die Formulare befinden sich im Verzeichnis [`/forms`](/forms) und liegen hier in gekürzter und sortierter Fassung einer OSC-Datei vor.
+
+Zum Erstellen einer neuen Version der enthaltenen Datei(en) bitte den folgenden Befehl verwenden:
+
+```shell
+osc-variant modify --x-sorted --x-strip --output dnpm-formulare.osc <QUELLDATEI> 
+```
+
 ## ATC-Codes
 
 Dieses Plugin integriert das ATC-Codes-Plugin vollständig. Dieses kann daher nicht zusätzlich in Onkostar installiert werden.
