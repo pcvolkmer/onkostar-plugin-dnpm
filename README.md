@@ -5,7 +5,7 @@ Die Formulare befinden sich im Verzeichnis [`/forms`](/forms) und liegen hier in
 Zum Erstellen einer neuen Version der enthaltenen Datei(en) bitte den folgenden Befehl verwenden:
 
 ```shell
-osc-variant modify --x-sorted --strip --output dnpm-formulare.osc <QUELLDATEI> 
+osc-variant modify --sorted --strip --output dnpm-formulare.osc <QUELLDATEI> 
 ```
 
 ## ATC-Codes
