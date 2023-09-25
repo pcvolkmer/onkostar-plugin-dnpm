@@ -13,15 +13,18 @@ executePluginMethod('DNPMHelper', 'getEcogStatus', {PatientId: getPatient().id},
             return;
         }
 
-        let uf = resp.result.map(item => {
-            let date = new Date(item.date).toISOString().split('T')[0];
-            let ecog = [];
-            ecog.val = item.status;
-            ecog.version = version;
-            return {
-                Datum: [date, 'exact'], ECOG: ecog
-            };
-        });
+        let uf = resp.result
+            .map(item => {
+                let date = item.date.match(/^\d{4}-\d{2}-\d{2}/);
+                let ecog = [];
+                ecog.val = item.status;
+                ecog.version = version;
+                return {
+                    Datum: [date ? date[0] : null, 'exact'], ECOG: ecog
+                };
+            })
+            // Ignore items without valid values
+            .filter(item => item.Datum[0] && (item.ECOG >= 0 && item.ECOG <= 5));
         setFieldValue('ECOGVerlauf', uf);
     }
 }, false);
