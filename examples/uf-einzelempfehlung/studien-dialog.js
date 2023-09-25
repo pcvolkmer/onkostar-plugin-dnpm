@@ -154,7 +154,6 @@ const showDialog = function (blockIndex) {
         border: true,
         columns: gridColumns,
         flex: 1,
-        overflowY: 'scroll',
         listeners: {
             itemclick: (dv, record, item, index) => {
                 selectedItemIndex = index;
