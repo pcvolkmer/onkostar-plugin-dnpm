@@ -62,7 +62,7 @@ public class DefaultSystemtherapieService implements SystemtherapieService {
      */
     @Override
     public Optional<String> latestEcogStatus(Patient patient) {
-        return ecogSatus(patient).stream()
+        return ecogStatus(patient).stream()
                 .max(Comparator.comparing(EcogStatusWithDate::getDate))
                 .map(EcogStatusWithDate::getStatus);
     }
@@ -74,7 +74,7 @@ public class DefaultSystemtherapieService implements SystemtherapieService {
      * @return Eine Liste mit Datum und ECOG-Status als String
      */
     @Override
-    public List<EcogStatusWithDate> ecogSatus(Patient patient) {
+    public List<EcogStatusWithDate> ecogStatus(Patient patient) {
         return patient.getDiseases().stream()
                 .flatMap(disease -> onkostarApi.getProceduresForDiseaseByForm(disease.getId(), getFormName()).stream())
                 .filter(procedure -> procedure.getEditState() == ProcedureEditStateType.COMPLETED)

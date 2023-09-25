@@ -123,7 +123,7 @@ class DefaultSystemtherapieServiceTest {
         var patient = new Patient(onkostarApi);
         patient.setId(1);
 
-        var actual = service.ecogSatus(patient);
+        var actual = service.ecogStatus(patient);
 
         assertThat(actual)
                 .isNotNull()

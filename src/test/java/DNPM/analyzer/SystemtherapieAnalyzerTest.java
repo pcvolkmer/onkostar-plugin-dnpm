@@ -55,7 +55,7 @@ class SystemtherapieAnalyzerTest {
         final var procedureDate = daysPassed(1);
 
         doAnswer(invocationOnMock -> List.of(new SystemtherapieService.EcogStatusWithDate(ecogDate, "0")))
-                .when(systemtherapieService).ecogSatus(any(Patient.class));
+                .when(systemtherapieService).ecogStatus(any(Patient.class));
 
         var patient = new Patient(onkostarApi);
         patient.setId(1);
@@ -89,7 +89,7 @@ class SystemtherapieAnalyzerTest {
         final var procedureDate = daysPassed(1);
 
         doAnswer(invocationOnMock -> List.of())
-                .when(systemtherapieService).ecogSatus(any(Patient.class));
+                .when(systemtherapieService).ecogStatus(any(Patient.class));
 
         var patient = new Patient(onkostarApi);
         patient.setId(1);
@@ -115,7 +115,7 @@ class SystemtherapieAnalyzerTest {
         final var procedureDate = daysPassed(1);
 
         doAnswer(invocationOnMock -> List.of(new SystemtherapieService.EcogStatusWithDate(ecogDate, "0")))
-                .when(systemtherapieService).ecogSatus(any(Patient.class));
+                .when(systemtherapieService).ecogStatus(any(Patient.class));
 
         var patient = new Patient(onkostarApi);
         patient.setId(1);

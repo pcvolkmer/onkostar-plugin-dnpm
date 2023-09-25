@@ -270,7 +270,7 @@ class DNPMHelperTest {
             dnpmHelper.getEcogStatus(Map.of("PatientId", 42));
 
             var argumentCaptor = ArgumentCaptor.forClass(Patient.class);
-            verify(systemtherapieService, times(1)).ecogSatus(argumentCaptor.capture());
+            verify(systemtherapieService, times(1)).ecogStatus(argumentCaptor.capture());
             assertThat(argumentCaptor.getValue()).isNotNull();
             assertThat(argumentCaptor.getValue().getId()).isEqualTo(42);
         }

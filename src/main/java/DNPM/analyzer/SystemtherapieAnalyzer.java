@@ -89,7 +89,7 @@ public class SystemtherapieAnalyzer extends Analyzer {
             return;
         }
 
-        var ecogFromCompleted = systemtherapieService.ecogSatus(procedure.getPatient())
+        var ecogFromCompleted = systemtherapieService.ecogStatus(procedure.getPatient())
                 .stream()
                 .filter(ecogStatusWithDate -> ecogStatusWithDate.getDate().after(disease.getDiagnosisDate()))
                 .collect(Collectors.toList());

@@ -41,7 +41,7 @@ public interface SystemtherapieService {
      * @param patient Der zu verwendende Patient
      * @return Eine Liste mit Datum und ECOG-Status als String
      */
-    List<EcogStatusWithDate> ecogSatus(Patient patient);
+    List<EcogStatusWithDate> ecogStatus(Patient patient);
 
     /**
      * Datenklasse zum Abbilden des ECOG-Status und Datum

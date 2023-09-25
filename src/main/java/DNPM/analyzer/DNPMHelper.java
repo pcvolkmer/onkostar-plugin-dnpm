@@ -252,7 +252,7 @@ public class DNPMHelper extends BackendService {
         }
 
         if (personPoolBasedPermissionEvaluator.hasPermission(SecurityContextHolder.getContext().getAuthentication(), patient, PermissionType.READ)) {
-            return systemtherapieService.ecogSatus(patient);
+            return systemtherapieService.ecogStatus(patient);
         }
 
         throw new IllegalSecuredObjectAccessException("Kein Zugriff auf diesen Patienten");
