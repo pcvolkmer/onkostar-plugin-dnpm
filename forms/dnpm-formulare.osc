@@ -6298,7 +6298,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>d91e0656-00f5-4577-9be3-5513e72c5ff5</GUID>
-      <Revision>12</Revision>
+      <Revision>13</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentId="10349">
@@ -6499,7 +6499,50 @@
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
       </Entries>
-      <PlausibilityRules/>
+      <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob der Zeitpunkt der Tumorausbreitung nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Zeitpunkt_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), Zeitpunkt)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Zeitpunkt</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob der Zeitpunkt der Tumorausbreitung vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Zeitpunkt_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), Zeitpunkt)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Zeitpunkt</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob der Zeitpunkt der Tumorausbreitung in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_Zeitpunkt_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), Zeitpunkt)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Zeitpunkt</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+      </PlausibilityRules>
       <Haeufigkeiten/>
       <Kennzahlen/>
       <Ordner>
@@ -7882,7 +7925,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>040cb02f-e206-4892-97a0-a1ae0914038f</GUID>
-      <Revision>63</Revision>
+      <Revision>64</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10662">
@@ -9979,7 +10022,40 @@
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
       </Entries>
-      <PlausibilityRules/>
+      <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Die Dosisdichte fehlt</Message>
+          <Description>Prüfung, ob die Dosisdichte vorhanden ist</Description>
+          <Bezeichnung>FollowUp_Dosisdichte</Bezeichnung>
+          <Formula>not isEmptyString(Dosisdichte)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>StatusTherapie = 'on-going'&amp;#10;or&amp;#10;StatusTherapie = 'stopped'&amp;#10;or&amp;#10;StatusTherapie = 'completed'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Dosisdichte</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Der Grund für die Ablehnung der Kostenübernahme fehlt</Message>
+          <Description>Prüfung, ob der Grund bei Ablehnung der Kostenübernahme vorhanden ist</Description>
+          <Bezeichnung>FollowUp_Kostenübernahme_Grund</Bezeichnung>
+          <Formula>not isEmptyString(GrundAblehnungKosten)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>GrundAblehnungKosten</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+      </PlausibilityRules>
       <Haeufigkeiten/>
       <Kennzahlen/>
       <Ordner>
@@ -10044,7 +10120,7 @@
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>d2689561-8119-4907-b2e3-ce63e5fafef0</GUID>
-      <Revision>223</Revision>
+      <Revision>224</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10316">
@@ -12674,7 +12750,50 @@
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
       </Entries>
-      <PlausibilityRules/>
+      <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Erstdiagnosedatum fehlt</Message>
+          <Description>Prüfung, ob Erstdiagnosedatum vorhanden ist</Description>
+          <Bezeichnung>Klinik/Anamnese_Erstdiagnosedatum</Bezeichnung>
+          <Formula>not isEmpty(DatumErstdiagnose)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumErstdiagnose</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Die ICD-10 der Diagnose fehlt</Message>
+          <Description>Prüfung, ob die ICD-10 der Diagnose vorhanden ist</Description>
+          <Bezeichnung>Klinik/Anamnese_ICD-10</Bezeichnung>
+          <Formula>not isEmptyString(ICD10)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ICD10</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Leitlinienstatus fehlt</Message>
+          <Description>Prüfung, ob Leitlinienstatus vorhanden ist</Description>
+          <Bezeichnung>Klinik/Anamnese_Leitlinienstatus</Bezeichnung>
+          <Formula>not isEmptyString(Leitlinienstatus)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Leitlinienstatus</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+      </PlausibilityRules>
       <Haeufigkeiten/>
       <Kennzahlen/>
       <Ordner>
@@ -12727,7 +12846,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>3b945f5f-8bfd-4ac5-a4b3-e046044d2eff</GUID>
-      <Revision>15</Revision>
+      <Revision>16</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry>
@@ -13589,7 +13708,106 @@
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
       </Entries>
-      <PlausibilityRules/>
+      <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Die Art der Tumorprobe fehlt</Message>
+          <Description>Prüfung, ob Art der Tumorprobe vorhanden ist</Description>
+          <Bezeichnung>Tumorprobe_Art</Bezeichnung>
+          <Formula>not isEmptyString(Probenart)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Probenart</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Das Entnahmedatum der Probe fehlt</Message>
+          <Description>Prüfung, ob Entnahmedatum der Tumorprobe vorhanden ist</Description>
+          <Bezeichnung>Tumorprobe_Entnahmedatum</Bezeichnung>
+          <Formula>not isEmpty(Entnahmedatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Entnahmedatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Die Entnahmemethode zur Tumorprobe fehlt</Message>
+          <Description>Prüfung, ob Entnahmemethode der Tumorprobe vorhanden ist</Description>
+          <Bezeichnung>Tumorprobe_Entnahmemethode</Bezeichnung>
+          <Formula>not isEmptyString(Entnahmemethode)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Entnahmemethode</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Das Erstellungsdatum des Molekular-Pathologie-Befundes fehlt</Message>
+          <Description>Prüfung, ob das Erstellungsdatum des Molekular-Pathologie-Befundes vorhanden ist</Description>
+          <Bezeichnung>Tumorprobe_Erstellungsdatum</Bezeichnung>
+          <Formula>not isEmpty(Erstellungsdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Erstellungsdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Die Lokalisation der Tumorprobe fehlt</Message>
+          <Description>Prüfung, ob Lokalisation der Tumorprobe vorhanden ist</Description>
+          <Bezeichnung>Tumorprobe_Lokalisation</Bezeichnung>
+          <Formula>not isEmptyString(Lokalisation)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Lokalisation</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Der Morphologie-Code nach ICD-O-3 der Tumorprobe fehlt</Message>
+          <Description>Prüfung, ob der Morphologie-Code der Tumorprobe vorhanden ist</Description>
+          <Bezeichnung>Tumorprobe_Morphologie</Bezeichnung>
+          <Formula>not isEmptyString(Morphologie)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Morphologie</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Der Tumorzellgehalt der Probe fehlt (Wert)</Message>
+          <Description>Prüfung, ob Tumorzellgehalt (Wert) der Tumorprobe vorhanden ist</Description>
+          <Bezeichnung>Tumorprobe_Tumorzellgehalt</Bezeichnung>
+          <Formula>not isEmpty(Wert)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Wert</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+      </PlausibilityRules>
       <Haeufigkeiten/>
       <Kennzahlen/>
       <Ordner>
@@ -13642,7 +13860,7 @@
       <hatUnterformulare>true</hatUnterformulare>
       <SID>20119</SID>
       <GUID>799fe75c-f64e-4e0c-9fd9-248a94438a07</GUID>
-      <Revision>166</Revision>
+      <Revision>167</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10815">
@@ -15133,7 +15351,54 @@
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
       </Entries>
-      <PlausibilityRules/>
+      <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Das Erstellungsdatum des Therapieplans fehlt</Message>
+          <Description>Prüfung, ob Erstellungsdatum des Therapieplans vorhanden ist</Description>
+          <Bezeichnung>Therapieplan_Erstellungsdatum</Bezeichnung>
+          <Formula>not isEmpty(datum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Das Datum der Tumorkonferenz mit dem Auftrag zur histologischen Reevaluation fehlt</Message>
+          <Description>Prüfung, ob das Datum der Tumorkonferenz mit dem Auftrag zur histologischen Reevaluation vorhanden ist</Description>
+          <Bezeichnung>Therapieplan_Histologische Reevaluation_Erstellungsdatum</Bezeichnung>
+          <Formula>not isEmpty(datumtkreevaluation)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>reevaluation = '1'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datumtkreevaluation</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Das Datum der Tumorkonferenz mit der Empfehlung zur human-genetischen Beratung fehlt</Message>
+          <Description>Prüfung, ob das Datum der Tumorkonferenz mit der Empfehlung zur human-genetischen Beratung vorhanden ist</Description>
+          <Bezeichnung>Therapieplan_Human-genetische Beratung_Erstellungsdatum</Bezeichnung>
+          <Formula>not isEmpty(datumtkhumangenber)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>humangenberatung = '1'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datumtkhumangenber</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+      </PlausibilityRules>
       <Haeufigkeiten/>
       <Kennzahlen/>
       <Ordner>
@@ -15186,7 +15451,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>b6c986ee-9f6e-4052-be71-f5c20efbb7d8</GUID>
-      <Revision>8</Revision>
+      <Revision>9</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10290">
@@ -15387,7 +15652,22 @@
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
       </Entries>
-      <PlausibilityRules/>
+      <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Der Zeitpunkt, zu dem der ECOG bestimmt wurde, fehlt</Message>
+          <Description>Prüfung, ob Zeitpunkt des ECOG vorhanden ist</Description>
+          <Bezeichnung>ECOG_Zeitpunkt</Bezeichnung>
+          <Formula>not isEmpty(Datum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Datum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+      </PlausibilityRules>
       <Haeufigkeiten/>
       <Kennzahlen/>
       <Ordner>
@@ -15463,7 +15743,7 @@
       </ScriptBeimAnonymisieren>
       <SID>20119</SID>
       <GUID>04be9a21-7739-42e6-bc9d-d87741ad470a</GUID>
-      <Revision>239</Revision>
+      <Revision>240</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10853">
@@ -17388,7 +17668,64 @@
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
       </Entries>
-      <PlausibilityRules/>
+      <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Das Erstellungsdatum der Einzelempfehlung fehlt</Message>
+          <Description>Prüfung, ob das Erstellungsdatum der Einzelempfehlung vorhanden ist</Description>
+          <Bezeichnung>Einzelempfehlung_Erstellungsdatum</Bezeichnung>
+          <Formula>not isEmpty(ufeedatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufeedatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Der Evidenzlevel des Biomarkers fehlt</Message>
+          <Description>Prüfung, ob der Evidenzlevel des Biomarkers vorhanden ist</Description>
+          <Bezeichnung>Einzelempfehlung_Evidenzlevel</Bezeichnung>
+          <Formula>not isEmptyString(evidenzlevel)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>evidenzlevel</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Der Zusatz zum Evidenzlevel des Biomarkers fehlt</Message>
+          <Description>Prüfung, ob der Zusatz zum Evidenzlevel des Biomarkers vorhanden ist</Description>
+          <Bezeichnung>Einzelempfehlung_Evidenzlevelzusatz</Bezeichnung>
+          <Formula>not isEmptyString(evidenzlevelzusatz)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>evidenzlevelzusatz</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Als Priorität muss eine ganze Zahl zwischen 1 und 4 eingetragen werden</Message>
+          <Description>Prüfung, ob eine Priorität für die Einzelempfehlung vorhanden ist</Description>
+          <Bezeichnung>Einzelempfehlung_Priorität</Bezeichnung>
+          <Formula>not isEmpty(prio)&amp;#10;and&amp;#10;prio &gt;= 1&amp;#10;and&amp;#10;prio &lt;= 4</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>prio</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+      </PlausibilityRules>
       <Haeufigkeiten/>
       <Kennzahlen/>
       <Ordner>
@@ -17626,7 +17963,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>c4d6cd17-eed3-434e-ad38-6cf77b5d97cd</GUID>
-      <Revision>18</Revision>
+      <Revision>19</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentId="10346">
@@ -17841,7 +18178,22 @@
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
       </Entries>
-      <PlausibilityRules/>
+      <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Das Datum der Tumorkonferenz mit dem Auftrag zur Rebiopsie fehlt</Message>
+          <Description>Prüfung, ob das Datum der Tumorkonferenz mit dem Auftrag zur Rebiopsie vorhanden ist</Description>
+          <Bezeichnung>Rebiospie_Erstellungsdatum</Bezeichnung>
+          <Formula>not isEmpty(ufrbdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufrbdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+      </PlausibilityRules>
       <Haeufigkeiten/>
       <Kennzahlen/>
       <Ordner>
@@ -17889,7 +18241,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>e9c8ed0a-48d6-4543-9259-7c35742e3075</GUID>
-      <Revision>45</Revision>
+      <Revision>46</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry>
@@ -18606,7 +18958,52 @@
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
       </Entries>
-      <PlausibilityRules/>
+      <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Der Abbruchsgrund für die Therapielinie fehlt</Message>
+          <Description>Prüfung, ob Abbruchsgrund vorhanden ist</Description>
+          <Bezeichnung>Therapielinie_Abbruchsgrund</Bezeichnung>
+          <Formula>not isEmptyString(Abbruchsgrund)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>Beendigung = 'A'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Abbruchsgrund</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Der Beendigungsstatus der Therapielinie fehlt</Message>
+          <Description>Prüfung, ob Beendigungsstatus der Therapielinie vorhanden ist</Description>
+          <Bezeichnung>Therapielinie_Beendigungsstatus</Bezeichnung>
+          <Formula>not isEmptyString(Beendigung)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Beendigung</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Das Datum des Therapieendes fehlt</Message>
+          <Description>Prüfung, ob das Enddatum der Therapie vorhanden ist</Description>
+          <Bezeichnung>Therapielinie_Enddatum</Bezeichnung>
+          <Formula>not isEmpty(Ende)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Ende</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+      </PlausibilityRules>
       <Haeufigkeiten/>
       <Kennzahlen/>
       <Ordner>
