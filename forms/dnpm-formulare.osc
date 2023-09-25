@@ -7925,7 +7925,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>040cb02f-e206-4892-97a0-a1ae0914038f</GUID>
-      <Revision>64</Revision>
+      <Revision>65</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10662">
@@ -10024,6 +10024,329 @@
       </Entries>
       <PlausibilityRules>
         <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum der Antwort liegt vor dem Ausstellungsdatum</Message>
+          <Description>Prüfung, ob das Datum der Antwort vor dem Ausstellungsdatum zum Antrag auf Kostenübernahme liegt</Description>
+          <Bezeichnung>DatumAntwortKueAntrag vor AusstellungsdatumAntrag</Bezeichnung>
+          <Formula>dateAfterOrEquals(DatumAntwortKueAntrag, AusstellungsdatumAntrag)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;not isEmpty(AusstellungsdatumAntrag)</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>AusstellungsdatumAntrag</EntryName>
+            <EntryName>DatumAntwortKueAntrag</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Ausstellungsdatum des Antrags auf Kostenübernahme nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_AusstellungsdatumAntrag_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), AusstellungsdatumAntrag)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>AntragKostenuebernahme = '1'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>AusstellungsdatumAntrag</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Ausstellungsdatum des Antrags auf Kostenübernahme vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_AusstellungsdatumAntrag_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), AusstellungsdatumAntrag)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>AntragKostenuebernahme = '1'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>AusstellungsdatumAntrag</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Ausstellungsdatum des Antrags auf Kostenübernahme in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_AusstellungsdatumAntrag_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), AusstellungsdatumAntrag)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>AusstellungsdatumAntrag</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum der Antwort zum Antrag auf Kostenübernahme vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumAntwortKueAntrag_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), DatumAntwortKueAntrag)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>AntragKostenuebernahme = '1'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumAntwortKueAntrag</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum der Antwort zum Antrag auf Kostenübernahme in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumAntwortKueAntrag_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), DatumAntwortKueAntrag)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>AntragKostenuebernahme = '1'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumAntwortKueAntrag</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum des Follow up nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumFollowUp_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), DatumFollowUp)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumFollowUp</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum des Follow up vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumFollowUp_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), DatumFollowUp)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumFollowUp</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum des Follow up in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumFollowUp_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), DatumFollowUp)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumFollowUp</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum der Progression nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumProgression_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), DatumProgression)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>BestResponse = 'PD'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumProgression</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum der Progression vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumProgression_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), DatumProgression)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>BestResponse = 'PD'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumProgression</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum der Progression in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumProgression_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), DatumProgression)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>BestResponse = 'PD'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumProgression</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum des letzten Follow up nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_LetztesFollowUpDatum_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), LetztesFollowUpDatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>LetztesFollowUpDatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum des letzten Follow up vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_LetztesFollowUpDatum_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), LetztesFollowUpDatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>LetztesFollowUpDatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum des letzten Follow up in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_LetztesFollowUpDatum_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), LetztesFollowUpDatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>LetztesFollowUpDatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob Therapieende nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Therapieende_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), Therapieende)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>StatusTherapie = 'stopped'&amp;#10;or&amp;#10;StatusTherapie = 'completed'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Therapieende</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob Therapieende vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Therapieende_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), Therapieende)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>StatusTherapie = 'stopped'&amp;#10;or&amp;#10;StatusTherapie = 'completed'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Therapieende</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob Therapieende in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_Therapieende_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), Therapieende)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>StatusTherapie = 'stopped'&amp;#10;or&amp;#10;StatusTherapie = 'completed'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Therapieende</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob der Therapiestart nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Therapiestart_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), Therapiestart)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>StatusTherapie = 'on-going'&amp;#10;or&amp;#10;StatusTherapie = 'stopped'&amp;#10;or&amp;#10;StatusTherapie = 'completed'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Therapiestart</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob Therapiestart vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Therapiestart_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), Therapiestart)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>StatusTherapie = 'on-going'&amp;#10;or&amp;#10;StatusTherapie = 'stopped'&amp;#10;or&amp;#10;StatusTherapie = 'completed'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Therapiestart</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob Therapiestart in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_Therapiestart_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), Therapiestart)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>StatusTherapie = 'on-going'&amp;#10;or&amp;#10;StatusTherapie = 'stopped'&amp;#10;or&amp;#10;StatusTherapie = 'completed'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Therapiestart</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
           <Type>1</Type>
           <Message>Die Dosisdichte fehlt</Message>
           <Description>Prüfung, ob die Dosisdichte vorhanden ist</Description>
@@ -10053,6 +10376,39 @@
           <Statusauswirkung>0</Statusauswirkung>
           <DataFormEntries>
             <EntryName>GrundAblehnungKosten</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Der Therapiestart befindet sich nach dem Therapieende</Message>
+          <Description>Prüfung, ob Therapiestart nach Therapieende</Description>
+          <Bezeichnung>Therapiestart nach Therapieende</Bezeichnung>
+          <Formula>Therapiestart.before(Therapieende) or Therapiestart.equals(Therapieende)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>(StatusTherapie = 'stopped'&amp;#10;or&amp;#10;StatusTherapie = 'completed')&amp;#10;and&amp;#10;not isEmpty(Therapiestart)&amp;#10;and&amp;#10;not isEmpty(Therapieende)&amp;#10;</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Therapieende</EntryName>
+            <EntryName>Therapiestart</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Der Todeszeitpunkt entspricht nicht dem Sterbedatum</Message>
+          <Description>Prüfung, ob Todeszeitpunkt ungleich Sterbedatum</Description>
+          <Bezeichnung>Todeszeitpunkt ungleich Sterbedatum</Bezeichnung>
+          <Formula>Todeszeitpunkt.equals(patientData.getDeathdate())</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>not isEmpty(Todeszeitpunkt)&amp;#10;and&amp;#10;not isEmpty(patientData.getDeathdate())</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Todeszeitpunkt</EntryName>
           </DataFormEntries>
         </PlausibilityRule>
       </PlausibilityRules>
@@ -10120,7 +10476,7 @@
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>d2689561-8119-4907-b2e3-ce63e5fafef0</GUID>
-      <Revision>224</Revision>
+      <Revision>225</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10316">
@@ -12753,6 +13109,132 @@
       <PlausibilityRules>
         <PlausibilityRule>
           <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Anmeldedatum zum MTB nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_AnmeldedatumMTB_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), AnmeldedatumMTB)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>AnmeldedatumMTB</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Anmeldedatum zum MTB vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_AnmeldedatumMTB_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), AnmeldedatumMTB)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>AnmeldedatumMTB</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Anmeldedatum zum MTB in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_AnmeldedatumMTB_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), AnmeldedatumMTB)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>AnmeldedatumMTB</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum der Erstdiagnose nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumErstdiagnose_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), DatumErstdiagnose)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumErstdiagnose</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum der Erstdiagnose vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumErstdiagnose_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), DatumErstdiagnose)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumErstdiagnose</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum der Erstdiagnose in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumErstdiagnose_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), DatumErstdiagnose)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumErstdiagnose</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum der Progression nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumProgression_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), DatumProgression)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumProgression</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum der Progression vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumProgression_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), DatumProgression)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumProgression</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum der Progression in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_DatumProgression_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), DatumProgression)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>DatumProgression</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
           <Message>Das Erstdiagnosedatum fehlt</Message>
           <Description>Prüfung, ob Erstdiagnosedatum vorhanden ist</Description>
           <Bezeichnung>Klinik/Anamnese_Erstdiagnosedatum</Bezeichnung>
@@ -12846,7 +13328,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>3b945f5f-8bfd-4ac5-a4b3-e046044d2eff</GUID>
-      <Revision>16</Revision>
+      <Revision>17</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry>
@@ -13710,6 +14192,93 @@
       </Entries>
       <PlausibilityRules>
         <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Entnahmedatum nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Entnahmedatum_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), Entnahmedatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Entnahmedatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Entnahmedatum vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Entnahmedatum_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), Entnahmedatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Entnahmedatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Entnahmedatum in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_Entnahmedatum_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), Entnahmedatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Entnahmedatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Erstellungsdatum der Mol. Diagnostik vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Erstellungsdatum_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), Erstellungsdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Erstellungsdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Erstellungsdatum der Mol. Diagnostik in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_Erstellungsdatum_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), Erstellungsdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Erstellungsdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Entnahmedatum liegt nach dem Erstellungsdatum</Message>
+          <Description>Prüfung, ob das Entnahmedatum nach dem Erstellungsdatum liegt</Description>
+          <Bezeichnung>Entnahmedatum nach Erstellungsdatum</Bezeichnung>
+          <Formula>Entnahmedatum.before(Erstellungsdatum) or Entnahmedatum.equals(Erstellungsdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>not isEmpty(Entnahmedatum)&amp;#10;and&amp;#10;not isEmpty(Erstellungsdatum)&amp;#10;</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Entnahmedatum</EntryName>
+            <EntryName>Erstellungsdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
           <Type>1</Type>
           <Message>Die Art der Tumorprobe fehlt</Message>
           <Description>Prüfung, ob Art der Tumorprobe vorhanden ist</Description>
@@ -13860,7 +14429,7 @@
       <hatUnterformulare>true</hatUnterformulare>
       <SID>20119</SID>
       <GUID>799fe75c-f64e-4e0c-9fd9-248a94438a07</GUID>
-      <Revision>167</Revision>
+      <Revision>168</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10815">
@@ -15353,6 +15922,144 @@
       </Entries>
       <PlausibilityRules>
         <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum des (ersten) MTB nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_datum_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), datum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum des (ersten) MTB vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_datum_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), datum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum des (ersten) MTB in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_datum_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), datum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur humangenet. Beratung nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_datumtkhumangenber_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), datumtkhumangenber)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>humangenberatung = '1'&amp;#10;and&amp;#10;getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datumtkhumangenber</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur humangenet. Beratung vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_datumtkhumangenber_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), datumtkhumangenber)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>humangenberatung = '1'&amp;#10;and&amp;#10;getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datumtkhumangenber</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur humangenet. Beratung in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_datumtkhumangenber_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), datumtkhumangenber)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>humangenberatung = '1'&amp;#10;and&amp;#10;getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datumtkhumangenber</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur Reevaluation nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_datumtkreevaluation_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), datumtkreevaluation)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>reevaluation = '1'&amp;#10;and&amp;#10;getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datumtkreevaluation</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur Reevaluation vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_datumtkreevaluation_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), datumtkreevaluation)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>reevaluation = '1'&amp;#10;and&amp;#10;getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datumtkreevaluation</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur Reevaluation in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_datumtkreevaluation_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), datumtkreevaluation)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>reevaluation = '1'&amp;#10;and&amp;#10;getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>datumtkreevaluation</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
           <Type>1</Type>
           <Message>Das Erstellungsdatum des Therapieplans fehlt</Message>
           <Description>Prüfung, ob Erstellungsdatum des Therapieplans vorhanden ist</Description>
@@ -15451,7 +16158,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>b6c986ee-9f6e-4052-be71-f5c20efbb7d8</GUID>
-      <Revision>9</Revision>
+      <Revision>10</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10290">
@@ -15654,6 +16361,48 @@
       </Entries>
       <PlausibilityRules>
         <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum der Bestimmung des ECOG-Status nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Datum_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), Datum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Datum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum der Bestimmung des ECOG-Status vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Datum_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), Datum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Datum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum der Bestimmung des ECOG-Status in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_Datum_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), Datum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Datum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
           <Type>1</Type>
           <Message>Der Zeitpunkt, zu dem der ECOG bestimmt wurde, fehlt</Message>
           <Description>Prüfung, ob Zeitpunkt des ECOG vorhanden ist</Description>
@@ -15743,7 +16492,7 @@
       </ScriptBeimAnonymisieren>
       <SID>20119</SID>
       <GUID>04be9a21-7739-42e6-bc9d-d87741ad470a</GUID>
-      <Revision>240</Revision>
+      <Revision>241</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10853">
@@ -17670,6 +18419,54 @@
       </Entries>
       <PlausibilityRules>
         <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum der Einzelempfehlung nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_ufeedatum_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), ufeedatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufeedatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum der Einzelempfehlung vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_ufeedatum_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), ufeedatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufeedatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum der Einzelempfehlung in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_ufeedatum_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), ufeedatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufeedatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
           <Type>1</Type>
           <Message>Das Erstellungsdatum der Einzelempfehlung fehlt</Message>
           <Description>Prüfung, ob das Erstellungsdatum der Einzelempfehlung vorhanden ist</Description>
@@ -17709,6 +18506,22 @@
           <Statusauswirkung>0</Statusauswirkung>
           <DataFormEntries>
             <EntryName>evidenzlevelzusatz</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Die NCT-Nummer entspricht nicht dem gültigen Muster</Message>
+          <Description>Prüfung, ob NCT-Nummer außerhalb des gültigen Musters liegt</Description>
+          <Bezeichnung>Einzelempfehlung_NCT-Nummer</Bezeichnung>
+          <Formula>studienct.size() = 11&amp;#10;and&amp;#10;studienct.substring(1,3) = 'NCT'</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>hatstudie = '1'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>studienct</EntryName>
           </DataFormEntries>
         </PlausibilityRule>
         <PlausibilityRule>
@@ -17963,7 +18776,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>c4d6cd17-eed3-434e-ad38-6cf77b5d97cd</GUID>
-      <Revision>19</Revision>
+      <Revision>20</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentId="10346">
@@ -18180,6 +18993,54 @@
       </Entries>
       <PlausibilityRules>
         <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur Rebiopsie nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_ufrbdatum_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), ufrbdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufrbdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur Rebiopsie vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_ufrbdatum_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), ufrbdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufrbdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur Rebiopsie in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_ufrbdatum_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), ufrbdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufrbdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
           <Type>1</Type>
           <Message>Das Datum der Tumorkonferenz mit dem Auftrag zur Rebiopsie fehlt</Message>
           <Description>Prüfung, ob das Datum der Tumorkonferenz mit dem Auftrag zur Rebiopsie vorhanden ist</Description>
@@ -18241,7 +19102,7 @@
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>e9c8ed0a-48d6-4543-9259-7c35742e3075</GUID>
-      <Revision>46</Revision>
+      <Revision>47</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry>
@@ -18959,6 +19820,107 @@
         </Entry>
       </Entries>
       <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Der Beginn der Therapielinie liegt nach ihrem Ende</Message>
+          <Description>Prüfung, ob Beginn der Therapielinie nach dem Ende liegt</Description>
+          <Bezeichnung>Beginn nach Ende</Bezeichnung>
+          <Formula>Beginn.before(Ende) or Beginn.equals(Ende)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>not isEmpty(Beginn)&amp;#10;and&amp;#10;not isEmpty(Ende)</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Beginn</EntryName>
+            <EntryName>Ende</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob der Beginn der Therapielinie nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Beginn_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), Beginn)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Beginn</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob der Beginn der Therapielinie vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Beginn_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), Beginn)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Beginn</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob der Beginn der Therapielinie in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_Beginn_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), Beginn)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Beginn</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Ende der Therapielinie nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Ende_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), Ende)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Ende</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Ende der Therapielinie vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_Ende_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), Ende)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Ende</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Ende der Therapielinie in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_Ende_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), Ende)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>Ende</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
         <PlausibilityRule>
           <Type>1</Type>
           <Message>Der Abbruchsgrund für die Therapielinie fehlt</Message>
