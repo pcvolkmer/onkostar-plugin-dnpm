@@ -1,9 +1,9 @@
 package DNPM.analyzer;
 
 import DNPM.VerweisVon;
+import DNPM.security.DelegatingDataBasedPermissionEvaluator;
 import DNPM.security.IllegalSecuredObjectAccessException;
 import DNPM.security.PermissionType;
-import DNPM.security.PersonPoolBasedPermissionEvaluator;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,16 +33,16 @@ public class DNPMHelper extends BackendService {
 
     private final SystemtherapieService systemtherapieService;
 
-    private final PersonPoolBasedPermissionEvaluator personPoolBasedPermissionEvaluator;
+    private final DelegatingDataBasedPermissionEvaluator delegatingDataBasedPermissionEvaluator;
 
     public DNPMHelper(
             final IOnkostarApi onkostarApi,
             final SystemtherapieService systemtherapieService,
-            final PersonPoolBasedPermissionEvaluator permissionEvaluator
+            final DelegatingDataBasedPermissionEvaluator permissionEvaluator
     ) {
         this.onkostarApi = onkostarApi;
         this.systemtherapieService = systemtherapieService;
-        this.personPoolBasedPermissionEvaluator = permissionEvaluator;
+        this.delegatingDataBasedPermissionEvaluator = permissionEvaluator;
     }
 
     @Override
@@ -237,7 +237,6 @@ public class DNPMHelper extends BackendService {
 
     }
 
-    // TODO Achtung, keine Sicherheitsprüfung, darüber kann für jeden Patienten die Liste mit ECOG-Status abgerufen werden!
     public List<SystemtherapieService.EcogStatusWithDate> getEcogStatus(final Map<String, Object> input) {
         var pid = AnalyzerUtils.getRequiredId(input, "PatientId");
         if (pid.isEmpty()) {
@@ -251,7 +250,7 @@ public class DNPMHelper extends BackendService {
             return List.of();
         }
 
-        if (personPoolBasedPermissionEvaluator.hasPermission(SecurityContextHolder.getContext().getAuthentication(), patient, PermissionType.READ)) {
+        if (delegatingDataBasedPermissionEvaluator.hasPermission(SecurityContextHolder.getContext().getAuthentication(), patient, PermissionType.READ)) {
             return systemtherapieService.ecogStatus(patient);
         }
 

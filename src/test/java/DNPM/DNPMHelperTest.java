@@ -1,6 +1,7 @@
 package DNPM;
 
 import DNPM.analyzer.DNPMHelper;
+import DNPM.security.DelegatingDataBasedPermissionEvaluator;
 import DNPM.security.IllegalSecuredObjectAccessException;
 import DNPM.security.PermissionType;
 import DNPM.security.PersonPoolBasedPermissionEvaluator;
@@ -36,7 +37,7 @@ class DNPMHelperTest {
 
     private SystemtherapieService systemtherapieService;
 
-    private PersonPoolBasedPermissionEvaluator personPoolBasedPermissionEvaluator;
+    private DelegatingDataBasedPermissionEvaluator delegatingDataBasedPermissionEvaluator;
 
     private DNPMHelper dnpmHelper;
 
@@ -44,12 +45,12 @@ class DNPMHelperTest {
     void setup(
             @Mock IOnkostarApi onkostarApi,
             @Mock SystemtherapieService systemtherapieService,
-            @Mock PersonPoolBasedPermissionEvaluator personPoolBasedPermissionEvaluator
+            @Mock DelegatingDataBasedPermissionEvaluator delegatingDataBasedPermissionEvaluator
     ) {
         this.onkostarApi = onkostarApi;
         this.systemtherapieService = systemtherapieService;
-        this.personPoolBasedPermissionEvaluator = personPoolBasedPermissionEvaluator;
-        this.dnpmHelper = new DNPMHelper(onkostarApi, systemtherapieService, personPoolBasedPermissionEvaluator);
+        this.delegatingDataBasedPermissionEvaluator = delegatingDataBasedPermissionEvaluator;
+        this.dnpmHelper = new DNPMHelper(onkostarApi, systemtherapieService, delegatingDataBasedPermissionEvaluator);
     }
 
     @Test
@@ -257,7 +258,7 @@ class DNPMHelperTest {
 
         @Test
         void testShouldReturnEcogStatusList() {
-            when(personPoolBasedPermissionEvaluator.hasPermission(any(), any(Patient.class), any(PermissionType.class)))
+            when(delegatingDataBasedPermissionEvaluator.hasPermission(any(), any(Patient.class), any(PermissionType.class)))
                     .thenReturn(true);
 
             doAnswer(invocationOnMock -> {
@@ -277,7 +278,7 @@ class DNPMHelperTest {
 
         @Test
         void testShouldNotReturnEcogStatusListIfNoPermissionGranted() {
-            when(personPoolBasedPermissionEvaluator.hasPermission(any(), any(Patient.class), any(PermissionType.class)))
+            when(delegatingDataBasedPermissionEvaluator.hasPermission(any(), any(Patient.class), any(PermissionType.class)))
                     .thenReturn(false);
 
             doAnswer(invocationOnMock -> {
