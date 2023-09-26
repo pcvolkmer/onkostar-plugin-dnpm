@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OnkostarEditor>
   <InfoXML>
-    <DatumXML>2023-09-25Z</DatumXML>
+    <DatumXML>2023-09-26Z</DatumXML>
     <Name>OnkoStar</Name>
     <Version>2.11.1.6</Version>
   </InfoXML>
@@ -6309,11 +6309,11 @@
         <Valid>true</Valid>
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
-      <GUID>d2689561-8119-4907-b2e3-ce63e5fafef0</GUID>
-      <Revision>225</Revision>
+      <GUID>21334cad-91c9-4817-9cba-550b544cd71a</GUID>
+      <Revision>226</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
-        <Entry parentRefId="10316">
+        <Entry parentRefId="10976">
           <Type>datefield</Type>
           <Name>AnmeldedatumMTB</Name>
           <Description>Anmeldedatum für das MTB</Description>
@@ -6374,12 +6374,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>a73e3f8e-6681-496b-a6de-7a8a35a98d1c</GUID>
+          <GUID>f04e7767-885d-43bf-ab0f-11a665ac6635</GUID>
           <Revision>5</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10312">
+        <Entry parentRefId="10978">
           <Type>combobox</Type>
           <Name>AnsprechenLetzteLinie</Name>
           <Description>Ansprechen</Description>
@@ -6440,12 +6440,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>dd386d81-4c41-4ecc-bde4-61bac1e46e68</GUID>
+          <GUID>9bbcd7c3-649a-4a0c-9771-7a5d312126fa</GUID>
           <Revision>9</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10308">
+        <Entry parentRefId="10977">
           <Type>textfield</Type>
           <Name>AnzahlTherapielinien</Name>
           <Description>Anzahl durchlaufener Therapielinien</Description>
@@ -6503,12 +6503,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>2afc71ea-d1fd-43b1-8b3e-261dd0d4d16d</GUID>
+          <GUID>90fe4610-48e6-44f0-8c7c-3aa09c470e33</GUID>
           <Revision>9</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentId="10325">
+        <Entry parentId="10973">
           <Type>section</Type>
           <Name>Bereich1</Name>
           <Description>frühere Tumorerkrankung</Description>
@@ -6570,12 +6570,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>b25c05c8-635f-445f-9a35-b7006ac94a89</GUID>
+          <GUID>8a0f3c04-c447-4bdb-a204-610ccd815718</GUID>
           <Revision>10</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentId="10321">
+        <Entry parentId="10974">
           <Type>section</Type>
           <Name>Bereich2</Name>
           <Description>Patientendaten</Description>
@@ -6632,12 +6632,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>02df67e0-c499-4cad-b0fb-067ff34e3448</GUID>
+          <GUID>64caa683-bd17-4b40-a442-b67df1981df8</GUID>
           <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentId="10315">
+        <Entry parentId="10975">
           <Type>section</Type>
           <Name>Bereich3</Name>
           <Description>Diagnose</Description>
@@ -6694,12 +6694,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>9026316b-5efe-434f-8fc5-293ce72dd865</GUID>
+          <GUID>149201f6-2943-4547-942d-38664a70dd32</GUID>
           <Revision>4</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentId="10316">
+        <Entry parentId="10976">
           <Type>section</Type>
           <Name>Bereich4</Name>
           <Description>aktueller Status</Description>
@@ -6756,12 +6756,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>b5431ba1-1b4d-44f2-9975-de2d799b85b1</GUID>
+          <GUID>1a32ce78-357d-4788-b9e9-4498478e4220</GUID>
           <Revision>5</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentId="10308">
+        <Entry parentId="10977">
           <Type>section</Type>
           <Name>Bereich6</Name>
           <Description>Vortherapien</Description>
@@ -6818,12 +6818,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>cdbeee08-2d99-4aaa-a0ff-bcd3a7b95c4c</GUID>
+          <GUID>e2ec1c66-662f-4a5d-be73-80f8f26d4384</GUID>
           <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentId="10312">
+        <Entry parentId="10978">
           <Type>section</Type>
           <Name>Bereich7</Name>
           <Description>Letzte Therapielinie</Description>
@@ -6880,12 +6880,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>8d17980d-4130-48e0-8077-0e8db3eac01b</GUID>
+          <GUID>ad733a7f-97dd-4458-90b5-b8ee1f0bc54f</GUID>
           <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentId="10342">
+        <Entry parentId="10979">
           <Type>section</Type>
           <Name>Consent</Name>
           <Description>Consent</Description>
@@ -6942,12 +6942,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>4c794582-99c0-4335-b7ae-c4a8b654388e</GUID>
+          <GUID>87fd88f8-41a9-43bb-82ad-0e8a5601b218</GUID>
           <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentId="10322" parentRefId="10342">
+        <Entry parentId="10980" parentRefId="10979">
           <Type>formReference</Type>
           <Name>ConsentDNPM</Name>
           <Description>Consent DNPM</Description>
@@ -7013,12 +7013,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>ea0c60c9-e635-4e06-82c8-99bb3ea46a81</GUID>
+          <GUID>10d1c6dd-92fe-497e-9c17-e8e74e190ab9</GUID>
           <Revision>25</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10342">
+        <Entry parentRefId="10979">
           <Type>datefield</Type>
           <Name>ConsentDatumEinwilligungDNPM</Name>
           <Description>Datum der Einwilligung</Description>
@@ -7076,12 +7076,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>c0fc40e4-1dc5-4e91-acda-eac86cebe8bb</GUID>
+          <GUID>27731944-bac5-41ba-904c-9c394699d9ca</GUID>
           <Revision>4</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentId="10328" parentRefId="10342">
+        <Entry parentId="10982" parentRefId="10979">
           <Type>formReference</Type>
           <Name>ConsentMTB</Name>
           <Description>Consent MTB-Register</Description>
@@ -7140,12 +7140,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>3b851328-3771-49ab-8440-c0080de746d2</GUID>
+          <GUID>899c0fe9-cc97-4890-9ea1-d93858ab8e17</GUID>
           <Revision>4</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10342">
+        <Entry parentRefId="10979">
           <Type>combobox</Type>
           <Name>ConsentStatusEinwilligungDNPM</Name>
           <Description>Einwilligung Datenübermittlung</Description>
@@ -7203,7 +7203,7 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>da6e7fb7-0d7a-4882-aa4e-bc62c52985ae</GUID>
+          <GUID>1fc0bc0b-3a98-4faa-9c3f-4219b761efce</GUID>
           <Revision>5</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
@@ -7266,12 +7266,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>1af042e1-e35a-4e93-9dce-cc52cede995e</GUID>
+          <GUID>48440f9e-0781-4111-ab4a-5d290da76188</GUID>
           <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10315">
+        <Entry parentRefId="10975">
           <Type>datefield</Type>
           <Name>DatumErstdiagnose</Name>
           <Description>Datum der Erstdiagnose</Description>
@@ -7332,12 +7332,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>631a08c4-393e-4540-9c15-1494d5dd769b</GUID>
+          <GUID>0a35bbcf-620e-49c6-95ef-4bd89611e9df</GUID>
           <Revision>7</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10312">
+        <Entry parentRefId="10978">
           <Type>datefield</Type>
           <Name>DatumProgression</Name>
           <Description>Datum der Progression</Description>
@@ -7398,7 +7398,7 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>937d4334-dc22-4eb9-802e-8555fb9520b9</GUID>
+          <GUID>9ef3c9c5-3252-4818-a5e9-73710d93cf64</GUID>
           <Revision>9</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
@@ -7464,12 +7464,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>533505ed-d133-4877-ad6f-ac593d3c9ecc</GUID>
+          <GUID>ff98f67f-2da0-4d6e-83a9-2fbde14c942c</GUID>
           <Revision>4</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10325">
+        <Entry parentRefId="10973">
           <Type>lookup</Type>
           <Name>FruehereTumorDiagnose</Name>
           <Description>Diagnose</Description>
@@ -7538,12 +7538,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>07eb9cc5-a8f8-4989-a65e-6cc8b4b074fe</GUID>
+          <GUID>8bbb5df6-e0ea-4753-9d01-9cc669b0a58e</GUID>
           <Revision>8</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10325">
+        <Entry parentRefId="10973">
           <Type>textfield</Type>
           <Name>FruehereTumoreAlter</Name>
           <Description>Erkrankungsalter</Description>
@@ -7611,12 +7611,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>f8dea6de-d9a3-4595-be87-3d06220e276d</GUID>
+          <GUID>468993be-c6e5-4f14-9620-bc31000a988c</GUID>
           <Revision>6</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10325">
+        <Entry parentRefId="10973">
           <Type>combobox</Type>
           <Name>FruehereTumorerkrankung</Name>
           <Description>Frühere Tumorerkrankung</Description>
@@ -7677,12 +7677,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>a4fcb0fc-a4c4-4851-b4b9-6b5620f42947</GUID>
+          <GUID>443131de-901c-4ea3-a804-5594fe76707c</GUID>
           <Revision>4</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10321">
+        <Entry parentRefId="10974">
           <Type>datefield</Type>
           <Name>Geburtsdatum</Name>
           <Description>Geburtsdatum</Description>
@@ -7740,12 +7740,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>7ff011a7-8a10-4e01-8f21-f4fcd2f7321e</GUID>
+          <GUID>547d5622-dc27-4520-b839-ab05417a12d3</GUID>
           <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10321">
+        <Entry parentRefId="10974">
           <Type>combobox</Type>
           <Name>Geschlecht</Name>
           <Description>Geschlecht</Description>
@@ -7803,12 +7803,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>54ae1eb7-05c0-48b1-b86d-877554021067</GUID>
+          <GUID>e6f369fc-fb92-4317-a529-4c12008928b0</GUID>
           <Revision>4</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10312">
+        <Entry parentRefId="10978">
           <Type>combobox</Type>
           <Name>GrundTherapieende</Name>
           <Description>Grund für Therapieende</Description>
@@ -7869,7 +7869,7 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>cddf97d5-e725-4bc3-a5a1-d4ea598d5b29</GUID>
+          <GUID>3802c1f6-a638-4e77-8dca-eac43605e861</GUID>
           <Revision>9</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
@@ -7935,12 +7935,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>c63b461c-2233-4e42-962f-31a2bae0c661</GUID>
+          <GUID>0c4e08e9-7ef5-4052-9124-d42a5df09930</GUID>
           <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10315">
+        <Entry parentRefId="10975">
           <Type>lookup</Type>
           <Name>ICD10</Name>
           <Description>ICD-10</Description>
@@ -8002,12 +8002,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>363bcb92-681f-4662-b677-1cd8b4fbf248</GUID>
+          <GUID>4f28a2e4-2869-4654-a0f6-c07ea91d4daa</GUID>
           <Revision>9</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10315">
+        <Entry parentRefId="10975">
           <Type>lookup</Type>
           <Name>ICDO3Histologie</Name>
           <Description>ICD-O-3-Histologie</Description>
@@ -8069,12 +8069,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>31d74420-1dc2-4699-a5bf-a13044d9d4ff</GUID>
+          <GUID>68093b2c-f632-422b-9cf7-52c24a3a49e3</GUID>
           <Revision>4</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10315">
+        <Entry parentRefId="10975">
           <Type>lookup</Type>
           <Name>ICDO3Lokalisation</Name>
           <Description>ICD-O-3-Lokalisation</Description>
@@ -8136,20 +8136,23 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>55043a9d-748c-4708-a77a-b122022e87d8</GUID>
+          <GUID>2732febb-bd61-405b-9463-938c452d7e27</GUID>
           <Revision>4</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10321">
+        <Entry parentRefId="10974">
           <Type>textfield</Type>
           <Name>Krankenkasse</Name>
           <Description>Krankenkasse</Description>
           <Active>true</Active>
-          <Readonly>true</Readonly>
+          <Readonly>false</Readonly>
           <Printable>true</Printable>
           <Position>4.0</Position>
           <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
           <MultipleChoice>false</MultipleChoice>
           <DefaultValue/>
           <Alignment>0</Alignment>
@@ -8199,12 +8202,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>f01671c3-4568-43ef-9348-e1f1d5ee5ef0</GUID>
-          <Revision>5</Revision>
+          <GUID>58c7f563-f69e-4407-a178-a04a6216ce4e</GUID>
+          <Revision>6</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10308">
+        <Entry parentRefId="10977">
           <Type>combobox</Type>
           <Name>LeitlinienTherapieDurchl</Name>
           <Description>Alle leitliniengerechte Therapien durchlaufen</Description>
@@ -8265,12 +8268,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>cf0f94de-41cc-4017-9a94-26e4d8d56d86</GUID>
+          <GUID>8ac384f2-df1b-42cf-8680-ecd2eb3fed6f</GUID>
           <Revision>7</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10308">
+        <Entry parentRefId="10977">
           <Type>combobox</Type>
           <Name>LeitlinienTherapieProgr</Name>
           <Description>Progress unter Leitliniengerechter Therapie</Description>
@@ -8331,12 +8334,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>8f35d064-3bbf-46b0-bbb5-8a8ac7487cbd</GUID>
+          <GUID>1e0f4e4f-e351-4afd-b22b-1769f2eaf815</GUID>
           <Revision>7</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10316">
+        <Entry parentRefId="10976">
           <Type>combobox</Type>
           <Name>Leitlinienstatus</Name>
           <Description>Leitlinienstatus</Description>
@@ -8397,12 +8400,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>e647c810-f279-44b2-8504-23b76202cebc</GUID>
+          <GUID>bf1eb213-feb1-4b9a-93e1-b023fe19847a</GUID>
           <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentId="10340" parentRefId="10316">
+        <Entry parentId="11002" parentRefId="10976">
           <Type>formReference</Type>
           <Name>MTB</Name>
           <Description>Molekulares Tumorboard</Description>
@@ -8468,12 +8471,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>e8f70686-d224-4a28-9432-c844965b08ad</GUID>
+          <GUID>5c34e96d-7e3d-40e8-a3a1-6d5e2be0806a</GUID>
           <Revision>7</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10312">
+        <Entry parentRefId="10978">
           <Type>datefield</Type>
           <Name>Therapiebeginn</Name>
           <Description>Therapiebeginn</Description>
@@ -8534,12 +8537,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>10a8e870-f993-4dcc-a801-1faa753cdc42</GUID>
+          <GUID>8cd242e0-8719-47d6-a42f-6863ac92925e</GUID>
           <Revision>11</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10312">
+        <Entry parentRefId="10978">
           <Type>datefield</Type>
           <Name>Therapieende</Name>
           <Description>Therapieende</Description>
@@ -8600,12 +8603,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>6ab3f435-2ac3-49c4-8a85-5b2fb724c548</GUID>
+          <GUID>058b1b2e-c5d5-457e-80ec-1d455634821f</GUID>
           <Revision>12</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10321">
+        <Entry parentRefId="10974">
           <Type>datefield</Type>
           <Name>Todesdatum</Name>
           <Description>Todesdatum</Description>
@@ -8666,7 +8669,7 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>18b010d5-76e1-47ff-aa15-6689ab026c69</GUID>
+          <GUID>22bebeea-3097-429b-9d4b-ffbe788b5ca1</GUID>
           <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
@@ -8732,7 +8735,7 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>6ccb2fd1-da09-430d-bd18-d74ef3999f6a</GUID>
+          <GUID>46b1401d-58ed-4496-8baf-50a8b01e1890</GUID>
           <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
@@ -8798,7 +8801,7 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>70746b3d-5a3d-44c2-94a1-e8bfba4adbcc</GUID>
+          <GUID>a326c2b0-c716-45df-9e28-f430e3e48367</GUID>
           <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
@@ -8861,12 +8864,12 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>ccc49bfa-2033-4848-a8ac-d52347263b52</GUID>
+          <GUID>043f8ab8-ce6c-456e-8670-d189786d03c0</GUID>
           <Revision>5</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="10315">
+        <Entry parentRefId="10975">
           <Type>combobox</Type>
           <Name>WHOGrad</Name>
           <Description>WHO-Grad</Description>
@@ -8934,7 +8937,7 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>43e06b35-c1e9-48f8-b751-5219ad6b9ecc</GUID>
+          <GUID>d68584da-c8c9-450b-af83-55151390b53a</GUID>
           <Revision>7</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
@@ -18036,7 +18039,7 @@
       </ScriptBeimAnonymisieren>
       <SID>20119</SID>
       <GUID>4311876c-8ab0-4d50-8334-61e7dd9b4d6e</GUID>
-      <Revision>242</Revision>
+      <Revision>241</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="10921">
@@ -18543,7 +18546,7 @@
           </Filter>
           <NotSpecified>false</NotSpecified>
           <Scripts>
-            <Code>const availableStore = new Ext.data.ArrayStore({&amp;#10; fields: [&amp;#10; {name: 'kategorieName'},&amp;#10; {name: 'version'},&amp;#10; {name: 'code'},&amp;#10; {name: 'type'},&amp;#10; {name: 'studiennummer'},&amp;#10; {name: 'shortDesc'},&amp;#10; {name: 'description'}&amp;#10; ]&amp;#10;});&amp;#10;&amp;#10;let pluginRequestsDisabled = false;&amp;#10;&amp;#10;const findButtonFieldFormInformation = function (context) {&amp;#10; const findElemId = function (elem) {&amp;#10; if (elem.tagName === 'BODY') {&amp;#10; return undefined;&amp;#10; }&amp;#10;&amp;#10; if (elem.tagName === 'TABLE') {&amp;#10; return elem.id;&amp;#10; }&amp;#10;&amp;#10; return findElemId(elem.parentElement);&amp;#10; }&amp;#10;&amp;#10; const formInfo = function (formItem, blockIndex = undefined) {&amp;#10; if (formItem.xtype === 'buttonField') {&amp;#10; return formInfo(formItem.ownerCt, formItem.blockIndex);&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'panel' || formItem.xtype === 'sectionField') {&amp;#10; return formInfo(formItem.ownerCt, blockIndex);&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'subformField') {&amp;#10; return {&amp;#10; isSubform: true,&amp;#10; formName: formItem.formName,&amp;#10; subformFieldName: formItem.subformName,&amp;#10; blockIndex: blockIndex&amp;#10; };&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'form') {&amp;#10; return {&amp;#10; isSubform: false,&amp;#10; };&amp;#10; }&amp;#10;&amp;#10; console.warn('No information found!');&amp;#10; return undefined;&amp;#10; }&amp;#10;&amp;#10; if (context.genericEditForm &amp;&amp; document.activeElement.tagName === 'BUTTON') {&amp;#10; let elemId = findElemId(document.activeElement);&amp;#10; if (elemId) {&amp;#10; let formItem = context.genericEditForm.down('#' + elemId);&amp;#10; if (formItem) {&amp;#10; return formInfo(formItem);&amp;#10; }&amp;#10; }&amp;#10; }&amp;#10;&amp;#10; return undefined;&amp;#10;}&amp;#10;&amp;#10;const request = function (query, includeInactive) {&amp;#10; if (pluginRequestsDisabled) return;&amp;#10; executePluginMethod(&amp;#10; 'EinzelempfehlungAnalyzer',&amp;#10; 'getStudien',&amp;#10; includeInactive ? {q: query, inactive: true} : {q: query},&amp;#10; function (response) {&amp;#10; if (response.status.code &lt; 0) {&amp;#10; onFailure();&amp;#10; return;&amp;#10; }&amp;#10; onSuccess(response.result);&amp;#10; },&amp;#10; false&amp;#10; );&amp;#10;};&amp;#10;&amp;#10;const itemMapping = function (item) {&amp;#10; return [item.kategorieName, item.version, item.code, item.type, item.studiennummer, item.shortDesc, item.description];&amp;#10;}&amp;#10;&amp;#10;const onFailure = function () {&amp;#10; pluginRequestsDisabled = true;&amp;#10; Ext.MessageBox.show({&amp;#10; title: 'Hinweis',&amp;#10; msg: 'Plugin "DNPM" nicht verfügbar.',&amp;#10; buttons: Ext.MessageBox.OKCANCEL&amp;#10; });&amp;#10;};&amp;#10;&amp;#10;const onSuccess = function (d) {&amp;#10; available = d;&amp;#10; const extData = available.map(itemMapping);&amp;#10; availableStore.loadData(extData);&amp;#10;}&amp;#10;&amp;#10;const save = (selectedItemIndex) =&gt; {&amp;#10; this.getFieldByEntriesArray('studie', blockIndex).setValue(available[selectedItemIndex].shortDesc);&amp;#10; this.getFieldByEntriesArray('studienct', blockIndex).setValue(available[selectedItemIndex].studiennummer);&amp;#10;}&amp;#10;&amp;#10;const showDialog = function (blockIndex) {&amp;#10; let selectedItemIndex = -1;&amp;#10; let queryString = '';&amp;#10; let includeInactive = false;&amp;#10;&amp;#10; const gridColumns = [&amp;#10; {header: 'Kategorie', width: 80, sortable: false, dataIndex: 'kategorieName'},&amp;#10; {header: 'Version', width: 80, sortable: false, dataIndex: 'version'},&amp;#10; {header: 'Typ', width: 120, sortable: false, dataIndex: 'type'},&amp;#10; {header: 'Studiennummer', width: 120, sortable: true, dataIndex: 'studiennummer'},&amp;#10; {header: 'Name', width: 320, sortable: true, dataIndex: 'shortDesc'},&amp;#10; {header: 'Beschreibung', width: 400, sortable: false, dataIndex: 'description'}&amp;#10; ];&amp;#10;&amp;#10;&amp;#10; const query = new Ext.form.field.Text({&amp;#10; name: 'query',&amp;#10; fieldLabel: 'Suche',&amp;#10; padding: 8,&amp;#10; listeners: {&amp;#10; change: (f) =&gt; {&amp;#10; queryString = f.value;&amp;#10; request(queryString, includeInactive);&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const inactiveSelection = new Ext.form.field.Checkbox({&amp;#10; name: 'inactive',&amp;#10; fieldLabel: 'Inaktive Studien einschließen',&amp;#10; labelWidth: 240,&amp;#10; padding: 8,&amp;#10; listeners: {&amp;#10; handler: (_, checked) =&gt; {&amp;#10; includeInactive = checked;&amp;#10; request(queryString, includeInactive);&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const availableGrid = new Ext.grid.GridPanel({&amp;#10; title: 'Verfügbare Studien',&amp;#10; store: availableStore,&amp;#10; loadMask: true,&amp;#10; border: true,&amp;#10; columns: gridColumns,&amp;#10; flex: 1,&amp;#10; listeners: {&amp;#10; itemclick: (dv, record, item, index) =&gt; {&amp;#10; selectedItemIndex = index;&amp;#10; },&amp;#10; itemdblclick: (dv, record, item, index) =&gt; {&amp;#10; save(selectedItemIndex);&amp;#10; let win = Ext.WindowManager.getActive();&amp;#10; if (win) {&amp;#10; win.close();&amp;#10; }&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const layout = Ext.create('Ext.Panel', {&amp;#10; flex: 1,&amp;#10; layout: {&amp;#10; type: 'vbox',&amp;#10; align: 'stretch'&amp;#10; },&amp;#10; items: [query, inactiveSelection, availableGrid]&amp;#10; });&amp;#10;&amp;#10; Ext.create('Ext.window.Window', {&amp;#10; title: 'Studienauswahl',&amp;#10; height: 600,&amp;#10; width: 1080,&amp;#10; layout: 'fit',&amp;#10; items: [layout],&amp;#10; buttons: [{&amp;#10; id: 'btnAdd',&amp;#10; text: 'Studie auswählen',&amp;#10; handler: () =&gt; {&amp;#10; save(selectedItemIndex);&amp;#10; let win = Ext.WindowManager.getActive();&amp;#10; if (win) {&amp;#10; win.close();&amp;#10; }&amp;#10; }&amp;#10; }, {&amp;#10; text: 'Abbrechen',&amp;#10; cls: 'onko-btn-cta',&amp;#10; handler: () =&gt; {&amp;#10; let win = Ext.WindowManager.getActive();&amp;#10; if (win) {&amp;#10; win.close();&amp;#10; }&amp;#10; }&amp;#10; }]&amp;#10; }).show();&amp;#10;&amp;#10; request();&amp;#10;};&amp;#10;&amp;#10;let buttonFieldFormInformation = findButtonFieldFormInformation(this);&amp;#10;if (buttonFieldFormInformation &amp;&amp; buttonFieldFormInformation.blockIndex) {&amp;#10; blockIndex = buttonFieldFormInformation.blockIndex;&amp;#10; showDialog(blockIndex);&amp;#10;}</Code>
+            <Code>const availableStore = new Ext.data.ArrayStore({&amp;#10; fields: [&amp;#10; {name: 'kategorieName'},&amp;#10; {name: 'version'},&amp;#10; {name: 'code'},&amp;#10; {name: 'type'},&amp;#10; {name: 'studiennummer'},&amp;#10; {name: 'shortDesc'},&amp;#10; {name: 'description'}&amp;#10; ]&amp;#10;});&amp;#10;&amp;#10;let pluginRequestsDisabled = false;&amp;#10;&amp;#10;const findButtonFieldFormInformation = function (context) {&amp;#10; const findElemId = function (elem) {&amp;#10; if (elem.tagName === 'BODY') {&amp;#10; return undefined;&amp;#10; }&amp;#10;&amp;#10; if (elem.tagName === 'TABLE') {&amp;#10; return elem.id;&amp;#10; }&amp;#10;&amp;#10; return findElemId(elem.parentElement);&amp;#10; }&amp;#10;&amp;#10; const formInfo = function (formItem, blockIndex = undefined) {&amp;#10; if (formItem.xtype === 'buttonField') {&amp;#10; return formInfo(formItem.ownerCt, formItem.blockIndex);&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'panel' || formItem.xtype === 'sectionField') {&amp;#10; return formInfo(formItem.ownerCt, blockIndex);&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'subformField') {&amp;#10; return {&amp;#10; isSubform: true,&amp;#10; formName: formItem.formName,&amp;#10; subformFieldName: formItem.subformName,&amp;#10; blockIndex: blockIndex&amp;#10; };&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'form') {&amp;#10; return {&amp;#10; isSubform: false,&amp;#10; };&amp;#10; }&amp;#10;&amp;#10; console.warn('No information found!');&amp;#10; return undefined;&amp;#10; }&amp;#10;&amp;#10; if (context.genericEditForm &amp;&amp; document.activeElement.tagName === 'BUTTON') {&amp;#10; let elemId = findElemId(document.activeElement);&amp;#10; if (elemId) {&amp;#10; let formItem = context.genericEditForm.down('#' + elemId);&amp;#10; if (formItem) {&amp;#10; return formInfo(formItem);&amp;#10; }&amp;#10; }&amp;#10; }&amp;#10;&amp;#10; return undefined;&amp;#10;}&amp;#10;&amp;#10;const request = function (query, includeInactive) {&amp;#10; if (pluginRequestsDisabled) return;&amp;#10; executePluginMethod(&amp;#10; 'EinzelempfehlungAnalyzer',&amp;#10; 'getStudien',&amp;#10; includeInactive ? {q: query, inactive: true} : {q: query},&amp;#10; function (response) {&amp;#10; if (response.status.code &lt; 0) {&amp;#10; onFailure();&amp;#10; return;&amp;#10; }&amp;#10; onSuccess(response.result);&amp;#10; },&amp;#10; false&amp;#10; );&amp;#10;};&amp;#10;&amp;#10;const itemMapping = function (item) {&amp;#10; return [item.kategorieName, item.version, item.code, item.type, item.studiennummer, item.shortDesc, item.description];&amp;#10;}&amp;#10;&amp;#10;const onFailure = function () {&amp;#10; pluginRequestsDisabled = true;&amp;#10; Ext.MessageBox.show({&amp;#10; title: 'Hinweis',&amp;#10; msg: 'Plugin "DNPM" nicht verfügbar.',&amp;#10; buttons: Ext.MessageBox.OKCANCEL&amp;#10; });&amp;#10;};&amp;#10;&amp;#10;const onSuccess = function (d) {&amp;#10; available = d;&amp;#10; const extData = available.map(itemMapping);&amp;#10; availableStore.loadData(extData);&amp;#10;}&amp;#10;&amp;#10;const save = (selectedItemIndex) =&gt; {&amp;#10; this.getFieldByEntriesArray('studie', blockIndex).setValue(available[selectedItemIndex].shortDesc);&amp;#10; this.getFieldByEntriesArray('studienct', blockIndex).setValue(available[selectedItemIndex].studiennummer);&amp;#10;}&amp;#10;&amp;#10;const showDialog = function (blockIndex) {&amp;#10; let selectedItemIndex = -1;&amp;#10; let queryString = '';&amp;#10; let includeInactive = false;&amp;#10;&amp;#10; const gridColumns = [&amp;#10; {header: 'Kategorie', width: 80, sortable: false, dataIndex: 'kategorieName'},&amp;#10; {header: 'Version', width: 80, sortable: false, dataIndex: 'version'},&amp;#10; {header: 'Typ', width: 120, sortable: false, dataIndex: 'type'},&amp;#10; {header: 'Studiennummer', width: 120, sortable: true, dataIndex: 'studiennummer'},&amp;#10; {header: 'Name', width: 320, sortable: true, dataIndex: 'shortDesc'},&amp;#10; {header: 'Beschreibung', width: 400, sortable: false, dataIndex: 'description'}&amp;#10; ];&amp;#10;&amp;#10;&amp;#10; const query = new Ext.form.field.Text({&amp;#10; name: 'query',&amp;#10; fieldLabel: 'Suche',&amp;#10; padding: 8,&amp;#10; listeners: {&amp;#10; change: (f) =&gt; {&amp;#10; queryString = f.value;&amp;#10; request(queryString, includeInactive);&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const inactiveSelection = new Ext.form.field.Checkbox({&amp;#10; name: 'inactive',&amp;#10; fieldLabel: 'Inaktive Studien einschließen',&amp;#10; labelWidth: 240,&amp;#10; padding: 8,&amp;#10; listeners: {&amp;#10; handler: (_, checked) =&gt; {&amp;#10; includeInactive = checked;&amp;#10; request(queryString, includeInactive);&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const availableGrid = new Ext.grid.GridPanel({&amp;#10; title: 'Verfügbare Studien',&amp;#10; store: availableStore,&amp;#10; loadMask: true,&amp;#10; border: true,&amp;#10; columns: gridColumns,&amp;#10; flex: 1,&amp;#10; overflowY: 'scroll',&amp;#10; listeners: {&amp;#10; itemclick: (dv, record, item, index) =&gt; {&amp;#10; selectedItemIndex = index;&amp;#10; },&amp;#10; itemdblclick: (dv, record, item, index) =&gt; {&amp;#10; save(selectedItemIndex);&amp;#10; let win = Ext.WindowManager.getActive();&amp;#10; if (win) {&amp;#10; win.close();&amp;#10; }&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const layout = Ext.create('Ext.Panel', {&amp;#10; flex: 1,&amp;#10; layout: {&amp;#10; type: 'vbox',&amp;#10; align: 'stretch'&amp;#10; },&amp;#10; items: [query, inactiveSelection, availableGrid]&amp;#10; });&amp;#10;&amp;#10; Ext.create('Ext.window.Window', {&amp;#10; title: 'Studienauswahl',&amp;#10; height: 600,&amp;#10; width: 1080,&amp;#10; layout: 'fit',&amp;#10; items: [layout],&amp;#10; buttons: [{&amp;#10; id: 'btnAdd',&amp;#10; text: 'Studie auswählen',&amp;#10; handler: () =&gt; {&amp;#10; save(selectedItemIndex);&amp;#10; let win = Ext.WindowManager.getActive();&amp;#10; if (win) {&amp;#10; win.close();&amp;#10; }&amp;#10; }&amp;#10; }, {&amp;#10; text: 'Abbrechen',&amp;#10; cls: 'onko-btn-cta',&amp;#10; handler: () =&gt; {&amp;#10; let win = Ext.WindowManager.getActive();&amp;#10; if (win) {&amp;#10; win.close();&amp;#10; }&amp;#10; }&amp;#10; }]&amp;#10; }).show();&amp;#10;&amp;#10; request();&amp;#10;};&amp;#10;&amp;#10;let buttonFieldFormInformation = findButtonFieldFormInformation(this);&amp;#10;if (buttonFieldFormInformation &amp;&amp; buttonFieldFormInformation.blockIndex) {&amp;#10; blockIndex = buttonFieldFormInformation.blockIndex;&amp;#10; showDialog(blockIndex);&amp;#10;}</Code>
             <Valid>true</Valid>
           </Scripts>
           <ReferencedDataFormField/>
@@ -18584,7 +18587,7 @@
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>760839f7-bdf0-4ee5-ac74-adbd92c54346</GUID>
-          <Revision>6</Revision>
+          <Revision>5</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
