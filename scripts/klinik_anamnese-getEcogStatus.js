@@ -15,7 +15,8 @@ executePluginMethod('DNPMHelper', 'getEcogStatus', {PatientId: getPatient().id},
 
         let uf = resp.result
             .map(item => {
-                let date = item.date.match(/^\d{4}-\d{2}-\d{2}/);
+                let dateOffset = new Date(item.date).getTimezoneOffset() * -60 * 1000;
+                let date = new Date(new Date(item.date).getTime() + dateOffset).toISOString().match(/^\d{4}-\d{2}-\d{2}/);
                 let ecog = [];
                 ecog.val = item.status;
                 ecog.version = version;
