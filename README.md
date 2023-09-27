@@ -8,6 +8,8 @@ Zum Erstellen einer neuen Version der enthaltenen Datei(en) bitte den folgenden 
 osc-variant modify --sorted --strip --output dnpm-formulare.osc <QUELLDATEI> 
 ```
 
+Die für die Formulare verwendeten Formularscripte sind zudem im Verzeichnis [`/scripts``](/scripts) hinterlegt und können dort eingesehen werden.  
+
 ## ATC-Codes
 
 Dieses Plugin integriert das ATC-Codes-Plugin vollständig. Dieses kann daher nicht zusätzlich in Onkostar installiert werden.
@@ -30,7 +32,7 @@ VALUES (
 Aktuell werden folgende Consent-Formulare unterstützt:
 
 * `MR.Consent`
-* `Excel-Formular` (UKW - Beinhaltet Consent-Angaben)
+* `Excel-Formular` (UKW - beinhaltet Consent-Angaben)
 
 ```mermaid
 classDiagram
@@ -179,7 +181,7 @@ Mögliche Berechtigungsanforderungen sind sowohl für die `PermissionEvaluator`e
 * `PermissionType.READ`
 * `PermissionType.READ_WRITE`
 
-### Prüfung der Berechtigung mit Hilfe eines Permission Evaluators
+### Prüfung der Berechtigung mithilfe eines Permission Evaluators
 
 Zur Prüfung der Berechtigung können die implementierten `PermissionEvaluator`en einzeln als auch gemeinsam genutzt werden:
 
@@ -313,7 +315,7 @@ class DemoAnalyzer implements IProcedureAnalyzer {
                 // Keine Berechtigung gegeben.
                 // Durch die Annotationen wird eine berechtigungsprüfung vorgenommen,
                 // schlägt diese fehl, wird eine IllegalSecuredObjectAccessException geworfen.
-                // In diesem Fall wird hier eine leere Zeichenkette als Rückgabewert zurück gegeben.
+                // In diesem Fall wird hier eine leere Zeichenkette als Rückgabewert zurückgegeben.
                 return "";
             }
         }
