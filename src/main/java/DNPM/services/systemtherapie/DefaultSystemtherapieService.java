@@ -4,7 +4,6 @@ import DNPM.services.SettingsService;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Patient;
 import de.itc.onkostar.api.Procedure;
-import de.itc.onkostar.api.ProcedureEditStateType;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -77,7 +76,6 @@ public class DefaultSystemtherapieService implements SystemtherapieService {
     public List<EcogStatusWithDate> ecogStatus(Patient patient) {
         return patient.getDiseases().stream()
                 .flatMap(disease -> onkostarApi.getProceduresForDiseaseByForm(disease.getId(), getFormName()).stream())
-                .filter(procedure -> procedure.getEditState() == ProcedureEditStateType.COMPLETED)
                 .filter(procedure -> null != procedure.getStartDate())
                 .sorted(Comparator.comparing(Procedure::getStartDate))
                 .map(procedure -> {
