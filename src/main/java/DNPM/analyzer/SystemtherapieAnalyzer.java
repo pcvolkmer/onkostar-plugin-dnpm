@@ -1,5 +1,6 @@
 package DNPM.analyzer;
 
+import DNPM.dto.EcogStatusWithDate;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
@@ -111,7 +112,7 @@ public class SystemtherapieAnalyzer extends Analyzer {
                 });
     }
 
-    private void updateExistingEcogVerlauf(Procedure p, List<SystemtherapieService.EcogStatusWithDate> ecogFromCompleted, Item ufEcog) {
+    private void updateExistingEcogVerlauf(Procedure p, List<EcogStatusWithDate> ecogFromCompleted, Item ufEcog) {
         var shouldSave = false;
         var existingDates = ufEcog.<List<Map<String, String>>>getValue().stream()
                 .map(v -> v.get("Datum"))
@@ -136,7 +137,7 @@ public class SystemtherapieAnalyzer extends Analyzer {
         }
     }
 
-    private void newEcogverlauf(Procedure p, List<SystemtherapieService.EcogStatusWithDate> ecogFromCompleted) {
+    private void newEcogverlauf(Procedure p, List<EcogStatusWithDate> ecogFromCompleted) {
         p.setValue("ECOGVerlauf", new Item("ECOGVerlauf", List.of()));
         for (var ecog : ecogFromCompleted) {
             var newSubProcedure = new Procedure(onkostarApi);

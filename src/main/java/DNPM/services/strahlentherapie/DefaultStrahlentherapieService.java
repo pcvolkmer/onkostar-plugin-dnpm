@@ -1,5 +1,6 @@
 package DNPM.services.strahlentherapie;
 
+import DNPM.dto.EcogStatusWithDate;
 import DNPM.services.SettingsService;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Patient;

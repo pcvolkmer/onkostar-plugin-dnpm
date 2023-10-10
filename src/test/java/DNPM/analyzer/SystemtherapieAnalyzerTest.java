@@ -1,5 +1,6 @@
 package DNPM.analyzer;
 
+import DNPM.dto.EcogStatusWithDate;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import de.itc.onkostar.api.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -54,7 +55,7 @@ class SystemtherapieAnalyzerTest {
         final var ecogDate = daysPassed(1);
         final var procedureDate = daysPassed(1);
 
-        doAnswer(invocationOnMock -> List.of(new SystemtherapieService.EcogStatusWithDate(ecogDate, "0")))
+        doAnswer(invocationOnMock -> List.of(new EcogStatusWithDate(ecogDate, "0")))
                 .when(systemtherapieService).ecogStatus(any(Patient.class));
 
         var patient = new Patient(onkostarApi);
@@ -114,7 +115,7 @@ class SystemtherapieAnalyzerTest {
         final var ecogDate = daysPassed(28);
         final var procedureDate = daysPassed(1);
 
-        doAnswer(invocationOnMock -> List.of(new SystemtherapieService.EcogStatusWithDate(ecogDate, "0")))
+        doAnswer(invocationOnMock -> List.of(new EcogStatusWithDate(ecogDate, "0")))
                 .when(systemtherapieService).ecogStatus(any(Patient.class));
 
         var patient = new Patient(onkostarApi);
