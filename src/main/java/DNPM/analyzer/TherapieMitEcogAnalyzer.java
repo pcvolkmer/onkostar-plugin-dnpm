@@ -1,6 +1,7 @@
 package DNPM.analyzer;
 
 import DNPM.dto.EcogStatusWithDate;
+import DNPM.services.strahlentherapie.StrahlentherapieService;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.IOnkostarApi;
@@ -21,28 +22,31 @@ import java.util.stream.Collectors;
 /**
  * Diese Klasse implementiert ein Plugin, welches Aktionen nach Bearbeitung eines Formulars zur Systemtherapie durchführt.
  *
- * @since 0.4.0
+ * @since 0.6.0
  */
 @Component
-public class SystemtherapieAnalyzer extends Analyzer {
+public class TherapieMitEcogAnalyzer extends Analyzer {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final IOnkostarApi onkostarApi;
 
+    private final StrahlentherapieService strahlentherapieService;
     private final SystemtherapieService systemtherapieService;
 
-    public SystemtherapieAnalyzer(
+    public TherapieMitEcogAnalyzer(
             final IOnkostarApi onkostarApi,
+            final StrahlentherapieService strahlentherapieService,
             final SystemtherapieService systemtherapieService
     ) {
         this.onkostarApi = onkostarApi;
+        this.strahlentherapieService = strahlentherapieService;
         this.systemtherapieService = systemtherapieService;
     }
 
     @Override
     public String getDescription() {
-        return "Aktualisiert verknüpfte Formulare nach Änderungen im Formularen vom Typ Systemtherapie";
+        return "Aktualisiert verknüpfte Formulare nach Änderungen in Formularen vom Typ Strahlen-/Systemtherapie mit ECOG-Status";
     }
 
     /**
@@ -56,7 +60,9 @@ public class SystemtherapieAnalyzer extends Analyzer {
     @Override
     public boolean isRelevantForAnalyzer(Procedure procedure, Disease disease) {
         return null != procedure && null != disease && (
-                procedure.getFormName().equals("OS.Systemische Therapie")
+                procedure.getFormName().equals("OS.Strahlentherapie")
+                        || procedure.getFormName().equals("OS.Strahlentherapie.VarianteUKW")
+                        || procedure.getFormName().equals("OS.Systemische Therapie")
                         || procedure.getFormName().equals("OS.Systemische Therapie.VarianteUKW")
         );
     }
@@ -90,12 +96,18 @@ public class SystemtherapieAnalyzer extends Analyzer {
             return;
         }
 
-        var ecogFromCompleted = systemtherapieService.ecogStatus(procedure.getPatient())
+        var ecog = strahlentherapieService.ecogStatus(procedure.getPatient())
                 .stream()
                 .filter(ecogStatusWithDate -> ecogStatusWithDate.getDate().after(disease.getDiagnosisDate()))
                 .collect(Collectors.toList());
 
-        if (ecogFromCompleted.isEmpty()) {
+        ecog.addAll(systemtherapieService.ecogStatus(procedure.getPatient())
+                .stream()
+                .filter(ecogStatusWithDate -> ecogStatusWithDate.getDate().after(disease.getDiagnosisDate()))
+                .collect(Collectors.toList()));
+
+
+        if (ecog.isEmpty()) {
             // Nothing to do
             return;
         }
@@ -105,9 +117,9 @@ public class SystemtherapieAnalyzer extends Analyzer {
                 .forEach(p -> {
                     var ufEcog = p.getValue("ECOGVerlauf");
                     if (null != ufEcog && ufEcog.getValue() instanceof List) {
-                        updateExistingEcogVerlauf(p, ecogFromCompleted, ufEcog);
+                        updateExistingEcogVerlauf(p, ecog, ufEcog);
                     } else {
-                        newEcogverlauf(p, ecogFromCompleted);
+                        newEcogverlauf(p, ecog);
                     }
                 });
     }

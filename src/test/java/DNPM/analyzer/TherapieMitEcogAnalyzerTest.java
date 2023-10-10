@@ -1,6 +1,7 @@
 package DNPM.analyzer;
 
 import DNPM.dto.EcogStatusWithDate;
+import DNPM.services.strahlentherapie.StrahlentherapieService;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import de.itc.onkostar.api.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,13 +21,15 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class SystemtherapieAnalyzerTest {
+class TherapieMitEcogAnalyzerTest {
 
     private IOnkostarApi onkostarApi;
 
+    private StrahlentherapieService strahlentherapieService;
+
     private SystemtherapieService systemtherapieService;
 
-    private SystemtherapieAnalyzer systemtherapieAnalyzer;
+    private TherapieMitEcogAnalyzer therapieMitEcogAnalyzer;
 
     private Disease dummyDisease(int id, Date diagnosisDate) {
         var disease = new Disease(onkostarApi);
@@ -42,11 +45,13 @@ class SystemtherapieAnalyzerTest {
     @BeforeEach
     void setUp(
             @Mock IOnkostarApi onkostarApi,
+            @Mock StrahlentherapieService strahlentherapieService,
             @Mock SystemtherapieService systemtherapieService
     ) {
         this.onkostarApi = onkostarApi;
+        this.strahlentherapieService = strahlentherapieService;
         this.systemtherapieService = systemtherapieService;
-        this.systemtherapieAnalyzer = new SystemtherapieAnalyzer(onkostarApi, systemtherapieService);
+        this.therapieMitEcogAnalyzer = new TherapieMitEcogAnalyzer(onkostarApi, strahlentherapieService, systemtherapieService);
     }
 
     @Test
@@ -73,7 +78,7 @@ class SystemtherapieAnalyzerTest {
 
         doAnswer(invocationOnMock -> List.of(procedure)).when(onkostarApi).getProceduresForDiseaseByForm(anyInt(), anyString());
 
-        systemtherapieAnalyzer.analyze(procedure, dummyDisease(10, diagnosisDate));
+        therapieMitEcogAnalyzer.analyze(procedure, dummyDisease(10, diagnosisDate));
 
         var idCaptor = ArgumentCaptor.forClass(Integer.class);
         var formNameCaptor = ArgumentCaptor.forClass(String.class);
@@ -103,7 +108,7 @@ class SystemtherapieAnalyzerTest {
         procedure.setPatient(patient);
         procedure.setValue("ECOGvorTherapie", new Item("ECOGvorTherapie", 1));
 
-        systemtherapieAnalyzer.analyze(procedure, dummyDisease(10, diagnosisDate));
+        therapieMitEcogAnalyzer.analyze(procedure, dummyDisease(10, diagnosisDate));
 
         verify(onkostarApi, times(0)).getProceduresForDiseaseByForm(anyInt(), anyString());
         verify(onkostarApi, times(0)).saveProcedure(any(Procedure.class), anyBoolean());
@@ -129,10 +134,32 @@ class SystemtherapieAnalyzerTest {
         procedure.setPatient(patient);
         procedure.setValue("ECOGvorTherapie", new Item("ECOGvorTherapie", 1));
 
-        systemtherapieAnalyzer.analyze(procedure, dummyDisease(10, diagnosisDate));
+        therapieMitEcogAnalyzer.analyze(procedure, dummyDisease(10, diagnosisDate));
 
         verify(onkostarApi, times(0)).getProceduresForDiseaseByForm(anyInt(), anyString());
         verify(onkostarApi, times(0)).saveProcedure(any(Procedure.class), anyBoolean());
+    }
+
+    @Test
+    void shouldRequestEcogFromStrahlentherapieAndSystemtherapie() {
+        final var diagnosisDate = daysPassed(7);
+        final var procedureDate = daysPassed(1);
+
+        var patient = new Patient(onkostarApi);
+        patient.setId(1);
+
+        var procedure = new Procedure(onkostarApi);
+        procedure.setId(1000);
+        procedure.setStartDate(procedureDate);
+        procedure.setEditState(ProcedureEditStateType.COMPLETED);
+        procedure.setPatientId(1);
+        procedure.setPatient(patient);
+        procedure.setValue("ECOGvorTherapie", new Item("ECOGvorTherapie", 1));
+
+        therapieMitEcogAnalyzer.analyze(procedure, dummyDisease(10, diagnosisDate));
+
+        verify(strahlentherapieService, times(1)).ecogStatus(any());
+        verify(systemtherapieService, times(1)).ecogStatus(any());
     }
 
 }
