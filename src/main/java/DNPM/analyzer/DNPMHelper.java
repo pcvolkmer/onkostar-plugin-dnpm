@@ -1,5 +1,6 @@
 package DNPM.analyzer;
 
+import DNPM.dto.EcogStatusWithDate;
 import DNPM.VerweisVon;
 import DNPM.security.DelegatingDataBasedPermissionEvaluator;
 import DNPM.security.IllegalSecuredObjectAccessException;
@@ -237,7 +238,7 @@ public class DNPMHelper extends BackendService {
 
     }
 
-    public List<SystemtherapieService.EcogStatusWithDate> getEcogStatus(final Map<String, Object> input) {
+    public List<EcogStatusWithDate> getEcogStatus(final Map<String, Object> input) {
         var pid = AnalyzerUtils.getRequiredId(input, "PatientId");
         if (pid.isEmpty()) {
             logger.error("Kein Parameter 'PatientId' angegeben, gebe leere Liste zurück");
