@@ -345,3 +345,17 @@ Danach Ausführen des Befehls:
 ```shell
 ./mvnw package
 ```
+
+## Testen des Plugins und Code-Voverage
+
+Die Entwicklung des Plugins erfolgt mit automatisierten Tests. Diese können zusammen mit einem Bericht über die Testabdeckung
+durch Ausführung des Befehls
+
+```shell
+./mvnw clean verify
+```
+
+ausgeführt werden.
+
+Treten Fehler auf, so wird dies angezeigt. Einen Bericht über die Testabdeckung finden Sie als HTML-Seite unter
+`target/site/jacoco/index.html`.
