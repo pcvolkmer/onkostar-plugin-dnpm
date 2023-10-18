@@ -332,7 +332,7 @@ Für das Bauen des Plugins ist zwingend JDK in Version 11 erforderlich.
 Spätere Versionen des JDK beinhalten einige Methoden nicht mehr, die von Onkostar und dort benutzten Libraries verwendet
 werden.
 
-Voraussetzung ist das Kopieren der Datei `onkostar-api-2.11.1.5.jar` (oder neuer) in das Projektverzeichnis `libs`.
+Voraussetzung ist das Kopieren der Datei `onkostar-api-2.11.1.6.jar` (oder neuer) in das Projektverzeichnis `libs`.
 
 Weiterhin verwendet dieses Plugin das [ATC-Codes-Plugin](https://github.com/CCC-MF/onkostar-plugin-atccodes).
 Die zugehörige JAR-Datei muss ebenfalls in das Projektverzeichnis `libs` kopiert werden. Aktuell wird Version 0.6.0 verwendet.
