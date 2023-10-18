@@ -21,13 +21,13 @@ jobs:
         run: |
           curl --user dnpm:${{ secrets.PACKAGE_TOKEN }} \
             https://git.dnpm.dev/api/packages/Plugin-JF-Onkostar/generic/onkostar-api/2.11.1.6/onkostar-api-2.11.1.6.jar \
-            --output libs/onkostar-api-2.11.1.6.jar
+            --output ${{ github.workspace }}/libs/onkostar-api-2.11.1.6.jar
 
       - name: Fetch ATC-Codes-Plugin
         run: |
           curl \
             https://github.com/CCC-MF/onkostar-plugin-atccodes/releases/download/v0.6.0/onkostar-plugin-atccodes-0.6.0.jar \
-            --output libs/onkostar-plugin-atccodes-0.6.0.jar
+            --output ${{ github.workspace }}/libs/onkostar-plugin-atccodes-0.6.0.jar
 
       - name: Execute tests
         run: mvn --batch-mode verify
