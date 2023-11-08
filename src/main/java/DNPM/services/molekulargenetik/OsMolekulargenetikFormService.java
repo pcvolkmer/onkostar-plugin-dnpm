@@ -10,18 +10,18 @@ import java.util.stream.Collectors;
 public class OsMolekulargenetikFormService implements MolekulargenetikFormService {
 
     /**
-     * Ermittelt alle (unterstützten) Varianten zur Prozedur eines Formulars "OS.Molekulargenetik"
+     * Ermittelt alle (unterstützten) Varianten zur Prozedur eines Formulars "OS.Molekulargenetik" (oder Variante)
      * Unterstützte Varianten sind:
      * <uL>
      *     <li>Einfache Variante
      *     <li>CNV
      *     <li>Fusion
-     * @param procedure Die Prozedur zum Formular "OS.Molekulargenetik"
+     * @param procedure Die Prozedur zum Formular "OS.Molekulargenetik" (oder Variante)
      * @return Die unterstützten Varianten oder eine leere Liste, wenn keine Varianten gefunden wurden.
      */
     @Override
     public List<Variant> getVariants(Procedure procedure) {
-        if (! "OS.Molekulargenetik".equals(procedure.getFormName())) {
+        if (! procedureWithUsableFormVariant(procedure)) {
             return List.of();
         }
 
@@ -36,5 +36,10 @@ public class OsMolekulargenetikFormService implements MolekulargenetikFormServic
                 .map(Optional::get)
                 .collect(Collectors.toList());
 
+    }
+
+    private boolean procedureWithUsableFormVariant(Procedure procedure) {
+        return "OS.Molekulargenetik".equals(procedure.getFormName())
+                || "UKER.Molekulargenetik".equals(procedure.getFormName());
     }
 }
