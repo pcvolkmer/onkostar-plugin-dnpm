@@ -1,32 +1,6 @@
-/*
- * MIT License
- *
- * 2023 Comprehensive Cancer Center Mainfranken
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
 package DNPM.services.therapieplan;
 
 import DNPM.services.FormService;
-import DNPM.services.therapieplan.DefaultTherapieplanService;
-import DNPM.services.therapieplan.TherapieplanService;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Item;
 import de.itc.onkostar.api.Procedure;
@@ -40,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -128,6 +103,55 @@ class DefaultTherapieplanServiceTest {
         assertThat(capturedProcedure.getValue("reftkreevaluation").getInt()).isEqualTo(procedureId);
         assertThat(capturedProcedure.getValue("datumtkreevaluation")).isNotNull();
         assertThat(capturedProcedure.getValue("datumtkreevaluation").getDate()).isEqualTo(testDate);
+    }
+
+    @Test
+    void shouldFindFollowUps() {
+        doAnswer(invocationOnMock -> {
+            var testProcedure = baseProcedure(onkostarApi);
+            testProcedure.setId(procedureId);
+            testProcedure.setFormName("DNPM UF Einzelempfehlung");
+            testProcedure.addDiseaseId(123);
+            return testProcedure;
+        }).when(onkostarApi).getProcedure(anyInt());
+
+        doAnswer(invocationOnMock -> {
+            var diseaseId = invocationOnMock.getArgument(0, Integer.class);
+            var formName = invocationOnMock.getArgument(1, String.class);
+            var procedure = baseProcedure(onkostarApi);
+            procedure.addDiseaseId(diseaseId);
+            procedure.setFormName(formName);
+            procedure.setValue("LinkTherapieempfehlung", new Item("LinkTherapieempfehlung", procedureId));
+            return List.of(procedure);
+        }).when(onkostarApi).getProceduresForDiseaseByForm(anyInt(), anyString());
+
+        var followUps = this.service.findReferencedFollowUpsForSubform(1);
+
+        assertThat(followUps).hasSize(1)
+                .allSatisfy(procedure -> assertThat(procedure.getFormName()).isEqualTo("DNPM FollowUp"));
+    }
+
+    @Test
+    void shouldFindFollowUpsById() {
+        var testProcedure = baseProcedure(onkostarApi);
+        testProcedure.setId(procedureId);
+        testProcedure.setFormName("DNPM UF Einzelempfehlung");
+        testProcedure.addDiseaseId(123);
+
+        doAnswer(invocationOnMock -> {
+            var diseaseId = invocationOnMock.getArgument(0, Integer.class);
+            var formName = invocationOnMock.getArgument(1, String.class);
+            var procedure = baseProcedure(onkostarApi);
+            procedure.addDiseaseId(diseaseId);
+            procedure.setFormName(formName);
+            procedure.setValue("LinkTherapieempfehlung", new Item("LinkTherapieempfehlung", procedureId));
+            return List.of(procedure);
+        }).when(onkostarApi).getProceduresForDiseaseByForm(anyInt(), anyString());
+
+        var followUps = this.service.findReferencedFollowUpsForSubform(testProcedure);
+
+        assertThat(followUps).hasSize(1)
+                .allSatisfy(procedure -> assertThat(procedure.getFormName()).isEqualTo("DNPM FollowUp"));
     }
 
     private static final int procedureId = 1234;
