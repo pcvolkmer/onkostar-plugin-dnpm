@@ -37,15 +37,10 @@ import java.util.stream.Collectors;
 import static DNPM.services.FormService.hasValue;
 import static DNPM.services.FormService.isYes;
 
-public class MultipleMtbTherapieplanService implements TherapieplanService {
-
-    private final IOnkostarApi onkostarApi;
-
-    private final FormService formService;
+public class MultipleMtbTherapieplanService extends AbstractTherapieplanService {
 
     public MultipleMtbTherapieplanService(final IOnkostarApi onkostarApi, final FormService formService) {
-        this.onkostarApi = onkostarApi;
-        this.formService = formService;
+        super(onkostarApi, formService);
     }
 
     @Override
