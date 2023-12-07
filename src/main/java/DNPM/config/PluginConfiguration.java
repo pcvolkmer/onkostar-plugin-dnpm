@@ -7,6 +7,8 @@ import DNPM.services.molekulargenetik.MolekulargenetikFormService;
 import DNPM.services.molekulargenetik.OsMolekulargenetikFormService;
 import DNPM.services.mtb.DefaultMtbService;
 import DNPM.services.mtb.MtbService;
+import DNPM.services.strahlentherapie.DefaultStrahlentherapieService;
+import DNPM.services.strahlentherapie.StrahlentherapieService;
 import DNPM.services.systemtherapie.DefaultSystemtherapieService;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import DNPM.services.therapieplan.TherapieplanServiceFactory;
@@ -54,6 +56,14 @@ public class PluginConfiguration {
             final SettingsService settingsService
     ) {
         return new DefaultSystemtherapieService(onkostarApi, settingsService);
+    }
+
+    @Bean
+    public StrahlentherapieService strahlentherapieService(
+            final IOnkostarApi onkostarApi,
+            final SettingsService settingsService
+    ) {
+        return new DefaultStrahlentherapieService(onkostarApi, settingsService);
     }
 
     @Bean
