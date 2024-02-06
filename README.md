@@ -73,7 +73,7 @@ INSERT INTO einstellung (name, wert, kategorie, optionen, beschreibung)
 VALUES (
  'mehrere_mtb_in_mtbepisode',
  'true',
- 'DNPM',
+ 'System',
  '[{"key": "true", "value": "Ja"},{"key": "false", "value": "Nein"}]',
  'Angabe, ob mehrere MTBs je MTB-Episode verwendet werden.'
 );
@@ -167,7 +167,7 @@ INSERT INTO einstellung (name, wert, kategorie, beschreibung)
 VALUES (
  'systemtherapieform',
  'OS.Systemische Therapie',
- 'DNPM',
+ 'System',
  'Zu verwendendes Formular für die systemische Therapie'
 );
 ```
