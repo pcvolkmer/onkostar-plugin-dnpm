@@ -24,7 +24,7 @@ INSERT INTO einstellung (name, wert, kategorie, beschreibung)
 VALUES (
  'consentform',
  'MR.Consent',
- 'DNPM',
+ 'System',
  'Zu verwendendes Consent-Formular'
 );
 ```
