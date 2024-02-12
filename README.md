@@ -10,6 +10,18 @@ osc-variant modify --sorted --strip --output dnpm-formulare.osc <QUELLDATEI>
 
 Die für die Formulare verwendeten Formularscripte sind zudem im Verzeichnis [`/scripts``](/scripts) hinterlegt und können dort eingesehen werden.  
 
+## Konfiguration
+
+Dieses Plugin erlaubt die Konfiguration über Onkostar-Einstellungen.
+Hierzu gibt es die Konfigurationsparameter:
+
+* `constentform`: Zu verwendendes Constent-Formular
+* `systemtherapieform`: Zu verwendendes Formular für die systemische Therapie.
+* `mehrere_mtb_in_mtbepisode`: Angabe, ob mehrere MTBs je MTB-Episode verwendet werden.
+
+_Achtung!_ Sollten diese Konfigurationsparameter noch in der Kategorie "DNPM" enthalten sein, bitte auf "System" umstellen,
+da die ansonsten nicht aus Formularscripten erreichbar sind.
+
 ## ATC-Codes
 
 Dieses Plugin integriert das ATC-Codes-Plugin vollständig. Dieses kann daher nicht zusätzlich in Onkostar installiert werden.
@@ -159,7 +171,8 @@ In der Klasse `DefaultSystemtherapieService` wird zur Laufzeit der erforderliche
 An dieser Stelle kann auch eine eigene Implementierung - eine neue Klasse, die das Interface `ProzedurToProzedurwerteMapper` implementiert -
 integriert werden, indem das zu verwendende Formular (Formularname) und die zu verwendende Mapping-Klasse für den Formularnamen angegeben wird.
 
-Hierbei kann in der Einstellung `systemtherapieform` festgelegt werden, dass ein anderes Formular als "OS.Systemische Therapie" verwendet werden soll.
+Hierbei kann in der Einstellung `systemtherapieform` festgelegt werden, dass ein anderes Formular als "OS.
+Systemische Therapie" verwendet werden soll.
 Diese Einstellung muss manuell in der Datenbank angelegt werden und kann danach in Onkostar verändert werden.
 
 ```
