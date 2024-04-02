@@ -92,6 +92,7 @@ class PersonPoolBasedPermissionEvaluatorTest {
     @Test
     void testShouldGrantPermissionByProcedureObject() {
         var patient = new Patient(onkostarApi);
+        patient.setId(1);
         patient.setPersonPoolCode("Pool2");
 
         var object = new Procedure(onkostarApi);
@@ -107,6 +108,7 @@ class PersonPoolBasedPermissionEvaluatorTest {
     void testShouldGrantPermissionByProcedureIdAndType() {
         doAnswer(invocationOnMock -> {
             var patient = new Patient(onkostarApi);
+            patient.setId(1);
             patient.setPersonPoolCode("Pool2");
 
             var object = new Procedure(onkostarApi);
@@ -124,6 +126,7 @@ class PersonPoolBasedPermissionEvaluatorTest {
     @Test
     void testShouldDenyPermissionByProcedureObject() {
         var patient = new Patient(onkostarApi);
+        patient.setId(1);
         patient.setPersonPoolCode("Pool1");
 
         var object = new Procedure(onkostarApi);
@@ -139,6 +142,7 @@ class PersonPoolBasedPermissionEvaluatorTest {
     void testShouldDenyPermissionByProcedureIdAndType() {
         doAnswer(invocationOnMock -> {
             var patient = new Patient(onkostarApi);
+            patient.setId(1);
             patient.setPersonPoolCode("Pool1");
 
             var object = new Procedure(onkostarApi);
