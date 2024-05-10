@@ -66,17 +66,7 @@ public class Merkmalskatalog extends BackendService {
         String[] spaltenArray = spalten.get().split("\\s*,\\s*");
 
         try {
-            SessionFactory sessionFactory = onkostarApi.getSessionFactory();
-            Session session = sessionFactory.getCurrentSession();
-
-            String sql = "SELECT p.id, p.code, p.shortdesc, p.description, p.note, p.synonyms "
-                    + "FROM property_catalogue "
-                    + "LEFT JOIN property_catalogue_version ON property_catalogue_version.datacatalog_id = property_catalogue.id "
-                    + "LEFT JOIN property_catalogue_version_entry p ON p.property_version_id = property_catalogue_version.id "
-                    + "WHERE name = '" + merkmalskatalog.get() + "' AND aktiv = 1 "
-                    + "ORDER BY position ASC";
-
-            SQLQuery query = session.createSQLQuery(sql);
+            SQLQuery query = getSqlQuery(merkmalskatalog.get());
 
             for (String s : spaltenArray) {
                 query.addScalar(s, StandardBasicTypes.STRING);
@@ -89,5 +79,19 @@ public class Merkmalskatalog extends BackendService {
             logger.error("Fehler bei der Ausführung von getMerkmalskatalog()", e);
             return null;
         }
+    }
+
+    private SQLQuery getSqlQuery(String merkmalskatalog) {
+        SessionFactory sessionFactory = onkostarApi.getSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+
+        String sql = "SELECT p.id, p.code, p.shortdesc, p.description, p.note, p.synonyms "
+                + "FROM property_catalogue "
+                + "LEFT JOIN property_catalogue_version ON property_catalogue_version.datacatalog_id = property_catalogue.id "
+                + "LEFT JOIN property_catalogue_version_entry p ON p.property_version_id = property_catalogue_version.id "
+                + "WHERE name = '" + merkmalskatalog + "' AND aktiv = 1 "
+                + "ORDER BY position ASC";
+
+        return session.createSQLQuery(sql);
     }
 }
