@@ -4,7 +4,6 @@ import DNPM.analyzer.DNPMHelper;
 import DNPM.security.DelegatingDataBasedPermissionEvaluator;
 import DNPM.security.IllegalSecuredObjectAccessException;
 import DNPM.security.PermissionType;
-import DNPM.security.PersonPoolBasedPermissionEvaluator;
 import DNPM.services.systemtherapie.SystemtherapieService;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Item;
