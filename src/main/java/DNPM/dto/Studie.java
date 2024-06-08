@@ -63,7 +63,7 @@ public class Studie {
     }
 
     private boolean hasEudraCtNumber() {
-        return null != studiennummer && studiennummer.matches("[0-9]{4}-[0-9]{6}-[0-9]{2}");
+        return null != studiennummer && studiennummer.matches("\\d{4}-\\d{6}-\\d{2}");
     }
 
     public enum Type {
