@@ -7,6 +7,7 @@ import de.itc.onkostar.api.Procedure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,6 +15,23 @@ import static DNPM.services.FormService.hasValue;
 import static DNPM.services.FormService.isYes;
 
 public class DefaultTherapieplanService extends AbstractTherapieplanService {
+
+    public static final String FORMFIELD_REFERSTEMTB = "referstemtb";
+    public static final String FORMFIELD_HUMANGENBERATUNG = "humangenberatung";
+    public static final String FORMFIELD_REEVALUATION = "reevaluation";
+    public static final String FORMFIELD_DATUM = "datum";
+    public static final String FORMFIELD_REFTKHUMANGENBER = "reftkhumangenber";
+    public static final String FORMFIELD_DATUMTKHUMANGENBER = "datumtkhumangenber";
+    public static final String FORMFIELD_REFTKREEVALUATION = "reftkreevaluation";
+    public static final String FORMFIELD_DATUMTKREEVALUATION = "datumtkreevaluation";
+    public static final String FORMFIELD_MTB = "mtb";
+    public static final String FORMFIELD_UFEEDATUM = "ufeedatum";
+    public static final String FORMFIELD_REFTUMORKONFERENZ = "reftumorkonferenz";
+    public static final String FORMFIELD_UFRBDATUM = "ufrbdatum";
+
+    public static final String DATAFIELD_REF_TK_HUMANGENBER = "ref_tk_humangenber";
+    public static final String DATAFIELD_DATUM_TK_HUMANGENBER = "datum_tk_humangenber";
+    public static final String DATAFIELD_DATUM = "datum";
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -41,11 +59,11 @@ public class DefaultTherapieplanService extends AbstractTherapieplanService {
      */
     @Override
     public List<Procedure> findReferencedMtbs(Procedure procedure) {
-        if (!hasValue(procedure, "referstemtb")) {
+        if (!hasValue(procedure, FORMFIELD_REFERSTEMTB)) {
             return List.of();
         }
 
-        var mtbProcedure = this.onkostarApi.getProcedure(procedure.getValue("referstemtb").getInt());
+        var mtbProcedure = this.onkostarApi.getProcedure(procedure.getValue(FORMFIELD_REFERSTEMTB).getInt());
         if (null == mtbProcedure) {
             return List.of();
         }
@@ -68,51 +86,51 @@ public class DefaultTherapieplanService extends AbstractTherapieplanService {
     }
 
     private void updateMtbInSections(Procedure procedure) {
-        if (!isYes(procedure, "humangenberatung") && !isYes(procedure, "reevaluation")) {
+        if (!isYes(procedure, FORMFIELD_HUMANGENBERATUNG) && !isYes(procedure, FORMFIELD_REEVALUATION)) {
             return;
         }
 
-        var mtbReference = procedure.getValue("referstemtb").getInt();
-        var mtbDate = procedure.getValue("datum").getDate();
+        var mtbReference = procedure.getValue(FORMFIELD_REFERSTEMTB).getInt();
+        var mtbDate = procedure.getValue(FORMFIELD_DATUM).getDate();
         var noUpdateRequired = true;
 
         if (
-                isYes(procedure, "humangenberatung") && (
-                        !hasValue(procedure, "reftkhumangenber")
-                                || mtbReference != procedure.getValue("reftkhumangenber").getInt()
+                isYes(procedure, FORMFIELD_HUMANGENBERATUNG) && (
+                        !hasValue(procedure, FORMFIELD_REFTKHUMANGENBER)
+                                || mtbReference != procedure.getValue(FORMFIELD_REFTKHUMANGENBER).getInt()
                 )
         ) {
-            procedure.setValue("reftkhumangenber", new Item("ref_tk_humangenber", mtbReference));
+            procedure.setValue(FORMFIELD_REFTKHUMANGENBER, new Item(DATAFIELD_REF_TK_HUMANGENBER, mtbReference));
             noUpdateRequired = false;
         }
 
         if (
-                isYes(procedure, "humangenberatung") && (
-                        !hasValue(procedure, "datumtkhumangenber")
-                                || !mtbDate.equals(procedure.getValue("datumtkhumangenber").getDate())
+                isYes(procedure, FORMFIELD_HUMANGENBERATUNG) && (
+                        !hasValue(procedure, FORMFIELD_DATUMTKHUMANGENBER)
+                                || !mtbDate.equals(procedure.getValue(FORMFIELD_DATUMTKHUMANGENBER).getDate())
                 )
         ) {
-            procedure.setValue("datumtkhumangenber", new Item("datum_tk_humangenber", mtbDate));
+            procedure.setValue(FORMFIELD_DATUMTKHUMANGENBER, new Item(DATAFIELD_DATUM_TK_HUMANGENBER, mtbDate));
             noUpdateRequired = false;
         }
 
         if (
-                isYes(procedure, "reevaluation") && (
-                        !hasValue(procedure, "reftkreevaluation")
-                                || mtbReference != procedure.getValue("reftkreevaluation").getInt()
+                isYes(procedure, FORMFIELD_REEVALUATION) && (
+                        !hasValue(procedure, FORMFIELD_REFTKREEVALUATION)
+                                || mtbReference != procedure.getValue(FORMFIELD_REFTKREEVALUATION).getInt()
                 )
         ) {
-            procedure.setValue("reftkreevaluation", new Item("ref_tk_reevaluation", mtbReference));
+            procedure.setValue(FORMFIELD_REFTKREEVALUATION, new Item("ref_tk_reevaluation", mtbReference));
             noUpdateRequired = false;
         }
 
         if (
-                isYes(procedure, "reevaluation") && (
-                        !hasValue(procedure, "datumtkreevaluation")
-                                || !mtbDate.equals(procedure.getValue("datumtkreevaluation").getDate())
+                isYes(procedure, FORMFIELD_REEVALUATION) && (
+                        !hasValue(procedure, FORMFIELD_DATUMTKREEVALUATION)
+                                || !mtbDate.equals(procedure.getValue(FORMFIELD_DATUMTKREEVALUATION).getDate())
                 )
         ) {
-            procedure.setValue("datumtkreevaluation", new Item("datum_tk_reevaluation", mtbDate));
+            procedure.setValue(FORMFIELD_DATUMTKREEVALUATION, new Item("datum_tk_reevaluation", mtbDate));
             noUpdateRequired = false;
         }
 
@@ -129,44 +147,50 @@ public class DefaultTherapieplanService extends AbstractTherapieplanService {
 
     private void updateMtbInSubforms(Procedure procedure) {
         if (
-                !hasValue(procedure, "referstemtb") || !hasValue(procedure, "datum")
+                !hasValue(procedure, FORMFIELD_REFERSTEMTB) || !hasValue(procedure, FORMFIELD_DATUM)
         ) {
             return;
         }
 
-        var mtbReference = procedure.getValue("referstemtb").getInt();
-        var mtbDate = procedure.getValue("datum").getDate();
+        var mtbReference = procedure.getValue(FORMFIELD_REFERSTEMTB).getInt();
+        var mtbDate = procedure.getValue(FORMFIELD_DATUM).getDate();
 
         formService.getSubFormProcedureIds(procedure.getId()).stream()
                 .map(onkostarApi::getProcedure)
                 .filter(Objects::nonNull)
                 .forEach(subform -> {
-                    if (subform.getFormName().equals("DNPM UF Einzelempfehlung")) {
-                        if (mtbReference != subform.getValue("mtb").getInt() && !mtbDate.equals(subform.getValue("ufeedatum").getDate())) {
-                            subform.setValue("mtb", new Item("ref_tumorkonferenz", mtbReference));
-                            subform.setValue("ufeedatum", new Item("datum", mtbDate));
+                    if (isUsableEinzelempfehlung(subform, mtbReference, mtbDate)) {
+                        subform.setValue(FORMFIELD_MTB, new Item("ref_tumorkonferenz", mtbReference));
+                        subform.setValue(FORMFIELD_UFEEDATUM, new Item(DATAFIELD_DATUM, mtbDate));
 
-                            try {
-                                onkostarApi.saveProcedure(subform, false);
-                            } catch (Exception e) {
-                                logger.error("Formular 'DNPM UF Einzelempfehlung' konnte nicht aktualisiert werden", e);
-                            }
+                        try {
+                            onkostarApi.saveProcedure(subform, false);
+                        } catch (Exception e) {
+                            logger.error("Formular 'DNPM UF Einzelempfehlung' konnte nicht aktualisiert werden", e);
                         }
                     }
 
-                    if (subform.getFormName().equals("DNPM UF Rebiopsie")) {
-                        if (mtbReference != subform.getValue("reftumorkonferenz").getInt() && !mtbDate.equals(subform.getValue("ufrbdatum").getDate())) {
-                            subform.setValue("reftumorkonferenz", new Item("ref_tumorkonferenz", mtbReference));
-                            subform.setValue("ufrbdatum", new Item("datum", mtbDate));
 
-                            try {
-                                onkostarApi.saveProcedure(subform, false);
-                            } catch (Exception e) {
-                                logger.error("Formular 'DNPM UF Rebiopsie' konnte nicht aktualisiert werden", e);
-                            }
+                    if (isUsableRebiopsie(subform, mtbReference, mtbDate)) {
+                        subform.setValue(FORMFIELD_REFTUMORKONFERENZ, new Item("ref_tumorkonferenz", mtbReference));
+                        subform.setValue(FORMFIELD_UFRBDATUM, new Item(DATAFIELD_DATUM, mtbDate));
+
+                        try {
+                            onkostarApi.saveProcedure(subform, false);
+                        } catch (Exception e) {
+                            logger.error("Formular 'DNPM UF Rebiopsie' konnte nicht aktualisiert werden", e);
                         }
                     }
+
                 });
+    }
+
+    private static boolean isUsableRebiopsie(Procedure subform, int mtbReference, Date mtbDate) {
+        return subform.getFormName().equals("DNPM UF Rebiopsie") && mtbReference != subform.getValue(FORMFIELD_REFTUMORKONFERENZ).getInt() && !mtbDate.equals(subform.getValue(FORMFIELD_UFRBDATUM).getDate());
+    }
+
+    private static boolean isUsableEinzelempfehlung(Procedure subform, int mtbReference, Date mtbDate) {
+        return subform.getFormName().equals("DNPM UF Einzelempfehlung") && mtbReference != subform.getValue(FORMFIELD_MTB).getInt() && !mtbDate.equals(subform.getValue(FORMFIELD_UFEEDATUM).getDate());
     }
 
 }
