@@ -32,7 +32,7 @@ public class MrMtbAnmeldungToProtocolMapper implements ProcedureToProtocolMapper
 
         var fragestellung = procedure.getValue("Fragestellung");
         if (null != fragestellung && !fragestellung.getString().isBlank()) {
-            resultParts.add(String.format("Fragestellung:\n%s", fragestellung.getString()));
+            resultParts.add(String.format("Fragestellung:%n%s", fragestellung.getString()));
         }
 
         var refEmpfehlung = procedure.getValue("Empfehlung");
@@ -47,7 +47,7 @@ public class MrMtbAnmeldungToProtocolMapper implements ProcedureToProtocolMapper
                             if (proc.getFormName().equals("MR.MTB_Einzelempfehlung")) {
                                 var empfehlung = proc.getValue("Empfehlung");
                                 if (null != empfehlung && !empfehlung.getString().isBlank()) {
-                                    resultParts.add(String.format("Empfehlung:\n%s", empfehlung.getString()));
+                                    resultParts.add(String.format("Empfehlung:%n%s", empfehlung.getString()));
                                 }
                             }
                         });
