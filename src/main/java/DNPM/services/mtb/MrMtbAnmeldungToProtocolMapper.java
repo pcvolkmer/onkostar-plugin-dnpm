@@ -18,12 +18,15 @@ public class MrMtbAnmeldungToProtocolMapper implements ProcedureToProtocolMapper
     /**
      * Wandelt eine Prozedur mit Formularnamen "MR.MTB_Anmeldung" in ein {@link Optional} mit einer
      * Zeichenkette oder im Fehlerfall in ein leeres Optional um.
+     *
      * @param procedure Die Prozedur, für die eine Zusammenfassung ermittelt werden soll.
      * @return Das {@link Optional} mit, im Erfolgsfall, der Zusammenfassung für die Prozedur.
      */
     @Override
     public Optional<String> apply(Procedure procedure) {
-        assert (procedure.getFormName().equals("MR.MTB_Anmeldung"));
+        if ((!procedure.getFormName().equals("MR.MTB_Anmeldung"))) {
+            throw new AssertionError("Procedure is not of form type 'MR.MTB_Anmeldung'");
+        }
 
         var resultParts = new ArrayList<String>();
 
