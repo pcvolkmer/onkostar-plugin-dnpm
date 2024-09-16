@@ -29,13 +29,13 @@ public class OsSystemischeTherapieToProzedurwerteMapper implements ProzedurToPro
         }
     }
 
-    private static Map<String, String> getProzedurwerte(Procedure Prozedur) {
+    private static Map<String, String> getProzedurwerte(Procedure prozedur) {
         List<String> wirkstoffListe = new ArrayList<>();
         // SubstanzenCodesListe enthält die Liste der SubstanzenCodes
         List<Map<String, String>> substanzenCodesListe = new ArrayList<>();
 
         // alle Werte der Prozedur auslesen
-        Map<String, Item> alleWerte = Prozedur.getAllValues();
+        Map<String, Item> alleWerte = prozedur.getAllValues();
         // Prozedurwerte enthält nur die interessanten Werte
         Map<String, String> prozedurwerte = new HashMap<>();
         // alle Werte durchgehen und die interessanten übernehmen
