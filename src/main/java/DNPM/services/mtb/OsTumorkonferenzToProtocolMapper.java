@@ -20,7 +20,9 @@ public class OsTumorkonferenzToProtocolMapper implements ProcedureToProtocolMapp
      */
     @Override
     public Optional<String> apply(Procedure procedure) {
-        assert(procedure.getFormName().equals("OS.Tumorkonferenz"));
+        if ((!procedure.getFormName().equals("OS.Tumorkonferenz"))) {
+            throw new AssertionError("Procedure is not of form type 'OS.Tumorkonferenz'");
+        }
 
         var fragestellung = procedure.getValue("Fragestellung");
         var empfehlung = procedure.getValue("Empfehlung");
