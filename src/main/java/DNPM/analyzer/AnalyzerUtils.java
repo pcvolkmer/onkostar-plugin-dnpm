@@ -10,6 +10,8 @@ import java.util.Optional;
  */
 public class AnalyzerUtils {
 
+    private AnalyzerUtils() {}
+
     /**
      * Prüft, ob in InputMap einen Eintrag mit key <code>key</code> und Typ <code>type</code>
      * gefunden wurde.
