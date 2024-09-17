@@ -13,7 +13,7 @@ public abstract class AbstractTherapieplanService implements TherapieplanService
 
     protected final FormService formService;
 
-    public AbstractTherapieplanService(final IOnkostarApi onkostarApi, final FormService formService) {
+    protected AbstractTherapieplanService(final IOnkostarApi onkostarApi, final FormService formService) {
         this.onkostarApi = onkostarApi;
         this.formService = formService;
     }
