@@ -19,8 +19,10 @@ Hierzu gibt es die Konfigurationsparameter:
 * `systemtherapieform`: Zu verwendendes Formular für die systemische Therapie.
 * `mehrere_mtb_in_mtbepisode`: Angabe, ob mehrere MTBs je MTB-Episode verwendet werden.
 
-_Achtung!_ Sollten diese Konfigurationsparameter noch in der Kategorie "DNPM" enthalten sein, bitte auf "System" umstellen,
-da die ansonsten nicht aus Formularscripten erreichbar sind.
+_**Achtung!**_ Die Verwendung der Konfigurationskategorie `DNPM` ist für Onkostar-Versionen **>=2.12.0** und **<2.13.0**
+aufgrund einer Umstellung in der Darstellung der Konfiguration in Onkostar nicht möglich.
+Für Onkostar ab Version **2.13.0** (oder neuer) kann `DNPM` verwendet werden, für Versionen beginnend mit 2.12 sollte 
+`System` verwendet werden.
 
 ## ATC-Codes
 
@@ -36,10 +38,12 @@ INSERT INTO einstellung (name, wert, kategorie, beschreibung)
 VALUES (
  'consentform',
  'MR.Consent',
- 'System',
+ 'DNPM',
  'Zu verwendendes Consent-Formular'
 );
 ```
+
+Hier kann für Onkostar ab Version 2.13.x (oder neuer) anstelle `System` wieder `DNPM` verwendet werden.
 
 Aktuell werden folgende Consent-Formulare unterstützt:
 
@@ -85,11 +89,13 @@ INSERT INTO einstellung (name, wert, kategorie, optionen, beschreibung)
 VALUES (
  'mehrere_mtb_in_mtbepisode',
  'true',
- 'System',
+ 'DNPM',
  '[{"key": "true", "value": "Ja"},{"key": "false", "value": "Nein"}]',
  'Angabe, ob mehrere MTBs je MTB-Episode verwendet werden.'
 );
 ```
+
+Auch hier kann für Onkostar ab Version 2.13.x (oder neuer) anstelle `System` wieder `DNPM` verwendet werden.
 
 ### Mapping MTB zu Therapieplan-Protokollauszug
 
