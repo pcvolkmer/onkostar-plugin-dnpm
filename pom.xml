@@ -15,6 +15,11 @@
 
         <spring-version>4.3.8.RELEASE</spring-version>
         <spring-security-version>4.2.2.RELEASE</spring-security-version>
+
+        <!-- Test dependencies -->
+        <junit5-version>5.11.4</junit5-version>
+        <assertj-version>3.27.3</assertj-version>
+        <mockito-version>5.15.2</mockito-version>
     </properties>
 
     <dependencies>
@@ -110,31 +115,31 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.10.2</version>
+            <version>${junit5-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-            <version>5.10.2</version>
+            <version>${junit5-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.25.3</version>
+            <version>${assertj-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.11.0</version>
+            <version>${mockito-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>5.11.0</version>
+            <version>${mockito-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
