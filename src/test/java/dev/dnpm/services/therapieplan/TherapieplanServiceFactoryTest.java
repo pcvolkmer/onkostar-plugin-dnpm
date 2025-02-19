@@ -1,8 +1,8 @@
 package dev.dnpm.services.therapieplan;
 
+import de.itc.onkostar.api.IOnkostarApi;
 import dev.dnpm.services.FormService;
 import dev.dnpm.services.SettingsService;
-import de.itc.onkostar.api.IOnkostarApi;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,19 +15,17 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class TherapieplanServiceFactoryTest {
 
-    @Mock
-    private IOnkostarApi onkostarApi;
-
-    @Mock
-    private FormService formService;
-
-    @Mock
     private SettingsService settingsService;
 
     private TherapieplanServiceFactory therapieplanServiceFactory;
 
     @BeforeEach
-    void setup() {
+    void setup(
+            @Mock IOnkostarApi onkostarApi,
+            @Mock SettingsService settingsService,
+            @Mock FormService formService
+    ) {
+        this.settingsService = settingsService;
         this.therapieplanServiceFactory = new TherapieplanServiceFactory(onkostarApi, settingsService, formService);
     }
 

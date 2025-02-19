@@ -1,7 +1,7 @@
 package dev.dnpm.services;
 
-import dev.dnpm.database.SettingsRepository;
 import de.itc.db.dnpm.Setting;
+import dev.dnpm.database.SettingsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,13 +15,15 @@ import static org.mockito.Mockito.doAnswer;
 @ExtendWith(MockitoExtension.class)
 class SettingsServiceTest {
 
-    @Mock
     private SettingsRepository settingsRepository;
 
     private SettingsService service;
 
     @BeforeEach
-    void setUp() {
+    void setUp(
+            @Mock SettingsRepository settingsRepository
+    ) {
+        this.settingsRepository = settingsRepository;
         this.service = new SettingsService(settingsRepository);
     }
 

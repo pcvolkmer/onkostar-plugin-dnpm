@@ -1,10 +1,10 @@
 package dev.dnpm.services.therapieplan;
 
-import dev.dnpm.services.FormService;
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Item;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.constants.JaNeinUnbekannt;
+import dev.dnpm.services.FormService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,16 +22,16 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class DefaultTherapieplanServiceTest {
 
-    @Mock
     private IOnkostarApi onkostarApi;
-
-    @Mock
-    private FormService formService;
 
     private TherapieplanService service;
 
     @BeforeEach
-    void setUp() {
+    void setUp(
+            @Mock IOnkostarApi onkostarApi,
+            @Mock FormService formService
+    ) {
+        this.onkostarApi = onkostarApi;
         this.service = new DefaultTherapieplanService(onkostarApi, formService);
     }
 
