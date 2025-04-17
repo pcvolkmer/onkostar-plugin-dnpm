@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OnkostarEditor>
   <InfoXML>
-    <DatumXML>2025-04-13Z</DatumXML>
+    <DatumXML>2025-04-17Z</DatumXML>
     <Name>OnkoStar</Name>
     <Version>2.14.0</Version>
   </InfoXML>
@@ -5789,7 +5789,7 @@
       </ScriptBeimAnonymisieren>
       <SID>20119</SID>
       <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-      <Revision>248</Revision>
+      <Revision>249</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12368">
@@ -6839,6 +6839,7 @@
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl>FollowUp vom {DatumFollowUp}</AnzeigeAuswahl>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -6861,7 +6862,7 @@
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12361</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -6874,9 +6875,21 @@
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>720dda0f-b669-42da-a3d6-0e2dbcbb2894</GUID>
-          <Revision>8</Revision>
+          <Revision>9</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
+          <DataFormReferences>
+            <ReferencedDataForm>
+              <Category>0</Category>
+              <Name>DNPM FollowUp</Name>
+              <Readonly>false</Readonly>
+              <TudokPosition>0</TudokPosition>
+              <hatUnterformulare>false</hatUnterformulare>
+              <SID>20119</SID>
+              <GUID>12415fe7-8785-41ee-ad32-8e4dd69d504b</GUID>
+              <Revision>68</Revision>
+            </ReferencedDataForm>
+          </DataFormReferences>
         </Entry>
         <Entry parentId="12364">
           <Type>formReference</Type>
@@ -13106,7 +13119,7 @@
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-              <Revision>248</Revision>
+              <Revision>249</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
