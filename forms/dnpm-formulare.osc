@@ -1316,6 +1316,102 @@
       </Ordner>
     </PropertyCatalogue>
     <PropertyCatalogue>
+      <Name>DNPM.ArtDerKrankenkasse</Name>
+      <Description>Art der Krankenkasse</Description>
+      <Standard>SIMPLE</Standard>
+      <Readonly>false</Readonly>
+      <Anmerkung>Gemäß DNPM-Datenmodell 2.1</Anmerkung>
+      <SID>20119</SID>
+      <GUID>1b533b2e-d0ef-4d38-a227-e0bc68dff04a</GUID>
+      <Revision>2</Revision>
+      <Versions>
+        <Version>
+          <VersionNumber>1</VersionNumber>
+          <ValidFrom>2025-04-17Z</ValidFrom>
+          <OID>DNPM.ArtDerKrankenkasse.v1</OID>
+          <Active>true</Active>
+          <Description>v1</Description>
+          <SID>20119</SID>
+          <GUID>3fdbb38c-9c09-4fee-915a-ce976a8c3a9f</GUID>
+          <Revision>2</Revision>
+          <Entries>
+            <Entry>
+              <Code>GKV</Code>
+              <ShortDescription>gesetzliche Krankenversicherung</ShortDescription>
+              <Description>gesetzliche Krankenversicherung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>1.0</Position>
+            </Entry>
+            <Entry>
+              <Code>PKV</Code>
+              <ShortDescription>private Krankenversicherung</ShortDescription>
+              <Description>private Krankenversicherung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>2.0</Position>
+            </Entry>
+            <Entry>
+              <Code>BG</Code>
+              <ShortDescription>Berufsgenossenschaft</ShortDescription>
+              <Description>Berufsgenossenschaft</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>3.0</Position>
+            </Entry>
+            <Entry>
+              <Code>SEL</Code>
+              <ShortDescription>Selbstzahler</ShortDescription>
+              <Description>Selbstzahler</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>4.0</Position>
+            </Entry>
+            <Entry>
+              <Code>SOZ</Code>
+              <ShortDescription>Sozialamt</ShortDescription>
+              <Description>Sozialamt</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>5.0</Position>
+            </Entry>
+            <Entry>
+              <Code>GPV</Code>
+              <ShortDescription>gesetzliche Pflegeversicherung</ShortDescription>
+              <Description>gesetzliche Pflegeversicherung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>6.0</Position>
+            </Entry>
+            <Entry>
+              <Code>PPV</Code>
+              <ShortDescription>private Pflegeversicherung</ShortDescription>
+              <Description>private Pflegeversicherung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>7.0</Position>
+            </Entry>
+            <Entry>
+              <Code>BEI</Code>
+              <ShortDescription>Beihilfe</ShortDescription>
+              <Description>Beihilfe</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>8.0</Position>
+            </Entry>
+          </Entries>
+          <Categories/>
+        </Version>
+      </Versions>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>1</Typ>
+      </Ordner>
+    </PropertyCatalogue>
+    <PropertyCatalogue>
       <Name>DNPM.Verwandschaftsgrad</Name>
       <Description>DNPM.Verwandschaftsgrad</Description>
       <Standard>SIMPLE</Standard>
@@ -3035,7 +3131,7 @@
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>ab9d331c-8d95-49e5-adc2-73295c8fa1a3</GUID>
-      <Revision>49</Revision>
+      <Revision>50</Revision>
       <Entries>
         <Entry>
           <PropertyCatalogue>OS.WeitereKlassifikationenWerte</PropertyCatalogue>
@@ -4067,6 +4163,31 @@
           <SID>20119</SID>
           <GUID>77f4f034-b565-4ef5-b3b4-621b8b8ac8ff</GUID>
           <Revision>16</Revision>
+        </Entry>
+        <Entry>
+          <PropertyCatalogue>DNPM.ArtDerKrankenkasse</PropertyCatalogue>
+          <Name>ArtDerKrankenkasse</Name>
+          <NameExport>art_der_krankenkasse</NameExport>
+          <Description>Art der Krankenkasse</Description>
+          <Type>propertyCatalogue</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>2</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>f8072049-7943-447e-ada2-86c01180863a</GUID>
+          <Revision>1</Revision>
         </Entry>
       </Entries>
       <Ordner>
@@ -14341,7 +14462,7 @@
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-      <Revision>229</Revision>
+      <Revision>230</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12454">
@@ -14536,6 +14657,75 @@
           <SID>20119</SID>
           <GUID>f50b1cee-d1b3-4444-b9e5-ccb4feb84fdf</GUID>
           <Revision>9</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12475">
+          <Type>combobox</Type>
+          <Name>ArtDerKrankenkasse</Name>
+          <Description>Art der Krankenkasse</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>5.0</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>1</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>ArtDerKrankenkasse</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_KPA</DataCatalogueEntryTable>
+          <ElementParent>Bereich2</ElementParent>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
+          <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>1</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>72dae182-1f70-433c-b289-0c8ee1a286d0</GUID>
+          <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -18373,7 +18563,7 @@
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-              <Revision>229</Revision>
+              <Revision>230</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
