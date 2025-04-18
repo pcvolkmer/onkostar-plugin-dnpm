@@ -1412,6 +1412,62 @@
       </Ordner>
     </PropertyCatalogue>
     <PropertyCatalogue>
+      <Name>DNPM.Diagnosetyp</Name>
+      <Description>Diagnosetyp</Description>
+      <Standard>SIMPLE</Standard>
+      <Readonly>false</Readonly>
+      <Anmerkung>Gemäß DNPM-Datenmodell 2.1</Anmerkung>
+      <SID>20119</SID>
+      <GUID>96a66254-7f00-4a3d-b4f4-8984eb2eef40</GUID>
+      <Revision>2</Revision>
+      <Versions>
+        <Version>
+          <VersionNumber>1</VersionNumber>
+          <ValidFrom>2025-04-17Z</ValidFrom>
+          <OID>DNPM.Diagnosetyp.v1</OID>
+          <Active>true</Active>
+          <Description>v1</Description>
+          <SID>20119</SID>
+          <GUID>96d07700-17f7-4ff5-89cc-703933f279ec</GUID>
+          <Revision>2</Revision>
+          <Entries>
+            <Entry>
+              <Code>main</Code>
+              <ShortDescription>Hauptdiagnose</ShortDescription>
+              <Description>Hauptdiagnose</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>1.0</Position>
+            </Entry>
+            <Entry>
+              <Code>secondary</Code>
+              <ShortDescription>Nebendiagnose</ShortDescription>
+              <Description>Nebendiagnose</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>2.0</Position>
+            </Entry>
+            <Entry>
+              <Code>metachronous</Code>
+              <ShortDescription>Metachron</ShortDescription>
+              <Description>Metachron</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>3.0</Position>
+            </Entry>
+          </Entries>
+          <Categories/>
+        </Version>
+      </Versions>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>1</Typ>
+      </Ordner>
+    </PropertyCatalogue>
+    <PropertyCatalogue>
       <Name>DNPM.Verwandschaftsgrad</Name>
       <Description>DNPM.Verwandschaftsgrad</Description>
       <Standard>SIMPLE</Standard>
@@ -3131,7 +3187,7 @@
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>ab9d331c-8d95-49e5-adc2-73295c8fa1a3</GUID>
-      <Revision>50</Revision>
+      <Revision>51</Revision>
       <Entries>
         <Entry>
           <PropertyCatalogue>OS.WeitereKlassifikationenWerte</PropertyCatalogue>
@@ -4187,6 +4243,31 @@
           <Use/>
           <SID>20119</SID>
           <GUID>f8072049-7943-447e-ada2-86c01180863a</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <PropertyCatalogue>DNPM.Diagnosetyp</PropertyCatalogue>
+          <Name>Diagnosetyp</Name>
+          <NameExport>diagnosetyp</NameExport>
+          <Description>Diagnosetyp</Description>
+          <Type>propertyCatalogue</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>2</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>482451e6-f57d-4b1d-b12a-4232eff134ba</GUID>
           <Revision>1</Revision>
         </Entry>
       </Entries>
@@ -12902,8 +12983,8 @@
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>StatusKostenuebernahme</RefEntry>
               <RefEntry>AntragKostenuebernahme</RefEntry>
+              <RefEntry>StatusKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -14462,7 +14543,7 @@
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-      <Revision>231</Revision>
+      <Revision>232</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12454">
@@ -15643,6 +15724,75 @@
           <SID>20119</SID>
           <GUID>e1cf6699-9b39-4c56-9649-6da76858836d</GUID>
           <Revision>9</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12462">
+          <Type>combobox</Type>
+          <Name>Diagnosetyp</Name>
+          <Description>Diagnosetyp</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.5</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>1</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>Diagnosetyp</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_KPA</DataCatalogueEntryTable>
+          <ElementParent>Bereich3</ElementParent>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
+          <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>1</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>0c2afd14-a140-4599-b689-77bb542404d3</GUID>
+          <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -18561,7 +18711,7 @@
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-              <Revision>231</Revision>
+              <Revision>232</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
