@@ -1322,7 +1322,7 @@
       <Readonly>false</Readonly>
       <Anmerkung>Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <SID>20119</SID>
-      <GUID>1b533b2e-d0ef-4d38-a227-e0bc68dff04a</GUID>
+      <GUID>1de0daff-7d14-4cba-8502-17552097282c</GUID>
       <Revision>2</Revision>
       <Versions>
         <Version>
@@ -1332,7 +1332,7 @@
           <Active>true</Active>
           <Description>v1</Description>
           <SID>20119</SID>
-          <GUID>3fdbb38c-9c09-4fee-915a-ce976a8c3a9f</GUID>
+          <GUID>bf7e017b-feb8-40b6-81d8-72ea660e8f9f</GUID>
           <Revision>2</Revision>
           <Entries>
             <Entry>
@@ -1418,7 +1418,7 @@
       <Readonly>false</Readonly>
       <Anmerkung>Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <SID>20119</SID>
-      <GUID>96a66254-7f00-4a3d-b4f4-8984eb2eef40</GUID>
+      <GUID>6627498a-1d6a-4ffc-9576-da5120d03947</GUID>
       <Revision>2</Revision>
       <Versions>
         <Version>
@@ -1428,7 +1428,7 @@
           <Active>true</Active>
           <Description>v1</Description>
           <SID>20119</SID>
-          <GUID>96d07700-17f7-4ff5-89cc-703933f279ec</GUID>
+          <GUID>89b22267-8b86-4d42-b448-0d2babdd92a2</GUID>
           <Revision>2</Revision>
           <Entries>
             <Entry>
@@ -2630,7 +2630,7 @@
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>3de135fd-6d55-4280-9889-6ea73e08d668</GUID>
-      <Revision>74</Revision>
+      <Revision>75</Revision>
       <Entries>
         <Entry>
           <PropertyCatalogue>DNPM.Evidenzlevel</PropertyCatalogue>
@@ -3168,6 +3168,102 @@
           <GUID>a7abf50b-e20e-40af-9250-eda33596c782</GUID>
           <Revision>7</Revision>
         </Entry>
+        <Entry>
+          <Name>evidenzlevel_zusatz_is</Name>
+          <NameExport>evidenzlevel_zusatz_is</NameExport>
+          <Description>is</Description>
+          <Type>boolean</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>d10ac6b7-0ce9-467b-a5c5-9b494f1f400b</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <Name>evidenzlevel_zusatz_iv</Name>
+          <NameExport>evidenzlevel_zusatz_iv</NameExport>
+          <Description>iv</Description>
+          <Type>boolean</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>20f322d0-f68f-49ae-845f-2507107cb45c</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <Name>evidenzlevel_zusatz_Z</Name>
+          <NameExport>evidenzlevel_zusatz_Z</NameExport>
+          <Description>Z</Description>
+          <Type>boolean</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>7dbcaaec-d1f8-4429-b80b-b79f4995b423</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <Name>evidenzlevel_zusatz_R</Name>
+          <NameExport>evidenzlevel_zusatz_R</NameExport>
+          <Description>R</Description>
+          <Type>boolean</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>2f620f1d-d157-404b-a40c-b70fbea87ee5</GUID>
+          <Revision>1</Revision>
+        </Entry>
       </Entries>
       <Ordner>
         <Bibliothek>
@@ -3190,7 +3286,7 @@
       <Revision>51</Revision>
       <Entries>
         <Entry>
-          <PropertyCatalogue>OS.WeitereKlassifikationenWerte</PropertyCatalogue>
+          <PropertyCatalogue>OS.WHOHistoGrading</PropertyCatalogue>
           <Name>WHOGrad</Name>
           <NameExport>WHOGrad</NameExport>
           <Description>WHO-Grad</Description>
@@ -4242,7 +4338,7 @@
           <Fachabteilungsbezug>false</Fachabteilungsbezug>
           <Use/>
           <SID>20119</SID>
-          <GUID>f8072049-7943-447e-ada2-86c01180863a</GUID>
+          <GUID>87f293bb-6d7f-4fa8-ae75-a3d3acf34051</GUID>
           <Revision>1</Revision>
         </Entry>
         <Entry>
@@ -4267,7 +4363,7 @@
           <Fachabteilungsbezug>false</Fachabteilungsbezug>
           <Use/>
           <SID>20119</SID>
-          <GUID>482451e6-f57d-4b1d-b12a-4232eff134ba</GUID>
+          <GUID>380a567a-e083-403d-bd44-c632ad90242d</GUID>
           <Revision>1</Revision>
         </Entry>
       </Entries>
@@ -5974,7 +6070,7 @@
         <Valid>true</Valid>
       </ScriptBeimNeuanlegen>
       <ScriptBeimBearbeiten>
-        <Code>//#### INHERIT START ####&amp;#10;&amp;#10;//#### INHERIT END ####</Code>
+        <Code>//#### INHERIT START ####&amp;#10;&amp;#10;switch (getFieldValue('evidenzlevelzusatz')) {&amp;#10;    case 's':&amp;#10;        setFieldValue('evidenzlevelzusatzis', '1');&amp;#10;        break;&amp;#10;    case 'v':&amp;#10;        setFieldValue('evidenzlevelzusatziv', '1');&amp;#10;        break;&amp;#10;    case 'z':&amp;#10;        setFieldValue('evidenzlevelzusatzZ', '1');&amp;#10;        break;&amp;#10;    case 'r':&amp;#10;        setFieldValue('evidenzlevelzusatzR', '1');&amp;#10;        break;&amp;#10;}&amp;#10;setFieldValue('evidenzlevelzusatz', '');&amp;#10;&amp;#10;//#### INHERIT END ####</Code>
         <Valid>true</Valid>
       </ScriptBeimBearbeiten>
       <ScriptBeimKopieren>
@@ -5991,7 +6087,7 @@
       </ScriptBeimAnonymisieren>
       <SID>20119</SID>
       <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-      <Revision>249</Revision>
+      <Revision>252</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12368">
@@ -6611,10 +6707,13 @@
           <Name>evidenzlevelzusatz</Name>
           <Description/>
           <Active>true</Active>
-          <Readonly>false</Readonly>
+          <Readonly>true</Readonly>
           <Printable>true</Printable>
           <Position>2.0</Position>
           <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
           <MultipleChoice>false</MultipleChoice>
           <DefaultValue/>
           <Alignment>1</Alignment>
@@ -6630,6 +6729,7 @@
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -6652,7 +6752,7 @@
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12357</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -6665,7 +6765,283 @@
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>944dd2dc-2697-4ad9-ab73-9370a745d035</GUID>
-          <Revision>2</Revision>
+          <Revision>3</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12369">
+          <Type>checkbox</Type>
+          <Name>evidenzlevelzusatzR</Name>
+          <Description>R</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.9375</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>evidenzlevel_zusatz_R</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Einzelempfehlung</DataCatalogueEntryTable>
+          <ElementParent>grpEvidenzlevel</ElementParent>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>879169c4-2b99-44a6-916f-0112092a738a</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12369">
+          <Type>checkbox</Type>
+          <Name>evidenzlevelzusatzZ</Name>
+          <Description>Z</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.875</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>evidenzlevel_zusatz_Z</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Einzelempfehlung</DataCatalogueEntryTable>
+          <ElementParent>grpEvidenzlevel</ElementParent>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>addab29f-66ab-44ad-b32b-adc1c07b63f8</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12369">
+          <Type>checkbox</Type>
+          <Name>evidenzlevelzusatzis</Name>
+          <Description>is</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.5</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>evidenzlevel_zusatz_is</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Einzelempfehlung</DataCatalogueEntryTable>
+          <ElementParent>grpEvidenzlevel</ElementParent>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>324e3450-ec2c-4bcb-a02d-33e411b284ee</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12369">
+          <Type>checkbox</Type>
+          <Name>evidenzlevelzusatziv</Name>
+          <Description>iv</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.75</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>evidenzlevel_zusatz_iv</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Einzelempfehlung</DataCatalogueEntryTable>
+          <ElementParent>grpEvidenzlevel</ElementParent>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>665c9d72-3641-4228-9841-2276dfd415f0</GUID>
+          <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -12008,8 +12384,8 @@
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;GrundAblehnungKosten = 'w'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>GrundAblehnungKosten</RefEntry>
               <RefEntry>AntragKostenuebernahme</RefEntry>
+              <RefEntry>GrundAblehnungKosten</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -13321,7 +13697,7 @@
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-              <Revision>249</Revision>
+              <Revision>252</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -14803,7 +15179,7 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>72dae182-1f70-433c-b289-0c8ee1a286d0</GUID>
+          <GUID>d25c38ee-4c6f-4ef9-a2f3-9dede7b36a6a</GUID>
           <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
@@ -15748,7 +16124,6 @@
           <ElementParent>Bereich3</ElementParent>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -15769,7 +16144,6 @@
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
           <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -15791,7 +16165,7 @@
           <MarkierungIgnorieren>false</MarkierungIgnorieren>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
-          <GUID>0c2afd14-a140-4599-b689-77bb542404d3</GUID>
+          <GUID>82230c93-f9aa-432c-a2a5-d3d6995d5dc7</GUID>
           <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
