@@ -1316,6 +1316,102 @@
       </Ordner>
     </PropertyCatalogue>
     <PropertyCatalogue>
+      <Name>DNPM.ArtDerKrankenkasse</Name>
+      <Description>Art der Krankenkasse</Description>
+      <Standard>SIMPLE</Standard>
+      <Readonly>false</Readonly>
+      <Anmerkung>Gemäß DNPM-Datenmodell 2.1</Anmerkung>
+      <SID>20119</SID>
+      <GUID>1b533b2e-d0ef-4d38-a227-e0bc68dff04a</GUID>
+      <Revision>2</Revision>
+      <Versions>
+        <Version>
+          <VersionNumber>1</VersionNumber>
+          <ValidFrom>2025-04-17Z</ValidFrom>
+          <OID>DNPM.ArtDerKrankenkasse.v1</OID>
+          <Active>true</Active>
+          <Description>v1</Description>
+          <SID>20119</SID>
+          <GUID>3fdbb38c-9c09-4fee-915a-ce976a8c3a9f</GUID>
+          <Revision>2</Revision>
+          <Entries>
+            <Entry>
+              <Code>GKV</Code>
+              <ShortDescription>gesetzliche Krankenversicherung</ShortDescription>
+              <Description>gesetzliche Krankenversicherung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>1.0</Position>
+            </Entry>
+            <Entry>
+              <Code>PKV</Code>
+              <ShortDescription>private Krankenversicherung</ShortDescription>
+              <Description>private Krankenversicherung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>2.0</Position>
+            </Entry>
+            <Entry>
+              <Code>BG</Code>
+              <ShortDescription>Berufsgenossenschaft</ShortDescription>
+              <Description>Berufsgenossenschaft</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>3.0</Position>
+            </Entry>
+            <Entry>
+              <Code>SEL</Code>
+              <ShortDescription>Selbstzahler</ShortDescription>
+              <Description>Selbstzahler</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>4.0</Position>
+            </Entry>
+            <Entry>
+              <Code>SOZ</Code>
+              <ShortDescription>Sozialamt</ShortDescription>
+              <Description>Sozialamt</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>5.0</Position>
+            </Entry>
+            <Entry>
+              <Code>GPV</Code>
+              <ShortDescription>gesetzliche Pflegeversicherung</ShortDescription>
+              <Description>gesetzliche Pflegeversicherung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>6.0</Position>
+            </Entry>
+            <Entry>
+              <Code>PPV</Code>
+              <ShortDescription>private Pflegeversicherung</ShortDescription>
+              <Description>private Pflegeversicherung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>7.0</Position>
+            </Entry>
+            <Entry>
+              <Code>BEI</Code>
+              <ShortDescription>Beihilfe</ShortDescription>
+              <Description>Beihilfe</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>8.0</Position>
+            </Entry>
+          </Entries>
+          <Categories/>
+        </Version>
+      </Versions>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>1</Typ>
+      </Ordner>
+    </PropertyCatalogue>
+    <PropertyCatalogue>
       <Name>DNPM.Verwandschaftsgrad</Name>
       <Description>DNPM.Verwandschaftsgrad</Description>
       <Standard>SIMPLE</Standard>
@@ -3035,7 +3131,7 @@
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>ab9d331c-8d95-49e5-adc2-73295c8fa1a3</GUID>
-      <Revision>49</Revision>
+      <Revision>50</Revision>
       <Entries>
         <Entry>
           <PropertyCatalogue>OS.WeitereKlassifikationenWerte</PropertyCatalogue>
@@ -4067,6 +4163,31 @@
           <SID>20119</SID>
           <GUID>77f4f034-b565-4ef5-b3b4-621b8b8ac8ff</GUID>
           <Revision>16</Revision>
+        </Entry>
+        <Entry>
+          <PropertyCatalogue>DNPM.ArtDerKrankenkasse</PropertyCatalogue>
+          <Name>ArtDerKrankenkasse</Name>
+          <NameExport>art_der_krankenkasse</NameExport>
+          <Description>Art der Krankenkasse</Description>
+          <Type>propertyCatalogue</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>2</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>f8072049-7943-447e-ada2-86c01180863a</GUID>
+          <Revision>1</Revision>
         </Entry>
       </Entries>
       <Ordner>
@@ -11806,8 +11927,8 @@
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;GrundAblehnungKosten = 'w'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>GrundAblehnungKosten</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -12781,8 +12902,8 @@
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>StatusKostenuebernahme</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -14332,7 +14453,7 @@
         <Valid>true</Valid>
       </ScriptBeimSpeichern>
       <ScriptBeimNeuanlegen>
-        <Code>patient = getPatient();&amp;#10;setFieldValue('Geburtsdatum', patient.geburtsdatum);&amp;#10;setFieldValue('Todesdatum', patient.sterbedatum);&amp;#10;setFieldValue('Geschlecht', patient.geschlecht);&amp;#10;setFieldValue('Krankenkasse', patient.krankenkassennummer);&amp;#10;&amp;#10;erkrankung = getCurrentDisease();&amp;#10;setFieldValue('DatumErstdiagnose', erkrankung.diagnosisDate);&amp;#10;setFieldVersion('ICDO3Lokalisation', erkrankung.diagnosisDate)&amp;#10;setFieldValue('ICDO3Lokalisation', erkrankung.localisationCode);&amp;#10;setFieldVersion('ICDO3Histologie', erkrankung.diagnosisDate)&amp;#10;setFieldValue('ICDO3Histologie', erkrankung.histologyCode);&amp;#10;setFieldVersion('ICD10', erkrankung.diagnosisDate)&amp;#10;setFieldValue('ICD10', erkrankung.icd10Code);&amp;#10;&amp;#10;executePluginMethod('DNPMHelper', 'getSystemischeTherapienFromDiagnose', {'DiagnoseId': getCurrentDisease().id},&amp;#10;function(result) {&amp;#10; setFieldValue('DNPMTherapielinie', result.result);&amp;#10; for (var i = 0; i &lt;= result.result.length; i++) setSubformFieldValue('Nummer', i, i) &amp;#10;}, true);&amp;#10;&amp;#10;executePluginMethod('DNPMHelper', 'getEcogStatus', {PatientId: getPatient().id}, (resp) =&gt; {&amp;#10; if (resp.status.code === 1) {&amp;#10; // Hack: Get version id of ECOG status as stored in Database&amp;#10; // by using initial empty entry and its version.&amp;#10; // Since OS always creates an initial empty entry for subforms&amp;#10; // this can be used to get required version id from within a form script.&amp;#10; let version = getFieldValue('ECOGVerlauf')[0].ECOG.version;&amp;#10;&amp;#10; // Abort if no version available.&amp;#10; if (version == null) {&amp;#10; return;&amp;#10; }&amp;#10;&amp;#10; let uf = resp.result&amp;#10; .map(item =&gt; {&amp;#10; let dateOffset = new Date(item.date).getTimezoneOffset() * -60 * 1000;&amp;#10; let date = new Date(new Date(item.date).getTime() + dateOffset).toISOString().match(/^\d{4}-\d{2}-\d{2}/);&amp;#10; let ecog = [];&amp;#10; ecog.val = item.status;&amp;#10; ecog.version = version;&amp;#10; return {&amp;#10; Datum: [date ? date[0] : null, 'exact'], ECOG: ecog&amp;#10; };&amp;#10; })&amp;#10; // Ignore items without valid values&amp;#10; .filter(item =&gt; item.Datum[0] &amp;&amp; (item.ECOG &gt;= 0 &amp;&amp; item.ECOG &lt;= 5));&amp;#10; setFieldValue('ECOGVerlauf', uf);&amp;#10; }&amp;#10;}, false);</Code>
+        <Code>patient = getPatient();&amp;#10;setFieldValue('Geburtsdatum', patient.geburtsdatum);&amp;#10;setFieldValue('Todesdatum', patient.sterbedatum);&amp;#10;setFieldValue('Geschlecht', patient.geschlecht);&amp;#10;setFieldValue('Krankenkasse', patient.krankenkassennummer);&amp;#10;&amp;#10;// Art der Krankenkasse&amp;#10;if (new RegExp(/[A-Z]\d{9}/).test(patient.versicherungsnummer)) {&amp;#10;  setFieldValue('ArtDerKrankenkasse', 'GKV');&amp;#10;}&amp;#10;else if (new RegExp(/16\d{7}|950\d{6}/).test(patient.versicherungsnummer)) {&amp;#10;  setFieldValue('ArtDerKrankenkasse', 'PKV');&amp;#10;}&amp;#10;else if ('970000011' == patient.versicherungsnummer) {&amp;#10;  setFieldValue('ArtDerKrankenkasse', 'SEL');&amp;#10;}&amp;#10;&amp;#10;erkrankung = getCurrentDisease();&amp;#10;setFieldValue('DatumErstdiagnose', erkrankung.diagnosisDate);&amp;#10;setFieldVersion('ICDO3Lokalisation', erkrankung.diagnosisDate)&amp;#10;setFieldValue('ICDO3Lokalisation', erkrankung.localisationCode);&amp;#10;setFieldVersion('ICDO3Histologie', erkrankung.diagnosisDate)&amp;#10;setFieldValue('ICDO3Histologie', erkrankung.histologyCode);&amp;#10;setFieldVersion('ICD10', erkrankung.diagnosisDate)&amp;#10;setFieldValue('ICD10', erkrankung.icd10Code);&amp;#10;&amp;#10;executePluginMethod('DNPMHelper', 'getSystemischeTherapienFromDiagnose', {'DiagnoseId': getCurrentDisease().id},&amp;#10;function(result) {&amp;#10; setFieldValue('DNPMTherapielinie', result.result);&amp;#10; for (var i = 0; i &lt;= result.result.length; i++) setSubformFieldValue('Nummer', i, i) &amp;#10;}, true);&amp;#10;&amp;#10;executePluginMethod('DNPMHelper', 'getEcogStatus', {PatientId: getPatient().id}, (resp) =&gt; {&amp;#10; if (resp.status.code === 1) {&amp;#10; // Hack: Get version id of ECOG status as stored in Database&amp;#10; // by using initial empty entry and its version.&amp;#10; // Since OS always creates an initial empty entry for subforms&amp;#10; // this can be used to get required version id from within a form script.&amp;#10; let version = getFieldValue('ECOGVerlauf')[0].ECOG.version;&amp;#10;&amp;#10; // Abort if no version available.&amp;#10; if (version == null) {&amp;#10; return;&amp;#10; }&amp;#10;&amp;#10; let uf = resp.result&amp;#10; .map(item =&gt; {&amp;#10; let dateOffset = new Date(item.date).getTimezoneOffset() * -60 * 1000;&amp;#10; let date = new Date(new Date(item.date).getTime() + dateOffset).toISOString().match(/^\d{4}-\d{2}-\d{2}/);&amp;#10; let ecog = [];&amp;#10; ecog.val = item.status;&amp;#10; ecog.version = version;&amp;#10; return {&amp;#10; Datum: [date ? date[0] : null, 'exact'], ECOG: ecog&amp;#10; };&amp;#10; })&amp;#10; // Ignore items without valid values&amp;#10; .filter(item =&gt; item.Datum[0] &amp;&amp; (item.ECOG &gt;= 0 &amp;&amp; item.ECOG &lt;= 5));&amp;#10; setFieldValue('ECOGVerlauf', uf);&amp;#10; }&amp;#10;}, false);</Code>
         <Valid>true</Valid>
       </ScriptBeimNeuanlegen>
       <ScriptBeimBearbeiten>
@@ -14341,7 +14462,7 @@
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-      <Revision>229</Revision>
+      <Revision>231</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12454">
@@ -14536,6 +14657,73 @@
           <SID>20119</SID>
           <GUID>f50b1cee-d1b3-4444-b9e5-ccb4feb84fdf</GUID>
           <Revision>9</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12475">
+          <Type>combobox</Type>
+          <Name>ArtDerKrankenkasse</Name>
+          <Description>Art der Krankenkasse</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>5.0</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>1</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>ArtDerKrankenkasse</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_KPA</DataCatalogueEntryTable>
+          <ElementParent>Bereich2</ElementParent>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
+          <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>1</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>72dae182-1f70-433c-b289-0c8ee1a286d0</GUID>
+          <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -18373,7 +18561,7 @@
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-              <Revision>229</Revision>
+              <Revision>231</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
