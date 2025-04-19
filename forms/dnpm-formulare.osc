@@ -4685,7 +4685,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>f383e34d-ed24-40e1-99c6-56a90b91b07b</GUID>
-      <Revision>18</Revision>
+      <Revision>19</Revision>
       <Entries>
         <Entry>
           <PropertyCatalogue>DNPM.Therapie.GrundTherapieende</PropertyCatalogue>
@@ -4955,6 +4955,30 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Use/>
           <SID>20119</SID>
           <GUID>e5f3617c-0284-4068-ad71-7ac00c8ba1bd</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <Name>ref_einzelempfehlung</Name>
+          <NameExport>ref_einzelempfehlung</NameExport>
+          <Description>Therapie-Empfehlung</Description>
+          <Type>formReference</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>ee5c59d3-b1fd-4af8-a7dc-8ba8365b1af6</GUID>
           <Revision>1</Revision>
         </Entry>
       </Entries>
@@ -9213,7 +9237,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>fdfe26b7-ef73-4a8a-88b2-4e5698b2921f</GUID>
-      <Revision>51</Revision>
+      <Revision>53</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry>
@@ -10066,6 +10090,85 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentId="13970">
+          <Type>formReference</Type>
+          <Name>refeinzelempfehlung</Name>
+          <Description>Therapie-Empfehlung</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>4.125</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>ref_einzelempfehlung</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_Therapielinie</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl>Empfehlung vom {ufeedatum} mit Priorität {prio}</AnzeigeAuswahl>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis>Verweis auf eine Einzelempfehlung (systemische Therapie).&amp;#10;&amp;#10;Angabe für Modellvorhaben §64e optional.</Hinweis>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>13970</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>251abcac-9afe-4e7a-a56e-2f33875804e0</GUID>
+          <Revision>2</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+          <DataFormReferences>
+            <ReferencedDataForm>
+              <Category>0</Category>
+              <Name>DNPM UF Einzelempfehlung</Name>
+              <Readonly>false</Readonly>
+              <TudokPosition>0</TudokPosition>
+              <hatUnterformulare>false</hatUnterformulare>
+              <SID>20119</SID>
+              <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
+              <Revision>253</Revision>
+            </ReferencedDataForm>
+          </DataFormReferences>
         </Entry>
       </Entries>
       <PlausibilityRules>
