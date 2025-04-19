@@ -980,6 +980,70 @@
       </Ordner>
     </PropertyCatalogue>
     <PropertyCatalogue>
+      <Name>DNPM.Empfehlungsart</Name>
+      <Description>Empfehlungsart</Description>
+      <Standard>SIMPLE</Standard>
+      <Readonly>false</Readonly>
+      <Anmerkung>Empfehlungsart gem. DNPM-Datenmodell V 2.1</Anmerkung>
+      <SID>20119</SID>
+      <GUID>1e898589-de1a-4e30-a94a-dd86ebbdc8f7</GUID>
+      <Revision>2</Revision>
+      <Versions>
+        <Version>
+          <VersionNumber>1</VersionNumber>
+          <ValidFrom>2025-04-18Z</ValidFrom>
+          <OID>DNPM.Empfehlungsart.v1</OID>
+          <Active>true</Active>
+          <Description>v1</Description>
+          <SID>20119</SID>
+          <GUID>a8a58db5-ba3a-4702-852d-ef628c0a51ff</GUID>
+          <Revision>2</Revision>
+          <Entries>
+            <Entry>
+              <Code>in-label</Code>
+              <ShortDescription>In-label</ShortDescription>
+              <Description>In-label</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>1.0</Position>
+            </Entry>
+            <Entry>
+              <Code>off-label</Code>
+              <ShortDescription>Off-label</ShortDescription>
+              <Description>Off-label</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>2.0</Position>
+            </Entry>
+            <Entry>
+              <Code>compassionate-use</Code>
+              <ShortDescription>Compassionate Use</ShortDescription>
+              <Description>Compassionate Use</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>3.0</Position>
+            </Entry>
+            <Entry>
+              <Code>sec-preventive</Code>
+              <ShortDescription>Sec-preventive</ShortDescription>
+              <Description>Sec-preventive</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>4.0</Position>
+            </Entry>
+          </Entries>
+          <Categories/>
+        </Version>
+      </Versions>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>1</Typ>
+      </Ordner>
+    </PropertyCatalogue>
+    <PropertyCatalogue>
       <Name>DNPM.LeitlinienStatus</Name>
       <Description>DNPM.LeitlinienStatus</Description>
       <Standard>SIMPLE</Standard>
@@ -2767,7 +2831,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>3de135fd-6d55-4280-9889-6ea73e08d668</GUID>
-      <Revision>76</Revision>
+      <Revision>77</Revision>
       <Entries>
         <Entry>
           <PropertyCatalogue>DNPM.Evidenzlevel</PropertyCatalogue>
@@ -3423,6 +3487,31 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Use/>
           <SID>20119</SID>
           <GUID>c351f2d3-2a29-4eb9-af71-c4079cb00d7f</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <PropertyCatalogue>DNPM.Empfehlungsart</PropertyCatalogue>
+          <Name>empfehlungsart</Name>
+          <NameExport>empfehlungsart</NameExport>
+          <Description>Empfehlungsart</Description>
+          <Type>propertyCatalogue</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>2</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>d6fc8aa4-90ab-4c09-b36a-07a98c4fa5dd</GUID>
           <Revision>1</Revision>
         </Entry>
       </Entries>
@@ -6347,7 +6436,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimAnonymisieren>
       <SID>20119</SID>
       <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-      <Revision>253</Revision>
+      <Revision>254</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12368">
@@ -6896,6 +6985,75 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SID>20119</SID>
           <GUID>a14f08b9-4751-4730-ab5b-846ab84cc6bc</GUID>
           <Revision>6</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry>
+          <Type>combobox</Type>
+          <Name>empfehlungsart</Name>
+          <Description>Empfehlungsart</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>3.5</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>1</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>empfehlungsart</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Einzelempfehlung</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis>Empfehlungsart gemäß DNPM-Datenmodell V 2.1.&amp;#10;&amp;#10;Angabe ist optional.</Hinweis>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
+          <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>1</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>9f549070-4f23-4aa8-8ae8-b39f548ac828</GUID>
+          <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -10166,7 +10324,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-              <Revision>253</Revision>
+              <Revision>254</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -12934,8 +13092,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;GrundAblehnungKosten = 'w'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>GrundAblehnungKosten</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -14247,7 +14405,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-              <Revision>253</Revision>
+              <Revision>254</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
