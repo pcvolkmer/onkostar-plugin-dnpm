@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OnkostarEditor>
   <InfoXML>
-    <DatumXML>2025-04-18Z</DatumXML>
+    <DatumXML>2025-04-19Z</DatumXML>
     <Name>OnkoStar</Name>
     <Version>2.14.0</Version>
   </InfoXML>
@@ -1762,6 +1762,86 @@
               <Synonyms/>
               <Note/>
               <Position>1.0</Position>
+            </Entry>
+          </Entries>
+          <Categories/>
+        </Version>
+      </Versions>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>1</Typ>
+      </Ordner>
+    </PropertyCatalogue>
+    <PropertyCatalogue>
+      <Name>DNPM.StatusBegruendung</Name>
+      <Description>Status-Begründung</Description>
+      <Standard>SIMPLE</Standard>
+      <Readonly>false</Readonly>
+      <Anmerkung>Gemäß DNPM-Datenmodell 2.1</Anmerkung>
+      <SID>20119</SID>
+      <GUID>044ab62f-29fb-4945-ab4b-ba44d7fb1aa5</GUID>
+      <Revision>2</Revision>
+      <Versions>
+        <Version>
+          <VersionNumber>1</VersionNumber>
+          <ValidFrom>2025-04-18Z</ValidFrom>
+          <OID>DNPM.StatusBegruendung.v1</OID>
+          <Active>true</Active>
+          <Description>v1</Description>
+          <SID>20119</SID>
+          <GUID>71d771b7-c174-45c5-852c-14087a52eb9b</GUID>
+          <Revision>2</Revision>
+          <Entries>
+            <Entry>
+              <Code>no-target</Code>
+              <ShortDescription>Keine Therapeutische Konsequenz</ShortDescription>
+              <Description>Keine Therapeutische Konsequenz</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>1.0</Position>
+            </Entry>
+            <Entry>
+              <Code>targeted-diagnostics-recommended</Code>
+              <ShortDescription>Zieldiagnostik empfohlen</ShortDescription>
+              <Description>Zieldiagnostik empfohlen</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>2.0</Position>
+            </Entry>
+            <Entry>
+              <Code>psychosomatic</Code>
+              <ShortDescription>wahrscheinlich psychosomatische Erkrankung</ShortDescription>
+              <Description>wahrscheinlich psychosomatische Erkrankung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>3.0</Position>
+            </Entry>
+            <Entry>
+              <Code>not-rare-disease</Code>
+              <ShortDescription>wahrscheinlich häufige Erkrankung</ShortDescription>
+              <Description>wahrscheinlich häufige Erkrankung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>4.0</Position>
+            </Entry>
+            <Entry>
+              <Code>non-genetic-cause</Code>
+              <ShortDescription>wahrscheinlich nicht genetische Ursache</ShortDescription>
+              <Description>wahrscheinlich nicht genetische Ursache</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>5.0</Position>
+            </Entry>
+            <Entry>
+              <Code>other</Code>
+              <ShortDescription>anderer Grund</ShortDescription>
+              <Description>anderer Grund</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>6.0</Position>
             </Entry>
           </Entries>
           <Categories/>
@@ -5577,7 +5657,7 @@
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>442d4a6e-5feb-42d9-aeae-9757a35ab869</GUID>
-      <Revision>64</Revision>
+      <Revision>65</Revision>
       <Entries>
         <Entry>
           <Name>mit_einzelempfehlung</Name>
@@ -5941,6 +6021,31 @@
           <SID>20119</SID>
           <GUID>41cc2a6b-cc64-4d32-b41d-a6270e0e3f81</GUID>
           <Revision>10</Revision>
+        </Entry>
+        <Entry>
+          <PropertyCatalogue>DNPM.StatusBegruendung</PropertyCatalogue>
+          <Name>status_begruendung</Name>
+          <NameExport>status_begruendung</NameExport>
+          <Description>Status Begründung</Description>
+          <Type>propertyCatalogue</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>2</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>086cd361-5ad4-41d1-908f-66c75a4610fe</GUID>
+          <Revision>1</Revision>
         </Entry>
       </Entries>
       <Ordner>
@@ -18041,7 +18146,7 @@
       <hatUnterformulare>true</hatUnterformulare>
       <SID>20119</SID>
       <GUID>b277991d-0bda-4082-841e-dd10759b9cbd</GUID>
-      <Revision>173</Revision>
+      <Revision>175</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12507">
@@ -19536,6 +19641,75 @@
         </Entry>
         <Entry parentRefId="12494">
           <Type>combobox</Type>
+          <Name>statusbegruendung</Name>
+          <Description>Status Begründung</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>2.0</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue>no-target</DefaultValue>
+          <Alignment>1</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>status_begruendung</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_Therapieplan</DataCatalogueEntryTable>
+          <ElementParent>Targetierung</ElementParent>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis>Wählen Sie hier aus, ob in der Episode im Beobachtungszeitraum ein Target gefunden wurde und welche Begründung für die Nichtteilnahme am Modellvorhaben §64e daraus folgt.&amp;#10;</Hinweis>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
+          <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>1</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>8a102d9e-802c-4a17-bd9e-1e2faa5744c5</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12494">
+          <Type>combobox</Type>
           <Name>target</Name>
           <Description>Target gefunden?</Description>
           <Active>true</Active>
@@ -19543,6 +19717,9 @@
           <Printable>true</Printable>
           <Position>1.0</Position>
           <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
           <MultipleChoice>false</MultipleChoice>
           <DefaultValue/>
           <Alignment>1</Alignment>
@@ -19553,11 +19730,12 @@
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
           <GrafikAusrichtung>0</GrafikAusrichtung>
-          <Mandatory>mandatory</Mandatory>
+          <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -19580,7 +19758,7 @@
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12506</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -19593,7 +19771,7 @@
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>3564da63-92df-4054-b628-f614db64fdf4</GUID>
-          <Revision>6</Revision>
+          <Revision>7</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
