@@ -291,17 +291,18 @@
       <Anmerkung>Klinischer KDS-DNPM</Anmerkung>
       <SID>20119</SID>
       <GUID>bd0f7b9a-b2c6-4b68-8bfc-34164aef7811</GUID>
-      <Revision>4</Revision>
+      <Revision>9</Revision>
       <Versions>
         <Version>
           <VersionNumber>1</VersionNumber>
           <ValidFrom>2022-03-18Z</ValidFrom>
           <OID>DNPM.GrundAblehnung.v1</OID>
           <Active>true</Active>
-          <Description>v1</Description>
+          <Description>bwHC-Datenmodell 1.0</Description>
+          <LkrCode/>
           <SID>20119</SID>
           <GUID>116ea5dc-22b2-4fbb-85d9-b5d5ea130a55</GUID>
-          <Revision>2</Revision>
+          <Revision>3</Revision>
           <Entries>
             <Entry>
               <Code>s</Code>
@@ -326,6 +327,92 @@
               <Synonyms/>
               <Note/>
               <Position>3.0</Position>
+            </Entry>
+          </Entries>
+          <Categories/>
+        </Version>
+        <Version>
+          <VersionNumber>2</VersionNumber>
+          <ValidFrom>2025-04-20Z</ValidFrom>
+          <OID>DNPM.GrundAblehnung</OID>
+          <Active>true</Active>
+          <Description>DNPM-Datenmodell 2.1</Description>
+          <LkrCode/>
+          <SID>20119</SID>
+          <GUID>559a47e4-3c60-4197-abdd-593613994bf7</GUID>
+          <Revision>2</Revision>
+          <Entries>
+            <Entry>
+              <Code>insufficient-evidence</Code>
+              <ShortDescription>Nicht ausreichende Evidenz</ShortDescription>
+              <Description>Nicht ausreichende Evidenz</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>1.0</Position>
+            </Entry>
+            <Entry>
+              <Code>standard-therapy-not-exhausted-new-request-required</Code>
+              <ShortDescription>Standardtherapie nicht ausgeschöpft (Neuantrag erforderlich)</ShortDescription>
+              <Description>Standardtherapie nicht ausgeschöpft (Neuantrag erforderlich)</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>2.0</Position>
+            </Entry>
+            <Entry>
+              <Code>standard-therapy-not-exhausted</Code>
+              <ShortDescription>Standardtherapie nicht ausgeschöpft (kein Neuantrag erforderlich)</ShortDescription>
+              <Description>Weitere Standardtherapie nicht ausgeschöpft (kein Neuantrag erforderlich)</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>3.0</Position>
+            </Entry>
+            <Entry>
+              <Code>formal-reasons</Code>
+              <ShortDescription>Inhaltliche Gründe</ShortDescription>
+              <Description>Inhaltliche Gründe</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>4.0</Position>
+            </Entry>
+            <Entry>
+              <Code>other-therapy-recommended</Code>
+              <ShortDescription>Andere Therapie vorgeschlagen</ShortDescription>
+              <Description>Andere Therapie vorgeschlagen</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>5.0</Position>
+            </Entry>
+            <Entry>
+              <Code>study-enrollment</Code>
+              <ShortDescription>Studieneinschluss</ShortDescription>
+              <Description>Studieneinschluss</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>6.0</Position>
+            </Entry>
+            <Entry>
+              <Code>approval-revocation</Code>
+              <ShortDescription>Rücknahme der Zulassung</ShortDescription>
+              <Description>Rücknahme der Zulassung</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>7.0</Position>
+            </Entry>
+            <Entry>
+              <Code>other</Code>
+              <ShortDescription>Weitere Gründe</ShortDescription>
+              <Description>Weitere Gründe</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>8.0</Position>
+            </Entry>
+            <Entry>
+              <Code>unknown</Code>
+              <ShortDescription>Unbekannt</ShortDescription>
+              <Description>Unbekannt</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>9.0</Position>
             </Entry>
           </Entries>
           <Categories/>
@@ -14234,8 +14321,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>StatusKostenuebernahme</RefEntry>
               <RefEntry>AntragKostenuebernahme</RefEntry>
+              <RefEntry>StatusKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
