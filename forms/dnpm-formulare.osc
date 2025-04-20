@@ -2294,7 +2294,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>d9b30f65-bb23-4379-80f2-f299566c0826</GUID>
-      <Revision>20</Revision>
+      <Revision>21</Revision>
       <Entries>
         <Entry>
           <Name>LetztesFollowUpDatum</Name>
@@ -3050,6 +3050,30 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Use/>
           <SID>20119</SID>
           <GUID>0489dfbb-b445-463b-93df-6a198c6872e9</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <Name>LostToFollowUp</Name>
+          <NameExport>LostToFollowUp</NameExport>
+          <Description>Lost to FollowUp</Description>
+          <Type>boolean</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>ced3f5b8-713c-4693-8842-7792220ae65c</GUID>
           <Revision>1</Revision>
         </Entry>
       </Entries>
@@ -8217,7 +8241,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>12415fe7-8785-41ee-ad32-8e4dd69d504b</GUID>
-              <Revision>69</Revision>
+              <Revision>71</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -13404,7 +13428,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>12415fe7-8785-41ee-ad32-8e4dd69d504b</GUID>
-      <Revision>69</Revision>
+      <Revision>71</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12443">
@@ -13435,8 +13459,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;GrundAblehnungKosten = 'w'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>GrundAblehnungKosten</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -13504,9 +13528,17 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
+          <Filter>
+            <Condition>LostToFollowUp = false</Condition>
+            <Valid>true</Valid>
+            <RefEntries>
+              <RefEntry>LostToFollowUp</RefEntry>
+            </RefEntries>
+          </Filter>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -13529,7 +13561,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12426</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -13542,7 +13574,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>2527e13b-4441-4be7-83f8-55cd6cbd2904</GUID>
-          <Revision>2</Revision>
+          <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -13569,9 +13601,17 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
+          <Filter>
+            <Condition>LostToFollowUp = false</Condition>
+            <Valid>true</Valid>
+            <RefEntries>
+              <RefEntry>LostToFollowUp</RefEntry>
+            </RefEntries>
+          </Filter>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -13594,7 +13634,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12443</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -13607,7 +13647,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>2b298317-f833-4ca4-b73c-4b8092b0eff0</GUID>
-          <Revision>2</Revision>
+          <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -13842,9 +13882,17 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
+          <Filter>
+            <Condition>LostToFollowUp = false</Condition>
+            <Valid>true</Valid>
+            <RefEntries>
+              <RefEntry>LostToFollowUp</RefEntry>
+            </RefEntries>
+          </Filter>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -13867,7 +13915,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12438</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -13880,7 +13928,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>43bd84f2-49d0-4809-a0c1-32d8341db578</GUID>
-          <Revision>1</Revision>
+          <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -14820,6 +14868,75 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <Revision>257</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
+        </Entry>
+        <Entry>
+          <Type>checkbox</Type>
+          <Name>LostToFollowUp</Name>
+          <Description>Lost to FollowUp</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.5</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>LostToFollowUp</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_FollowUp</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>6ae823f6-6b06-48ef-a866-dc03a0092f47</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
         <Entry parentRefId="12426">
           <Type>textfield</Type>
