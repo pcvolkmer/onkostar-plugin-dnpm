@@ -7164,6 +7164,99 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
         <Typ>2</Typ>
       </Ordner>
     </DataCatalogue>
+    <DataCatalogue>
+      <Name>DNPM_UF_Reevaluation</Name>
+      <NameExport>DNPM_UF_Reevaluation</NameExport>
+      <Category>-3</Category>
+      <Description>DNPM Unterformular Reevaluation</Description>
+      <Note/>
+      <Readonly>false</Readonly>
+      <BestOf>false</BestOf>
+      <SID>20119</SID>
+      <GUID>8c4aec73-df05-48e1-b72d-3fb3ca19029c</GUID>
+      <Revision>2</Revision>
+      <Entries>
+        <Entry>
+          <Name>datum</Name>
+          <NameExport>datum</NameExport>
+          <Description>Empfehlungsdatum</Description>
+          <Type>date</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>a0274f88-84e1-4da6-be5b-30d6fa677034</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <Name>ref_molekulargenetik</Name>
+          <NameExport>ref_molekulargenetik</NameExport>
+          <Description>Tumorprobe</Description>
+          <Type>formReference</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>4c176013-b977-4ce1-beff-485650e6ccb7</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <Name>ref_tumorkonferenz</Name>
+          <NameExport>ref_tumorkonferenz</NameExport>
+          <Description>Tumorkonferenz</Description>
+          <Type>formReference</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>23f093ac-7a33-4ccc-87c5-b33fccba4596</GUID>
+          <Revision>1</Revision>
+        </Entry>
+      </Entries>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>2</Typ>
+      </Ordner>
+    </DataCatalogue>
     <Unterformular>
       <DataCatalogues>
         <DataCatalogue>DNPM_UF_Einzelempfehlung</DataCatalogue>
@@ -7675,8 +7768,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -7822,8 +7915,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9184,8 +9277,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9259,8 +9352,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9334,8 +9427,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9484,8 +9577,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9559,8 +9652,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9634,8 +9727,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -13918,6 +14011,358 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
         <Typ>3</Typ>
       </Ordner>
     </Unterformular>
+    <Unterformular>
+      <DataCatalogues>
+        <DataCatalogue>DNPM_UF_Reevaluation</DataCatalogue>
+      </DataCatalogues>
+      <Category>-3</Category>
+      <Name>DNPM UF Reevaluation</Name>
+      <Version>1</Version>
+      <MenuEntry>DNPM UF Reevaluation</MenuEntry>
+      <Title>DNPM UF Reevaluation</Title>
+      <Description>DNPM UF Reevaluation</Description>
+      <Note/>
+      <Readonly>false</Readonly>
+      <Active>true</Active>
+      <TudokPosition>0</TudokPosition>
+      <Aktenbereich>0</Aktenbereich>
+      <BefragungRelevant>false</BefragungRelevant>
+      <Summary/>
+      <BigSummary/>
+      <KalenderSchnipsel/>
+      <EmailTemplate/>
+      <ErkrankungText/>
+      <ErkrankungTextLong/>
+      <ErkrankungProzedurText/>
+      <ErkrankungSummary/>
+      <ErkrankungBigSummary/>
+      <Kontext>0</Kontext>
+      <Datenart>BOTH</Datenart>
+      <ShowHistoryButton>false</ShowHistoryButton>
+      <TudokReadonly>false</TudokReadonly>
+      <VitalstatusRelevant>true</VitalstatusRelevant>
+      <AutoNummerierung>true</AutoNummerierung>
+      <Zwischenspeichern>true</Zwischenspeichern>
+      <Zurueckblaettern>false</Zurueckblaettern>
+      <Datenbankexport>false</Datenbankexport>
+      <DatenschutzRelevant>false</DatenschutzRelevant>
+      <KonferenzRelevant>false</KonferenzRelevant>
+      <hatUnterformulare>false</hatUnterformulare>
+      <SID>20119</SID>
+      <GUID>eb7429be-d077-43bf-ba99-7ce59dddcf0b</GUID>
+      <Revision>2</Revision>
+      <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
+      <Entries>
+        <Entry parentId="13983">
+          <Type>formReference</Type>
+          <Name>refmolekulargenetik</Name>
+          <Description>Molekulargenetische Untersuchung</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>3.0</Position>
+          <Note/>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>ref_tumorkonferenz</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Reevaluation</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <ReferencedDataForm>OS.Molekulargenetik</ReferencedDataForm>
+          <Anzeige/>
+          <AnzeigeAuswahl>Befund vom {Datum}</AnzeigeAuswahl>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis>Wählen Sie hier das Formular zur Molekulargenetischen Untersuchung aus, welches das Ergebnis der Rebiopsie beinhaltet.&amp;#10;&amp;#10;Die Auswahl der Molekulargenetischen Untersuchung kann auch später erfolgen, wenn das Ergebnis zum aktuellen Zeitpunkt noch nicht vorliegt.</Hinweis>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>fa95472e-2cb8-4ee3-963f-37292a3c909c</GUID>
+          <Revision>2</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+          <DataFormReferences>
+            <ReferencedDataForm>
+              <Category>0</Category>
+              <Name>OS.Molekulargenetik</Name>
+              <Readonly>false</Readonly>
+              <TudokPosition>0</TudokPosition>
+              <hatUnterformulare>false</hatUnterformulare>
+              <SID>1001</SID>
+              <GUID>a5ff1d01-6c9d-425f-a608-bc08049cf90b</GUID>
+              <Revision>114</Revision>
+            </ReferencedDataForm>
+          </DataFormReferences>
+        </Entry>
+        <Entry parentId="13984">
+          <Type>formReference</Type>
+          <Name>reftumorkonferenz</Name>
+          <Description>MTB</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>0.5</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>ref_molekulargenetik</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Reevaluation</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <Filter>
+            <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+            <Valid>true</Valid>
+            <RefEntries/>
+          </Filter>
+          <NotSpecified>false</NotSpecified>
+          <Scripts>
+            <Code>var datum = getFieldValue('reftumorkonferenz').Datum;&amp;#10;setFieldValue('ufrbdatum', datum);</Code>
+            <Valid>true</Valid>
+          </Scripts>
+          <ReferencedDataForm>OS.Tumorkonferenz</ReferencedDataForm>
+          <Anzeige/>
+          <AnzeigeAuswahl>MTB vom {Datum}</AnzeigeAuswahl>
+          <Speichern>0</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis>Wählen Sie hier das MTB aus, in der eine Empfehlung zur Rebiopsie ausgesprochen wurde.&amp;#10;&amp;#10;Das Datum der Empfehlung im nachfolgenden Eingabefeld wird automatisch aktualisiert.</Hinweis>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>887af1e6-ef4e-45f6-9e8b-1ebde8ea3034</GUID>
+          <Revision>2</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+          <DataFormReferences>
+            <ReferencedDataForm>
+              <Category>0</Category>
+              <Name>OS.Tumorkonferenz</Name>
+              <Readonly>false</Readonly>
+              <TudokPosition>0</TudokPosition>
+              <hatUnterformulare>false</hatUnterformulare>
+              <SID>1001</SID>
+              <GUID>6496927e-d708-11e5-b199-0050568f1add</GUID>
+              <Revision>119</Revision>
+            </ReferencedDataForm>
+          </DataFormReferences>
+        </Entry>
+        <Entry>
+          <Type>datefield</Type>
+          <Name>ufrbdatum</Name>
+          <Description>Datum MTB</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.0</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>datum</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Reevaluation</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <Filter>
+            <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+            <Valid>true</Valid>
+            <RefEntries/>
+          </Filter>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Speichern>0</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis>Geben Sie hier das Datum der Empfehlung an, sofern kein MTB ausgewählt wurde.&amp;#10;&amp;#10;Dieses Feld wird automatisch bei Auswahl des MTBs übernommen.</Hinweis>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>a76da017-2a73-4dcd-806a-6250a39be155</GUID>
+          <Revision>2</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+      </Entries>
+      <PlausibilityRules>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Das Datum liegt nach dem Sterbedatum</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur Rebiopsie nach dem Sterbedatum liegt</Description>
+          <Bezeichnung>DatumGrenze_ufrbdatum_GueltigBis</Bezeichnung>
+          <Formula>dateAfterOrEquals(patientData.getDeathdate(), ufrbdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufrbdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt vor dem Geburtsdatum</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur Rebiopsie vor dem Geburtsdatum liegt</Description>
+          <Bezeichnung>DatumGrenze_ufrbdatum_GueltigVon</Bezeichnung>
+          <Formula>dateBeforeOrEquals(patientData.getBirthdate(), ufrbdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufrbdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Message>Das Datum liegt in der Zukunft</Message>
+          <Description>Prüfung, ob das Datum der Empfehlung zur Rebiopsie in der Zukunft liegt</Description>
+          <Bezeichnung>DatumGrenze_ufrbdatum_GueltigZukunft</Bezeichnung>
+          <Formula>dateAfterOrEquals(getNow(), ufrbdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Condition>getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <ConditionValid>true</ConditionValid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufrbdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>1</Type>
+          <Message>Das Datum der Tumorkonferenz mit dem Auftrag zur Rebiopsie fehlt</Message>
+          <Description>Prüfung, ob das Datum der Tumorkonferenz mit dem Auftrag zur Rebiopsie vorhanden ist</Description>
+          <Bezeichnung>Rebiospie_Erstellungsdatum</Bezeichnung>
+          <Formula>not isEmpty(ufrbdatum)</Formula>
+          <Active>true</Active>
+          <Editable>true</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries>
+            <EntryName>ufrbdatum</EntryName>
+          </DataFormEntries>
+        </PlausibilityRule>
+      </PlausibilityRules>
+      <Haeufigkeiten/>
+      <Kennzahlen/>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>3</Typ>
+      </Ordner>
+    </Unterformular>
     <DataForm>
       <DataCatalogues>
         <DataCatalogue>DNPM_Vorbefunde</DataCatalogue>
@@ -15299,8 +15744,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>StatusKostenuebernahme</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -19957,7 +20402,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>true</hatUnterformulare>
       <SID>20119</SID>
       <GUID>b277991d-0bda-4082-841e-dd10759b9cbd</GUID>
-      <Revision>175</Revision>
+      <Revision>177</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12507">
@@ -20096,6 +20541,75 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SID>20119</SID>
           <GUID>555e9865-872d-4ae7-9cbe-c0e3a7f09051</GUID>
           <Revision>3</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry>
+          <Type>subform</Type>
+          <Name>DNPMUFReevaluation</Name>
+          <Description>Reevaluation</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>false</Printable>
+          <Position>7.125</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry/>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <ReferencedDataForm>DNPM UF Reevaluation</ReferencedDataForm>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>400f9e29-6521-441c-9f8c-d9c8c138ca3a</GUID>
+          <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -20496,7 +21010,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Name>datumtkreevaluation</Name>
           <Description>Datum MTB</Description>
           <Active>true</Active>
-          <Readonly>false</Readonly>
+          <Readonly>true</Readonly>
           <Printable>true</Printable>
           <Position>0.75</Position>
           <Note/>
@@ -20525,6 +21039,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -20547,7 +21062,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12496</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -20560,7 +21075,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>7948405e-2c3a-457b-b6e5-1a6a7368ea4e</GUID>
-          <Revision>7</Revision>
+          <Revision>8</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -20957,10 +21472,13 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Name>reevaluation</Name>
           <Description>Empfehlung</Description>
           <Active>true</Active>
-          <Readonly>false</Readonly>
+          <Readonly>true</Readonly>
           <Printable>true</Printable>
           <Position>0.25</Position>
           <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
           <MultipleChoice>false</MultipleChoice>
           <DefaultValue/>
           <Alignment>1</Alignment>
@@ -20971,7 +21489,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
           <GrafikAusrichtung>0</GrafikAusrichtung>
-          <Mandatory>mandatory</Mandatory>
+          <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
           <NotSpecified>false</NotSpecified>
           <Scripts>
@@ -20980,6 +21498,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           </Scripts>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -21002,7 +21521,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12489</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -21015,7 +21534,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>3c7e5c3b-77d7-4138-8318-9d46151dc4de</GUID>
-          <Revision>7</Revision>
+          <Revision>8</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -21186,7 +21705,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Name>refreevaltumorprobe</Name>
           <Description>Molekulargenetische Untersuchung.</Description>
           <Active>true</Active>
-          <Readonly>false</Readonly>
+          <Readonly>true</Readonly>
           <Printable>true</Printable>
           <Position>6.0</Position>
           <Note/>
@@ -21239,7 +21758,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12502</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -21252,7 +21771,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>39e0e1ab-6a4d-4619-9031-7ce71524477d</GUID>
-          <Revision>9</Revision>
+          <Revision>10</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -21364,7 +21883,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Name>reftkreevaluation</Name>
           <Description>MTB</Description>
           <Active>true</Active>
-          <Readonly>false</Readonly>
+          <Readonly>true</Readonly>
           <Printable>true</Printable>
           <Position>0.5</Position>
           <Note/>
@@ -21421,7 +21940,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12499</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -21434,7 +21953,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>df226ded-99a6-4d1c-b23f-e6928e3492e5</GUID>
-          <Revision>10</Revision>
+          <Revision>11</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -21771,6 +22290,16 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <DataFormEntries>
             <EntryName>datumtkhumangenber</EntryName>
           </DataFormEntries>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Description>__DatumGrenze_datumtkreevaluation_GueltigVon</Description>
+          <Bezeichnung>__DatumGrenze_datumtkreevaluation_GueltigVon</Bezeichnung>
+          <Active>true</Active>
+          <Editable>false</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries/>
         </PlausibilityRule>
       </PlausibilityRules>
       <Haeufigkeiten/>
