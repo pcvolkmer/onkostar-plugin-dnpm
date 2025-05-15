@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OnkostarEditor>
   <InfoXML>
-    <DatumXML>2025-05-10Z</DatumXML>
+    <DatumXML>2025-05-15Z</DatumXML>
     <Name>OnkoStar</Name>
     <Version>2.14.0</Version>
   </InfoXML>
@@ -7324,7 +7324,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimAnonymisieren>
       <SID>20119</SID>
       <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-      <Revision>264</Revision>
+      <Revision>265</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12368">
@@ -7625,8 +7625,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>studie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -7768,8 +7768,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -7915,8 +7915,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -7994,8 +7994,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>studie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -8834,7 +8834,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           </Scripts>
           <ReferencedDataForm>OS.Tumorkonferenz</ReferencedDataForm>
           <Anzeige/>
-          <AnzeigeAuswahl>MTB vom {Datum}</AnzeigeAuswahl>
+          <AnzeigeAuswahl>{TK.shortdesc} vom {Datum}</AnzeigeAuswahl>
+          <Druckvorlage/>
           <Speichern>0</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -8857,7 +8858,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12375</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -8870,7 +8871,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>57707b45-cbf4-4bf6-99e3-b5051bff8552</GUID>
-          <Revision>22</Revision>
+          <Revision>23</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -9277,8 +9278,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9352,8 +9353,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9427,8 +9428,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9577,8 +9578,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9652,8 +9653,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9727,8 +9728,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11556,7 +11557,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-              <Revision>264</Revision>
+              <Revision>265</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -13698,7 +13699,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>f8ca5edc-088e-46ab-baed-228b8d671c9e</GUID>
-      <Revision>21</Revision>
+      <Revision>22</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentId="12396">
@@ -13813,7 +13814,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           </Scripts>
           <ReferencedDataForm>OS.Tumorkonferenz</ReferencedDataForm>
           <Anzeige/>
-          <AnzeigeAuswahl>MTB vom {Datum}</AnzeigeAuswahl>
+          <AnzeigeAuswahl>{TK.shortdesc} vom {Datum}</AnzeigeAuswahl>
+          <Druckvorlage/>
           <Speichern>0</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -13836,7 +13838,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12397</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -13849,7 +13851,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>7a254fab-5a15-4a55-adc8-ad8624ad4258</GUID>
-          <Revision>10</Revision>
+          <Revision>11</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -14050,7 +14052,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>eb7429be-d077-43bf-ba99-7ce59dddcf0b</GUID>
-      <Revision>2</Revision>
+      <Revision>3</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentId="13983">
@@ -14165,7 +14167,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           </Scripts>
           <ReferencedDataForm>OS.Tumorkonferenz</ReferencedDataForm>
           <Anzeige/>
-          <AnzeigeAuswahl>MTB vom {Datum}</AnzeigeAuswahl>
+          <AnzeigeAuswahl>{TK.shortdesc} vom {Datum}</AnzeigeAuswahl>
+          <Druckvorlage/>
           <Speichern>0</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -14188,7 +14191,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>13984</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -14201,7 +14204,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>887af1e6-ef4e-45f6-9e8b-1ebde8ea3034</GUID>
-          <Revision>2</Revision>
+          <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -14676,8 +14679,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;GrundAblehnungKosten = 'w'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>GrundAblehnungKosten</RefEntry>
               <RefEntry>AntragKostenuebernahme</RefEntry>
+              <RefEntry>GrundAblehnungKosten</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -16082,7 +16085,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-              <Revision>264</Revision>
+              <Revision>265</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -17373,7 +17376,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-      <Revision>232</Revision>
+      <Revision>233</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12454">
@@ -19657,7 +19660,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           </Scripts>
           <ReferencedDataForm>OS.Tumorkonferenz</ReferencedDataForm>
           <Anzeige/>
-          <AnzeigeAuswahl>MTB vom {Datum}</AnzeigeAuswahl>
+          <AnzeigeAuswahl>{TK.shortdesc} vom {Datum}</AnzeigeAuswahl>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -19680,7 +19684,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12466</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -19693,7 +19697,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>a21806f5-5540-406d-9e02-0bae552668af</GUID>
-          <Revision>7</Revision>
+          <Revision>8</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -20402,7 +20406,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>true</hatUnterformulare>
       <SID>20119</SID>
       <GUID>b277991d-0bda-4082-841e-dd10759b9cbd</GUID>
-      <Revision>177</Revision>
+      <Revision>178</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12507">
@@ -21613,7 +21617,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-              <Revision>232</Revision>
+              <Revision>233</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -21648,7 +21652,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           </Scripts>
           <ReferencedDataForm>OS.Tumorkonferenz</ReferencedDataForm>
           <Anzeige/>
-          <AnzeigeAuswahl>MTB vom {Datum}</AnzeigeAuswahl>
+          <AnzeigeAuswahl>{TK.shortdesc} vom {Datum}</AnzeigeAuswahl>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -21671,7 +21676,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12490</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -21684,7 +21689,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>5bae273a-db65-4f40-a0d8-ecf8eb051d3d</GUID>
-          <Revision>56</Revision>
+          <Revision>57</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -21825,7 +21830,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           </Scripts>
           <ReferencedDataForm>OS.Tumorkonferenz</ReferencedDataForm>
           <Anzeige/>
-          <AnzeigeAuswahl>MTB vom {Datum}</AnzeigeAuswahl>
+          <AnzeigeAuswahl>{TK.shortdesc} vom {Datum}</AnzeigeAuswahl>
           <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
@@ -21849,7 +21854,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12504</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -21862,7 +21867,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>4159c052-f6cb-4084-9451-db28275ed671</GUID>
-          <Revision>12</Revision>
+          <Revision>13</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -21916,7 +21921,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           </Scripts>
           <ReferencedDataForm>OS.Tumorkonferenz</ReferencedDataForm>
           <Anzeige/>
-          <AnzeigeAuswahl>MTB vom {Datum}</AnzeigeAuswahl>
+          <AnzeigeAuswahl>{TK.shortdesc} vom {Datum}</AnzeigeAuswahl>
           <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
@@ -21953,7 +21958,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>df226ded-99a6-4d1c-b23f-e6928e3492e5</GUID>
-          <Revision>11</Revision>
+          <Revision>12</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
