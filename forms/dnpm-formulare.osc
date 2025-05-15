@@ -14679,8 +14679,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;GrundAblehnungKosten = 'w'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>GrundAblehnungKosten</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -20406,7 +20406,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>true</hatUnterformulare>
       <SID>20119</SID>
       <GUID>b277991d-0bda-4082-841e-dd10759b9cbd</GUID>
-      <Revision>178</Revision>
+      <Revision>179</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12507">
@@ -21569,7 +21569,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <NotSpecified>false</NotSpecified>
           <ReferencedDataForm>DNPM Klinik/Anamnese</ReferencedDataForm>
           <Anzeige/>
-          <AnzeigeAuswahl>Klinik/Anamnese mit Datum Erstdiagnose {DatumErstdiagnose}</AnzeigeAuswahl>
+          <AnzeigeAuswahl>Klinik/Anamnese Erstdiagnose am {DatumErstdiagnose} und MTB-Anmeldung am {AnmeldedatumMTB}</AnzeigeAuswahl>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -21592,7 +21593,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12492</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -21605,7 +21606,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>7d75f0c6-a8cd-4fd9-9a6e-9d43a388503e</GUID>
-          <Revision>6</Revision>
+          <Revision>7</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
