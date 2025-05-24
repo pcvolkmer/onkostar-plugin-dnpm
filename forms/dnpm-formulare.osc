@@ -6950,6 +6950,101 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </Ordner>
     </DataCatalogue>
     <DataCatalogue>
+      <Name>DNPM_UF_Tumorgrading</Name>
+      <NameExport>DNPM_UF_Tumorgrading</NameExport>
+      <Category>-3</Category>
+      <Description>DNPM UF Tumorgrading</Description>
+      <Note/>
+      <Readonly>false</Readonly>
+      <BestOf>false</BestOf>
+      <SID>20119</SID>
+      <GUID>8219cfd1-a666-4fb5-b18a-0cda1a1115ff</GUID>
+      <Revision>2</Revision>
+      <Entries>
+        <Entry>
+          <PropertyCatalogue>DNPM.Tumorgrading</PropertyCatalogue>
+          <Name>Tumorgrading</Name>
+          <NameExport>Tumorgrading</NameExport>
+          <Description>Tumorgrading</Description>
+          <Type>propertyCatalogue</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>2</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>ebb351d9-7b48-43ae-a5c5-8b7853ec6c2a</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <PropertyCatalogue>DNPM.WHOGrading</PropertyCatalogue>
+          <Name>WHOGrad</Name>
+          <NameExport>WHOGrad</NameExport>
+          <Description>WHO-Grad</Description>
+          <Type>propertyCatalogue</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>true</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>2</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>473f2d58-0d21-42c3-90df-0ec560ac6806</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <Name>Zeitpunkt</Name>
+          <NameExport>Zeitpunkt</NameExport>
+          <Description>Zeitpunkt</Description>
+          <Type>date</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>c5d82e23-5801-4cf6-bf79-c156b6fbf72a</GUID>
+          <Revision>1</Revision>
+        </Entry>
+      </Entries>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>2</Typ>
+      </Ordner>
+    </DataCatalogue>
+    <DataCatalogue>
       <Name>DNPM_Therapieplan</Name>
       <NameExport>DNPM_Therapieplan</NameExport>
       <Category>-3</Category>
@@ -7912,8 +8007,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>studie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>studie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -8055,8 +8150,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -8202,8 +8297,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -8281,8 +8376,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>studie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>studie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9565,8 +9660,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9640,8 +9735,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9715,8 +9810,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9865,8 +9960,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9940,8 +10035,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -10015,8 +10110,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -14018,6 +14113,398 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
     </Unterformular>
     <Unterformular>
       <DataCatalogues>
+        <DataCatalogue>DNPM_UF_Tumorgrading</DataCatalogue>
+      </DataCatalogues>
+      <Category>-3</Category>
+      <Name>DNPM UF WHOGrading</Name>
+      <Version>1</Version>
+      <MenuEntry>DNPM UF WHOGrading</MenuEntry>
+      <Title>WHO-Grading</Title>
+      <Description>DNPM UF WHOGrading</Description>
+      <Note/>
+      <Readonly>false</Readonly>
+      <Active>true</Active>
+      <TudokPosition>0</TudokPosition>
+      <Aktenbereich>0</Aktenbereich>
+      <BefragungRelevant>false</BefragungRelevant>
+      <Summary/>
+      <BigSummary/>
+      <KalenderSchnipsel/>
+      <EmailTemplate/>
+      <ErkrankungText/>
+      <ErkrankungTextLong/>
+      <ErkrankungProzedurText/>
+      <ErkrankungSummary/>
+      <ErkrankungBigSummary/>
+      <Kontext>0</Kontext>
+      <Datenart>BOTH</Datenart>
+      <ShowHistoryButton>false</ShowHistoryButton>
+      <TudokReadonly>false</TudokReadonly>
+      <VitalstatusRelevant>true</VitalstatusRelevant>
+      <AutoNummerierung>true</AutoNummerierung>
+      <Zwischenspeichern>true</Zwischenspeichern>
+      <Zurueckblaettern>false</Zurueckblaettern>
+      <Datenbankexport>false</Datenbankexport>
+      <DatenschutzRelevant>false</DatenschutzRelevant>
+      <KonferenzRelevant>false</KonferenzRelevant>
+      <Drucken/>
+      <hatUnterformulare>false</hatUnterformulare>
+      <SID>20119</SID>
+      <GUID>f54d05df-6925-4f25-a779-2d4f4f13fd0f</GUID>
+      <Revision>2</Revision>
+      <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
+      <Entries>
+        <Entry>
+          <Type>combobox</Type>
+          <Name>WHOGrad</Name>
+          <Description>WHO-Grad</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>2.0</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>1</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>WHOGrad</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Tumorgrading</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
+          <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>1</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>9a24ad88-eacb-48b6-997a-90e57cb771c9</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry>
+          <Type>datefield</Type>
+          <Name>Zeitpunkt</Name>
+          <Description>Zeitpunkt</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.0</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>Zeitpunkt</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Tumorgrading</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>1561fb9b-96b9-44d3-b584-5bd90d53dc51</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+      </Entries>
+      <PlausibilityRules/>
+      <Haeufigkeiten/>
+      <Kennzahlen/>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>3</Typ>
+      </Ordner>
+      <MenuCategory>
+        <name>DNPM</name>
+        <position>3.0</position>
+        <column>1</column>
+      </MenuCategory>
+    </Unterformular>
+    <Unterformular>
+      <DataCatalogues>
+        <DataCatalogue>DNPM_UF_Tumorgrading</DataCatalogue>
+      </DataCatalogues>
+      <Category>-3</Category>
+      <Name>DNPM UF Tumorgrading</Name>
+      <Version>1</Version>
+      <MenuEntry>DNPM UF Tumorgrading</MenuEntry>
+      <Title>Tumorgrading</Title>
+      <Description>DNPM UF Tumorgrading</Description>
+      <Note/>
+      <Readonly>false</Readonly>
+      <Active>true</Active>
+      <TudokPosition>0</TudokPosition>
+      <Aktenbereich>0</Aktenbereich>
+      <BefragungRelevant>false</BefragungRelevant>
+      <Summary/>
+      <BigSummary/>
+      <KalenderSchnipsel/>
+      <EmailTemplate/>
+      <ErkrankungText/>
+      <ErkrankungTextLong/>
+      <ErkrankungProzedurText/>
+      <ErkrankungSummary/>
+      <ErkrankungBigSummary/>
+      <Kontext>0</Kontext>
+      <Datenart>BOTH</Datenart>
+      <ShowHistoryButton>false</ShowHistoryButton>
+      <TudokReadonly>false</TudokReadonly>
+      <VitalstatusRelevant>true</VitalstatusRelevant>
+      <AutoNummerierung>true</AutoNummerierung>
+      <Zwischenspeichern>true</Zwischenspeichern>
+      <Zurueckblaettern>false</Zurueckblaettern>
+      <Datenbankexport>false</Datenbankexport>
+      <DatenschutzRelevant>false</DatenschutzRelevant>
+      <KonferenzRelevant>false</KonferenzRelevant>
+      <Drucken/>
+      <hatUnterformulare>false</hatUnterformulare>
+      <SID>20119</SID>
+      <GUID>985b6140-1260-4115-84a8-c9932b742a54</GUID>
+      <Revision>2</Revision>
+      <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
+      <Entries>
+        <Entry>
+          <Type>combobox</Type>
+          <Name>Tumorgrading</Name>
+          <Description>Tumorgrading</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>3.0</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>1</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>Tumorgrading</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Tumorgrading</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
+          <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>1</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>ed1ca1c7-dafc-4e2d-b9ac-a737a9454045</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry>
+          <Type>datefield</Type>
+          <Name>Zeitpunkt</Name>
+          <Description>Zeitpunkt</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.0</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>Zeitpunkt</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_UF_Tumorgrading</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>423d377b-9a68-49b3-b46a-4b64fd044d1a</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+      </Entries>
+      <PlausibilityRules/>
+      <Haeufigkeiten/>
+      <Kennzahlen/>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>3</Typ>
+      </Ordner>
+      <MenuCategory>
+        <name>DNPM</name>
+        <position>3.0</position>
+        <column>1</column>
+      </MenuCategory>
+    </Unterformular>
+    <Unterformular>
+      <DataCatalogues>
         <DataCatalogue>DNPM_UF_Rebiopsie</DataCatalogue>
       </DataCatalogues>
       <Category>-3</Category>
@@ -16103,8 +16590,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>StatusKostenuebernahme</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -17732,7 +18219,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-      <Revision>235</Revision>
+      <Revision>237</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12454">
@@ -20337,12 +20824,88 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="12462">
-          <Type>combobox</Type>
+        <Entry>
+          <Type>subform</Type>
           <Name>Tumorgrading</Name>
           <Description>Tumorgrading</Description>
           <Active>true</Active>
           <Readonly>false</Readonly>
+          <Printable>false</Printable>
+          <Position>3.21875</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry/>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <Filter>
+            <Condition>not ICD10.getCategories()-&gt;includes('Gehirn')</Condition>
+            <Valid>true</Valid>
+            <RefEntries>
+              <RefEntry>ICD10</RefEntry>
+            </RefEntries>
+          </Filter>
+          <NotSpecified>false</NotSpecified>
+          <ReferencedDataForm>DNPM UF Tumorgrading</ReferencedDataForm>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>f0e29ee3-0a7f-4bec-9f94-8ddab3618299</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12462">
+          <Type>combobox</Type>
+          <Name>TumorgradingAlt</Name>
+          <Description>Tumorgrading</Description>
+          <Active>true</Active>
+          <Readonly>true</Readonly>
           <Printable>true</Printable>
           <Position>7.0</Position>
           <Note/>
@@ -20358,7 +20921,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent>Bereich3</ElementParent>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -20386,7 +20948,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
           <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -20396,7 +20957,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>13987</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -20409,7 +20970,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>bec4ca4d-63e6-4573-b499-9f865987b456</GUID>
-          <Revision>1</Revision>
+          <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -20542,12 +21103,88 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
-        <Entry parentRefId="12462">
-          <Type>combobox</Type>
+        <Entry>
+          <Type>subform</Type>
           <Name>WHOGrad</Name>
           <Description>WHO-Grad</Description>
           <Active>true</Active>
           <Readonly>false</Readonly>
+          <Printable>false</Printable>
+          <Position>3.1875</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry/>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <Filter>
+            <Condition>ICD10.getCategories()-&gt;includes('Gehirn')</Condition>
+            <Valid>true</Valid>
+            <RefEntries>
+              <RefEntry>ICD10</RefEntry>
+            </RefEntries>
+          </Filter>
+          <NotSpecified>false</NotSpecified>
+          <ReferencedDataForm>DNPM UF WHOGrading</ReferencedDataForm>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>87e69792-315c-4db1-b293-e248e9b3fc2e</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12462">
+          <Type>combobox</Type>
+          <Name>WHOGradAlt</Name>
+          <Description>WHO-Grad</Description>
+          <Active>true</Active>
+          <Readonly>true</Readonly>
           <Printable>true</Printable>
           <Position>6.0</Position>
           <Note/>
@@ -20613,7 +21250,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>f7da1c86-7204-4992-a651-b8a71ec72791</GUID>
-          <Revision>8</Revision>
+          <Revision>9</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -22054,7 +22691,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-              <Revision>235</Revision>
+              <Revision>237</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
