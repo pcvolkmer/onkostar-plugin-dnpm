@@ -4589,7 +4589,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>ab9d331c-8d95-49e5-adc2-73295c8fa1a3</GUID>
-      <Revision>54</Revision>
+      <Revision>55</Revision>
       <Entries>
         <Entry>
           <PropertyCatalogue>DNPM.WHOGrading</PropertyCatalogue>
@@ -5719,6 +5719,30 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Use/>
           <SID>20119</SID>
           <GUID>52275a40-36be-4bcf-8ee6-8945f0ad1960</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <Name>FallnummerMV</Name>
+          <NameExport>FallnummerMV</NameExport>
+          <Description>Fallnummer MV §64e</Description>
+          <Type>shorttext</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>255</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>ee6aa204-75ea-4f81-988f-083226fe1366</GUID>
           <Revision>1</Revision>
         </Entry>
       </Entries>
@@ -18555,7 +18579,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-      <Revision>238</Revision>
+      <Revision>239</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12454">
@@ -19954,6 +19978,80 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SID>20119</SID>
           <GUID>980da558-1af2-45b1-a04b-3a3e7058018f</GUID>
           <Revision>4</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12475">
+          <Type>textfield</Type>
+          <Name>FallnummerMV</Name>
+          <Description>Fallnummer MV §64e</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>6.0</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>FallnummerMV</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_KPA</DataCatalogueEntryTable>
+          <ElementParent>Bereich2</ElementParent>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <Filter>
+            <Condition>getProcedure().getDiseases()-&gt;size() &gt; 0</Condition>
+            <Valid>true</Valid>
+            <RefEntries/>
+          </Filter>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>3</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>161be21e-2c70-4b8e-9cec-a8422816b70a</GUID>
+          <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -23108,7 +23206,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-              <Revision>238</Revision>
+              <Revision>239</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
