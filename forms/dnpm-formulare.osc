@@ -368,6 +368,126 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </Ordner>
     </PropertyCatalogue>
     <PropertyCatalogue>
+      <Name>DNPM.ArtDerDiagnostik</Name>
+      <Description>Art der Diagnostik</Description>
+      <Standard>SIMPLE</Standard>
+      <Readonly>false</Readonly>
+      <Anmerkung>Gemäß DNPM-Datenmodell 2.1 (Stand 30.06.2025)</Anmerkung>
+      <SID>20119</SID>
+      <GUID>cb9f785f-73ea-48a9-ad6e-1b3f2fb219a7</GUID>
+      <Revision>2</Revision>
+      <Versions>
+        <Version>
+          <VersionNumber>1</VersionNumber>
+          <ValidFrom>2025-07-05Z</ValidFrom>
+          <OID>DNPM.ArtDerDiagnostik.v1</OID>
+          <Active>true</Active>
+          <Description>v1</Description>
+          <SID>20119</SID>
+          <GUID>d51fcff5-88ee-4f25-8bd2-c465f8ce3d31</GUID>
+          <Revision>2</Revision>
+          <Entries>
+            <Entry>
+              <Code>FISH</Code>
+              <ShortDescription>FISH</ShortDescription>
+              <Description>FISH</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>1.0</Position>
+            </Entry>
+            <Entry>
+              <Code>PCR</Code>
+              <ShortDescription>PCR</ShortDescription>
+              <Description>PCR</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>2.0</Position>
+            </Entry>
+            <Entry>
+              <Code>single</Code>
+              <ShortDescription>Einzelgenanalyse</ShortDescription>
+              <Description>Einzelgenanalyse</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>3.0</Position>
+            </Entry>
+            <Entry>
+              <Code>gene-panel</Code>
+              <ShortDescription>Genpanel</ShortDescription>
+              <Description>Genpanel</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>4.0</Position>
+            </Entry>
+            <Entry>
+              <Code>fusion-panel</Code>
+              <ShortDescription>Fusionspanel</ShortDescription>
+              <Description>Fusionspanel</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>5.0</Position>
+            </Entry>
+            <Entry>
+              <Code>exome</Code>
+              <ShortDescription>Exom</ShortDescription>
+              <Description>Exom</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>6.0</Position>
+            </Entry>
+            <Entry>
+              <Code>genome-long-read</Code>
+              <ShortDescription>Genome long-read</ShortDescription>
+              <Description>Genome long-read</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>7.0</Position>
+            </Entry>
+            <Entry>
+              <Code>genome-short-read</Code>
+              <ShortDescription>Genome short-read</ShortDescription>
+              <Description>Genome short-read</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>8.0</Position>
+            </Entry>
+            <Entry>
+              <Code>array</Code>
+              <ShortDescription>Array</ShortDescription>
+              <Description>Array</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>9.0</Position>
+            </Entry>
+            <Entry>
+              <Code>karyotyping</Code>
+              <ShortDescription>Karyotyping</ShortDescription>
+              <Description>Karyotyping</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>10.0</Position>
+            </Entry>
+            <Entry>
+              <Code>other</Code>
+              <ShortDescription>Andere</ShortDescription>
+              <Description>Andere</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>11.0</Position>
+            </Entry>
+          </Entries>
+          <Categories/>
+        </Version>
+      </Versions>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>1</Typ>
+      </Ordner>
+    </PropertyCatalogue>
+    <PropertyCatalogue>
       <Name>DNPM.Ansprechen</Name>
       <Description>Ansprechen auf letzte Therapielinie</Description>
       <Standard>SIMPLE</Standard>
@@ -3510,7 +3630,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>4867fa84-11f8-430c-a90d-b11f00684100</GUID>
-      <Revision>11</Revision>
+      <Revision>12</Revision>
       <Entries>
         <Entry>
           <Name>Ergebnisse</Name>
@@ -3583,6 +3703,55 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SID>20119</SID>
           <GUID>0f505721-f6ac-4bab-9bdd-ba84caa2b4ec</GUID>
           <Revision>14</Revision>
+        </Entry>
+        <Entry>
+          <PropertyCatalogue>DNPM.ArtDerDiagnostik</PropertyCatalogue>
+          <Name>ArtDerDiagnostik</Name>
+          <NameExport>ArtDerDiagnostik</NameExport>
+          <Description>Art der Diagnostik</Description>
+          <Type>propertyCatalogue</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>2</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>42baa148-72ee-4995-9548-953f199de1a3</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <Name>Erstellungsdatum</Name>
+          <NameExport>Erstellungsdatum</NameExport>
+          <Description>Erstellungsdatum</Description>
+          <Type>date</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>0</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>296f247c-a06f-4bf5-9e5b-fc4af8ab72a4</GUID>
+          <Revision>1</Revision>
         </Entry>
       </Entries>
       <Ordner>
@@ -9401,8 +9570,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9548,8 +9717,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -10911,8 +11080,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -10986,8 +11155,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11061,8 +11230,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11211,8 +11380,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11286,8 +11455,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11361,8 +11530,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -18281,18 +18450,90 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>e50c0718-40e0-4e60-bdfd-fcb9115696df</GUID>
-      <Revision>4</Revision>
+      <Revision>6</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry>
+          <Type>combobox</Type>
+          <Name>ArtDerDiagnostik</Name>
+          <Description>Art der Diagnostik</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.75</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>1</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>ArtDerDiagnostik</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_Vorbefunde</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
+          <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>1</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>fa809b43-7b1a-4ac1-ae5d-1b234b81d897</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry>
           <Type>textfield</Type>
           <Name>Befundnummer</Name>
-          <Description>Befundnummer</Description>
+          <Description>Einsendenummer oder Befundnummer</Description>
           <Active>true</Active>
           <Readonly>false</Readonly>
           <Printable>true</Printable>
           <Position>1.0</Position>
           <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
           <MultipleChoice>false</MultipleChoice>
           <DefaultValue/>
           <Alignment>0</Alignment>
@@ -18308,6 +18549,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -18330,7 +18572,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12414</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -18343,7 +18585,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>46d303d9-baad-4239-a5df-aa9a74372fe5</GUID>
-          <Revision>1</Revision>
+          <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -18411,14 +18653,86 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
         <Entry>
+          <Type>datefield</Type>
+          <Name>Erstellungsdatum</Name>
+          <Description>Erstellungsdatum</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.125</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>0</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>Erstellungsdatum</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_Vorbefunde</DataCatalogueEntryTable>
+          <ElementParent/>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis/>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog/>
+          <SucheAuswahldialog/>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>0</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>3f55881c-10f4-498e-b25b-6c6baccaf155</GUID>
+          <Revision>1</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry>
           <Type>textarea</Type>
           <Name>InstitutName</Name>
           <Description>Institut</Description>
           <Active>true</Active>
           <Readonly>false</Readonly>
           <Printable>true</Printable>
-          <Position>2.0</Position>
+          <Position>1.25</Position>
           <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
           <MultipleChoice>false</MultipleChoice>
           <DefaultValue/>
           <Alignment>0</Alignment>
@@ -18434,6 +18748,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -18456,7 +18771,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12416</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -18469,7 +18784,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>da5c37fa-a15a-4558-a7f3-bed921cf7ac1</GUID>
-          <Revision>1</Revision>
+          <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -18555,8 +18870,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;GrundAblehnungKosten = 'w'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>GrundAblehnungKosten</RefEntry>
               <RefEntry>AntragKostenuebernahme</RefEntry>
+              <RefEntry>GrundAblehnungKosten</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -19623,8 +19938,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>StatusKostenuebernahme</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -21252,7 +21567,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-      <Revision>241</Revision>
+      <Revision>242</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12454">
@@ -24300,12 +24615,15 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
         <Entry>
           <Type>subform</Type>
           <Name>Vorbefunde</Name>
-          <Description>Molekularpathologische Vorbefunde</Description>
+          <Description>Vorheriger Molekularer Diagnostik-Bericht</Description>
           <Active>true</Active>
           <Readonly>false</Readonly>
           <Printable>false</Printable>
           <Position>7.0</Position>
           <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
           <MultipleChoice>false</MultipleChoice>
           <DefaultValue/>
           <Alignment>0</Alignment>
@@ -24321,6 +24639,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ReferencedDataForm>DNPM UF Vorbefunde</ReferencedDataForm>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -24343,7 +24662,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12467</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -24356,7 +24675,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>54da08a1-2a70-40db-82a8-519ee88d4bbc</GUID>
-          <Revision>5</Revision>
+          <Revision>6</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -26028,7 +26347,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-              <Revision>241</Revision>
+              <Revision>242</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
