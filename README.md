@@ -215,7 +215,7 @@ ob der aufrufende Benutzer Zugriff auf die Prozedur hat und gibt nur bei vorhand
 den Namen des Formulars zu dieser prozedur zurück.
 
 ```java
-import dev.dnpm.security.DelegatingDataBasedPermissionEvaluator;
+import dev.dnpm.oshelper.security.DelegatingDataBasedPermissionEvaluator;
 import de.itc.onkostar.api.IOnkostarApi;
 
 class DemoAnalyzer implements IProcedureAnalyzer {
@@ -280,9 +280,9 @@ Wird die Methode `getFormName(Procedure)` aufgerufen und der Benutzer hat keinen
 Prozedur, wird eine Exception geworfen.
 
 ```java
-import dev.dnpm.security.FormSecured;
-import dev.dnpm.security.PermissionType;
-import dev.dnpm.security.PersonPoolSecured;
+import dev.dnpm.oshelper.security.FormSecured;
+import dev.dnpm.oshelper.security.PermissionType;
+import dev.dnpm.oshelper.security.PersonPoolSecured;
 
 @Service
 class DemoService {
@@ -300,7 +300,7 @@ Der Aufruf im Analyzer kann nun wie folgt aussehen:
 
 ```java
 
-import dev.dnpm.security.IllegalSecuredObjectAccessException;
+import dev.dnpm.oshelper.security.IllegalSecuredObjectAccessException;
 
 class DemoAnalyzer implements IProcedureAnalyzer {
 
