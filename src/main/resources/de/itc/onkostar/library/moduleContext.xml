@@ -10,14 +10,14 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
  
-    <bean id="DNPMHelper" class="dev.dnpm.analyzer.DNPMHelper">
+    <bean id="DNPMHelper" class="dev.dnpm.oshelper.analyzer.DNPMHelper">
         <constructor-arg ref="localOnkostarApi" />
         <constructor-arg ref="systemtherapieService" />
     </bean>
-    <bean id="Merkmalskatalog" class="dev.dnpm.analyzer.Merkmalskatalog">
+    <bean id="Merkmalskatalog" class="dev.dnpm.oshelper.analyzer.Merkmalskatalog">
         <constructor-arg ref="localOnkostarApi" />
     </bean>
-    <bean id="ConsentManager" class="dev.dnpm.analyzer.ConsentManager">
+    <bean id="ConsentManager" class="dev.dnpm.oshelper.analyzer.ConsentManager">
         <constructor-arg ref="localOnkostarApi" />
         <constructor-arg ref="consentManagerServiceFactory" />
     </bean>
