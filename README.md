@@ -19,14 +19,21 @@ Hierzu gibt es die Konfigurationsparameter:
 * `systemtherapieform`: Zu verwendendes Formular für die systemische Therapie.
 * `mehrere_mtb_in_mtbepisode`: Angabe, ob mehrere MTBs je MTB-Episode verwendet werden.
 
-_**Achtung!**_ Die Verwendung der Konfigurationskategorie `DNPM` ist für Onkostar-Versionen **>=2.12.0** und **<2.13.0**
-aufgrund einer Umstellung in der Darstellung der Konfiguration in Onkostar nicht möglich.
-Für Onkostar ab Version **2.13.0** (oder neuer) kann `DNPM` verwendet werden, für Versionen beginnend mit 2.12 sollte 
-`System` verwendet werden.
-
 ## ATC-Codes
 
-Dieses Plugin integriert das ATC-Codes-Plugin vollständig. Dieses kann daher nicht zusätzlich in Onkostar installiert werden.
+Dieses Plugin integriert eine Liste mit ATC-Codes mit Stand 2025.
+
+### Hinweis für Updates
+
+Die Liste kann aus dem Repository von DNPM:DIP heruntergeladen und automatisch angepasst werden.
+Bei Bedarf das Jahr `2025` in unten stehenden Script austauschen.
+
+```
+curl \
+  https://raw.githubusercontent.com/dnpm-dip/atc-catalog/refs/heads/main/catalogs_packaged/src/main/resources/ATC_2025.csv \
+  | sed '/^\s*$/d' | sed 's/\t\t/\t/g' | sed 's/^/2025\t/g' | sed '0,/2025/{s/2025/Version/}' > src/main/resources/atc.csv
+```
+
 
 ## Consent
 
@@ -42,8 +49,6 @@ VALUES (
  'Zu verwendendes Consent-Formular'
 );
 ```
-
-Hier kann für Onkostar ab Version 2.13.x (oder neuer) anstelle `System` wieder `DNPM` verwendet werden.
 
 Aktuell werden folgende Consent-Formulare unterstützt:
 
@@ -94,8 +99,6 @@ VALUES (
  'Angabe, ob mehrere MTBs je MTB-Episode verwendet werden.'
 );
 ```
-
-Auch hier kann für Onkostar ab Version 2.13.x (oder neuer) anstelle `System` wieder `DNPM` verwendet werden.
 
 ### Mapping MTB zu Therapieplan-Protokollauszug
 
@@ -350,10 +353,7 @@ Für das Bauen des Plugins ist zwingend JDK in Version 11 erforderlich.
 Spätere Versionen des JDK beinhalten einige Methoden nicht mehr, die von Onkostar und dort benutzten Libraries verwendet
 werden.
 
-Voraussetzung ist das Kopieren der Datei `onkostar-api-2.12.4.1.jar` (oder neuer) in das Projektverzeichnis `libs`.
-
-Weiterhin verwendet dieses Plugin das [ATC-Codes-Plugin](https://github.com/CCC-MF/onkostar-plugin-atccodes).
-Die zugehörige JAR-Datei muss ebenfalls in das Projektverzeichnis `libs` kopiert werden. Aktuell wird Version 0.6.0 verwendet.
+Voraussetzung ist das Kopieren der Datei `onkostar-api-2.14.2.jar` (oder neuer) in das Projektverzeichnis `libs`.
 
 **_Hinweis_**: Bei Verwendung einer neueren Version der Onkostar-API oder des ATC-Codes-Plugins
 muss die Datei `pom.xml` entsprechend angepasst werden.
