@@ -20,14 +20,8 @@ jobs:
       - name: Fetch Onkostar-API
         run: |
           curl -L --user dnpm:${{ secrets.PACKAGE_TOKEN }} \
-            https://git.dnpm.dev/api/packages/Plugin-JF-Onkostar/generic/onkostar-api/2.12.4.1/onkostar-api-2.12.4.1.jar \
-            --output ${{ github.workspace }}/libs/onkostar-api-2.12.4.1.jar
-
-      - name: Fetch ATC-Codes-Plugin
-        run: |
-          curl -L \
-            https://github.com/CCC-MF/onkostar-plugin-atccodes/releases/download/v0.6.0/onkostar-plugin-atccodes-0.6.0.jar \
-            --output ${{ github.workspace }}/libs/onkostar-plugin-atccodes-0.6.0.jar
+            https://git.dnpm.dev/api/packages/Plugin-JF-Onkostar/generic/onkostar-api/2.14.2/onkostar-api-2.14.2.jar \
+            --output ${{ github.workspace }}/libs/onkostar-api-2.14.2.jar
 
       - name: Execute tests
         run: mvn --batch-mode verify
