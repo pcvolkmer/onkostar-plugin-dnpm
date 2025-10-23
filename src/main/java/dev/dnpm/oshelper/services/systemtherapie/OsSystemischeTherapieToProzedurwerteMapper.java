@@ -28,7 +28,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.itc.onkostar.api.Item;
 import de.itc.onkostar.api.Procedure;
-import de.ukw.ccc.onkostar.atccodes.AtcCode;
+import dev.dnpm.oshelper.atc.AtcCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
