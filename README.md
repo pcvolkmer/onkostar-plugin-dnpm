@@ -28,6 +28,10 @@ Dieses Plugin integriert eine Liste mit ATC-Codes mit Stand 2025.
 Die Liste kann aus dem Repository von DNPM:DIP heruntergeladen und automatisch angepasst werden.
 Bei Bedarf das Jahr `2025` in unten stehenden Script austauschen.
 
+Quelle der ATC-Code-Liste: https://github.com/dnpm-dip/atc-catalog.
+Das Projekt ist unter der [MIT-Lizenz](https://github.com/dnpm-dip/atc-catalog/blob/main/LICENSE)
+durch das Universitätsklinikum Tübingen und [@lucienclin](https://github.com/lucienclin) veröffentlicht worden.
+
 ```
 curl \
   https://raw.githubusercontent.com/dnpm-dip/atc-catalog/refs/heads/main/catalogs_packaged/src/main/resources/ATC_2025.csv \
