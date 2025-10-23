@@ -51,7 +51,7 @@ public class CsvAgentCodeService implements AgentCodeService {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     protected final List<AgentCode> codeList = new ArrayList<>();
 
-    private static final String ATC_CODE_COLUMN = "ATC-Codes";
+    private static final String ATC_CODE_COLUMN = "ATC-Code";
     private static final String ATC_NAME_COLUMN = "ATC-Bedeutung";
     private static final String ATC_VERSION_COLUMN = "Version";
 
