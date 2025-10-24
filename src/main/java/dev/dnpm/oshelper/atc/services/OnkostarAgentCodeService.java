@@ -28,7 +28,6 @@ import dev.dnpm.oshelper.atc.AgentCode;
 import dev.dnpm.oshelper.atc.AtcCode;
 import dev.dnpm.oshelper.atc.UnregisteredCode;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -39,7 +38,6 @@ import java.util.List;
  * @author Paul-Christian Volkmer
  * @since 2.0.0
  */
-@Service
 public class OnkostarAgentCodeService implements AgentCodeService {
 
     private final JdbcTemplate jdbcTemplate;
