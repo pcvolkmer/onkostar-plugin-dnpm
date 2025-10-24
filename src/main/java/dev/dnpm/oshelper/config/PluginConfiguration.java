@@ -24,6 +24,9 @@
 
 package dev.dnpm.oshelper.config;
 
+import dev.dnpm.oshelper.atc.services.AgentCodeService;
+import dev.dnpm.oshelper.atc.services.CsvAgentCodeService;
+import dev.dnpm.oshelper.atc.services.OnkostarAgentCodeService;
 import dev.dnpm.oshelper.database.SettingsRepository;
 import dev.dnpm.oshelper.services.*;
 import dev.dnpm.oshelper.services.consent.ConsentManagerServiceFactory;
@@ -51,7 +54,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @ComponentScan(basePackages = {"dev.dnpm.oshelper.analyzer", "dev.dnpm.oshelper.security"})
-@EnableJpaRepositories(basePackages = "dev.dnpm.database")
+@EnableJpaRepositories(basePackages = "dev.dnpm.oshelper.database")
 public class PluginConfiguration {
 
     @Bean
@@ -107,6 +110,16 @@ public class PluginConfiguration {
     @Bean
     public MolekulargenetikFormService molekulargenetikFormService() {
         return new OsMolekulargenetikFormService();
+    }
+
+    @Bean
+    public AgentCodeService csvAgentCodeService() {
+        return new CsvAgentCodeService();
+    }
+
+    @Bean
+    public AgentCodeService onkostarAgentCodeService (final DataSource dataSource) {
+        return new OnkostarAgentCodeService(dataSource);
     }
 
 }

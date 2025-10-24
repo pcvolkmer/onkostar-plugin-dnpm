@@ -45,7 +45,6 @@ import java.util.stream.Collectors;
  * @author Paul-Christian Volkmer
  * @since 2.0.0
  */
-@Service
 public class CsvAgentCodeService implements AgentCodeService {
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -105,6 +104,7 @@ public class CsvAgentCodeService implements AgentCodeService {
         } catch (IOException | FileParsingException e) {
             logger.warn("Error reading information from ATC codes");
         }
+        logger.info("Found {} ATC codes", result.size());
         return result;
     }
 

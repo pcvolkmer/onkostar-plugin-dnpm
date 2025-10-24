@@ -22,9 +22,8 @@
         <constructor-arg ref="consentManagerServiceFactory" />
     </bean>
 
-	<context:component-scan base-package="de.ukw.ccc.onkostar.atccodes" />
-    <context:component-scan base-package="DNPM.config" />
+    <context:component-scan base-package="dev.dnpm.oshelper.config" />
 
     <mvc:resources mapping="/app/lib/umr/**/*.js" location="classpath:/app/lib/umr/" />
-    <mvc:resources mapping="/app/plugins/atccodes/**/*.js" location="classpath:/de/ukw/ccc/onkostar/atccodes/" />
+    <mvc:resources mapping="/app/plugins/oshelper/**/*.js" location="classpath:/dev/dnpm/oshelper/js/" />
 </beans>
