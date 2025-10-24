@@ -26,6 +26,7 @@ package dev.dnpm.oshelper.services.consent;
 
 import de.itc.onkostar.api.IOnkostarApi;
 
+@Deprecated(forRemoval = true, since = "2.0.0")
 public class ConsentManagerServiceFactory {
 
     private final IOnkostarApi onkostarApi;

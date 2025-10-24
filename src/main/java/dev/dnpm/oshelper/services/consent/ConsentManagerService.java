@@ -31,6 +31,7 @@ import de.itc.onkostar.api.Procedure;
  *
  * @since 0.2.0
  */
+@Deprecated(forRemoval = true, since = "2.0.0")
 public interface ConsentManagerService {
 
     /**

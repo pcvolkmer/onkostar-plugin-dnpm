@@ -44,6 +44,7 @@ import java.util.Map;
  *
  * @since 0.2.0
  */
+@Deprecated(forRemoval = true, since = "2.0.0")
 public class MrConsentManagerService implements ConsentManagerService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

@@ -37,6 +37,7 @@ import java.util.Comparator;
  *
  * @since 0.2.0
  */
+@Deprecated(forRemoval = true, since = "2.0.0")
 public class UkwConsentManagerService implements ConsentManagerService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
