@@ -15,7 +15,7 @@ Die für die Formulare verwendeten Formularscripte sind zudem im Verzeichnis [`/
 Dieses Plugin erlaubt die Konfiguration über Onkostar-Einstellungen.
 Hierzu gibt es die Konfigurationsparameter:
 
-* `constentform`: Zu verwendendes Constent-Formular
+* `consentform`: Zu verwendendes Consent-Formular
 * `systemtherapieform`: Zu verwendendes Formular für die systemische Therapie.
 * `mehrere_mtb_in_mtbepisode`: Angabe, ob mehrere MTBs je MTB-Episode verwendet werden.
 
@@ -39,7 +39,9 @@ curl \
 ```
 
 
-## Consent
+## DNPM-Consent (Veraltet)
+
+*Achtung!* Dieser Teil ist veraltet und wird durch den allgemeinen MV-Consent abgelöst.
 
 Das Plugin ist auf die Übernahme des DNPM-Consents ausgelegt. Hierzu muss die Einstellung `consentform` festgelegt werden.
 Diese Einstellung muss manuell in der Datenbank angelegt werden und kann danach in Onkostar verändert werden.
