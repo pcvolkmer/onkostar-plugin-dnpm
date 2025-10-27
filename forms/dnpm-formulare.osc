@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OnkostarEditor>
   <InfoXML>
-    <DatumXML>2025-07-26Z</DatumXML>
+    <DatumXML>2025-10-27Z</DatumXML>
     <Name>OnkoStar</Name>
-    <Version>2.14.0</Version>
+    <Version>2.14.2</Version>
   </InfoXML>
   <Editor>
     <PropertyCatalogue>
@@ -1247,7 +1247,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <Description>FollowUp - Antragsstadium</Description>
       <Standard>SIMPLE</Standard>
       <Readonly>false</Readonly>
-      <Anmerkung>Gemäß DNPM Datenmodell 2.1</Anmerkung>
+      <Anmerkung>Gemäß DNPM Datenmodell 2.1 </Anmerkung>
       <SID>20119</SID>
       <GUID>52a77b48-0de1-44f2-926d-a65c90eb9261</GUID>
       <Revision>2</Revision>
@@ -9546,8 +9546,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>studie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>studie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9689,8 +9689,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9765,11 +9765,12 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Datenart>BOTH</Datenart>
           <NotSpecified>false</NotSpecified>
           <Scripts>
-            <Code>const availableStore = new Ext.data.ArrayStore({&amp;#10; fields: [&amp;#10; {name: 'code'},&amp;#10; {name: 'name'},&amp;#10; {name: 'system'},&amp;#10; {name: 'version'}&amp;#10; ]&amp;#10;});&amp;#10;&amp;#10;const selectedStore = new Ext.data.ArrayStore({&amp;#10; fields: [&amp;#10; {name: 'code'},&amp;#10; {name: 'name'},&amp;#10; {name: 'system'},&amp;#10; {name: 'version'}&amp;#10; ]&amp;#10;});&amp;#10;&amp;#10;let pluginRequestsDisabled = false;&amp;#10;let available = [];&amp;#10;let selected = [];&amp;#10;let blockIndex = null;&amp;#10;&amp;#10;const findButtonFieldFormInformation = function(context) {&amp;#10; const findElemId = function(elem) {&amp;#10; if (elem.tagName === 'BODY') {&amp;#10; return undefined;&amp;#10; }&amp;#10;&amp;#10; if (elem.tagName === 'TABLE') {&amp;#10; return elem.id;&amp;#10; }&amp;#10;&amp;#10; return findElemId(elem.parentElement);&amp;#10; }&amp;#10;&amp;#10; const formInfo = function(formItem, blockIndex = undefined) {&amp;#10; if (formItem.xtype === 'buttonField') {&amp;#10; return formInfo(formItem.ownerCt, formItem.blockIndex);&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'panel') {&amp;#10; return formInfo(formItem.ownerCt, blockIndex);&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'subformField') {&amp;#10; return {&amp;#10; isSubform: true,&amp;#10; formName: formItem.formName,&amp;#10; subformFieldName: formItem.subformName,&amp;#10; blockIndex: blockIndex&amp;#10; };&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'form') {&amp;#10; return {&amp;#10; isSubform: false,&amp;#10; };&amp;#10; }&amp;#10;&amp;#10; console.warn('No information found!');&amp;#10; return undefined;&amp;#10; }&amp;#10;&amp;#10; if (context.genericEditForm &amp;&amp; document.activeElement.tagName === 'BUTTON') {&amp;#10; let elemId = findElemId(document.activeElement);&amp;#10; if (elemId) {&amp;#10; let formItem = context.genericEditForm.down('#'+elemId);&amp;#10; if (formItem) {&amp;#10; return formInfo(formItem);&amp;#10; }&amp;#10; }&amp;#10; }&amp;#10;&amp;#10; return undefined;&amp;#10;}&amp;#10;&amp;#10;const request = function (q) {&amp;#10; if (pluginRequestsDisabled) return;&amp;#10; executePluginMethod(&amp;#10; 'AtcCodesHelper',&amp;#10; 'query',&amp;#10; {q: q, size: 25},&amp;#10; function (response) {&amp;#10; if (response.status.code &lt; 0) {&amp;#10; onFailure();&amp;#10; return;&amp;#10; }&amp;#10; onSuccess(response.result);&amp;#10; },&amp;#10; false&amp;#10; );&amp;#10;};&amp;#10;&amp;#10;const addItem = function (item) {&amp;#10; selected.push(item);&amp;#10; const extData = selected.map((item) =&gt; [item.code, item.name, item.system, item.version]);&amp;#10; selectedStore.loadData(extData);&amp;#10;};&amp;#10;&amp;#10;const removeItem = function (index) {&amp;#10; selected.splice(index, 1);&amp;#10; const extData = selected.map((item) =&gt; [item.code, item.name, item.system, item.version]);&amp;#10; selectedStore.loadData(extData);&amp;#10;};&amp;#10;&amp;#10;const save = () =&gt; {&amp;#10; const names = selected.map((item) =&gt; {&amp;#10; return item.name;&amp;#10; }).join('\n');&amp;#10;&amp;#10; this.getFieldByEntriesArray('wirkstoffe', blockIndex).setValue(names);&amp;#10; this.getFieldByEntriesArray('wirkstoffejson', blockIndex).setValue(JSON.stringify(selected));&amp;#10;};&amp;#10;&amp;#10;const onFailure = function() {&amp;#10; pluginRequestsDisabled = true;&amp;#10; Ext.MessageBox.show({&amp;#10; title: 'Hinweis',&amp;#10; msg: 'Kein Zugriff auf ATC-Codes und Substanzen. Sie können Substanzen nur über "Aus Suchfeld hinzufügen" hinzufügen.',&amp;#10; buttons: Ext.MessageBox.OKCANCEL&amp;#10; });&amp;#10;};&amp;#10;&amp;#10;const onSuccess = function(d) {&amp;#10; available = d;&amp;#10; const extData = available.map((item) =&gt; [item.code, item.name, item.system, item.version]);&amp;#10; availableStore.loadData(extData);&amp;#10;}&amp;#10;&amp;#10;const showDialog = function () {&amp;#10; let selectedItemIndex = -1;&amp;#10; let deselectedItemIndex = -1;&amp;#10; let queryString = '';&amp;#10;&amp;#10; try {&amp;#10; selected = JSON.parse(getFieldValue('wirkstoffejson', blockIndex));&amp;#10; const extData = selected.map((item) =&gt; [item.code, item.name, item.system, item.version]);&amp;#10; selectedStore.loadData(extData);&amp;#10; } catch (e) {&amp;#10; selected = [];&amp;#10; const extData = selected.map((item) =&gt; [item.code, item.name, item.system, item.version]);&amp;#10; selectedStore.loadData(extData);&amp;#10; }&amp;#10;&amp;#10; const query = new Ext.form.field.Text({&amp;#10; name: 'query',&amp;#10; fieldLabel: 'Suche',&amp;#10; padding: 8,&amp;#10; listeners: {&amp;#10; change: (f) =&gt; {&amp;#10; queryString = f.value;&amp;#10; request(f.value);&amp;#10; if (f.value.length > 0) {&amp;#10; Ext.getCmp('btnUnknownAgent').setDisabled(false);&amp;#10; } else {&amp;#10; Ext.getCmp('btnUnknownAgent').setDisabled(true);&amp;#10; }&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const gridColumns = [&amp;#10; {header: 'Code', width: 72, sortable: false, dataIndex: 'code'},&amp;#10; {header: 'Name', width: 300, sortable: false, dataIndex: 'name'},&amp;#10; {header: 'System', width: 72, sortable: false, dataIndex: 'system'},&amp;#10; {header: 'Version', width: 72, sortable: false, dataIndex: 'version'},&amp;#10; ];&amp;#10;&amp;#10; const availableGrid = new Ext.grid.GridPanel({&amp;#10; title: 'Verfügbar',&amp;#10; store: availableStore,&amp;#10; loadMask: true,&amp;#10; border: true,&amp;#10; columns: gridColumns,&amp;#10; flex: 1,&amp;#10; listeners: {&amp;#10; itemclick: (dv, record, item, index) =&gt; {&amp;#10; selectedItemIndex = index;&amp;#10; Ext.getCmp('btnAddAgent').setDisabled(false);&amp;#10; },&amp;#10; itemdblclick: (dv, record, item, index) =&gt; {&amp;#10; selectedItemIndex = -1&amp;#10; addItem(available[index]);&amp;#10; Ext.getCmp('btnAddAgent').setDisabled(true);&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const selectedGrid = new Ext.grid.GridPanel({&amp;#10; title: 'Ausgewählt',&amp;#10; store: selectedStore,&amp;#10; loadMask: true,&amp;#10; border: true,&amp;#10; columns: gridColumns,&amp;#10; flex: 1,&amp;#10; listeners: {&amp;#10; itemclick: (dv, record, item, index) =&gt; {&amp;#10; deselectedItemIndex = index;&amp;#10; Ext.getCmp('btnRmAgent').setDisabled(false);&amp;#10; },&amp;#10; itemdblclick: (dv, record, item, index) =&gt; {&amp;#10; deselectedItemIndex = -1&amp;#10; removeItem(index);&amp;#10; Ext.getCmp('btnRmAgent').setDisabled(true);&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const gridLayout = Ext.create('Ext.Panel', {&amp;#10; flex: 1,&amp;#10; layout: {&amp;#10; type: 'hbox',&amp;#10; align: 'stretch'&amp;#10; },&amp;#10; items: [availableGrid, { xtype: 'splitter' }, selectedGrid]&amp;#10; });&amp;#10;&amp;#10; const layout = Ext.create('Ext.Panel', {&amp;#10; flex: 1,&amp;#10; layout: {&amp;#10; type: 'vbox',&amp;#10; align: 'stretch'&amp;#10; },&amp;#10; items: [query, gridLayout]&amp;#10; });&amp;#10;&amp;#10; Ext.create('Ext.window.Window', {&amp;#10; title: 'Substanz auswählen',&amp;#10; height: 600,&amp;#10; width: 1080,&amp;#10; layout: 'fit',&amp;#10; items: [layout],&amp;#10; buttons: [{&amp;#10; id: 'btnAddAgent',&amp;#10; text: 'Hinzufügen',&amp;#10; disabled: true,&amp;#10; handler: () =&gt; {&amp;#10; addItem(available[selectedItemIndex]);&amp;#10; Ext.getCmp('btnAddAgent').setDisabled(true);&amp;#10; }&amp;#10; }, {&amp;#10; id: 'btnUnknownAgent',&amp;#10; text: 'Aus Suchfeld hinzufügen',&amp;#10; disabled: true,&amp;#10; handler: () =&gt; {&amp;#10; addItem({&amp;#10; code: '',&amp;#10; name: queryString,&amp;#10; system: 'UNREGISTERED'&amp;#10; });&amp;#10; Ext.getCmp('btnUnknownAgent').setDisabled(true);&amp;#10; }&amp;#10; }, {&amp;#10; id: 'btnRmAgent',&amp;#10; text: 'Entfernen',&amp;#10; disabled: true,&amp;#10; handler: () =&gt; {&amp;#10; removeItem(deselectedItemIndex);&amp;#10; Ext.getCmp('btnRmAgent').setDisabled(true);&amp;#10; }&amp;#10; }, {&amp;#10; text: 'Übernehmen',&amp;#10; cls: 'onko-btn-cta',&amp;#10; handler: () =&gt; {&amp;#10; save();&amp;#10; let win = Ext.WindowManager.getActive();&amp;#10; if (win) {&amp;#10; win.close();&amp;#10; }&amp;#10; }&amp;#10; }]&amp;#10; }).show();&amp;#10;&amp;#10; request('');&amp;#10;};&amp;#10;&amp;#10;let buttonFieldFormInformation = findButtonFieldFormInformation(this);&amp;#10;if (buttonFieldFormInformation &amp;&amp; buttonFieldFormInformation.blockIndex) {&amp;#10; blockIndex = buttonFieldFormInformation.blockIndex;&amp;#10;}&amp;#10;&amp;#10;showDialog();</Code>
+            <Code>const availableStore = new Ext.data.ArrayStore({&amp;#10; fields: [&amp;#10; {name: 'code'},&amp;#10; {name: 'name'},&amp;#10; {name: 'system'},&amp;#10; {name: 'version'}&amp;#10; ]&amp;#10;});&amp;#10;&amp;#10;const selectedStore = new Ext.data.ArrayStore({&amp;#10; fields: [&amp;#10; {name: 'code'},&amp;#10; {name: 'name'},&amp;#10; {name: 'system'},&amp;#10; {name: 'version'}&amp;#10; ]&amp;#10;});&amp;#10;&amp;#10;let pluginRequestsDisabled = false;&amp;#10;let available = [];&amp;#10;let selected = [];&amp;#10;let blockIndex = null;&amp;#10;&amp;#10;const findButtonFieldFormInformation = function(context) {&amp;#10; const findElemId = function(elem) {&amp;#10; if (elem.tagName === 'BODY') {&amp;#10; return undefined;&amp;#10; }&amp;#10;&amp;#10; if (elem.tagName === 'TABLE') {&amp;#10; return elem.id;&amp;#10; }&amp;#10;&amp;#10; return findElemId(elem.parentElement);&amp;#10; }&amp;#10;&amp;#10; const formInfo = function(formItem, blockIndex = undefined) {&amp;#10; if (formItem.xtype === 'buttonField') {&amp;#10; return formInfo(formItem.ownerCt, formItem.blockIndex);&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'panel') {&amp;#10; return formInfo(formItem.ownerCt, blockIndex);&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'subformField') {&amp;#10; return {&amp;#10; isSubform: true,&amp;#10; formName: formItem.formName,&amp;#10; subformFieldName: formItem.subformName,&amp;#10; blockIndex: blockIndex&amp;#10; };&amp;#10; }&amp;#10;&amp;#10; if (formItem.xtype === 'form') {&amp;#10; return {&amp;#10; isSubform: false,&amp;#10; };&amp;#10; }&amp;#10;&amp;#10; console.warn('No information found!');&amp;#10; return undefined;&amp;#10; }&amp;#10;&amp;#10; if (context.genericEditForm &amp;&amp; document.activeElement.tagName === 'BUTTON') {&amp;#10; let elemId = findElemId(document.activeElement);&amp;#10; if (elemId) {&amp;#10; let formItem = context.genericEditForm.down('#'+elemId);&amp;#10; if (formItem) {&amp;#10; return formInfo(formItem);&amp;#10; }&amp;#10; }&amp;#10; }&amp;#10;&amp;#10; return undefined;&amp;#10;}&amp;#10;&amp;#10;const request = function (q) {&amp;#10; if (pluginRequestsDisabled) return;&amp;#10; executePluginMethod(&amp;#10; 'AtcCodesHelper',&amp;#10; 'query',&amp;#10; {q: q, size: 25},&amp;#10; function (response) {&amp;#10; if (response.status.code &lt; 0) {&amp;#10; onFailure();&amp;#10; return;&amp;#10; }&amp;#10; onSuccess(response.result);&amp;#10; },&amp;#10; false&amp;#10; );&amp;#10;};&amp;#10;&amp;#10;const addItem = function (item) {&amp;#10; selected.push(item);&amp;#10; const extData = selected.map((item) =&gt; [item.code, item.name, item.system, item.version]);&amp;#10; selectedStore.loadData(extData);&amp;#10;};&amp;#10;&amp;#10;const removeItem = function (index) {&amp;#10; selected.splice(index, 1);&amp;#10; const extData = selected.map((item) =&gt; [item.code, item.name, item.system, item.version]);&amp;#10; selectedStore.loadData(extData);&amp;#10;};&amp;#10;&amp;#10;const save = () =&gt; {&amp;#10; const names = selected.map((item) =&gt; {&amp;#10; return item.name;&amp;#10; }).join("\n");&amp;#10;&amp;#10; this.getFieldByEntriesArray('wirkstoffe', blockIndex).setValue(names);&amp;#10; this.getFieldByEntriesArray('wirkstoffejson', blockIndex).setValue(JSON.stringify(selected));&amp;#10;};&amp;#10;&amp;#10;const onFailure = function() {&amp;#10; pluginRequestsDisabled = true;&amp;#10; Ext.MessageBox.show({&amp;#10; title: 'Hinweis',&amp;#10; msg: 'Kein Zugriff auf ATC-Codes und Substanzen. Sie können Substanzen nur über "Aus Suchfeld hinzufügen" hinzufügen.',&amp;#10; buttons: Ext.MessageBox.OKCANCEL&amp;#10; });&amp;#10;};&amp;#10;&amp;#10;const onSuccess = function(d) {&amp;#10; available = d;&amp;#10; const extData = available.map((item) =&gt; [item.code, item.name, item.system, item.version]);&amp;#10; availableStore.loadData(extData);&amp;#10;}&amp;#10;&amp;#10;const showDialog = function () {&amp;#10; let selectedItemIndex = -1;&amp;#10; let deselectedItemIndex = -1;&amp;#10; let queryString = '';&amp;#10;&amp;#10; try {&amp;#10; selected = JSON.parse(getFieldValue('wirkstoffejson', blockIndex));&amp;#10; const extData = selected.map((item) =&gt; [item.code, item.name, item.system, item.version]);&amp;#10; selectedStore.loadData(extData);&amp;#10; } catch (e) {&amp;#10; selected = [];&amp;#10; const extData = selected.map((item) =&gt; [item.code, item.name, item.system, item.version]);&amp;#10; selectedStore.loadData(extData);&amp;#10; }&amp;#10;&amp;#10; const query = new Ext.form.field.Text({&amp;#10; name: 'query',&amp;#10; fieldLabel: 'Suche',&amp;#10; padding: 8,&amp;#10; listeners: {&amp;#10; change: (f) =&gt; {&amp;#10; queryString = f.value;&amp;#10; request(f.value);&amp;#10; if (f.value.length &gt; 0) {&amp;#10; Ext.getCmp('btnUnknownAgent').setDisabled(false);&amp;#10; } else {&amp;#10; Ext.getCmp('btnUnknownAgent').setDisabled(true);&amp;#10; }&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const gridColumns = [&amp;#10; {header: 'Code', width: 72, sortable: false, dataIndex: 'code'},&amp;#10; {header: 'Name', width: 300, sortable: false, dataIndex: 'name'},&amp;#10; {header: 'System', width: 72, sortable: false, dataIndex: 'system'},&amp;#10; {header: 'Version', width: 72, sortable: false, dataIndex: 'version'},&amp;#10; ];&amp;#10;&amp;#10; const availableGrid = new Ext.grid.GridPanel({&amp;#10; title: 'Verfügbar',&amp;#10; store: availableStore,&amp;#10; loadMask: true,&amp;#10; border: true,&amp;#10; columns: gridColumns,&amp;#10; flex: 1,&amp;#10; listeners: {&amp;#10; itemclick: (dv, record, item, index) =&gt; {&amp;#10; selectedItemIndex = index;&amp;#10; Ext.getCmp('btnAddAgent').setDisabled(false);&amp;#10; },&amp;#10; itemdblclick: (dv, record, item, index) =&gt; {&amp;#10; selectedItemIndex = -1&amp;#10; addItem(available[index]);&amp;#10; Ext.getCmp('btnAddAgent').setDisabled(true);&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const selectedGrid = new Ext.grid.GridPanel({&amp;#10; title: 'Ausgewählt',&amp;#10; store: selectedStore,&amp;#10; loadMask: true,&amp;#10; border: true,&amp;#10; columns: gridColumns,&amp;#10; flex: 1,&amp;#10; listeners: {&amp;#10; itemclick: (dv, record, item, index) =&gt; {&amp;#10; deselectedItemIndex = index;&amp;#10; Ext.getCmp('btnRmAgent').setDisabled(false);&amp;#10; },&amp;#10; itemdblclick: (dv, record, item, index) =&gt; {&amp;#10; deselectedItemIndex = -1&amp;#10; removeItem(index);&amp;#10; Ext.getCmp('btnRmAgent').setDisabled(true);&amp;#10; }&amp;#10; }&amp;#10; });&amp;#10;&amp;#10; const gridLayout = Ext.create('Ext.Panel', {&amp;#10; flex: 1,&amp;#10; layout: {&amp;#10; type: 'hbox',&amp;#10; align: 'stretch'&amp;#10; },&amp;#10; items: [availableGrid, { xtype: 'splitter' }, selectedGrid]&amp;#10; });&amp;#10;&amp;#10; const layout = Ext.create('Ext.Panel', {&amp;#10; flex: 1,&amp;#10; layout: {&amp;#10; type: 'vbox',&amp;#10; align: 'stretch'&amp;#10; },&amp;#10; items: [query, gridLayout]&amp;#10; });&amp;#10;&amp;#10; Ext.create('Ext.window.Window', {&amp;#10; title: 'Substanz auswählen',&amp;#10; height: 600,&amp;#10; width: 1080,&amp;#10; layout: 'fit',&amp;#10; items: [layout],&amp;#10; buttons: [{&amp;#10; id: 'btnAddAgent',&amp;#10; text: 'Hinzufügen',&amp;#10; disabled: true,&amp;#10; handler: () =&gt; {&amp;#10; addItem(available[selectedItemIndex]);&amp;#10; Ext.getCmp('btnAddAgent').setDisabled(true);&amp;#10; }&amp;#10; }, {&amp;#10; id: 'btnUnknownAgent',&amp;#10; text: 'Aus Suchfeld hinzufügen',&amp;#10; disabled: true,&amp;#10; handler: () =&gt; {&amp;#10; addItem({&amp;#10; code: '',&amp;#10; name: queryString,&amp;#10; system: 'UNREGISTERED'&amp;#10; });&amp;#10; Ext.getCmp('btnUnknownAgent').setDisabled(true);&amp;#10; }&amp;#10; }, {&amp;#10; id: 'btnRmAgent',&amp;#10; text: 'Entfernen',&amp;#10; disabled: true,&amp;#10; handler: () =&gt; {&amp;#10; removeItem(deselectedItemIndex);&amp;#10; Ext.getCmp('btnRmAgent').setDisabled(true);&amp;#10; }&amp;#10; }, {&amp;#10; text: 'Übernehmen',&amp;#10; cls: 'onko-btn-cta',&amp;#10; handler: () =&gt; {&amp;#10; save();&amp;#10; let win = Ext.WindowManager.getActive();&amp;#10; if (win) {&amp;#10; win.close();&amp;#10; }&amp;#10; }&amp;#10; }]&amp;#10; }).show();&amp;#10;&amp;#10; request('');&amp;#10;};&amp;#10;&amp;#10;let buttonFieldFormInformation = findButtonFieldFormInformation(this);&amp;#10;if (buttonFieldFormInformation &amp;&amp; buttonFieldFormInformation.blockIndex) {&amp;#10; blockIndex = buttonFieldFormInformation.blockIndex;&amp;#10;}&amp;#10;&amp;#10;showDialog();</Code>
             <Valid>true</Valid>
           </Scripts>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -9792,7 +9793,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12356</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -9836,8 +9837,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9915,8 +9916,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>studie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>studie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -10117,7 +10118,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent/>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -10138,7 +10138,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog/>
           <SucheAuswahldialog/>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -10253,7 +10252,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent>grpEvidenzlevel</ElementParent>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -10274,7 +10272,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog/>
           <SucheAuswahldialog/>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -10322,7 +10319,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent>grpEvidenzlevel</ElementParent>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -10343,7 +10339,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog/>
           <SucheAuswahldialog/>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -10391,7 +10386,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent>grpEvidenzlevel</ElementParent>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -10412,7 +10406,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog/>
           <SucheAuswahldialog/>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -10460,7 +10453,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent>grpEvidenzlevel</ElementParent>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -10481,7 +10473,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog/>
           <SucheAuswahldialog/>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -10804,7 +10795,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>1001</SID>
               <GUID>6496927e-d708-11e5-b199-0050568f1add</GUID>
-              <Revision>119</Revision>
+              <Revision>126</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -11199,8 +11190,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11274,8 +11265,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11349,8 +11340,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11499,8 +11490,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11574,8 +11565,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11649,8 +11640,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -14014,7 +14005,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-              <Revision>266</Revision>
+              <Revision>267</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -17520,7 +17511,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>1001</SID>
               <GUID>6496927e-d708-11e5-b199-0050568f1add</GUID>
-              <Revision>119</Revision>
+              <Revision>126</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -17873,7 +17864,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>1001</SID>
               <GUID>6496927e-d708-11e5-b199-0050568f1add</GUID>
-              <Revision>119</Revision>
+              <Revision>126</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -18824,7 +18815,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-              <Revision>266</Revision>
+              <Revision>267</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -20726,7 +20717,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-              <Revision>266</Revision>
+              <Revision>267</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -24647,7 +24638,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>1001</SID>
               <GUID>6496927e-d708-11e5-b199-0050568f1add</GUID>
-              <Revision>119</Revision>
+              <Revision>126</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -26950,7 +26941,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>1001</SID>
               <GUID>6496927e-d708-11e5-b199-0050568f1add</GUID>
-              <Revision>119</Revision>
+              <Revision>126</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -27128,7 +27119,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>1001</SID>
               <GUID>6496927e-d708-11e5-b199-0050568f1add</GUID>
-              <Revision>119</Revision>
+              <Revision>126</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -27219,7 +27210,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>1001</SID>
               <GUID>6496927e-d708-11e5-b199-0050568f1add</GUID>
-              <Revision>119</Revision>
+              <Revision>126</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
