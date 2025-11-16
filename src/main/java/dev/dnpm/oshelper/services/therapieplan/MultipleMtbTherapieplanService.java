@@ -37,6 +37,7 @@ import java.util.stream.Collectors;
 import static dev.dnpm.oshelper.services.FormService.hasValue;
 import static dev.dnpm.oshelper.services.FormService.isYes;
 
+@Deprecated(forRemoval = true, since = "2.0.0")
 public class MultipleMtbTherapieplanService extends AbstractTherapieplanService {
 
     public MultipleMtbTherapieplanService(final IOnkostarApi onkostarApi, final FormService formService) {

@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class TherapieplanServiceFactoryTest {
@@ -30,20 +29,8 @@ class TherapieplanServiceFactoryTest {
     }
 
     @Test
-    void testShouldReturnDefaultTherapieplanServiceIfSettingIsFalse() {
-        when(settingsService.multipleMtbsInMtbEpisode()).thenReturn(false);
-
+    void testShouldAlwaysReturnDefaultTherapieplanService() {
         var actual = this.therapieplanServiceFactory.currentUsableInstance();
-
         assertThat(actual).isInstanceOf(DefaultTherapieplanService.class);
-    }
-
-    @Test
-    void testShouldReturnMultipleMtbTherapieplanServiceIfSettingIsTrue() {
-        when(settingsService.multipleMtbsInMtbEpisode()).thenReturn(true);
-
-        var actual = this.therapieplanServiceFactory.currentUsableInstance();
-
-        assertThat(actual).isInstanceOf(MultipleMtbTherapieplanService.class);
     }
 }

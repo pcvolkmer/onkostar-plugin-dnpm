@@ -93,7 +93,14 @@ Eine Übernahme von Consent-Daten aus unbekannten Formularen ist nur manuell mö
 
 ## Therapieplan
 
-Soll das automatische Befüllen der Unterformulare *Einzelempfehlung* und *Rebiopsie* nicht durchgeführt werden, weil es mehrere MTBs je MTB-Episode gibt, so muss die Einstellung `mehrere_mtb_in_mtbepisode` vorhanden sein und auf den Wert `true` gesetzt sein.
+### Mehrere MTBs in Therapieplan (Veraltet - nicht mehr unterstützt!)
+
+**Achtung!** Dies wird nun nicht mehr angewendet. Es werden immer das Datum und der Verweis auf das MTB des Hauptformulars verwendet.
+Zu den Gründen, siehe auch: https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/211#issuecomment-3498119327
+
+**Im Zweifelsfall ist die Dokumentation entsprechend anzupassen, zumindest zu prüfen!**
+
+Soll das automatische Befüllen des MTB-Datums Datum der Unterformulare *Einzelempfehlung* und *Rebiopsie* nicht durchgeführt werden, weil es mehrere MTBs je MTB-Episode gibt, so muss die Einstellung `mehrere_mtb_in_mtbepisode` vorhanden sein und auf den Wert `true` gesetzt sein.
 
 ```
 INSERT INTO einstellung (name, wert, kategorie, optionen, beschreibung)
