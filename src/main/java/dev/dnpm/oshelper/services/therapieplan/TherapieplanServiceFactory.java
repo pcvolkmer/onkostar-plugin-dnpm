@@ -32,25 +32,19 @@ public class TherapieplanServiceFactory {
 
     private final IOnkostarApi onkostarApi;
 
-    private final SettingsService settingsService;
-
     private final FormService formService;
 
+    @SuppressWarnings("unused")
     public TherapieplanServiceFactory(
             final IOnkostarApi onkostarApi,
             final SettingsService settingsService,
             final FormService formService
     ) {
         this.onkostarApi = onkostarApi;
-        this.settingsService = settingsService;
         this.formService = formService;
     }
 
     public TherapieplanService currentUsableInstance() {
-        if (settingsService.multipleMtbsInMtbEpisode()) {
-            return new MultipleMtbTherapieplanService(onkostarApi, formService);
-        }
-
         return new DefaultTherapieplanService(onkostarApi, formService);
     }
 
