@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OnkostarEditor>
   <InfoXML>
-    <DatumXML>2025-10-27Z</DatumXML>
+    <DatumXML>2025-11-17Z</DatumXML>
     <Name>OnkoStar</Name>
     <Version>2.14.2</Version>
   </InfoXML>
@@ -9546,8 +9546,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>studie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9916,8 +9916,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>studie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -19311,8 +19311,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;GrundAblehnungKosten = 'w'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>GrundAblehnungKosten</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -20379,8 +20379,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>StatusKostenuebernahme</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -25565,7 +25565,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>true</hatUnterformulare>
       <SID>20119</SID>
       <GUID>b277991d-0bda-4082-841e-dd10759b9cbd</GUID>
-      <Revision>181</Revision>
+      <Revision>185</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12507">
@@ -26035,12 +26035,15 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
         <Entry parentRefId="12507">
           <Type>datefield</Type>
           <Name>datum</Name>
-          <Description>Datum (erstes) MTB</Description>
+          <Description>Erstellungsdatum</Description>
           <Active>true</Active>
           <Readonly>false</Readonly>
           <Printable>true</Printable>
           <Position>4.5</Position>
           <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
           <MultipleChoice>false</MultipleChoice>
           <DefaultValue/>
           <Alignment>0</Alignment>
@@ -26056,6 +26059,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -26078,7 +26082,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12487</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -26091,14 +26095,14 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>e8a23bd7-debe-487c-b89b-7793c869c670</GUID>
-          <Revision>16</Revision>
+          <Revision>17</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
         <Entry parentRefId="12508">
           <Type>datefield</Type>
           <Name>datumtkhumangenber</Name>
-          <Description>Datum MTB</Description>
+          <Description>Erstellungsdatum</Description>
           <Active>true</Active>
           <Readonly>false</Readonly>
           <Printable>true</Printable>
@@ -26120,7 +26124,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
           <Filter>
-            <Condition>humangenberatung = '1' and getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+            <Condition>humangenberatung = '1'</Condition>
             <Valid>true</Valid>
             <RefEntries>
               <RefEntry>humangenberatung</RefEntry>
@@ -26129,6 +26133,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -26151,7 +26156,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12503</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -26164,7 +26169,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>44c497c8-0ef0-49c4-a873-340ce3e22854</GUID>
-          <Revision>7</Revision>
+          <Revision>8</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -26864,7 +26869,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
         <Entry parentId="12490" parentRefId="12507">
           <Type>formReference</Type>
           <Name>referstemtb</Name>
-          <Description>Erstes MTB</Description>
+          <Description>MTB</Description>
           <Active>true</Active>
           <Readonly>false</Readonly>
           <Printable>true</Printable>
@@ -26929,7 +26934,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>5bae273a-db65-4f40-a0d8-ecf8eb051d3d</GUID>
-          <Revision>57</Revision>
+          <Revision>58</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -27057,17 +27062,11 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
           <Filter>
-            <Condition>humangenberatung = '1' and getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+            <Condition>false</Condition>
             <Valid>true</Valid>
-            <RefEntries>
-              <RefEntry>humangenberatung</RefEntry>
-            </RefEntries>
+            <RefEntries/>
           </Filter>
           <NotSpecified>false</NotSpecified>
-          <Scripts>
-            <Code>var datum = getFieldValue('reftkhumangenber').Datum;&amp;#10;setFieldValue('datumtkhumangenber', datum);</Code>
-            <Valid>true</Valid>
-          </Scripts>
           <ReferencedDataForm>OS.Tumorkonferenz</ReferencedDataForm>
           <Anzeige/>
           <AnzeigeAuswahl>{TK.shortdesc} vom {Datum}</AnzeigeAuswahl>
@@ -27107,7 +27106,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>4159c052-f6cb-4084-9451-db28275ed671</GUID>
-          <Revision>13</Revision>
+          <Revision>14</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -27467,7 +27466,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Active>true</Active>
           <Editable>true</Editable>
           <Valid>true</Valid>
-          <Condition>humangenberatung = '1'&amp;#10;and&amp;#10;getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <Condition>humangenberatung = '1'&amp;#10;</Condition>
           <ConditionValid>true</ConditionValid>
           <Statusauswirkung>0</Statusauswirkung>
           <DataFormEntries>
@@ -27513,7 +27512,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Active>true</Active>
           <Editable>true</Editable>
           <Valid>true</Valid>
-          <Condition>humangenberatung = '1'&amp;#10;and&amp;#10;getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <Condition>humangenberatung = '1'&amp;#10;</Condition>
           <ConditionValid>true</ConditionValid>
           <Statusauswirkung>0</Statusauswirkung>
           <DataFormEntries>
@@ -27529,7 +27528,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Active>true</Active>
           <Editable>true</Editable>
           <Valid>true</Valid>
-          <Condition>humangenberatung = '1'&amp;#10;and&amp;#10;getGlobalSetting('mehrere_mtb_in_mtbepisode') = 'true'</Condition>
+          <Condition>humangenberatung = '1'&amp;#10;</Condition>
           <ConditionValid>true</ConditionValid>
           <Statusauswirkung>0</Statusauswirkung>
           <DataFormEntries>
@@ -27540,6 +27539,26 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Type>2</Type>
           <Description>__DatumGrenze_datumtkreevaluation_GueltigVon</Description>
           <Bezeichnung>__DatumGrenze_datumtkreevaluation_GueltigVon</Bezeichnung>
+          <Active>true</Active>
+          <Editable>false</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries/>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Description>__DatumGrenze_datum_GueltigVon</Description>
+          <Bezeichnung>__DatumGrenze_datum_GueltigVon</Bezeichnung>
+          <Active>true</Active>
+          <Editable>false</Editable>
+          <Valid>true</Valid>
+          <Statusauswirkung>0</Statusauswirkung>
+          <DataFormEntries/>
+        </PlausibilityRule>
+        <PlausibilityRule>
+          <Type>2</Type>
+          <Description>__DatumGrenze_datumtkhumangenber_GueltigVon</Description>
+          <Bezeichnung>__DatumGrenze_datumtkhumangenber_GueltigVon</Bezeichnung>
           <Active>true</Active>
           <Editable>false</Editable>
           <Valid>true</Valid>
