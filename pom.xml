@@ -13,7 +13,7 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring-version>4.3.8.RELEASE</spring-version>
+        <spring-version>6.2.10</spring-version>
         <spring-security-version>4.2.2.RELEASE</spring-security-version>
 
         <!-- Test dependencies -->
