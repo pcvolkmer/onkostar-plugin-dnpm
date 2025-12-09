@@ -29,6 +29,7 @@ import de.itc.onkostar.api.Procedure;
 import java.util.List;
 import java.util.Optional;
 
+@Deprecated(forRemoval = true, since = "2.1.0")
 public interface MtbService {
     /**
      * Zusammenfassung der Prozeduren
