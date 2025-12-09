@@ -33,6 +33,7 @@ import java.util.Optional;
  *
  * @since 0.0.2
  */
+@Deprecated(forRemoval = true, since = "2.1.0")
 public class OsTumorkonferenzVarianteUkwToProtocolMapper implements ProcedureToProtocolMapper {
 
     /**

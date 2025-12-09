@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Optional;
 
+@Deprecated(forRemoval = true, since = "2.1.0")
 public class MrMtbAnmeldungToProtocolMapper implements ProcedureToProtocolMapper {
 
     private final IOnkostarApi onkostarApi;

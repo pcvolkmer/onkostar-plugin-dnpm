@@ -29,5 +29,6 @@ import de.itc.onkostar.api.Procedure;
 import java.util.Optional;
 import java.util.function.Function;
 
+@Deprecated(forRemoval = true, since = "2.1.0")
 @FunctionalInterface
 public interface ProcedureToProtocolMapper extends Function<Procedure, Optional<String>> {}

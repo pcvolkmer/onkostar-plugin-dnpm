@@ -38,6 +38,7 @@ import java.util.stream.Stream;
  *
  * @since 0.0.2
  */
+@Deprecated(forRemoval = true, since = "2.1.0")
 public class DefaultMtbService implements MtbService {
 
     private final IOnkostarApi onkostarApi;
