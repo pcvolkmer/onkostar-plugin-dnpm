@@ -64,6 +64,7 @@ public class SettingsService {
      * Übergibt die Einstellung für <code>mehrere_mtb_in_mtbepisode</code>
      * @return Übergibt <code>true</code>, wenn <code>mehrere_mtb_in_mtbepisode</code> auf "Ja" gesetzt ist.
      */
+    @Deprecated(since = "2.1.0", forRemoval = true)
     public boolean multipleMtbsInMtbEpisode() {
         var setting = getSetting("mehrere_mtb_in_mtbepisode");
         return setting.isPresent() && setting.get().equals("true");
