@@ -123,6 +123,7 @@ public class TherapieplanAnalyzer extends Analyzer {
      * @param input Map mit Eingabewerten
      * @return Zeichenkette mit Protokollauszug
      */
+    @Deprecated(since = "2.1", forRemoval = true)
     public String getProtokollauszug(Map<String, Object> input) {
         var procedureId = AnalyzerUtils.getRequiredId(input, "id");
 
