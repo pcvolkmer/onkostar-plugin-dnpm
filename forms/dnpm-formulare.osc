@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OnkostarEditor>
   <InfoXML>
-    <DatumXML>2026-01-22Z</DatumXML>
+    <DatumXML>2026-01-28Z</DatumXML>
     <Name>OnkoStar</Name>
     <Version>2.14.2</Version>
   </InfoXML>
@@ -19879,7 +19879,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-      <Revision>246</Revision>
+      <Revision>248</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12454">
@@ -22593,9 +22593,10 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
           <Filter>
-            <Condition>not ICD10.getCategories()-&gt;includes('Gehirn')</Condition>
+            <Condition>not ICD10.getCategories()-&gt;includes('Gehirn') and not(isEmptyString(TumorgradingAlt))</Condition>
             <Valid>true</Valid>
             <RefEntries>
+              <RefEntry>TumorgradingAlt</RefEntry>
               <RefEntry>ICD10</RefEntry>
             </RefEntries>
           </Filter>
@@ -22638,7 +22639,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>bec4ca4d-63e6-4573-b499-9f865987b456</GUID>
-          <Revision>2</Revision>
+          <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -22876,9 +22877,10 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
           <Filter>
-            <Condition>ICD10.getCategories()-&gt;includes('Gehirn')</Condition>
+            <Condition>ICD10.getCategories()-&gt;includes('Gehirn') and not(isEmptyString(WHOGradAlt))</Condition>
             <Valid>true</Valid>
             <RefEntries>
+              <RefEntry>WHOGradAlt</RefEntry>
               <RefEntry>ICD10</RefEntry>
             </RefEntries>
           </Filter>
@@ -22922,7 +22924,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>f7da1c86-7204-4992-a651-b8a71ec72791</GUID>
-          <Revision>9</Revision>
+          <Revision>10</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -23151,7 +23153,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>true</hatUnterformulare>
       <SID>20119</SID>
       <GUID>b277991d-0bda-4082-841e-dd10759b9cbd</GUID>
-      <Revision>189</Revision>
+      <Revision>190</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12507">
@@ -23576,6 +23578,9 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Printable>true</Printable>
           <Position>7.0</Position>
           <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
           <MultipleChoice>false</MultipleChoice>
           <DefaultValue/>
           <Alignment>0</Alignment>
@@ -23587,9 +23592,17 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
+          <Filter>
+            <Condition>not(isEmptyString(reevaluation))</Condition>
+            <Valid>true</Valid>
+            <RefEntries>
+              <RefEntry>reevaluation</RefEntry>
+            </RefEntries>
+          </Filter>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -23612,7 +23625,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12497</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -23625,7 +23638,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>43f12edc-2e9b-4d7e-b78b-da619744dc14</GUID>
-          <Revision>4</Revision>
+          <Revision>5</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -24524,7 +24537,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-              <Revision>246</Revision>
+              <Revision>248</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
