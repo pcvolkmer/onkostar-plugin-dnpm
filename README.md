@@ -106,7 +106,7 @@ Soll das automatische Befüllen des MTB-Datums Datum der Unterformulare *Einzele
 INSERT INTO einstellung (name, wert, kategorie, optionen, beschreibung)
 VALUES (
  'mehrere_mtb_in_mtbepisode',
- 'true',
+ 'false',
  'DNPM',
  '[{"key": "true", "value": "Ja"},{"key": "false", "value": "Nein"}]',
  'Angabe, ob mehrere MTBs je MTB-Episode verwendet werden.'
