@@ -2680,6 +2680,86 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </Ordner>
     </PropertyCatalogue>
     <PropertyCatalogue>
+      <Name>DNPM.GrundKeinBroadConsent</Name>
+      <Description>DNPM.GrundKeinBroadConsent</Description>
+      <Standard>SIMPLE</Standard>
+      <Readonly>false</Readonly>
+      <Anmerkung>Grund für das Fehlen BroadConsent gemäß DNPM-Datenmodell 2.1</Anmerkung>
+      <SID>20119</SID>
+      <GUID>cb902ec8-7d6b-4e37-bb7a-d6f40ad6df63</GUID>
+      <Revision>2</Revision>
+      <Versions>
+        <Version>
+          <VersionNumber>1</VersionNumber>
+          <ValidFrom>2026-01-28Z</ValidFrom>
+          <OID>DNPM.GrundKeinBroadConsent.v1</OID>
+          <Active>true</Active>
+          <Description>v1</Description>
+          <SID>20119</SID>
+          <GUID>e8022e5d-3d6b-4adf-98bd-5924879b2523</GUID>
+          <Revision>2</Revision>
+          <Entries>
+            <Entry>
+              <Code>patient-inability</Code>
+              <ShortDescription>Einwilligung durch den Patienten nicht möglich</ShortDescription>
+              <Description>Einwilligung durch den Patienten nicht möglich</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>1.0</Position>
+            </Entry>
+            <Entry>
+              <Code>patient-refusal</Code>
+              <ShortDescription>Einwilligung vom Patienten abgelehnt</ShortDescription>
+              <Description>Einwilligung vom Patienten abgelehnt</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>2.0</Position>
+            </Entry>
+            <Entry>
+              <Code>consent-not-returned</Code>
+              <ShortDescription>Einwilligung vom Patienten nicht abgegeben</ShortDescription>
+              <Description>Einwilligung vom Patienten nicht abgegeben</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>3.0</Position>
+            </Entry>
+            <Entry>
+              <Code>other-patient-reason</Code>
+              <ShortDescription>Anderer Patienten-bedingter Grund</ShortDescription>
+              <Description>Anderer Patienten-bedingter Grund</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>4.0</Position>
+            </Entry>
+            <Entry>
+              <Code>technical-issues</Code>
+              <ShortDescription>Consent aus technischen Gründen nicht verfügbar</ShortDescription>
+              <Description>Consent aus technischen Gründen nicht verfügbar</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>5.0</Position>
+            </Entry>
+            <Entry>
+              <Code>organizational-issues</Code>
+              <ShortDescription>Consent aus organisatorischen Gründen nicht verfügbar</ShortDescription>
+              <Description>Consent aus organisatorischen Gründen nicht verfügbar</Description>
+              <Synonyms/>
+              <Note/>
+              <Position>6.0</Position>
+            </Entry>
+          </Entries>
+          <Categories/>
+        </Version>
+      </Versions>
+      <Ordner>
+        <Bibliothek>
+          <Name>BENUTZER Bibliothek</Name>
+        </Bibliothek>
+        <Name>DNPM</Name>
+        <Typ>1</Typ>
+      </Ordner>
+    </PropertyCatalogue>
+    <PropertyCatalogue>
       <Name>DNPM.Verwandschaftsgrad</Name>
       <Description>DNPM.Verwandschaftsgrad</Description>
       <Standard>SIMPLE</Standard>
@@ -5210,7 +5290,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <BestOf>false</BestOf>
       <SID>20119</SID>
       <GUID>ab9d331c-8d95-49e5-adc2-73295c8fa1a3</GUID>
-      <Revision>56</Revision>
+      <Revision>57</Revision>
       <Entries>
         <Entry>
           <PropertyCatalogue>DNPM.WHOGrading</PropertyCatalogue>
@@ -6292,6 +6372,31 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Use/>
           <SID>20119</SID>
           <GUID>ee6aa204-75ea-4f81-988f-083226fe1366</GUID>
+          <Revision>1</Revision>
+        </Entry>
+        <Entry>
+          <PropertyCatalogue>DNPM.GrundKeinBroadConsent</PropertyCatalogue>
+          <Name>GrundKeinBroadConsent</Name>
+          <NameExport>GrundKeinBroadConsent</NameExport>
+          <Description>Grund kein BroadConsent</Description>
+          <Type>propertyCatalogue</Type>
+          <SubTable/>
+          <ScaleUnit/>
+          <MaxLength>0</MaxLength>
+          <DefaultValue/>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Filterable>false</Filterable>
+          <MultipleChoice>false</MultipleChoice>
+          <Position>0.0</Position>
+          <Note/>
+          <DateEstimatedAllowed>false</DateEstimatedAllowed>
+          <DateUnknownAllowed>false</DateUnknownAllowed>
+          <oeChoiceOptions>2</oeChoiceOptions>
+          <Fachabteilungsbezug>false</Fachabteilungsbezug>
+          <Use/>
+          <SID>20119</SID>
+          <GUID>682fc014-086d-45b2-8e20-b15e46da7908</GUID>
           <Revision>1</Revision>
         </Entry>
       </Entries>
@@ -19879,7 +19984,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-      <Revision>248</Revision>
+      <Revision>249</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12454">
@@ -21475,6 +21580,75 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SID>20119</SID>
           <GUID>bb973fb7-3d19-4cf6-8fa0-3f0b4cacc1db</GUID>
           <Revision>4</Revision>
+          <vorherigeWerte>false</vorherigeWerte>
+          <EinfuegenVerhindern>false</EinfuegenVerhindern>
+        </Entry>
+        <Entry parentRefId="12451">
+          <Type>combobox</Type>
+          <Name>GrundKeinBroadConsent</Name>
+          <Description>Grund kein BroadConsent</Description>
+          <Active>true</Active>
+          <Readonly>false</Readonly>
+          <Printable>true</Printable>
+          <Position>1.5</Position>
+          <Note/>
+          <Beschriftung1/>
+          <Beschriftung2/>
+          <WertAnzeigenPatmodul>false</WertAnzeigenPatmodul>
+          <MultipleChoice>false</MultipleChoice>
+          <DefaultValue/>
+          <Alignment>1</Alignment>
+          <Direction>0</Direction>
+          <DataCatalogueEntry>GrundKeinBroadConsent</DataCatalogueEntry>
+          <DataCatalogueEntryTable>DNPM_KPA</DataCatalogueEntryTable>
+          <ElementParent>Consent</ElementParent>
+          <ProcedureDateStatus>none</ProcedureDateStatus>
+          <ZuordnungErkrankung>0</ZuordnungErkrankung>
+          <Grafik/>
+          <GrafikAusrichtung>0</GrafikAusrichtung>
+          <Mandatory>false</Mandatory>
+          <Datenart>BOTH</Datenart>
+          <NotSpecified>false</NotSpecified>
+          <Anzeige/>
+          <AnzeigeAuswahl/>
+          <Druckvorlage/>
+          <Speichern>1</Speichern>
+          <LeerAusblenden>true</LeerAusblenden>
+          <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
+          <Min>0</Min>
+          <Max>0</Max>
+          <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
+          <Hinweis>&lt;p&gt;Wenn kein Forschungsconsent in elektronischer Form als Broad-Consent FHIR-Dokument vorliegt, hier den Grund für das Fehlen angeben.&lt;/p&gt;&amp;#10;&lt;br/&gt;&amp;#10;&lt;p&gt;&lt;b&gt;Hinweis gemäß BfArM-Newsletter Nr.7 vom 12.12.2026:&lt;/b&gt; Aktuell plant das BfArM, ab 01.04.2026 keine Begründungen mehr zu akzeptiert, die die technische und organisatorische Implementierung der FHIR-basierten Forschungseinwilligung bei den Leistungserbringern betreffen, sondern nur noch Begründungen aus Sicht der Versicherten.&lt;/p&gt;</Hinweis>
+          <Platzhalter/>
+          <ShowAuspraegungen>true</ShowAuspraegungen>
+          <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
+          <Vorschlaege>false</Vorschlaege>
+          <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
+          <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
+          <InfoAuswahldialog/>
+          <MindestbreiteLabel>0</MindestbreiteLabel>
+          <MindestbreiteFeld>0</MindestbreiteFeld>
+          <OrganisationunitFilter>0</OrganisationunitFilter>
+          <Aktion>0</Aktion>
+          <GroesseTextfeld>0</GroesseTextfeld>
+          <FilterAufheben>false</FilterAufheben>
+          <Resizable>false</Resizable>
+          <Verschluesselt>false</Verschluesselt>
+          <MemoArt>1</MemoArt>
+          <DateValidFrom>0</DateValidFrom>
+          <DateValidTo>0</DateValidTo>
+          <DateValidFuture>true</DateValidFuture>
+          <Titel/>
+          <InAuswertung>false</InAuswertung>
+          <InAuswertungGraph>false</InAuswertungGraph>
+          <AlignmentPatModul>1</AlignmentPatModul>
+          <DirectionPatModul>0</DirectionPatModul>
+          <SeitenumbruchPatModul>true</SeitenumbruchPatModul>
+          <MarkierungIgnorieren>false</MarkierungIgnorieren>
+          <SucheArt>0</SucheArt>
+          <SID>20119</SID>
+          <GUID>0e526789-6157-4d92-80a8-dcb8a6a3f391</GUID>
+          <Revision>1</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -24537,7 +24711,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-              <Revision>248</Revision>
+              <Revision>249</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
