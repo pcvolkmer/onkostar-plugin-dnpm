@@ -8911,8 +8911,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>studie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9281,8 +9281,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>studie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -10302,7 +10302,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>12415fe7-8785-41ee-ad32-8e4dd69d504b</GUID>
-              <Revision>74</Revision>
+              <Revision>75</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -17342,7 +17342,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>12415fe7-8785-41ee-ad32-8e4dd69d504b</GUID>
-      <Revision>74</Revision>
+      <Revision>75</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12443">
@@ -18339,7 +18339,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Name>EmpfehlungsumsetzungJa</Name>
           <Description>Umsetzungsart</Description>
           <Active>true</Active>
-          <Readonly>false</Readonly>
+          <Readonly>true</Readonly>
           <Printable>true</Printable>
           <Position>4.0</Position>
           <Note/>
@@ -18368,6 +18368,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
+          <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
           <GeschlossenAnzeigen>false</GeschlossenAnzeigen>
@@ -18390,7 +18391,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>12436</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -18403,7 +18404,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>fd714ec5-bca5-4c25-b995-4b00776bf337</GUID>
-          <Revision>8</Revision>
+          <Revision>9</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -18508,8 +18509,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>StatusKostenuebernahme</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
