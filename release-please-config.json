@@ -6,6 +6,8 @@
   "include-component-in-tag": false,
   "release-type": "maven",
   "packages": {
-    ".": { }
+    ".": {
+      "package-name": "DNPMHelper"
+    }
   }
 }
