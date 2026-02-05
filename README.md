@@ -10,6 +10,10 @@ osc-variant modify --sorted --strip --output dnpm-formulare.osc <QUELLDATEI>
 
 Die für die Formulare verwendeten Formularscripte sind zudem im Verzeichnis [`/scripts``](/scripts) hinterlegt und können dort eingesehen werden.  
 
+## Voraussetzungen
+
+Dieses Plugin ist zur Verwendung mit Onkostar Version 2.14.0 oder neuer vorgesehen.
+
 ## Konfiguration
 
 Dieses Plugin erlaubt die Konfiguration über Onkostar-Einstellungen.
@@ -366,7 +370,7 @@ Für das Bauen des Plugins ist zwingend JDK in Version 11 erforderlich.
 Spätere Versionen des JDK beinhalten einige Methoden nicht mehr, die von Onkostar und dort benutzten Libraries verwendet
 werden.
 
-Voraussetzung ist das Kopieren der Datei `onkostar-api-2.14.2.jar` (oder neuer) in das Projektverzeichnis `libs`.
+Voraussetzung ist das Kopieren der Datei `onkostar-api-2.14.0.jar` (oder neuer) in das Projektverzeichnis `libs`.
 
 **_Hinweis_**: Bei Verwendung einer neueren Version der Onkostar-API oder des ATC-Codes-Plugins
 muss die Datei `pom.xml` entsprechend angepasst werden.
