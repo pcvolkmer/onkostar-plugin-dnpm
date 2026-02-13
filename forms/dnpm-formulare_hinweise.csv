@@ -1,0 +1,181 @@
+Formular;Formularfeldbeschreibung;Formularfeld;GUID;Hinweis als HTML
+DNPM ConsentMV;Stand;date;54adf655-c828-45b0-aaa8-6292ead72e46;
+DNPM ConsentMV;Teilnahme am Modellvorhaben;sequencing;7ff8e944-c51d-4b83-9395-fc18dae10ac9;
+DNPM ConsentMV;Fallidentifizierung;caseidentification;1c72219f-5225-4cb1-8d16-7c6338441b8e;
+DNPM ConsentMV;Re-Identifizierung;reidentification;244371cf-239c-4ef9-aa71-9204603deede;
+DNPM FollowUp;Antragsstadium;Antragsstadium;d5e51757-d52d-412e-9717-c195fa0289dc;Angabe ist gemäß DNPM-Datenmodell 2.1 optional.
+DNPM FollowUp;Antragsstellung zur Kostenübernahme;AntragKostenuebernahme;16f4d725-6d87-4078-a59d-6ca6724f1988;
+DNPM FollowUp;Best Response;BestResponse;debc289c-a150-47e3-85cf-ad8e3c47f08c;
+DNPM FollowUp;Datum des Follow-Ups;DatumFollowUp;c3877a68-dea9-46a2-bd72-c7c040b56a2a;
+DNPM FollowUp;Status der Therapie;StatusTherapie;b413b87c-66d2-4461-9956-23399c38e2fc;
+DNPM FollowUp;Letztes Kontaktdatum;DatumLetzterKontakt;8a9aac9c-c999-4496-9c15-635e5f1c96c0;
+DNPM FollowUp;Lost to FollowUp;LostToFollowUp;6ae823f6-6b06-48ef-a866-dc03a0092f47;
+DNPM FollowUp;Ausstellungsdatum des Antrags auf Kostenübernahme;AusstellungsdatumAntrag;9341d092-6156-4ae9-9b0d-d72619ab4471;
+DNPM FollowUp;Bemerkung;BewertungMemo;1fd81b59-e343-46dc-82d9-18bfdb05ac42;
+DNPM FollowUp;Bemerkung zur Nicht-Umsetzung;EmpfehlungsumsetzungNein;f85312b5-c779-4568-aa5e-b5319a04c351;
+DNPM FollowUp;Verweis zur Therapieempfehlung;LinkTherapieempfehlung;2c5897aa-6ab4-474c-b94d-67ca74ffb7ea;
+DNPM FollowUp;Datum Antwort zum Kostenübernahmeantrag;DatumAntwortKueAntrag;bb993bc1-fcfd-4d66-ad78-e14ea5be28a2;
+DNPM FollowUp;Datum der Progression;DatumProgression;ede81488-4147-4f03-8a94-bdc94e3679e9;
+DNPM FollowUp;Bemerkung zum Status der Therapie;StatusTherapieBemerkung;128962f0-c33e-4553-abbc-fc88befbddce;
+DNPM FollowUp;Umsetzungsart;EmpfehlungsumsetzungJa;fd714ec5-bca5-4c25-b995-4b00776bf337;
+DNPM FollowUp;Status der Kostenübernahme;StatusKostenuebernahme;1ede003a-4a8d-44e4-8311-40fe309b5e2e;
+DNPM FollowUp;Todeszeitpunkt;Todeszeitpunkt;784fe2ae-6fdb-4e3d-91dd-5b484f9735bc;
+DNPM FollowUp;Grund für Ablehnung der Kostenübernahme;GrundAblehnungKosten;c1b0f098-818a-4758-8bf0-ddeced5414d6;
+DNPM FollowUp;Grund für nicht umgesetzte Therapie;GrundNichtumsetzung;85d14def-12b5-48d0-8f42-507847027e72;
+DNPM FollowUp;Letztes Follow-Up-Datum;LetztesFollowUpDatum;9b3d8f2d-2ab5-474a-9b16-0ad4b0568a8f;
+DNPM FollowUp;Welche?;AblehnungKostenMemo;08e2a6f2-efa6-49e5-aed0-d658d075ca75;
+DNPM FollowUp;Grund für Therapieabbruch;GrundTherapieabbruch;d6d720c7-dfdf-428e-9fbe-4b95ddea289d;
+DNPM FollowUp;PFS unter Vortherapie (PFS1);PFS1Vortherapie;5c55edcc-bf67-46b3-ad03-df55d113348d;
+DNPM FollowUp;PFS unter empfohlener Therapie (PFS2);PFS2EmpfTherapie;fadffa23-865e-4918-bae9-ad0a32378b4b;
+DNPM FollowUp;Start der Therapie;Therapiestart;8fcf69cb-730a-4dd4-80c0-8d28be8d51d3;
+DNPM FollowUp;Quotient PFS2/PFS1;QuotientPFS2PFS1;08326dbd-763f-48a6-ac58-9df92c6bee62;
+DNPM FollowUp;Ende der Therapie;Therapieende;6fabccc2-11a3-478e-b82f-98c178dea044;
+DNPM FollowUp;Dosisdichte (Zeit und Medikamentendosis);Dosisdichte;b7e6245b-8fda-411a-a6a3-2e2e633d04bf;
+DNPM FollowUp;Overall survival (OS) (ab dem Start der Therapie);OverallSurvival;d8ccb95b-1ea1-4792-a877-f653e05fdcd1;
+DNPM FollowUp;Ergänzendes Bemerkungsfeld zur Therapieumsetzung;TherapieumsetzungMemo;bda520b0-f85c-4024-982c-d22f67ff7d41;
+DNPM Klinik/Anamnese;Consent MV § 64e;ConsentMV64e;b6398855-8b6c-4fa7-9e6e-49368f6442ce;"Angabe des Consents und Einwilligung in das Modellvorhaben bei Nutzung des Formulars ""DNPM Consent MV"""
+DNPM Klinik/Anamnese;Molekulares Tumorboard;MTB;a21806f5-5540-406d-9e02-0bae552668af;
+DNPM Klinik/Anamnese;Anmeldedatum für das MTB;AnmeldedatumMTB;df0a74b6-d142-4400-9a74-32b94fadba91;
+DNPM Klinik/Anamnese;Datum der Erstdiagnose;DatumErstdiagnose;68aef1c8-b582-4a0b-b9ab-3b353d76ccf1;Wird beim Anlegen automatisch gesetzt.
+DNPM Klinik/Anamnese;Frühere Tumorerkrankung;FruehereTumorerkrankung;9bc377c6-3435-4eb5-afe8-075ca848eeb3;
+DNPM Klinik/Anamnese;Geburtsdatum;Geburtsdatum;9699f132-154d-4ddc-a30b-bb78617b72a7;Wird beim Anlegen automatisch gesetzt.
+DNPM Klinik/Anamnese;Progress unter Leitliniengerechter Therapie;LeitlinienTherapieProgr;b83024b5-1099-4eff-8400-e51ac5dab2c5;
+DNPM Klinik/Anamnese;Therapiebeginn;Therapiebeginn;66328e95-7872-4f6b-b78a-b484fde2bf2e;Wird beim Speichern automatisch aus der letzten Therapielinie gesetzt.
+DNPM Klinik/Anamnese;Diagnosetyp;Diagnosetyp;82230c93-f9aa-432c-a2a5-d3d6995d5dc7;
+DNPM Klinik/Anamnese;Grund kein BroadConsent;GrundKeinBroadConsent;a91c617f-33c7-4fe1-a227-5ff77bf334d3;"<p>Wenn kein Forschungsconsent in elektronischer Form als Broad-Consent FHIR-Dokument vorliegt, hier den Grund für das Fehlen angeben.</p>&#10;<br/>&#10;<p><b>Hinweis gemäß BfArM-Newsletter Nr.7 vom 12.12.2026:</b> Aktuell plant das BfArM, ab 01.04.2026 keine Begründungen mehr zu akzeptiert, die die technische und organisatorische Implementierung der FHIR-basierten Forschungseinwilligung bei den Leistungserbringern betreffen, sondern nur noch Begründungen aus Sicht der Versicherten.</p>"
+DNPM Klinik/Anamnese;Diagnose;FruehereTumorDiagnose;c43f7b90-92cd-4a82-abaa-d2fd334f13e1;
+DNPM Klinik/Anamnese;ICD-10;ICD10;c11ad5b1-a023-4e94-942c-ccb67324cec4;Wird beim Anlegen automatisch gesetzt.
+DNPM Klinik/Anamnese;Alle leitliniengerechte Therapien durchlaufen;LeitlinienTherapieDurchl;9b633a9d-cfef-4e98-960e-2bdfad33f0d4;
+DNPM Klinik/Anamnese;Therapieende;Therapieende;2ae7c4e8-1570-4ac8-b8c4-53bedacc7f09;Wird beim Speichern automatisch aus der letzten Therapielinie gesetzt.
+DNPM Klinik/Anamnese;Todesdatum;Todesdatum;39da2eb2-d738-4814-938e-a5c23537ec5a;Wird automatisch beim Dokumentieren eines Vitalstatus: Verstorben gesetzt.
+DNPM Klinik/Anamnese;Ansprechen;AnsprechenLetzteLinie;b28d7897-8590-47f5-b9d8-3b8a4c76cb7c;
+DNPM Klinik/Anamnese;Anzahl durchlaufener Therapielinien;AnzahlTherapielinien;f50b1cee-d1b3-4444-b9e5-ccb4feb84fdf;Wird beim Speichern automatisch aus Therapielinien gesetzt.
+DNPM Klinik/Anamnese;Erkrankungsalter;FruehereTumoreAlter;1abeb687-49ab-4dc9-b246-e7ed934f9282;
+DNPM Klinik/Anamnese;Geschlecht;Geschlecht;bb973fb7-3d19-4cf6-8fa0-3f0b4cacc1db;Wird beim Anlegen automatisch gesetzt.
+DNPM Klinik/Anamnese;ICD-O-3-Lokalisation;ICDO3Lokalisation;64e51a56-76da-47ba-8308-aa5687ae52f3;Wird beim Anlegen automatisch gesetzt.
+DNPM Klinik/Anamnese;Datum der Progression;DatumProgression;e1cf6699-9b39-4c56-9649-6da76858836d;
+DNPM Klinik/Anamnese;ICD-O-3-Histologie;ICDO3Histologie;7ee99b74-1e73-46d5-ad74-f90053b935ce;Wird beim Anlegen automatisch gesetzt.
+DNPM Klinik/Anamnese;Krankenkasse;Krankenkasse;af831cf8-1114-456c-a068-d0861fd6260d;Wird beim Anlegen automatisch gesetzt.
+DNPM Klinik/Anamnese;Leitlinienstatus;Leitlinienstatus;677afe1c-12a8-47a0-a713-717700361c47;
+DNPM Klinik/Anamnese;Art der Krankenkasse;ArtDerKrankenkasse;d25c38ee-4c6f-4ef9-a2f3-9dede7b36a6a;
+DNPM Klinik/Anamnese;Grund für Therapieende;GrundTherapieende;0b19e2d0-74df-4d80-b407-cef7c35f2d07;
+DNPM Klinik/Anamnese;Fallnummer MV §64e;FallnummerMV;161be21e-2c70-4b8e-9cec-a8422816b70a;
+DNPM Klinik/Anamnese;WHO-Grad;WHOGradAlt;f7da1c86-7204-4992-a651-b8a71ec72791;WHO-Grad zentrales Nervensystem in Version 2021
+DNPM Klinik/Anamnese;Tumorgrading;TumorgradingAlt;bec4ca4d-63e6-4573-b499-9f865987b456;
+DNPM Therapieplan;Empfehlung;humangenberatung;b2ea3737-fac4-4299-a271-7bb78efadd30;"Wählen Sie hier aus, ob in der Episode/ im Beobachtungszeitraum in mindestens einem der MTBs eine Empfehlung zur humangenetischen Beratung erfolgt ist.&#10;&#10;Ist nicht bekannt, ob ein Empfehlung erfolgte, wählen Sie hier „unbekannt“."
+DNPM Therapieplan;Empfehlung;reevaluation;3c7e5c3b-77d7-4138-8318-9d46151dc4de;"Wählen Sie hier aus, ob in der Episode/ im Beobachtungszeitraum in mindestens einem der MTBs eine Empfehlung zur Reevaluation erfolgt ist.&#10;&#10;Ist nicht bekannt, ob ein Empfehlung ausgesprochen wurde, wählen Sie hier „unbekannt“."
+DNPM Therapieplan;MTB;reftkreevaluation;df226ded-99a6-4d1c-b23f-e6928e3492e5;
+DNPM Therapieplan;Erstellungsdatum;datumtkhumangenber;44c497c8-0ef0-49c4-a873-340ce3e22854;
+DNPM Therapieplan;Datum MTB;datumtkreevaluation;7948405e-2c3a-457b-b6e5-1a6a7368ea4e;
+DNPM Therapieplan;Target gefunden?;target;3564da63-92df-4054-b628-f614db64fdf4;"Wählen Sie hier aus, ob in der Episode/ im Beobachtungszeitraum in mindestens einem der MTBs ein Target gefunden wurde.&#10;&#10;Ist nicht bekannt, ob ein Target gefunden wurde, wählen Sie hier „unbekannt“."
+DNPM Therapieplan;Status Begründung;statusbegruendung;8a102d9e-802c-4a17-bd9e-1e2faa5744c5;"Wählen Sie hier aus, ob in der Episode im Beobachtungszeitraum ein Target gefunden wurde und welche Begründung für die Nichtteilnahme am Modellvorhaben §64e daraus folgt.&#10;"
+DNPM Therapieplan;DNPM Klinik/Anamnese;refdnpmklinikanamnese;7d75f0c6-a8cd-4fd9-9a6e-9d43a388503e;"Wählen Sie hier das zur MTB-Episode gehörende Formular ""DNPM Klinik/Anamnese"" aus."
+DNPM Therapieplan;MTB;referstemtb;5bae273a-db65-4f40-a0d8-ecf8eb051d3d;"Wählen Sie hier das erste MTB der Episode oder des Betrachtunsgzeitraums aus, auf die sich dieses Formulars bezieht.&#10;&#10;Das Datum des MTB im nachfolgenden Eingabefeld wird automatisch übernommen."
+DNPM Therapieplan;Grund humangenetische Beratung;humangenbergrund;3733e1c3-369e-45d7-89ab-dd03f0d63f11;
+DNPM Therapieplan;Erstellungsdatum;datum;e8a23bd7-debe-487c-b89b-7793c869c670;"Geben Sie hier das Datum des ersten MTBs ein, auf die sich dieses Formular bezieht.&#10;&#10;Dieses Feld wird automatisch durch Auswahl des ersten MTBs aktualisiert."
+DNPM Therapieplan;Begründung;humangenberbegruendung;4730a146-55a9-4f5e-adba-7da5116272da;Geben Sie hier die Begründung zur Empfehlung ein. Eine Angabe hierzu ist verpflichtend, wenn eine Empfehlung erfolgte.
+DNPM Therapieplan;Molekulargenetische Untersuchung.;refreevaltumorprobe;39e0e1ab-6a4d-4619-9031-7ce71524477d;
+DNPM Therapieplan;Mit Empfehlung zur Reevaluation;mitempfehlungreeval;30bead1f-5cad-47a7-a657-e4019e8abb31;
+DNPM Therapieplan;Mit Empfehlung zu Rebiopsie;mitempfehlungrebiopsie;00e961e5-26e1-4d94-8c81-acb441fb329d;
+DNPM Therapieplan;Mit Einzelempfehlung;miteinzelempfehlung;8aa53d95-66bf-4a5e-b029-646f01cb0b72;
+DNPM Therapieplan;Protokollauszug;protokollauszug;fa368070-c87e-4f0d-a9b8-2af423d3970e;"Dieses Feld soll einen Auszug aus den Ergebnissen aller enthaltenen MTBs enthalten. &#10;Fügen Sie hier Textinhalte aus den Feldern „Fragestellung“, „Empfehlung“ und sonstigen Bemerkungen aus dem Formularen der MTBs ein."
+DNPM UF ConsentMV Verlauf;Datum;date;c4ed24ac-2730-4654-ad42-3b25cafc641d;
+DNPM UF ConsentMV Verlauf;Teilnahme am Modellvorhaben;sequencing;3bf60999-e6e4-4f4d-8776-180d8789e7c9;Erklärung zur Teilnahme am Modellvorhaben und Einwilligung zur Genomsequenzierung
+DNPM UF ConsentMV Verlauf;Fallidentifizierung;caseidentification;1bcb0c7e-78ee-45a5-b8e4-8a3e33d2d68b;Einwilligung zur Fallidentifizierung zum fachlichen Austausch unter Behandelnden
+DNPM UF ConsentMV Verlauf;Version des Formulars;version;0a9cd95d-fb9f-41e5-a3fa-fa08a8868260;
+DNPM UF ConsentMV Verlauf;Re-Identifizierung;reidentification;55cb7393-9f13-4eba-892e-c1f0914bd68e;Einwilligung zur Re-Identifizierung Ihrer Daten und zur Kontaktaufnahme bei einem neuen Befund in der Forschung
+DNPM UF ECOG;Datum;Datum;d78cf414-1d06-4e15-81d9-8bdf22793916;
+DNPM UF ECOG;ECOG Performance Status;Feldgruppe1;ccd128ae-332b-4735-867e-8926ab5db494;
+DNPM UF ECOG;ECOG;ECOG;77543b2c-49f2-4404-b1c3-e672e4009442;
+DNPM UF Einzelempfehlung;;wirkstoffe;0ab804d8-16f0-404f-af47-ab19ef324a46;"Betätigen Sie den Button ""Wirkstoffe bearbeiten"" und wählen Sie verfügbare Wirkstoffe aus.&#10;"
+DNPM UF Einzelempfehlung;Studien durchsuchen;btnstudiendurchsuchen;a14f08b9-4751-4730-ab5b-846ab84cc6bc;
+DNPM UF Einzelempfehlung;;evidenzlevel;b24158bb-453d-4405-8439-cff2fdc7e94b;
+DNPM UF Einzelempfehlung;Studiensystem;studiensystem;d269344e-37d8-43af-9ebc-be120cf74a44;
+DNPM UF Einzelempfehlung;Studien-ID;studienct;97dce1b6-62be-4a42-b1e8-dc79b4cdf371;Geben Sie hier die NCT-Nummer der empfohlenen Studie an.
+DNPM UF Einzelempfehlung;Studie;studie;8f08ebac-6d34-4e12-ba1e-d27eec3954f4;"Für DNPM nicht erforderlich.&#10;&#10;Geben Sie hier den Namen der Studie an."
+DNPM UF Einzelempfehlung;is;evidenzlevelzusatzis;324e3450-ec2c-4bcb-a02d-33e411b284ee;
+DNPM UF Einzelempfehlung;intern/extern;studieinternextern;3c561c27-2dc3-4bf0-ae49-72472d47ac16;"Für DNPM nicht erforderlich.&#10;&#10;Geben Sie hier an, ob die Studie intern oder extern durchgeführt wird."
+DNPM UF Einzelempfehlung;iv;evidenzlevelzusatziv;665c9d72-3641-4228-9841-2276dfd415f0;
+DNPM UF Einzelempfehlung;Z;evidenzlevelzusatzZ;addab29f-66ab-44ad-b32b-adc1c07b63f8;
+DNPM UF Einzelempfehlung;R;evidenzlevelzusatzR;879169c4-2b99-44a6-916f-0112092a738a;
+DNPM UF Einzelempfehlung;;evidenzlevelzusatz;944dd2dc-2697-4ad9-ab73-9370a745d035;
+DNPM UF Einzelempfehlung;Priorität;prio;b6e7460e-2350-4d62-8665-e07d5484a123;Geben Sie hier die Priorität der Einzelempfehlung gemäß MTB an.
+DNPM UF Einzelempfehlung;Ort;studieort;15a10da3-89d8-4700-acdd-0fadcd17d197;Geben Sie hier den Ort oder die Orte der Studie an.
+DNPM UF Einzelempfehlung;Empfehlungskategorie;empfehlungskategorie;201cc444-59b8-4bc7-9be8-8d473315bd46;
+DNPM UF Einzelempfehlung;Art der Therapie;artdertherapie;075d0d6e-6a8e-4b89-9f78-526f0ff4b3ec;
+DNPM UF Einzelempfehlung;Empfehlungsart;empfehlungsart;9f549070-4f23-4aa8-8ae8-b39f548ac828;"Empfehlungsart gemäß DNPM-Datenmodell V 2.1.&#10;&#10;Angabe ist optional."
+DNPM UF Einzelempfehlung;Studienempfehlung hinzufügen;btnaddstudie;57064ddd-5793-43cf-b85f-6eb236c9381b;
+DNPM UF Einzelempfehlung;Wirkstoffe;grpwirkstoffe;96e76da7-0ec5-4744-acb9-47b7c7ce957c;"Sie können die Wirkstoffe nicht direkt eingeben. Klicken Sie auf „Wirkstoffe bearbeiten“ und fügen Sie im sich öffnenden Dialog Wirkstoffe aus der links stehenden Liste der verfügbaren Wirkstoffe zur rechts stehenden Liste der ausgewählten Wirkstoffe hinzu.&#10;&#10;Geben Sie dazu den Anfang des gesuchten Wirkstoffs unter „Suchen“ ein und wählen Sie einen Wirkstoff aus. Klicken Sie nun auf „Hinzufügen“. Der Wirkstoff taucht nun in der Liste der ausgewählten Wirkstoffe auf.&#10;&#10;Zum Entfernen eines Wirkstoffs wählen Sie den zu entfernenden Wirkstoff aus der rechts stehenden Liste aus und klicken auf „Entfernen“.&#10;&#10;Ist die Auswahl abgeschlossen, klicken Sie auf „Übernehmen“, um den Dialog zu schließen und die Änderungen anzuwenden."
+DNPM UF Einzelempfehlung;Wirkstoffe bearbeiten;btnaddwirkstoff;31b4c59b-b9eb-4383-a8b3-efff9777ab06;
+DNPM UF Einzelempfehlung;Evidenzlevel;grpEvidenzlevel;92c9326d-964e-4c75-a6fa-388f3423b9f7;Wählen Sie hier das Evidenzlevel zuzüglich dem Evidenzlevel-Zusatz aus.
+DNPM UF Einzelempfehlung;Alle Studienempfehlungen;studienalle;1bb8b677-1d9e-4d66-8ab2-670b0f0c6980;Zum Hinzufügen von Studienempfehlungen füllen Sie die obenstehenden Felder „NCT-Nummer“ und „Ort“ aus und klicken Sie auf „Studienempfehlung hinzufügen“.
+DNPM UF Einzelempfehlung;Evidenzlevel stützende Publikation(en);evidenzlevelpublication;b99bbd54-327e-45cd-9ec2-54b99b17122d;"Referenz-ID der Publikation (PubMed-ID oder DOI).&#10;Je ein Eintrag je Zeile."
+DNPM UF Einzelempfehlung;Antrag auf Kostenübernahme erforderlich;antragkueerforderlich;10db4953-182d-482c-9762-a5f081d6846e;
+DNPM UF Einzelempfehlung;Molekulargenetische Untersuchung;refosmolekulargenetik;9a7c14b8-958b-4269-bb58-d6267089660e;Wählen Sie hier das Formular zur Molekulargenetische Untersuchung mit entsprechendem Befund aus, welches die Grundlage der Einzelempfehlung ist.
+DNPM UF Einzelempfehlung;Alle stützenden molekularen Alterationen;stmolaltalle;3a530709-da96-4a9b-8586-5140d3eda38f;"Betätigen Sie den Button ""Stützende molekulare Alterationen bearbeiten"" und wählen Sie verfügbare molekulare Alterationen (Varianten) aus."
+DNPM UF Einzelempfehlung;Stützende molekulare Alteration bearbeiten;btnaddstmolalt;b757e7cc-9ec3-4480-aa3e-d4bcf031c13d;
+DNPM UF Einzelempfehlung;Verweis auf FollowUp;refdnpmfollowup;720dda0f-b669-42da-a3d6-0e2dbcbb2894;
+DNPM UF Einzelempfehlung;Verweis entfernen;Button4;d0bbb254-3008-4670-a573-2dd2ec5afb7e;
+DNPM UF Histologie;Probe;Histologie;55d3661e-9f85-4c56-a046-3df941f4f8a2;"Zur Auswahl steht hier das Formular ""OS.Molekulargenetik"" mit den benötigten Informationen zu Datum und Tumorzellgehalt."
+DNPM UF Histologie;Erstellungsdatum;Erstellungsdatum;01f8cee9-4aeb-4e34-98f3-6b23e28fb95d;
+DNPM UF Histologie;Morphologie;Morphologie;8efbfe9e-f342-4da1-844f-77584fc0f855;
+DNPM UF Histologie;Tumorzellgehalt in %;Tumorzellgehalt;0604a5e8-bb42-44f7-bd15-0627410cba4d;
+DNPM UF Histologie;Befundtext;Befundtext;fe8bf79d-f4d8-42d5-bcb6-dd78a1441f22;
+DNPM UF Histologie;Anmerkung zur Morphologie;AnmerkungMorphologie;df1599e2-2152-4a98-b263-45d745ba415c;
+DNPM UF Keimbahndiagnose;ICD-10;ICD10;4fdc5e83-917e-4f62-9066-27eab1860590;
+DNPM UF Prozedur;Therapielinie;Feldgruppe1;dbe138d8-f293-4570-a6b3-970762ea6f18;
+DNPM UF Prozedur;;Therapielinie;e71ae2bb-a17c-4649-a147-b8bd634f1a03;
+DNPM UF Prozedur;Erfassungsdatum;Erfassungsdatum;8cdddb84-4446-4e4e-a42b-165581bf0d76;
+DNPM UF Prozedur;Intention;Intention;f1197bbf-0eaf-4c4e-9aa3-223880b302e2;
+DNPM UF Prozedur;vom;Beginn;d2345e2c-cda3-4ebb-abfd-ded8713e3eff;
+DNPM UF Prozedur;Therapie-Empfehlung;refeinzelempfehlung;d2a29f65-c9ef-408d-a57e-ca6717504cf1;
+DNPM UF Prozedur;Status;Status;65881dcd-0f75-4245-af39-8bd3446482cc;
+DNPM UF Prozedur;Status-Grund;StatusGrund;5369a306-db86-4034-9cb4-215d14b87b0a;
+DNPM UF Prozedur;Typ/Kategorie;Typ;f8cbcb22-194c-484e-a31a-2728dbf6123f;
+DNPM UF Prozedur;Anmerkungen;Anmerkungen;0fad96c8-b6bf-4520-bf63-d1b2921cff42;
+DNPM UF Prozedur;bis;Ende;db65fc5a-f39a-423e-a26e-fa08a1fad24d;
+DNPM UF Rebiopsie;Molekulargenetische Untersuchung;refmolekulargenetik;5dc3f7a6-d2f0-4a51-8301-153c36a7dbd3;"Wählen Sie hier das Formular zur Molekulargenetischen Untersuchung aus, welches das Ergebnis der Rebiopsie beinhaltet.&#10;&#10;Die Auswahl der Molekulargenetischen Untersuchung kann auch später erfolgen, wenn das Ergebnis zum aktuellen Zeitpunkt noch nicht vorliegt."
+DNPM UF Reevaluation;Molekulargenetische Untersuchung;refmolekulargenetik;fa95472e-2cb8-4ee3-963f-37292a3c909c;"Wählen Sie hier das Formular zur Molekulargenetischen Untersuchung aus, welches das Ergebnis der Rebiopsie beinhaltet.&#10;&#10;Die Auswahl der Molekulargenetischen Untersuchung kann auch später erfolgen, wenn das Ergebnis zum aktuellen Zeitpunkt noch nicht vorliegt."
+DNPM UF Therapielinie;Therapielinie;Feldgruppe2;a1a0c396-00f8-4840-86e7-0e58ea988eaa;
+DNPM UF Therapielinie;;Nummer;88af944b-c2dd-460e-98ad-c3da71add6c4;
+DNPM UF Therapielinie;;Wirkstoffe;ae8a899e-c650-4d93-a1e7-284a3c6aa516;
+DNPM UF Therapielinie;Erfassungsdatum;Erfassungsdatum;f804d961-1cc3-4a4b-8641-0438a5d22897;
+DNPM UF Therapielinie;Suche;Suche;cde2708d-5d4a-4c38-aa7a-775d16acde3e;
+DNPM UF Therapielinie;Wirkstoffe;Feldgruppe1;66ddd9ee-0c9d-4381-bb0f-9dda227705b5;
+DNPM UF Therapielinie;Intention;Intention;5ea0cbf8-2596-4610-8393-39dfc55d604d;
+DNPM UF Therapielinie;Stellung;Stellung;2914244b-9bfc-4d37-b181-84e54709f34b;
+DNPM UF Therapielinie;Dosisdichte;Dosisdichte;21638a85-d136-4c7d-b89a-d35fb3638c22;
+DNPM UF Therapielinie;Therapie-Empfehlung;refeinzelempfehlung;251abcac-9afe-4e7a-a56e-2f33875804e0;"Verweis auf eine Einzelempfehlung (systemische Therapie).&#10;&#10;Angabe für Modellvorhaben §64e optional."
+DNPM UF Therapielinie;Umsetzung der Therapieempfehlung;Umsetzung;15f582d5-8044-4506-9dc0-6edca1dbd24b;
+DNPM UF Therapielinie;Status;Status;d5401e35-2ecb-48ec-9682-f7b39e87a959;Status der Therapie. Angabe erforderlich für Modellvorhaben §64e.
+DNPM UF Therapielinie;Status-Grund;StatusGrund;cfac7620-6dc9-46a6-8141-8ad50b3c3ec5;
+DNPM UF Therapielinie;Ergebnis;Ergebnis;98454c5c-9708-4deb-924b-9186b6b39aa8;
+DNPM UF Therapielinie;Beendigung;Beendigung;a437c0ca-aa06-4ea5-b940-a17382d22080;
+DNPM UF Therapielinie;Abbruchsgrund;Abbruchsgrund;bd4e1777-1ea8-4197-b865-cfcd1e522e0e;
+DNPM UF Therapielinie;Anmerkungen;Anmerkungen;e6253be3-cebf-4ab3-8af6-b20c7c967dce;
+DNPM UF Therapielinie;vom;Beginn;1ba774bb-db6d-4639-95bb-de636a952049;
+DNPM UF Therapielinie;bis;Ende;9e5f1796-b1c6-40a9-9bc5-a8d4f3ff2fbd;
+DNPM UF Tumorausbreitung;Tumorausbreitung;Feldgruppe1;561b1d43-069c-4640-8e90-b8f96f58dfd3;
+DNPM UF Tumorausbreitung;;TNMMPrefix;b3472810-eba1-476a-9b2a-365a3fdade16;
+DNPM UF Tumorausbreitung;;TNMNPrefix;7918c929-26d0-4a02-aff2-733aaf4e0bbe;
+DNPM UF Tumorausbreitung;;TNMTPrefix;9487f17b-82bc-4f5f-b495-9054750d0820;
+DNPM UF Tumorausbreitung;Zeitpunkt;Zeitpunkt;62f3174d-881e-485e-b768-0d4ed15ab10a;
+DNPM UF Tumorausbreitung;Typ;Typ;6c2b9512-0c6f-4091-bf67-281d1b451fc0;
+DNPM UF Tumorausbreitung;T-Kategorie;FeldgruppeTNMT;fcd16863-ea02-4297-b288-2fb1d2114bf4;
+DNPM UF Tumorausbreitung;T;TNMT;c5736799-8e9d-44db-b778-0f5fe43a2869;
+DNPM UF Tumorausbreitung;Ausbreitung;Wert;62151614-0981-4bef-a2c0-ac1b6874aec8;
+DNPM UF Tumorausbreitung;N-Kategorie;FeldgruppeTNMN;df10496e-e6b8-4d09-9883-632b5942a3ab;
+DNPM UF Tumorausbreitung;M;TNMM;42eb12dd-cb79-43bc-8a5a-d2a8c09ae2a0;
+DNPM UF Tumorausbreitung;N;TNMN;39066e80-f552-4ca5-9a34-df87a463192c;
+DNPM UF Tumorausbreitung;M-Kategorie;FeldgruppeTNMM;2af7afa6-d7b2-45b7-a64f-c7da6bfe062d;
+DNPM UF Tumorgrading;Zeitpunkt;Zeitpunkt;423d377b-9a68-49b3-b46a-4b64fd044d1a;
+DNPM UF Tumorgrading;Tumorgrading;Tumorgrading;ed1ca1c7-dafc-4e2d-b9ac-a737a9454045;
+DNPM UF Verwandte;Verwandtschaftsgrad;Verwandtschaftsgrad;32b7cc83-25cc-4336-a52e-4479450036fd;
+DNPM UF Vorbefunde;Einsendenummer oder Befundnummer;Befundnummer;46d303d9-baad-4239-a5df-aa9a74372fe5;
+DNPM UF Vorbefunde;Erstellungsdatum;Erstellungsdatum;3f55881c-10f4-498e-b25b-6c6baccaf155;
+DNPM UF Vorbefunde;Institut;InstitutName;da5c37fa-a15a-4558-a7f3-bed921cf7ac1;
+DNPM UF Vorbefunde;Art der Diagnostik;ArtDerDiagnostik;fa809b43-7b1a-4ac1-ae5d-1b234b81d897;
+DNPM UF Vorbefunde;Ergebnisse;Ergebnisse;b2d88874-ee58-492b-a51c-d2c79ff21e6b;
+DNPM UF WHOGrading;Zeitpunkt;Zeitpunkt;1561fb9b-96b9-44d3-b584-5bd90d53dc51;
+DNPM UF WHOGrading;WHO-Grad;WHOGrad;9a24ad88-eacb-48b6-997a-90e57cb771c9;
+
