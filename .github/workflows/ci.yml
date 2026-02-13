@@ -23,8 +23,8 @@ jobs:
       - name: Fetch Onkostar-API
         run: |
           curl -L --user dnpm:${{ secrets.PACKAGE_TOKEN }} \
-            https://git.dnpm.dev/api/packages/Plugin-JF-Onkostar/generic/onkostar-api/2.14.2/onkostar-api-2.14.2.jar \
-            --output ${{ github.workspace }}/libs/onkostar-api-2.14.2.jar
+            https://git.dnpm.dev/api/packages/Plugin-JF-Onkostar/generic/onkostar-api/2.14.0/onkostar-api-2.14.0.jar \
+            --output ${{ github.workspace }}/libs/onkostar-api-2.14.0.jar
       - name: Execute tests
         run: mvn --batch-mode verify
   build:
@@ -45,8 +45,8 @@ jobs:
       - name: Fetch Onkostar-API
         run: |
           curl -L --user dnpm:${{ secrets.PACKAGE_TOKEN }} \
-            https://git.dnpm.dev/api/packages/Plugin-JF-Onkostar/generic/onkostar-api/2.14.2/onkostar-api-2.14.2.jar \
-            --output ${{ github.workspace }}/libs/onkostar-api-2.14.2.jar
+            https://git.dnpm.dev/api/packages/Plugin-JF-Onkostar/generic/onkostar-api/2.14.0/onkostar-api-2.14.0.jar \
+            --output ${{ github.workspace }}/libs/onkostar-api-2.14.0.jar
       - name: Maven package build
         run: mvn --batch-mode package
       - name: Release
