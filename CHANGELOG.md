@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.1.1](https://github.com/pcvolkmer/onkostar-plugin-dnpm/compare/v2.1.0...v2.1.1) (2026-03-16)
+
+
+### Features
+
+* add methods to collect lastest ATC codes ([#251](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/251)) ([bfeebba](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/bfeebbab67eeda34acf8ceef6bf2cb7c583f1f4a))
+* add plausibility rules for consent form ([#253](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/253)) ([ff1bed3](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/ff1bed3ac40e253e7b450fc71793ff9e87e7cb89))
+
+
+### Miscellaneous Chores
+
+* release 2.1.1 ([9829e71](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/9829e713c8e3c310c40236c8a2421d8679fe8e2a))
+
 ## [2.1.0](https://github.com/pcvolkmer/onkostar-plugin-dnpm/compare/v2.0.0...v2.1.0) (2026-02-05)
 
 
