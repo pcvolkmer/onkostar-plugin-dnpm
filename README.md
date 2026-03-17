@@ -394,3 +394,11 @@ ausgeführt werden.
 
 Treten Fehler auf, so wird dies angezeigt. Einen Bericht über die Testabdeckung finden Sie als HTML-Seite unter
 `target/site/jacoco/index.html`.
+
+## Lizenz
+
+Wie im Februar 2026 angekündigt, wird dieses Plugin ab Version 2.2.0 unter
+der [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.en.html) (LGPL) lizenziert.
+
+Versionen bis einschließlich Version 2.1 (oder zukünftige Patches 2.1.1, 2.1.2, ...) bleiben weiterhin unter der [MIT Lizenz](https://opensource.org/licenses/MIT)
+lizenziert.
