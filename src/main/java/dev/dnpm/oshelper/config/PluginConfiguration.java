@@ -19,6 +19,7 @@
 
 package dev.dnpm.oshelper.config;
 
+import de.itc.onkostar.api.IOnkostarApi;
 import dev.dnpm.oshelper.atc.services.AgentCodeService;
 import dev.dnpm.oshelper.atc.services.CsvAgentCodeService;
 import dev.dnpm.oshelper.atc.services.OnkostarAgentCodeService;
@@ -27,14 +28,11 @@ import dev.dnpm.oshelper.services.*;
 import dev.dnpm.oshelper.services.consent.ConsentManagerServiceFactory;
 import dev.dnpm.oshelper.services.molekulargenetik.MolekulargenetikFormService;
 import dev.dnpm.oshelper.services.molekulargenetik.OsMolekulargenetikFormService;
-import dev.dnpm.oshelper.services.mtb.DefaultMtbService;
-import dev.dnpm.oshelper.services.mtb.MtbService;
 import dev.dnpm.oshelper.services.strahlentherapie.DefaultStrahlentherapieService;
 import dev.dnpm.oshelper.services.strahlentherapie.StrahlentherapieService;
 import dev.dnpm.oshelper.services.systemtherapie.DefaultSystemtherapieService;
 import dev.dnpm.oshelper.services.systemtherapie.SystemtherapieService;
 import dev.dnpm.oshelper.services.therapieplan.TherapieplanServiceFactory;
-import de.itc.onkostar.api.IOnkostarApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -65,11 +63,6 @@ public class PluginConfiguration {
     @Bean
     public SettingsService settingsService(final SettingsRepository settingsRepository) {
         return new SettingsService(settingsRepository);
-    }
-
-    @Bean
-    public MtbService mtbService(final IOnkostarApi onkostarApi) {
-        return new DefaultMtbService(onkostarApi);
     }
 
     @Bean

@@ -19,18 +19,13 @@
 
 package dev.dnpm.oshelper.analyzer;
 
-import dev.dnpm.oshelper.security.DelegatingDataBasedPermissionEvaluator;
-import dev.dnpm.oshelper.security.PermissionType;
-import dev.dnpm.oshelper.services.mtb.MtbService;
-import dev.dnpm.oshelper.services.therapieplan.TherapieplanServiceFactory;
 import de.itc.onkostar.api.Disease;
 import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyseTriggerEvent;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
-import org.springframework.security.core.context.SecurityContextHolder;
+import dev.dnpm.oshelper.services.therapieplan.TherapieplanServiceFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -43,18 +38,10 @@ public class TherapieplanAnalyzer extends Analyzer {
 
     private final TherapieplanServiceFactory therapieplanServiceFactory;
 
-    private final MtbService mtbService;
-
-    private final DelegatingDataBasedPermissionEvaluator permissionEvaluator;
-
     public TherapieplanAnalyzer(
-            final TherapieplanServiceFactory therapieplanServiceFactory,
-            final MtbService mtbService,
-            final DelegatingDataBasedPermissionEvaluator permissionEvaluator
+            final TherapieplanServiceFactory therapieplanServiceFactory
     ) {
         this.therapieplanServiceFactory = therapieplanServiceFactory;
-        this.mtbService = mtbService;
-        this.permissionEvaluator = permissionEvaluator;
     }
 
     @Override
@@ -97,51 +84,6 @@ public class TherapieplanAnalyzer extends Analyzer {
     @Override
     public void analyze(Procedure procedure, Disease disease) {
         therapieplanServiceFactory.currentUsableInstance().updateRequiredMtbEntries(procedure);
-    }
-
-    /**
-     * Übergibt den Text der referenzierten MTBs für den Protokollauszug
-     *
-     * <p>Wurde der Eingabewert <code>id</code> nicht übergeben, wird ein leerer String zurück gegeben.
-     *
-     * <p>Beispiel zur Nutzung in einem Formularscript
-     * <pre>
-     * executePluginMethod(
-     *   'TherapieplanAnalyzer',
-     *   'getProtokollauszug',
-     *   { id: 12345 },
-     *   (response) => console.log(response),
-     *   false
-     * );
-     * </pre>
-     *
-     * @param input Map mit Eingabewerten
-     * @return Zeichenkette mit Protokollauszug
-     */
-    @Deprecated(since = "2.1", forRemoval = true)
-    public String getProtokollauszug(Map<String, Object> input) {
-        var procedureId = AnalyzerUtils.getRequiredId(input, "id");
-
-        if (procedureId.isEmpty()) {
-            return "";
-        }
-
-        if (
-                permissionEvaluator.hasPermission(
-                        SecurityContextHolder.getContext().getAuthentication(),
-                        procedureId.get(),
-                        Procedure.class.getSimpleName(),
-                        PermissionType.READ
-                )
-        ) {
-            return mtbService.getProtocol(
-                    therapieplanServiceFactory
-                            .currentUsableInstance()
-                            .findReferencedMtbs(procedureId.get())
-            );
-        }
-
-        return "";
     }
 
 }
