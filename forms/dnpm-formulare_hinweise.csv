@@ -1,8 +1,10 @@
 Formular;Formularfeldbeschreibung;Formularfeld;GUID;Hinweis als HTML
 DNPM ConsentMV;Stand;date;54adf655-c828-45b0-aaa8-6292ead72e46;
+DNPM ConsentMV;Broad Consent Datum;ebroadconsentdate;9defe6a7-3baa-4e5e-924e-1ddea0bdd5f5;
 DNPM ConsentMV;Teilnahme am Modellvorhaben;sequencing;7ff8e944-c51d-4b83-9395-fc18dae10ac9;
 DNPM ConsentMV;Fallidentifizierung;caseidentification;1c72219f-5225-4cb1-8d16-7c6338441b8e;
 DNPM ConsentMV;Re-Identifizierung;reidentification;244371cf-239c-4ef9-aa71-9204603deede;
+DNPM ConsentMV;Broad Consent elektronisch vorhanden;ebroadconsentpresent;4dcdb98d-d98f-48b8-821f-92a5a5939fad;"Wenn der Broad Consent in elektrinischer Form vor liegt, hier markieren.&#10;&#10;Auch ein abgelehnter Broad Consent der in elektrinischer Form vor liegt gilt als vorhanden."
 DNPM FollowUp;Antragsstadium;Antragsstadium;d5e51757-d52d-412e-9717-c195fa0289dc;Angabe ist gemäß DNPM-Datenmodell 2.1 optional.
 DNPM FollowUp;Antragsstellung zur Kostenübernahme;AntragKostenuebernahme;16f4d725-6d87-4078-a59d-6ca6724f1988;
 DNPM FollowUp;Best Response;BestResponse;debc289c-a150-47e3-85cf-ad8e3c47f08c;
@@ -10,6 +12,7 @@ DNPM FollowUp;Datum des Follow-Ups;DatumFollowUp;c3877a68-dea9-46a2-bd72-c7c040b
 DNPM FollowUp;Status der Therapie;StatusTherapie;b413b87c-66d2-4461-9956-23399c38e2fc;
 DNPM FollowUp;Letztes Kontaktdatum;DatumLetzterKontakt;8a9aac9c-c999-4496-9c15-635e5f1c96c0;
 DNPM FollowUp;Lost to FollowUp;LostToFollowUp;6ae823f6-6b06-48ef-a866-dc03a0092f47;
+DNPM FollowUp;Ergänzendes Bemerkungsfeld zur Therapieumsetzung;TherapieumsetzungMemo;bda520b0-f85c-4024-982c-d22f67ff7d41;
 DNPM FollowUp;Ausstellungsdatum des Antrags auf Kostenübernahme;AusstellungsdatumAntrag;9341d092-6156-4ae9-9b0d-d72619ab4471;
 DNPM FollowUp;Bemerkung;BewertungMemo;1fd81b59-e343-46dc-82d9-18bfdb05ac42;
 DNPM FollowUp;Bemerkung zur Nicht-Umsetzung;EmpfehlungsumsetzungNein;f85312b5-c779-4568-aa5e-b5319a04c351;
@@ -32,7 +35,6 @@ DNPM FollowUp;Quotient PFS2/PFS1;QuotientPFS2PFS1;08326dbd-763f-48a6-ac58-9df92c
 DNPM FollowUp;Ende der Therapie;Therapieende;6fabccc2-11a3-478e-b82f-98c178dea044;
 DNPM FollowUp;Dosisdichte (Zeit und Medikamentendosis);Dosisdichte;b7e6245b-8fda-411a-a6a3-2e2e633d04bf;
 DNPM FollowUp;Overall survival (OS) (ab dem Start der Therapie);OverallSurvival;d8ccb95b-1ea1-4792-a877-f653e05fdcd1;
-DNPM FollowUp;Ergänzendes Bemerkungsfeld zur Therapieumsetzung;TherapieumsetzungMemo;bda520b0-f85c-4024-982c-d22f67ff7d41;
 DNPM Klinik/Anamnese;Consent MV § 64e;ConsentMV64e;b6398855-8b6c-4fa7-9e6e-49368f6442ce;"Angabe des Consents und Einwilligung in das Modellvorhaben bei Nutzung des Formulars ""DNPM Consent MV"""
 DNPM Klinik/Anamnese;Molekulares Tumorboard;MTB;a21806f5-5540-406d-9e02-0bae552668af;
 DNPM Klinik/Anamnese;Anmeldedatum für das MTB;AnmeldedatumMTB;df0a74b6-d142-4400-9a74-32b94fadba91;
@@ -98,6 +100,8 @@ DNPM UF Einzelempfehlung;intern/extern;studieinternextern;3c561c27-2dc3-4bf0-ae4
 DNPM UF Einzelempfehlung;iv;evidenzlevelzusatziv;665c9d72-3641-4228-9841-2276dfd415f0;
 DNPM UF Einzelempfehlung;Z;evidenzlevelzusatzZ;addab29f-66ab-44ad-b32b-adc1c07b63f8;
 DNPM UF Einzelempfehlung;R;evidenzlevelzusatzR;879169c4-2b99-44a6-916f-0112092a738a;
+DNPM UF Einzelempfehlung;Verweis auf FollowUp;refdnpmfollowup;720dda0f-b669-42da-a3d6-0e2dbcbb2894;
+DNPM UF Einzelempfehlung;Verweis entfernen;Button4;d0bbb254-3008-4670-a573-2dd2ec5afb7e;
 DNPM UF Einzelempfehlung;;evidenzlevelzusatz;944dd2dc-2697-4ad9-ab73-9370a745d035;
 DNPM UF Einzelempfehlung;Priorität;prio;b6e7460e-2350-4d62-8665-e07d5484a123;Geben Sie hier die Priorität der Einzelempfehlung gemäß MTB an.
 DNPM UF Einzelempfehlung;Ort;studieort;15a10da3-89d8-4700-acdd-0fadcd17d197;Geben Sie hier den Ort oder die Orte der Studie an.
@@ -114,8 +118,6 @@ DNPM UF Einzelempfehlung;Antrag auf Kostenübernahme erforderlich;antragkueerfor
 DNPM UF Einzelempfehlung;Molekulargenetische Untersuchung;refosmolekulargenetik;9a7c14b8-958b-4269-bb58-d6267089660e;Wählen Sie hier das Formular zur Molekulargenetische Untersuchung mit entsprechendem Befund aus, welches die Grundlage der Einzelempfehlung ist.
 DNPM UF Einzelempfehlung;Alle stützenden molekularen Alterationen;stmolaltalle;3a530709-da96-4a9b-8586-5140d3eda38f;"Betätigen Sie den Button ""Stützende molekulare Alterationen bearbeiten"" und wählen Sie verfügbare molekulare Alterationen (Varianten) aus."
 DNPM UF Einzelempfehlung;Stützende molekulare Alteration bearbeiten;btnaddstmolalt;b757e7cc-9ec3-4480-aa3e-d4bcf031c13d;
-DNPM UF Einzelempfehlung;Verweis auf FollowUp;refdnpmfollowup;720dda0f-b669-42da-a3d6-0e2dbcbb2894;
-DNPM UF Einzelempfehlung;Verweis entfernen;Button4;d0bbb254-3008-4670-a573-2dd2ec5afb7e;
 DNPM UF Histologie;Probe;Histologie;55d3661e-9f85-4c56-a046-3df941f4f8a2;"Zur Auswahl steht hier das Formular ""OS.Molekulargenetik"" mit den benötigten Informationen zu Datum und Tumorzellgehalt."
 DNPM UF Histologie;Erstellungsdatum;Erstellungsdatum;01f8cee9-4aeb-4e34-98f3-6b23e28fb95d;
 DNPM UF Histologie;Morphologie;Morphologie;8efbfe9e-f342-4da1-844f-77584fc0f855;
