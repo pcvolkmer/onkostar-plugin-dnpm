@@ -7,7 +7,11 @@
   "release-type": "maven",
   "packages": {
     ".": {
-      "package-name": "DNPMHelper"
+      "package-name": "DNPMHelper",
+      "extra-files": [{
+        "type": "generic",
+        "path": "src/main/java/dev/dnpm/oshelper/analyzer/IPluginPart.java"
+      }]
     }
   }
 }

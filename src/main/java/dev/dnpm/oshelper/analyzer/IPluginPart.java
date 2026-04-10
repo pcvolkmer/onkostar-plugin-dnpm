@@ -24,7 +24,7 @@ import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
 public interface IPluginPart extends IProcedureAnalyzer {
 
     default String getVersion() {
-        return "2.0.0";
+        return "2.0.0"; // x-release-please
     }
 
     default String getName() {
