@@ -1,5 +1,5 @@
 Formular;Formularfeldbeschreibung;Formularfeld;GUID;Hinweis als HTML
-DNPM ConsentMV;Stand;date;54adf655-c828-45b0-aaa8-6292ead72e46;
+DNPM ConsentMV;Stand;date;54adf655-c828-45b0-aaa8-6292ead72e46;Datum muss vor dem Indikationsboard liegen
 DNPM ConsentMV;Broad Consent Datum;ebroadconsentdate;9defe6a7-3baa-4e5e-924e-1ddea0bdd5f5;
 DNPM ConsentMV;Teilnahme am Modellvorhaben;sequencing;7ff8e944-c51d-4b83-9395-fc18dae10ac9;
 DNPM ConsentMV;Fallidentifizierung;caseidentification;1c72219f-5225-4cb1-8d16-7c6338441b8e;
@@ -54,14 +54,14 @@ DNPM Klinik/Anamnese;Ansprechen;AnsprechenLetzteLinie;b28d7897-8590-47f5-b9d8-3b
 DNPM Klinik/Anamnese;Anzahl durchlaufener Therapielinien;AnzahlTherapielinien;f50b1cee-d1b3-4444-b9e5-ccb4feb84fdf;Wird beim Speichern automatisch aus Therapielinien gesetzt.
 DNPM Klinik/Anamnese;Erkrankungsalter;FruehereTumoreAlter;1abeb687-49ab-4dc9-b246-e7ed934f9282;
 DNPM Klinik/Anamnese;Geschlecht;Geschlecht;bb973fb7-3d19-4cf6-8fa0-3f0b4cacc1db;Wird beim Anlegen automatisch gesetzt.
-DNPM Klinik/Anamnese;ICD-O-3-Lokalisation;ICDO3Lokalisation;64e51a56-76da-47ba-8308-aa5687ae52f3;Wird beim Anlegen automatisch gesetzt.
+DNPM Klinik/Anamnese;ICD-O-3-Lokalisation;ICDO3Lokalisation;64e51a56-76da-47ba-8308-aa5687ae52f3;Wird beim Anlegen automatisch gesetzt. ICD-O-3-Lokalisation darf nur 3-stellig sein.
 DNPM Klinik/Anamnese;Datum der Progression;DatumProgression;e1cf6699-9b39-4c56-9649-6da76858836d;
 DNPM Klinik/Anamnese;ICD-O-3-Histologie;ICDO3Histologie;7ee99b74-1e73-46d5-ad74-f90053b935ce;Wird beim Anlegen automatisch gesetzt.
 DNPM Klinik/Anamnese;Krankenkasse;Krankenkasse;af831cf8-1114-456c-a068-d0861fd6260d;Wird beim Anlegen automatisch gesetzt.
-DNPM Klinik/Anamnese;Leitlinienstatus;Leitlinienstatus;677afe1c-12a8-47a0-a713-717700361c47;
+DNPM Klinik/Anamnese;Leitlinienstatus;Leitlinienstatus;677afe1c-12a8-47a0-a713-717700361c47;"Ausfüllen je nach Angaben in verweisendem Organ-Tumorboard. Bei fehlender Angabe ""unbekannt"" auswählen."
 DNPM Klinik/Anamnese;Art der Krankenkasse;ArtDerKrankenkasse;d25c38ee-4c6f-4ef9-a2f3-9dede7b36a6a;
 DNPM Klinik/Anamnese;Grund für Therapieende;GrundTherapieende;0b19e2d0-74df-4d80-b407-cef7c35f2d07;
-DNPM Klinik/Anamnese;Fallnummer MV §64e;FallnummerMV;161be21e-2c70-4b8e-9cec-a8422816b70a;
+DNPM Klinik/Anamnese;Fallnummer MV §64e;FallnummerMV;161be21e-2c70-4b8e-9cec-a8422816b70a;Fallnummer MV muss für §64e erfasst werden (Pseudonymerstellung, Controlling, Anzeige in Rückmeldung per Mail).
 DNPM Klinik/Anamnese;WHO-Grad;WHOGradAlt;f7da1c86-7204-4992-a651-b8a71ec72791;WHO-Grad zentrales Nervensystem in Version 2021
 DNPM Klinik/Anamnese;Tumorgrading;TumorgradingAlt;bec4ca4d-63e6-4573-b499-9f865987b456;
 DNPM Therapieplan;Empfehlung;humangenberatung;b2ea3737-fac4-4299-a271-7bb78efadd30;"Wählen Sie hier aus, ob in der Episode/ im Beobachtungszeitraum in mindestens einem der MTBs eine Empfehlung zur humangenetischen Beratung erfolgt ist.&#10;&#10;Ist nicht bekannt, ob ein Empfehlung erfolgte, wählen Sie hier „unbekannt“."
@@ -88,12 +88,12 @@ DNPM UF ConsentMV Verlauf;Version des Formulars;version;0a9cd95d-fb9f-41e5-a3fa-
 DNPM UF ConsentMV Verlauf;Re-Identifizierung;reidentification;55cb7393-9f13-4eba-892e-c1f0914bd68e;Einwilligung zur Re-Identifizierung Ihrer Daten und zur Kontaktaufnahme bei einem neuen Befund in der Forschung
 DNPM UF ECOG;Datum;Datum;d78cf414-1d06-4e15-81d9-8bdf22793916;
 DNPM UF ECOG;ECOG Performance Status;Feldgruppe1;ccd128ae-332b-4735-867e-8926ab5db494;
-DNPM UF ECOG;ECOG;ECOG;77543b2c-49f2-4404-b1c3-e672e4009442;
+DNPM UF ECOG;ECOG;ECOG;77543b2c-49f2-4404-b1c3-e672e4009442;"Wert ""unbekannt"" nicht erlaubt für MV"
 DNPM UF Einzelempfehlung;;wirkstoffe;0ab804d8-16f0-404f-af47-ab19ef324a46;"Betätigen Sie den Button ""Wirkstoffe bearbeiten"" und wählen Sie verfügbare Wirkstoffe aus.&#10;"
 DNPM UF Einzelempfehlung;Studien durchsuchen;btnstudiendurchsuchen;a14f08b9-4751-4730-ab5b-846ab84cc6bc;
 DNPM UF Einzelempfehlung;;evidenzlevel;b24158bb-453d-4405-8439-cff2fdc7e94b;
 DNPM UF Einzelempfehlung;Studiensystem;studiensystem;d269344e-37d8-43af-9ebc-be120cf74a44;
-DNPM UF Einzelempfehlung;Studien-ID;studienct;97dce1b6-62be-4a42-b1e8-dc79b4cdf371;Geben Sie hier die NCT-Nummer der empfohlenen Studie an.
+DNPM UF Einzelempfehlung;Studien-ID;studienct;97dce1b6-62be-4a42-b1e8-dc79b4cdf371;Geben Sie hier die Studien-Nummer der empfohlenen Studie an (ohne Leer- und Sonderzeichen).
 DNPM UF Einzelempfehlung;Studie;studie;8f08ebac-6d34-4e12-ba1e-d27eec3954f4;"Für DNPM nicht erforderlich.&#10;&#10;Geben Sie hier den Namen der Studie an."
 DNPM UF Einzelempfehlung;is;evidenzlevelzusatzis;324e3450-ec2c-4bcb-a02d-33e411b284ee;
 DNPM UF Einzelempfehlung;intern/extern;studieinternextern;3c561c27-2dc3-4bf0-ae49-72472d47ac16;"Für DNPM nicht erforderlich.&#10;&#10;Geben Sie hier an, ob die Studie intern oder extern durchgeführt wird."
@@ -118,9 +118,9 @@ DNPM UF Einzelempfehlung;Antrag auf Kostenübernahme erforderlich;antragkueerfor
 DNPM UF Einzelempfehlung;Molekulargenetische Untersuchung;refosmolekulargenetik;9a7c14b8-958b-4269-bb58-d6267089660e;Wählen Sie hier das Formular zur Molekulargenetische Untersuchung mit entsprechendem Befund aus, welches die Grundlage der Einzelempfehlung ist.
 DNPM UF Einzelempfehlung;Alle stützenden molekularen Alterationen;stmolaltalle;3a530709-da96-4a9b-8586-5140d3eda38f;"Betätigen Sie den Button ""Stützende molekulare Alterationen bearbeiten"" und wählen Sie verfügbare molekulare Alterationen (Varianten) aus."
 DNPM UF Einzelempfehlung;Stützende molekulare Alteration bearbeiten;btnaddstmolalt;b757e7cc-9ec3-4480-aa3e-d4bcf031c13d;
-DNPM UF Histologie;Probe;Histologie;55d3661e-9f85-4c56-a046-3df941f4f8a2;"Zur Auswahl steht hier das Formular ""OS.Molekulargenetik"" mit den benötigten Informationen zu Datum und Tumorzellgehalt."
+DNPM UF Histologie;Probe;Histologie;55d3661e-9f85-4c56-a046-3df941f4f8a2;"Zur Auswahl steht hier das Formular ""OS.Molekulargenetik"" mit den benötigten Informationen zu Datum und Tumorzellgehalt. Auswahl wichtig für MV."
 DNPM UF Histologie;Erstellungsdatum;Erstellungsdatum;01f8cee9-4aeb-4e34-98f3-6b23e28fb95d;
-DNPM UF Histologie;Morphologie;Morphologie;8efbfe9e-f342-4da1-844f-77584fc0f855;
+DNPM UF Histologie;Morphologie;Morphologie;8efbfe9e-f342-4da1-844f-77584fc0f855;Pflichtfeld für das MV
 DNPM UF Histologie;Tumorzellgehalt in %;Tumorzellgehalt;0604a5e8-bb42-44f7-bd15-0627410cba4d;
 DNPM UF Histologie;Befundtext;Befundtext;fe8bf79d-f4d8-42d5-bcb6-dd78a1441f22;
 DNPM UF Histologie;Anmerkung zur Morphologie;AnmerkungMorphologie;df1599e2-2152-4a98-b263-45d745ba415c;
@@ -131,7 +131,7 @@ DNPM UF Prozedur;Erfassungsdatum;Erfassungsdatum;8cdddb84-4446-4e4e-a42b-165581b
 DNPM UF Prozedur;Intention;Intention;f1197bbf-0eaf-4c4e-9aa3-223880b302e2;
 DNPM UF Prozedur;vom;Beginn;d2345e2c-cda3-4ebb-abfd-ded8713e3eff;
 DNPM UF Prozedur;Therapie-Empfehlung;refeinzelempfehlung;d2a29f65-c9ef-408d-a57e-ca6717504cf1;
-DNPM UF Prozedur;Status;Status;65881dcd-0f75-4245-af39-8bd3446482cc;
+DNPM UF Prozedur;Status;Status;65881dcd-0f75-4245-af39-8bd3446482cc;Bei erfassten Prozeduren, muss der Status ausgefüllt werden.
 DNPM UF Prozedur;Status-Grund;StatusGrund;5369a306-db86-4034-9cb4-215d14b87b0a;
 DNPM UF Prozedur;Typ/Kategorie;Typ;f8cbcb22-194c-484e-a31a-2728dbf6123f;
 DNPM UF Prozedur;Anmerkungen;Anmerkungen;0fad96c8-b6bf-4520-bf63-d1b2921cff42;
@@ -157,7 +157,7 @@ DNPM UF Therapielinie;Abbruchsgrund;Abbruchsgrund;bd4e1777-1ea8-4197-b865-cfcd1e
 DNPM UF Therapielinie;Anmerkungen;Anmerkungen;e6253be3-cebf-4ab3-8af6-b20c7c967dce;
 DNPM UF Therapielinie;vom;Beginn;1ba774bb-db6d-4639-95bb-de636a952049;
 DNPM UF Therapielinie;bis;Ende;9e5f1796-b1c6-40a9-9bc5-a8d4f3ff2fbd;
-DNPM UF Tumorausbreitung;Tumorausbreitung;Feldgruppe1;561b1d43-069c-4640-8e90-b8f96f58dfd3;
+DNPM UF Tumorausbreitung;Tumorausbreitung;Feldgruppe1;561b1d43-069c-4640-8e90-b8f96f58dfd3;Wenn TNM ausgefüllt wird, dann müssen alle 3 TNM-Dimensionen erfasst sein
 DNPM UF Tumorausbreitung;;TNMMPrefix;b3472810-eba1-476a-9b2a-365a3fdade16;
 DNPM UF Tumorausbreitung;;TNMNPrefix;7918c929-26d0-4a02-aff2-733aaf4e0bbe;
 DNPM UF Tumorausbreitung;;TNMTPrefix;9487f17b-82bc-4f5f-b495-9054750d0820;
@@ -180,4 +180,3 @@ DNPM UF Vorbefunde;Art der Diagnostik;ArtDerDiagnostik;fa809b43-7b1a-4ac1-ae5d-1
 DNPM UF Vorbefunde;Ergebnisse;Ergebnisse;b2d88874-ee58-492b-a51c-d2c79ff21e6b;
 DNPM UF WHOGrading;Zeitpunkt;Zeitpunkt;1561fb9b-96b9-44d3-b584-5bd90d53dc51;
 DNPM UF WHOGrading;WHO-Grad;WHOGrad;9a24ad88-eacb-48b6-997a-90e57cb771c9;
-

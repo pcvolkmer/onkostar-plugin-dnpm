@@ -8658,7 +8658,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimAnonymisieren>
       <SID>20119</SID>
       <GUID>06847050-ff8f-46c4-87b8-9584c0cef990</GUID>
-      <Revision>270</Revision>
+      <Revision>271</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12368">
@@ -10917,7 +10917,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Min>0</Min>
           <Max>0</Max>
           <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
-          <Hinweis>Geben Sie hier die NCT-Nummer der empfohlenen Studie an.</Hinweis>
+          <Hinweis>Geben Sie hier die Studien-Nummer der empfohlenen Studie an (ohne Leer- und Sonderzeichen).</Hinweis>
           <Platzhalter/>
           <ShowAuspraegungen>true</ShowAuspraegungen>
           <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
@@ -10946,7 +10946,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>97dce1b6-62be-4a42-b1e8-dc79b4cdf371</GUID>
-          <Revision>10</Revision>
+          <Revision>11</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -11614,7 +11614,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>614d7e55-9c9d-4642-a45a-74cd8d7bd833</GUID>
-      <Revision>23</Revision>
+      <Revision>24</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry>
@@ -11863,7 +11863,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Min>0</Min>
           <Max>0</Max>
           <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
-          <Hinweis>Zur Auswahl steht hier das Formular "OS.Molekulargenetik" mit den benötigten Informationen zu Datum und Tumorzellgehalt.</Hinweis>
+          <Hinweis>Zur Auswahl steht hier das Formular "OS.Molekulargenetik" mit den benötigten Informationen zu Datum und Tumorzellgehalt. Auswahl wichtig für MV.</Hinweis>
           <Platzhalter/>
           <ShowAuspraegungen>true</ShowAuspraegungen>
           <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
@@ -11892,7 +11892,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>55d3661e-9f85-4c56-a046-3df941f4f8a2</GUID>
-          <Revision>12</Revision>
+          <Revision>13</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
           <DataFormReferences>
@@ -11943,7 +11943,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Min>0</Min>
           <Max>0</Max>
           <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
-          <Hinweis/>
+          <Hinweis>Pflichtfeld für das MV</Hinweis>
           <Platzhalter/>
           <ShowAuspraegungen>true</ShowAuspraegungen>
           <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
@@ -11973,7 +11973,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>8efbfe9e-f342-4da1-844f-77584fc0f855</GUID>
-          <Revision>1</Revision>
+          <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -13645,7 +13645,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>e0e62558-9bb8-4fe1-89d9-683fb3417b3e</GUID>
-      <Revision>10</Revision>
+      <Revision>11</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12395">
@@ -13747,7 +13747,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Min>0</Min>
           <Max>0</Max>
           <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
-          <Hinweis/>
+          <Hinweis>Wert "unbekannt" nicht erlaubt für MV</Hinweis>
           <Platzhalter/>
           <ShowAuspraegungen>true</ShowAuspraegungen>
           <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
@@ -13776,7 +13776,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>77543b2c-49f2-4404-b1c3-e672e4009442</GUID>
-          <Revision>1</Revision>
+          <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -13953,7 +13953,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>8f1987dc-d591-42ab-8f1d-e7fb9c0faeb2</GUID>
-      <Revision>16</Revision>
+      <Revision>17</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentId="12411">
@@ -13988,7 +13988,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Min>0</Min>
           <Max>0</Max>
           <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
-          <Hinweis/>
+          <Hinweis>Wenn TNM ausgefüllt wird, dann müssen alle 3 TNM-Dimensionen erfasst sein</Hinweis>
           <Platzhalter/>
           <ShowAuspraegungen>true</ShowAuspraegungen>
           <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
@@ -14017,7 +14017,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>561b1d43-069c-4640-8e90-b8f96f58dfd3</GUID>
-          <Revision>2</Revision>
+          <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -16164,7 +16164,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>false</hatUnterformulare>
       <SID>20119</SID>
       <GUID>9a784970-646f-4438-bb62-cf42b954711b</GUID>
-      <Revision>4</Revision>
+      <Revision>5</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry>
@@ -16609,7 +16609,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Min>0</Min>
           <Max>0</Max>
           <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
-          <Hinweis/>
+          <Hinweis>Bei erfassten Prozeduren, muss der Status ausgefüllt werden.</Hinweis>
           <Platzhalter/>
           <ShowAuspraegungen>true</ShowAuspraegungen>
           <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
@@ -16639,7 +16639,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>65881dcd-0f75-4245-af39-8bd3446482cc</GUID>
-          <Revision>1</Revision>
+          <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -20184,7 +20184,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>3cb37cdf-ee10-4652-b426-531b07ee3d6b</GUID>
-      <Revision>250</Revision>
+      <Revision>251</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12454">
@@ -21402,7 +21402,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Min>0</Min>
           <Max>0</Max>
           <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
-          <Hinweis/>
+          <Hinweis>Fallnummer MV muss für §64e erfasst werden (Pseudonymerstellung, Controlling, Anzeige in Rückmeldung per Mail).</Hinweis>
           <Platzhalter/>
           <ShowAuspraegungen>true</ShowAuspraegungen>
           <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
@@ -21431,7 +21431,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>161be21e-2c70-4b8e-9cec-a8422816b70a</GUID>
-          <Revision>2</Revision>
+          <Revision>3</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -22140,7 +22140,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Min>0</Min>
           <Max>0</Max>
           <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
-          <Hinweis>Wird beim Anlegen automatisch gesetzt.</Hinweis>
+          <Hinweis>Wird beim Anlegen automatisch gesetzt. ICD-O-3-Lokalisation darf nur 3-stellig sein.</Hinweis>
           <Platzhalter/>
           <ShowAuspraegungen>true</ShowAuspraegungen>
           <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
@@ -22170,7 +22170,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>64e51a56-76da-47ba-8308-aa5687ae52f3</GUID>
-          <Revision>4</Revision>
+          <Revision>5</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -22472,7 +22472,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Min>0</Min>
           <Max>0</Max>
           <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
-          <Hinweis/>
+          <Hinweis>Ausfüllen je nach Angaben in verweisendem Organ-Tumorboard. Bei fehlender Angabe "unbekannt" auswählen.</Hinweis>
           <Platzhalter/>
           <ShowAuspraegungen>true</ShowAuspraegungen>
           <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
@@ -22501,7 +22501,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>677afe1c-12a8-47a0-a713-717700361c47</GUID>
-          <Revision>1</Revision>
+          <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -26143,7 +26143,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimSpeichern>
       <SID>20119</SID>
       <GUID>85f99b8b-2b5d-4493-b001-edf8b0e6ac4c</GUID>
-      <Revision>11</Revision>
+      <Revision>12</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentId="14004">
@@ -26448,7 +26448,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Min>0</Min>
           <Max>0</Max>
           <InUebersichtAnzeigen>false</InUebersichtAnzeigen>
-          <Hinweis/>
+          <Hinweis>Datum muss vor dem Indikationsboard liegen</Hinweis>
           <Platzhalter/>
           <ShowAuspraegungen>true</ShowAuspraegungen>
           <ProzedurdatumUebernehmen>false</ProzedurdatumUebernehmen>
@@ -26477,7 +26477,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>54adf655-c828-45b0-aaa8-6292ead72e46</GUID>
-          <Revision>3</Revision>
+          <Revision>4</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
