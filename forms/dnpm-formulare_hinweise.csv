@@ -81,6 +81,7 @@ DNPM Therapieplan;Mit Empfehlung zur Reevaluation;mitempfehlungreeval;30bead1f-5
 DNPM Therapieplan;Mit Empfehlung zu Rebiopsie;mitempfehlungrebiopsie;00e961e5-26e1-4d94-8c81-acb441fb329d;
 DNPM Therapieplan;Mit Einzelempfehlung;miteinzelempfehlung;8aa53d95-66bf-4a5e-b029-646f01cb0b72;
 DNPM Therapieplan;Protokollauszug;protokollauszug;fa368070-c87e-4f0d-a9b8-2af423d3970e;"Dieses Feld soll einen Auszug aus den Ergebnissen aller enthaltenen MTBs enthalten. &#10;Fügen Sie hier Textinhalte aus den Feldern „Fragestellung“, „Empfehlung“ und sonstigen Bemerkungen aus dem Formularen der MTBs ein."
+DNPM Therapieplan;Befund (keine Einzelempfehlung);refnoempfmolgen;42f34f8e-0163-4b8f-9187-2547451d8277;Wenn ein Befund besprochen wurde, für den keine Einzelempfehlung erfolgte, geben Sie ihn hier an.
 DNPM UF ConsentMV Verlauf;Datum;date;c4ed24ac-2730-4654-ad42-3b25cafc641d;
 DNPM UF ConsentMV Verlauf;Teilnahme am Modellvorhaben;sequencing;3bf60999-e6e4-4f4d-8776-180d8789e7c9;Erklärung zur Teilnahme am Modellvorhaben und Einwilligung zur Genomsequenzierung
 DNPM UF ConsentMV Verlauf;Fallidentifizierung;caseidentification;1bcb0c7e-78ee-45a5-b8e4-8a3e33d2d68b;Einwilligung zur Fallidentifizierung zum fachlichen Austausch unter Behandelnden
