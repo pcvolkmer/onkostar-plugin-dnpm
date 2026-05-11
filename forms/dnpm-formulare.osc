@@ -9056,8 +9056,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>studie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9199,8 +9199,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9347,8 +9347,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9426,8 +9426,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>studie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -10700,8 +10700,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -10775,8 +10775,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -10850,8 +10850,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11000,8 +11000,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11075,8 +11075,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11150,8 +11150,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -25175,7 +25175,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           </Filter>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
-          <AnzeigeAuswahl/>
+          <AnzeigeAuswahl>Befund vom {Datum}</AnzeigeAuswahl>
           <Druckvorlage/>
           <Speichern>1</Speichern>
           <LeerAusblenden>true</LeerAusblenden>
