@@ -77,6 +77,7 @@ DNPM Therapieplan;Grund humangenetische Beratung;humangenbergrund;3733e1c3-369e-
 DNPM Therapieplan;Erstellungsdatum;datum;e8a23bd7-debe-487c-b89b-7793c869c670;"Geben Sie hier das Datum des ersten MTBs ein, auf die sich dieses Formular bezieht.&#10;&#10;Dieses Feld wird automatisch durch Auswahl des ersten MTBs aktualisiert."
 DNPM Therapieplan;Begründung;humangenberbegruendung;4730a146-55a9-4f5e-adba-7da5116272da;Geben Sie hier die Begründung zur Empfehlung ein. Eine Angabe hierzu ist verpflichtend, wenn eine Empfehlung erfolgte.
 DNPM Therapieplan;Molekulargenetische Untersuchung.;refreevaltumorprobe;39e0e1ab-6a4d-4619-9031-7ce71524477d;
+DNPM Therapieplan;Besprechungsart;mtbtyp;ddf0f450-e0ab-4959-888b-e5216f2cc7f9;
 DNPM Therapieplan;Mit Empfehlung zur Reevaluation;mitempfehlungreeval;30bead1f-5cad-47a7-a657-e4019e8abb31;
 DNPM Therapieplan;Mit Empfehlung zu Rebiopsie;mitempfehlungrebiopsie;00e961e5-26e1-4d94-8c81-acb441fb329d;
 DNPM Therapieplan;Mit Einzelempfehlung;miteinzelempfehlung;8aa53d95-66bf-4a5e-b029-646f01cb0b72;
