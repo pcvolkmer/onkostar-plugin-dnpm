@@ -6,9 +6,10 @@ DNPM ConsentMV;Fallidentifizierung;caseidentification;1c72219f-5225-4cb1-8d16-7c
 DNPM ConsentMV;Re-Identifizierung;reidentification;244371cf-239c-4ef9-aa71-9204603deede;
 DNPM ConsentMV;Broad Consent elektronisch vorhanden;ebroadconsentpresent;4dcdb98d-d98f-48b8-821f-92a5a5939fad;"Wenn der Broad Consent in elektrinischer Form vor liegt, hier markieren.&#10;&#10;Auch ein abgelehnter Broad Consent der in elektrinischer Form vor liegt gilt als vorhanden."
 DNPM FollowUp;Antragsstadium;Antragsstadium;d5e51757-d52d-412e-9717-c195fa0289dc;Angabe ist gemäß DNPM-Datenmodell 2.1 optional.
+DNPM FollowUp;Beurteilungsmethode;Beurteilungsmethode;68b7de40-745b-4832-8a13-a05cf7073bd0;
 DNPM FollowUp;Antragsstellung zur Kostenübernahme;AntragKostenuebernahme;16f4d725-6d87-4078-a59d-6ca6724f1988;
-DNPM FollowUp;Best Response;BestResponse;debc289c-a150-47e3-85cf-ad8e3c47f08c;
 DNPM FollowUp;Datum des Follow-Ups;DatumFollowUp;c3877a68-dea9-46a2-bd72-c7c040b56a2a;
+DNPM FollowUp;Response;Response;debc289c-a150-47e3-85cf-ad8e3c47f08c;
 DNPM FollowUp;Status der Therapie;StatusTherapie;b413b87c-66d2-4461-9956-23399c38e2fc;
 DNPM FollowUp;Letztes Kontaktdatum;DatumLetzterKontakt;8a9aac9c-c999-4496-9c15-635e5f1c96c0;
 DNPM FollowUp;Lost to FollowUp;LostToFollowUp;6ae823f6-6b06-48ef-a866-dc03a0092f47;
@@ -22,19 +23,13 @@ DNPM FollowUp;Datum der Progression;DatumProgression;ede81488-4147-4f03-8a94-bdc
 DNPM FollowUp;Bemerkung zum Status der Therapie;StatusTherapieBemerkung;128962f0-c33e-4553-abbc-fc88befbddce;
 DNPM FollowUp;Umsetzungsart;EmpfehlungsumsetzungJa;fd714ec5-bca5-4c25-b995-4b00776bf337;
 DNPM FollowUp;Status der Kostenübernahme;StatusKostenuebernahme;1ede003a-4a8d-44e4-8311-40fe309b5e2e;
-DNPM FollowUp;Todeszeitpunkt;Todeszeitpunkt;784fe2ae-6fdb-4e3d-91dd-5b484f9735bc;
 DNPM FollowUp;Grund für Ablehnung der Kostenübernahme;GrundAblehnungKosten;c1b0f098-818a-4758-8bf0-ddeced5414d6;
 DNPM FollowUp;Grund für nicht umgesetzte Therapie;GrundNichtumsetzung;85d14def-12b5-48d0-8f42-507847027e72;
-DNPM FollowUp;Letztes Follow-Up-Datum;LetztesFollowUpDatum;9b3d8f2d-2ab5-474a-9b16-0ad4b0568a8f;
 DNPM FollowUp;Welche?;AblehnungKostenMemo;08e2a6f2-efa6-49e5-aed0-d658d075ca75;
 DNPM FollowUp;Grund für Therapieabbruch;GrundTherapieabbruch;d6d720c7-dfdf-428e-9fbe-4b95ddea289d;
-DNPM FollowUp;PFS unter Vortherapie (PFS1);PFS1Vortherapie;5c55edcc-bf67-46b3-ad03-df55d113348d;
-DNPM FollowUp;PFS unter empfohlener Therapie (PFS2);PFS2EmpfTherapie;fadffa23-865e-4918-bae9-ad0a32378b4b;
 DNPM FollowUp;Start der Therapie;Therapiestart;8fcf69cb-730a-4dd4-80c0-8d28be8d51d3;
-DNPM FollowUp;Quotient PFS2/PFS1;QuotientPFS2PFS1;08326dbd-763f-48a6-ac58-9df92c6bee62;
 DNPM FollowUp;Ende der Therapie;Therapieende;6fabccc2-11a3-478e-b82f-98c178dea044;
 DNPM FollowUp;Dosisdichte (Zeit und Medikamentendosis);Dosisdichte;b7e6245b-8fda-411a-a6a3-2e2e633d04bf;
-DNPM FollowUp;Overall survival (OS) (ab dem Start der Therapie);OverallSurvival;d8ccb95b-1ea1-4792-a877-f653e05fdcd1;
 DNPM Klinik/Anamnese;Consent MV § 64e;ConsentMV64e;b6398855-8b6c-4fa7-9e6e-49368f6442ce;"Angabe des Consents und Einwilligung in das Modellvorhaben bei Nutzung des Formulars ""DNPM Consent MV"""
 DNPM Klinik/Anamnese;Molekulares Tumorboard;MTB;a21806f5-5540-406d-9e02-0bae552668af;
 DNPM Klinik/Anamnese;Anmeldedatum für das MTB;AnmeldedatumMTB;df0a74b6-d142-4400-9a74-32b94fadba91;
