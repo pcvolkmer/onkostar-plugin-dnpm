@@ -24,6 +24,7 @@ DNPM FollowUp;Ausstellungsdatum des Antrags auf Kostenübernahme;Ausstellungsdat
 DNPM FollowUp;Bemerkung;BewertungMemo;1fd81b59-e343-46dc-82d9-18bfdb05ac42;
 DNPM FollowUp;Bemerkung zur Nicht-Umsetzung;EmpfehlungsumsetzungNein;f85312b5-c779-4568-aa5e-b5319a04c351;
 DNPM FollowUp;Verweis zur Therapieempfehlung;LinkTherapieempfehlung;2c5897aa-6ab4-474c-b94d-67ca74ffb7ea;
+DNPM FollowUp;ECOG-Status bei FollowUp;ECOG;72306a30-838f-4f66-ae81-d9972f996884;
 DNPM FollowUp;Datum Antwort zum Kostenübernahmeantrag;DatumAntwortKueAntrag;bb993bc1-fcfd-4d66-ad78-e14ea5be28a2;
 DNPM FollowUp;Datum der Progression;DatumProgression;ede81488-4147-4f03-8a94-bdc94e3679e9;
 DNPM FollowUp;Bemerkung zum Status der Therapie;StatusTherapieBemerkung;128962f0-c33e-4553-abbc-fc88befbddce;
