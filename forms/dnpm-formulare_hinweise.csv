@@ -126,7 +126,7 @@ DNPM UF Export;Datum/Uhrzeit;timestamp;3edefdba-f6a9-4698-a68b-d8503c769c4d;
 DNPM UF Export;Ergebnis;Feldgruppe1;32bae835-9d2d-4fec-906d-83fccfd8ffcd;
 DNPM UF Export;Erfolgreich;success;1504d9c1-9536-4253-9a9c-a0d1c10187e3;
 DNPM UF Export;Nachricht;message;9d47ed52-7ea0-4bd3-a38e-641c8e6f6c45;
-DNPM UF Histologie;Probe;Histologie;55d3661e-9f85-4c56-a046-3df941f4f8a2;"Zur Auswahl steht hier das Formular ""OS.Molekulargenetik"" mit den benötigten Informationen zu Datum und Tumorzellgehalt. Auswahl wichtig für MV."
+DNPM UF Histologie;Probe;Histologie;55d3661e-9f85-4c56-a046-3df941f4f8a2;"Zur Auswahl steht hier das Formular ""OS.Molekulargenetik"" und ""OS.Pathologiebefund"" mit den benötigten Informationen zu Datum, Entnahmemethode, -ort und Tumorzellgehalt. Auswahl wichtig für MV."
 DNPM UF Histologie;Erstellungsdatum;Erstellungsdatum;01f8cee9-4aeb-4e34-98f3-6b23e28fb95d;
 DNPM UF Histologie;Morphologie;Morphologie;8efbfe9e-f342-4da1-844f-77584fc0f855;Pflichtfeld für das MV
 DNPM UF Histologie;Tumorzellgehalt in %;Tumorzellgehalt;0604a5e8-bb42-44f7-bd15-0627410cba4d;
