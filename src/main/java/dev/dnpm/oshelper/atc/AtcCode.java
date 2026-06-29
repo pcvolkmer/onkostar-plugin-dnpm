@@ -31,18 +31,22 @@ public class AtcCode implements AgentCode {
 
     private final String code;
     private final String name;
+    private final String synonyms;
 
     private final String version;
 
     public AtcCode(String code, String name) {
-        this.code = code;
-        this.name = name;
-        this.version = null;
+        this(code, name, null);
     }
 
     public AtcCode(String code, String name, String version) {
+        this(code, name, version, "");
+    }
+
+    public AtcCode(String code, String name, String version, String synonyms) {
         this.code = code;
         this.name = name;
+        this.synonyms = synonyms;
         this.version = version;
     }
 
@@ -52,6 +56,10 @@ public class AtcCode implements AgentCode {
 
     public String getName() {
         return name;
+    }
+
+    public String getSynonyms() {
+        return this.synonyms;
     }
 
     public CodeSystem getSystem() {
