@@ -51,7 +51,7 @@ public class OnkostarAgentCodeService implements AgentCodeService {
      */
     @Override
     public List<AgentCode> findAgentCodes(final String query, final int size) {
-        var sql = "SELECT code, shortdesc\n" +
+        var sql = "SELECT code, shortdesc, synonyms\n" +
                 "    FROM property_catalogue\n" +
                 "    JOIN property_catalogue_version ON (property_catalogue_version.datacatalog_id = property_catalogue.id)\n" +
                 "    JOIN property_catalogue_version_entry p ON (p.property_version_id = property_catalogue_version.id)\n" +
@@ -68,10 +68,11 @@ public class OnkostarAgentCodeService implements AgentCodeService {
                 (resultSet, i) -> {
                     var code = resultSet.getString("code");
                     var shortdesc = resultSet.getString("shortdesc");
+                    var synonyms = resultSet.getString("synonyms");
                     if (AtcCode.isAtcCode(code)) {
                         return new AtcCode(code, shortdesc);
                     }
-                    return new UnregisteredCode(code, shortdesc);
+                    return new UnregisteredCode(code, shortdesc, synonyms);
                 }
         );
     }

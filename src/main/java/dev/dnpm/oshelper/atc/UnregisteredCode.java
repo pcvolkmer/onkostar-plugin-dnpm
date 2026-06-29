@@ -32,9 +32,16 @@ public class UnregisteredCode implements AgentCode {
     private final String code;
     private final String name;
 
+    private final String synonyms;
+
     public UnregisteredCode(String code, String name) {
+        this(code, name, "");
+    }
+
+    public UnregisteredCode(String code, String name, String synonyms) {
         this.code = code;
         this.name = name;
+        this.synonyms = synonyms;
     }
 
     public String getCode() {
@@ -43,6 +50,10 @@ public class UnregisteredCode implements AgentCode {
 
     public String getName() {
         return name;
+    }
+
+    public String getSynonyms() {
+        return synonyms;
     }
 
     public CodeSystem getSystem() {
