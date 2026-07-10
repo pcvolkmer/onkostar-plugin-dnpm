@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OnkostarEditor>
   <InfoXML>
-    <DatumXML>2026-06-30Z</DatumXML>
+    <DatumXML>2026-07-10Z</DatumXML>
     <Name>OnkoStar</Name>
     <Version>2.14.2</Version>
   </InfoXML>
@@ -5138,14 +5138,13 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Revision>10</Revision>
         </Entry>
         <Entry>
-          <PropertyCatalogue>OS.Studien</PropertyCatalogue>
           <Name>studie</Name>
           <NameExport>studie</NameExport>
           <Description>Studie</Description>
-          <Type>propertyCatalogue</Type>
+          <Type>shorttext</Type>
           <SubTable/>
           <ScaleUnit/>
-          <MaxLength>0</MaxLength>
+          <MaxLength>255</MaxLength>
           <DefaultValue/>
           <Active>true</Active>
           <Readonly>false</Readonly>
@@ -9618,9 +9617,9 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>(hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch') and studienallejson &lt;&gt; '' and studienallejson &lt;&gt; '[]'</Condition>
             <Valid>true</Valid>
             <RefEntries>
+              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
               <RefEntry>studienallejson</RefEntry>
-              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9767,8 +9766,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11120,8 +11119,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11195,8 +11194,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11270,9 +11269,9 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>(hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch') and studienallejson &lt;&gt; '' and studienallejson &lt;&gt; '[]'</Condition>
             <Valid>true</Valid>
             <RefEntries>
+              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
               <RefEntry>studienallejson</RefEntry>
-              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11421,8 +11420,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11496,8 +11495,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11571,8 +11570,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>hatstudie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>hatstudie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -13965,18 +13964,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <DataFormReferences>
             <ReferencedDataForm>
               <Category>0</Category>
-              <Name>OS.Molekulargenetik</Name>
-              <Readonly>false</Readonly>
-              <TudokPosition>0</TudokPosition>
-              <hatUnterformulare>false</hatUnterformulare>
-              <SID>1001</SID>
-              <GUID>a5ff1d01-6c9d-425f-a608-bc08049cf90b</GUID>
-              <Revision>114</Revision>
-            </ReferencedDataForm>
-          </DataFormReferences>
-          <DataFormReferences>
-            <ReferencedDataForm>
-              <Category>0</Category>
               <Name>OS.Pathologiebefund</Name>
               <Readonly>false</Readonly>
               <TudokPosition>0</TudokPosition>
@@ -13984,6 +13971,18 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <SID>1001</SID>
               <GUID>64965dc0-d708-11e5-b199-0050568f1add</GUID>
               <Revision>214</Revision>
+            </ReferencedDataForm>
+          </DataFormReferences>
+          <DataFormReferences>
+            <ReferencedDataForm>
+              <Category>0</Category>
+              <Name>OS.Molekulargenetik</Name>
+              <Readonly>false</Readonly>
+              <TudokPosition>0</TudokPosition>
+              <hatUnterformulare>false</hatUnterformulare>
+              <SID>1001</SID>
+              <GUID>a5ff1d01-6c9d-425f-a608-bc08049cf90b</GUID>
+              <Revision>114</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -19071,8 +19070,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>StatusKostenuebernahme</RefEntry>
               <RefEntry>AntragKostenuebernahme</RefEntry>
+              <RefEntry>StatusKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -25890,8 +25889,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>miteinzelempfehlung = false and mtbtyp &lt;&gt; 'I'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>miteinzelempfehlung</RefEntry>
               <RefEntry>mtbtyp</RefEntry>
+              <RefEntry>miteinzelempfehlung</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
