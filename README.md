@@ -373,12 +373,12 @@ werden.
 Voraussetzung ist das Kopieren der Datei `onkostar-api-2.14.0.jar` (oder neuer) in das Projektverzeichnis `libs`.
 
 **_Hinweis_**: Bei Verwendung einer neueren Version der Onkostar-API oder des ATC-Codes-Plugins
-muss die Datei `pom.xml` entsprechend angepasst werden.
+muss die Datei `build.gradle` entsprechend angepasst werden.
 
 Danach Ausführen des Befehls:
 
 ```shell
-./mvnw package
+./gradlew build
 ```
 
 ## Testen des Plugins und Code-Voverage
@@ -387,7 +387,7 @@ Die Entwicklung des Plugins erfolgt mit automatisierten Tests. Diese können zus
 durch Ausführung des Befehls
 
 ```shell
-./mvnw clean verify
+./gradlew clean check
 ```
 
 ausgeführt werden.

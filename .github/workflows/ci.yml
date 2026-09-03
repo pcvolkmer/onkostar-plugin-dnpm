@@ -26,7 +26,7 @@ jobs:
             https://git.dnpm.dev/api/packages/Plugin-JF-Onkostar/generic/onkostar-api/2.14.0/onkostar-api-2.14.0.jar \
             --output ${{ github.workspace }}/libs/onkostar-api-2.14.0.jar
       - name: Execute tests
-        run: mvn --batch-mode verify
+        run: ./gradlew --no-daemon check
   build:
     runs-on: ubuntu-latest
     needs:
@@ -47,8 +47,8 @@ jobs:
           curl -L --user dnpm:${{ secrets.PACKAGE_TOKEN }} \
             https://git.dnpm.dev/api/packages/Plugin-JF-Onkostar/generic/onkostar-api/2.14.0/onkostar-api-2.14.0.jar \
             --output ${{ github.workspace }}/libs/onkostar-api-2.14.0.jar
-      - name: Maven package build
-        run: mvn --batch-mode package
+      - name: Gradle package build
+        run: ./gradlew --no-daemon build
       - name: Release
         if: ${{ github.event_name == 'release' && github.event.action == 'created' }}
         uses: softprops/action-gh-release@v2

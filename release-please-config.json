@@ -4,14 +4,20 @@
   "bump-patch-for-minor-pre-major": true,
   "include-v-in-tag": true,
   "include-component-in-tag": false,
-  "release-type": "maven",
+  "release-type": "java",
   "packages": {
     ".": {
       "package-name": "DNPMHelper",
-      "extra-files": [{
-        "type": "generic",
-        "path": "src/main/java/dev/dnpm/oshelper/analyzer/IPluginPart.java"
-      }]
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "build.gradle"
+        },
+        {
+          "type": "generic",
+          "path": "src/main/java/dev/dnpm/oshelper/analyzer/IPluginPart.java"
+        }
+      ]
     }
   }
 }
