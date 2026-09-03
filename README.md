@@ -25,12 +25,12 @@ Hierzu gibt es die Konfigurationsparameter:
 
 ## ATC-Codes
 
-Dieses Plugin integriert eine Liste mit ATC-Codes mit Stand 2025.
+Dieses Plugin integriert eine Liste mit ATC-Codes mit Stand 2026.
 
 ### Hinweis für Updates
 
 Die Liste kann aus dem Repository von DNPM:DIP heruntergeladen und automatisch angepasst werden.
-Bei Bedarf das Jahr `2025` in unten stehenden Script austauschen.
+Bei Bedarf das Jahr `2026` in unten stehenden Script austauschen.
 
 Quelle der ATC-Code-Liste: https://github.com/dnpm-dip/atc-catalog.
 Das Projekt ist unter der [MIT-Lizenz](https://github.com/dnpm-dip/atc-catalog/blob/main/LICENSE)
@@ -38,8 +38,8 @@ durch das Universitätsklinikum Tübingen und [@lucienclin](https://github.com/l
 
 ```
 curl \
-  https://raw.githubusercontent.com/dnpm-dip/atc-catalog/refs/heads/main/catalogs_packaged/src/main/resources/ATC_2025.csv \
-  | sed '/^\s*$/d' | sed 's/\t\t/\t/g' | sed 's/^/2025\t/g' | sed '0,/2025/{s/2025/Version/}' > src/main/resources/atc.csv
+  https://raw.githubusercontent.com/dnpm-dip/atc-catalog/refs/heads/main/catalogs_packaged/src/main/resources/ATC_2026.csv \
+  | sed '/^\s*$/d' | sed 's/\t\t/\t/g' | sed 's/^/2026\t/g' | sed '0,/2026/{s/2026/Version/}' > src/main/resources/atc.csv
 ```
 
 
