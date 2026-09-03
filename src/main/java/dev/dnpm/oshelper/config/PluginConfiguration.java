@@ -33,12 +33,11 @@ import dev.dnpm.oshelper.services.strahlentherapie.StrahlentherapieService;
 import dev.dnpm.oshelper.services.systemtherapie.DefaultSystemtherapieService;
 import dev.dnpm.oshelper.services.systemtherapie.SystemtherapieService;
 import dev.dnpm.oshelper.services.therapieplan.TherapieplanServiceFactory;
+import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-import javax.sql.DataSource;
 
 /**
  * Dynamische Konfiguration des Plugins basierend auf Onkostar-Einstellungen
@@ -50,64 +49,58 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(basePackages = "dev.dnpm.oshelper.database")
 public class PluginConfiguration {
 
-    @Bean
-    public FormService formService(final DataSource dataSource) {
-        return new DefaultFormService(dataSource);
-    }
+  @Bean
+  public FormService formService(final DataSource dataSource) {
+    return new DefaultFormService(dataSource);
+  }
 
-    @Bean
-    public StudienService studienService(final DataSource dataSource) {
-        return new DefaultStudienService(dataSource);
-    }
+  @Bean
+  public StudienService studienService(final DataSource dataSource) {
+    return new DefaultStudienService(dataSource);
+  }
 
-    @Bean
-    public SettingsService settingsService(final SettingsRepository settingsRepository) {
-        return new SettingsService(settingsRepository);
-    }
+  @Bean
+  public SettingsService settingsService(final SettingsRepository settingsRepository) {
+    return new SettingsService(settingsRepository);
+  }
 
-    @Bean
-    public SystemtherapieService systemtherapieService(
-            final IOnkostarApi onkostarApi,
-            final SettingsService settingsService
-    ) {
-        return new DefaultSystemtherapieService(onkostarApi, settingsService);
-    }
+  @Bean
+  public SystemtherapieService systemtherapieService(
+      final IOnkostarApi onkostarApi, final SettingsService settingsService) {
+    return new DefaultSystemtherapieService(onkostarApi, settingsService);
+  }
 
-    @Bean
-    public StrahlentherapieService strahlentherapieService(
-            final IOnkostarApi onkostarApi,
-            final SettingsService settingsService
-    ) {
-        return new DefaultStrahlentherapieService(onkostarApi, settingsService);
-    }
+  @Bean
+  public StrahlentherapieService strahlentherapieService(
+      final IOnkostarApi onkostarApi, final SettingsService settingsService) {
+    return new DefaultStrahlentherapieService(onkostarApi, settingsService);
+  }
 
-    @Bean
-    public ConsentManagerServiceFactory consentManagerServiceFactory(final IOnkostarApi onkostarApi) {
-        return new ConsentManagerServiceFactory(onkostarApi);
-    }
+  @Bean
+  public ConsentManagerServiceFactory consentManagerServiceFactory(final IOnkostarApi onkostarApi) {
+    return new ConsentManagerServiceFactory(onkostarApi);
+  }
 
-    @Bean
-    public TherapieplanServiceFactory therapieplanServiceFactory(
-            final IOnkostarApi onkostarApi,
-            final SettingsService settingsService,
-            final FormService formService
-    ) {
-        return new TherapieplanServiceFactory(onkostarApi, settingsService, formService);
-    }
+  @Bean
+  public TherapieplanServiceFactory therapieplanServiceFactory(
+      final IOnkostarApi onkostarApi,
+      final SettingsService settingsService,
+      final FormService formService) {
+    return new TherapieplanServiceFactory(onkostarApi, settingsService, formService);
+  }
 
-    @Bean
-    public MolekulargenetikFormService molekulargenetikFormService() {
-        return new OsMolekulargenetikFormService();
-    }
+  @Bean
+  public MolekulargenetikFormService molekulargenetikFormService() {
+    return new OsMolekulargenetikFormService();
+  }
 
-    @Bean
-    public AgentCodeService csvAgentCodeService() {
-        return new CsvAgentCodeService();
-    }
+  @Bean
+  public AgentCodeService csvAgentCodeService() {
+    return new CsvAgentCodeService();
+  }
 
-    @Bean
-    public AgentCodeService onkostarAgentCodeService (final DataSource dataSource) {
-        return new OnkostarAgentCodeService(dataSource);
-    }
-
+  @Bean
+  public AgentCodeService onkostarAgentCodeService(final DataSource dataSource) {
+    return new OnkostarAgentCodeService(dataSource);
+  }
 }

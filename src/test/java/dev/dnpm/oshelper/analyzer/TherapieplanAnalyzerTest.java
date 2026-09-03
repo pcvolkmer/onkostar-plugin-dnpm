@@ -19,6 +19,8 @@
 
 package dev.dnpm.oshelper.analyzer;
 
+import static org.mockito.Mockito.*;
+
 import de.itc.onkostar.api.IOnkostarApi;
 import de.itc.onkostar.api.Procedure;
 import dev.dnpm.oshelper.services.FormService;
@@ -30,35 +32,29 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.*;
-
 @ExtendWith(MockitoExtension.class)
 class TherapieplanAnalyzerTest {
 
-    @Mock
-    private IOnkostarApi onkostarApi;
+  @Mock private IOnkostarApi onkostarApi;
 
-    @Mock
-    private FormService formService;
+  @Mock private FormService formService;
 
-    @Mock
-    private TherapieplanServiceFactory therapieplanServiceFactory;
+  @Mock private TherapieplanServiceFactory therapieplanServiceFactory;
 
-    private TherapieplanAnalyzer therapieplanAnalyzer;
+  private TherapieplanAnalyzer therapieplanAnalyzer;
 
-    @BeforeEach
-    void setUp() {
-        this.therapieplanAnalyzer = new TherapieplanAnalyzer(therapieplanServiceFactory);
-    }
+  @BeforeEach
+  void setUp() {
+    this.therapieplanAnalyzer = new TherapieplanAnalyzer(therapieplanServiceFactory);
+  }
 
-    @Test
-    void shouldRunServiceMethodsOnAnalyzeCalled() {
-        when(this.therapieplanServiceFactory.currentUsableInstance())
-                .thenReturn(new DefaultTherapieplanService(onkostarApi, formService));
+  @Test
+  void shouldRunServiceMethodsOnAnalyzeCalled() {
+    when(this.therapieplanServiceFactory.currentUsableInstance())
+        .thenReturn(new DefaultTherapieplanService(onkostarApi, formService));
 
-        this.therapieplanAnalyzer.analyze(new Procedure(onkostarApi), null);
+    this.therapieplanAnalyzer.analyze(new Procedure(onkostarApi), null);
 
-        verify(this.therapieplanServiceFactory, times(1)).currentUsableInstance();
-    }
-
+    verify(this.therapieplanServiceFactory, times(1)).currentUsableInstance();
+  }
 }

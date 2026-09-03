@@ -22,17 +22,15 @@ package dev.dnpm.oshelper.atc.services;
 import dev.dnpm.oshelper.atc.AgentCode;
 import dev.dnpm.oshelper.atc.AtcCode;
 import dev.dnpm.oshelper.exceptions.FileParsingException;
-import org.apache.commons.csv.CSVFormat;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import org.apache.commons.csv.CSVFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Service to query for agent codes based on ATC codes file
@@ -42,65 +40,72 @@ import java.util.stream.Collectors;
  */
 public class CsvAgentCodeService implements AgentCodeService {
 
-    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-    protected final List<AgentCode> codeList = new ArrayList<>();
+  protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+  protected final List<AgentCode> codeList = new ArrayList<>();
 
-    private static final String ATC_CODE_COLUMN = "ATC-Code";
-    private static final String ATC_NAME_COLUMN = "ATC-Bedeutung";
-    private static final String ATC_VERSION_COLUMN = "Version";
+  private static final String ATC_CODE_COLUMN = "ATC-Code";
+  private static final String ATC_NAME_COLUMN = "ATC-Bedeutung";
+  private static final String ATC_VERSION_COLUMN = "Version";
 
-    public CsvAgentCodeService() {
-        this.codeList.addAll(parseFile());
+  public CsvAgentCodeService() {
+    this.codeList.addAll(parseFile());
+  }
+
+  /**
+   * Queries source for agents code starting with or name containing query string. If size is zero,
+   * all available results will be returned.
+   *
+   * @param query The query string
+   * @param size Maximal amount of responses
+   * @return A list with agent codes
+   */
+  @Override
+  public List<AgentCode> findAgentCodes(final String query, final int size) {
+    var resultStream =
+        this.codeList.stream()
+            .filter(
+                agentCode ->
+                    agentCode.getCode().toLowerCase().startsWith(query.toLowerCase())
+                        || agentCode.getName().toLowerCase().contains(query.toLowerCase()));
+
+    if (size > 0) {
+      return resultStream.limit(size).collect(Collectors.toList());
     }
+    return resultStream.collect(Collectors.toList());
+  }
 
-    /**
-     * Queries source for agents code starting with or name containing query string.
-     * If size is zero, all available results will be returned.
-     *
-     * @param query The query string
-     * @param size  Maximal amount of responses
-     * @return A list with agent codes
-     */
-    @Override
-    public List<AgentCode> findAgentCodes(final String query, final int size) {
-        var resultStream = this.codeList.stream().filter(agentCode ->
-                agentCode.getCode().toLowerCase().startsWith(query.toLowerCase())
-                        || agentCode.getName().toLowerCase().contains(query.toLowerCase())
-        );
+  protected List<AgentCode> parseFile() {
+    var result = new ArrayList<AgentCode>();
 
-        if (size > 0) {
-            return resultStream.limit(size).collect(Collectors.toList());
+    try {
+      var inputStream =
+          Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("atc.csv"));
+      var parser =
+          CSVFormat.RFC4180
+              .withHeader()
+              .withDelimiter('\t')
+              .withIgnoreEmptyLines()
+              .withSkipHeaderRecord()
+              .parse(new InputStreamReader(inputStream));
+      for (var row : parser) {
+        if (!row.isMapped(ATC_CODE_COLUMN) || !row.isMapped(ATC_NAME_COLUMN)) {
+          throw new FileParsingException("No CSV column for ATC code or name found");
         }
-        return resultStream.collect(Collectors.toList());
-    }
-
-    protected List<AgentCode> parseFile() {
-        var result = new ArrayList<AgentCode>();
-
-        try {
-            var inputStream = Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("atc.csv"));
-            var parser = CSVFormat.RFC4180
-                    .withHeader()
-                    .withDelimiter('\t')
-                    .withIgnoreEmptyLines()
-                    .withSkipHeaderRecord()
-                    .parse(new InputStreamReader(inputStream));
-            for (var row : parser) {
-                if (!row.isMapped(ATC_CODE_COLUMN) || !row.isMapped(ATC_NAME_COLUMN)) {
-                    throw new FileParsingException("No CSV column for ATC code or name found");
-                }
-                if (row.isMapped(ATC_VERSION_COLUMN)) {
-                    result.add(new AtcCode(row.get(ATC_CODE_COLUMN).trim(), row.get(ATC_NAME_COLUMN), row.get(ATC_VERSION_COLUMN)));
-                } else {
-                    result.add(new AtcCode(row.get(ATC_CODE_COLUMN).trim(), row.get(ATC_NAME_COLUMN)));
-                }
-            }
-            return result;
-        } catch (IOException | FileParsingException e) {
-            logger.warn("Error reading information from ATC codes");
+        if (row.isMapped(ATC_VERSION_COLUMN)) {
+          result.add(
+              new AtcCode(
+                  row.get(ATC_CODE_COLUMN).trim(),
+                  row.get(ATC_NAME_COLUMN),
+                  row.get(ATC_VERSION_COLUMN)));
+        } else {
+          result.add(new AtcCode(row.get(ATC_CODE_COLUMN).trim(), row.get(ATC_NAME_COLUMN)));
         }
-        logger.info("Found {} ATC codes", result.size());
-        return result;
+      }
+      return result;
+    } catch (IOException | FileParsingException e) {
+      logger.warn("Error reading information from ATC codes");
     }
-
+    logger.info("Found {} ATC codes", result.size());
+    return result;
+  }
 }

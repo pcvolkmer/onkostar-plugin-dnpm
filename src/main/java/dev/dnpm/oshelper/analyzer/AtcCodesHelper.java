@@ -24,76 +24,74 @@ import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
 import dev.dnpm.oshelper.atc.AgentCode;
 import dev.dnpm.oshelper.atc.services.AgentCodeService;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Component;
 
 @Component
 public class AtcCodesHelper extends BackendService {
 
-    private final List<AgentCodeService> agentCodeServices;
+  private final List<AgentCodeService> agentCodeServices;
 
-    public AtcCodesHelper(List<AgentCodeService> agentCodeServices) {
-        this.agentCodeServices = agentCodeServices;
+  public AtcCodesHelper(List<AgentCodeService> agentCodeServices) {
+    this.agentCodeServices = agentCodeServices;
+  }
+
+  /**
+   * @deprecated
+   */
+  @Override
+  public boolean isRelevantForDeletedProcedure() {
+    return false;
+  }
+
+  @Override
+  public boolean isRelevantForAnalyzer(Procedure procedure, Disease disease) {
+    return false;
+  }
+
+  @Override
+  public boolean isSynchronous() {
+    return false;
+  }
+
+  @Override
+  public AnalyzerRequirement getRequirement() {
+    return AnalyzerRequirement.PROCEDURE;
+  }
+
+  /**
+   * Return list with ATC codes and agents. Usage in script:
+   *
+   * <pre>
+   *      executePluginMethod(
+   *          'AtcCodesHelper',
+   *          'query',
+   *          { q: '', size: 10 },
+   *          function (result) {console.log(result);},
+   *          false
+   *      );
+   * </pre>
+   *
+   * @param input The data Map
+   * @return The result list filtered by input
+   */
+  public List<AgentCode> query(final Map<String, Object> input) {
+    String query = "";
+    if (null != input.get("q")) {
+      query = input.get("q").toString();
     }
 
-    /**
-     * @deprecated
-     */
-    @Override
-    public boolean isRelevantForDeletedProcedure() {
-        return false;
+    int size = Integer.parseInt(input.get("size").toString());
+    if (size == 0) {
+      size = 10;
     }
-
-    @Override
-    public boolean isRelevantForAnalyzer(Procedure procedure, Disease disease) {
-        return false;
+    var result = new ArrayList<AgentCode>();
+    for (var agentCodeService : this.agentCodeServices) {
+      result.addAll(agentCodeService.findAgentCodes(query, size));
     }
-
-    @Override
-    public boolean isSynchronous() {
-        return false;
-    }
-
-    @Override
-    public AnalyzerRequirement getRequirement() {
-        return AnalyzerRequirement.PROCEDURE;
-    }
-
-    /**
-     * Return list with ATC codes and agents.
-     * Usage in script:
-     *
-     * <pre>
-     *      executePluginMethod(
-     *          'AtcCodesHelper',
-     *          'query',
-     *          { q: '', size: 10 },
-     *          function (result) {console.log(result);},
-     *          false
-     *      );
-     * </pre>
-     *
-     * @param input The data Map
-     * @return The result list filtered by input
-     */
-    public List<AgentCode> query(final Map<String, Object> input) {
-        String query = "";
-        if (null != input.get("q")) {
-            query = input.get("q").toString();
-        }
-
-        int size = Integer.parseInt(input.get("size").toString());
-        if (size == 0) {
-            size = 10;
-        }
-        var result = new ArrayList<AgentCode>();
-        for (var agentCodeService : this.agentCodeServices) {
-            result.addAll(agentCodeService.findAgentCodes(query, size));
-        }
-        return result.stream().distinct().sorted().collect(Collectors.toList());
-    }
+    return result.stream().distinct().sorted().collect(Collectors.toList());
+  }
 }

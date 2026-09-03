@@ -19,65 +19,61 @@
 
 package dev.dnpm.oshelper.atc;
 
-import dev.dnpm.oshelper.atc.services.AgentCodeService;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
+
+import dev.dnpm.oshelper.atc.services.AgentCodeService;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class AgentCodeServiceTest {
 
-    @Test
-    void shouldReturnLatestAvailableAgentCodeVersion() {
-        var testAgentCodes = List.of(
-                new AtcCode("A01AD05", "Acetylsalicylsäure"),
-                new AtcCode("A01AD05", "Acetylsalicylsäure", "2025"),
+  @Test
+  void shouldReturnLatestAvailableAgentCodeVersion() {
+    var testAgentCodes =
+        List.of(
+            new AtcCode("A01AD05", "Acetylsalicylsäure"),
+            new AtcCode("A01AD05", "Acetylsalicylsäure", "2025"),
+            new AtcCode("A01AD05", "Acetylsalicylsäure", "2026"),
+            new UnregisteredCode("A01AD05", "Acetylsalicylsäure"),
+            new UnregisteredCode("", "Acetylsalicylsäure"));
+
+    var actual =
+        AgentCodeService.latestAgentCodeVersions(testAgentCodes, AgentCodeService.byNameAndCode);
+
+    assertThat(actual)
+        .containsAll(
+            List.of(
                 new AtcCode("A01AD05", "Acetylsalicylsäure", "2026"),
-                new UnregisteredCode("A01AD05", "Acetylsalicylsäure"),
-                new UnregisteredCode("", "Acetylsalicylsäure")
-        );
+                new UnregisteredCode("", "Acetylsalicylsäure")));
+  }
 
-        var actual = AgentCodeService.latestAgentCodeVersions(testAgentCodes, AgentCodeService.byNameAndCode);
+  @Test
+  void shouldReturnLatestAvailableAgentCodeVersionByNameOnly() {
+    var testAgentCodes =
+        List.of(
+            new AtcCode("A01AD05", "Acetylsalicylsäure"),
+            new AtcCode("A01AD05", "Acetylsalicylsäure", "2025"),
+            new AtcCode("A01AD05", "Acetylsalicylsäure", "2026"),
+            new UnregisteredCode("A01AD05", "Acetylsalicylsäure"),
+            new UnregisteredCode("", "Acetylsalicylsäure"));
 
-        assertThat(actual).containsAll(
-                List.of(
-                        new AtcCode("A01AD05", "Acetylsalicylsäure", "2026"),
-                        new UnregisteredCode("", "Acetylsalicylsäure")
-                )
-        );
-    }
+    var actual =
+        AgentCodeService.latestAgentCodeVersions(testAgentCodes, AgentCodeService.byCodeOnly);
 
-    @Test
-    void shouldReturnLatestAvailableAgentCodeVersionByNameOnly() {
-        var testAgentCodes = List.of(
-                new AtcCode("A01AD05", "Acetylsalicylsäure"),
-                new AtcCode("A01AD05", "Acetylsalicylsäure", "2025"),
-                new AtcCode("A01AD05", "Acetylsalicylsäure", "2026"),
-                new UnregisteredCode("A01AD05", "Acetylsalicylsäure"),
-                new UnregisteredCode("", "Acetylsalicylsäure")
-        );
+    assertThat(actual).containsExactly(new AtcCode("A01AD05", "Acetylsalicylsäure", "2026"));
+  }
 
-        var actual = AgentCodeService.latestAgentCodeVersions(testAgentCodes, AgentCodeService.byCodeOnly);
+  @Test
+  void shouldReturnLatestAvailableAgentCodeWithoutVersionVersionByNameOnly() {
+    var testAgentCodes =
+        List.of(
+            new UnregisteredCode("A01AD05", "Acetylsalicylsäure"),
+            new AtcCode("A01AD05", "Acetylsalicylsäure"),
+            new UnregisteredCode("", "Acetylsalicylsäure"));
 
-        assertThat(actual).containsExactly(
-                new AtcCode("A01AD05", "Acetylsalicylsäure", "2026")
-        );
-    }
+    var actual =
+        AgentCodeService.latestAgentCodeVersions(testAgentCodes, AgentCodeService.byCodeOnly);
 
-    @Test
-    void shouldReturnLatestAvailableAgentCodeWithoutVersionVersionByNameOnly() {
-        var testAgentCodes = List.of(
-                new UnregisteredCode("A01AD05", "Acetylsalicylsäure"),
-                new AtcCode("A01AD05", "Acetylsalicylsäure"),
-                new UnregisteredCode("", "Acetylsalicylsäure")
-        );
-
-        var actual = AgentCodeService.latestAgentCodeVersions(testAgentCodes, AgentCodeService.byCodeOnly);
-
-        assertThat(actual).containsExactly(
-                new AtcCode("A01AD05", "Acetylsalicylsäure")
-        );
-    }
-
+    assertThat(actual).containsExactly(new AtcCode("A01AD05", "Acetylsalicylsäure"));
+  }
 }

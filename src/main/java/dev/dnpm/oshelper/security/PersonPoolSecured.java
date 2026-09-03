@@ -28,6 +28,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface PersonPoolSecured {
 
-    PermissionType value() default PermissionType.READ_WRITE;
-
+  PermissionType value() default PermissionType.READ_WRITE;
 }

@@ -19,28 +19,26 @@
 
 package dev.dnpm.oshelper.services.therapieplan;
 
+import de.itc.onkostar.api.IOnkostarApi;
 import dev.dnpm.oshelper.services.FormService;
 import dev.dnpm.oshelper.services.SettingsService;
-import de.itc.onkostar.api.IOnkostarApi;
 
 public class TherapieplanServiceFactory {
 
-    private final IOnkostarApi onkostarApi;
+  private final IOnkostarApi onkostarApi;
 
-    private final FormService formService;
+  private final FormService formService;
 
-    @SuppressWarnings("unused")
-    public TherapieplanServiceFactory(
-            final IOnkostarApi onkostarApi,
-            final SettingsService settingsService,
-            final FormService formService
-    ) {
-        this.onkostarApi = onkostarApi;
-        this.formService = formService;
-    }
+  @SuppressWarnings("unused")
+  public TherapieplanServiceFactory(
+      final IOnkostarApi onkostarApi,
+      final SettingsService settingsService,
+      final FormService formService) {
+    this.onkostarApi = onkostarApi;
+    this.formService = formService;
+  }
 
-    public TherapieplanService currentUsableInstance() {
-        return new DefaultTherapieplanService(onkostarApi, formService);
-    }
-
+  public TherapieplanService currentUsableInstance() {
+    return new DefaultTherapieplanService(onkostarApi, formService);
+  }
 }

@@ -24,6 +24,6 @@ import dev.dnpm.oshelper.services.TherapieMitEcogService;
 /**
  * Service für Systemtherapieformulare
  *
- *  @since 0.6.0
+ * @since 0.6.0
  */
 public interface StrahlentherapieService extends TherapieMitEcogService {}

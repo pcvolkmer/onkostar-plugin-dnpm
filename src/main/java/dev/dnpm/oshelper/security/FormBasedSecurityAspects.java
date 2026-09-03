@@ -20,6 +20,7 @@
 package dev.dnpm.oshelper.security;
 
 import de.itc.onkostar.api.Procedure;
+import java.util.Arrays;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -28,43 +29,46 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import java.util.Arrays;
-
 // TODO Disabled for now - check bytecode reported incompatibility for older OS installations
-//@Component
+// @Component
 @Aspect
 public class FormBasedSecurityAspects {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final FormBasedPermissionEvaluator permissionEvaluator;
+  private final FormBasedPermissionEvaluator permissionEvaluator;
 
-    public FormBasedSecurityAspects(
-            final FormBasedPermissionEvaluator permissionEvaluator
-            ) {
-        this.permissionEvaluator = permissionEvaluator;
+  public FormBasedSecurityAspects(final FormBasedPermissionEvaluator permissionEvaluator) {
+    this.permissionEvaluator = permissionEvaluator;
+  }
+
+  @AfterReturning(
+      value = "@annotation(dev.dnpm.oshelper.security.FormSecuredResult)",
+      returning = "procedure")
+  public void afterProcedureFormBased(Procedure procedure) {
+    if (null != procedure
+        && !permissionEvaluator.hasPermission(
+            SecurityContextHolder.getContext().getAuthentication(),
+            procedure,
+            PermissionType.READ_WRITE)) {
+      logger.warn("Rückgabe von Prozedur blockiert: {}", procedure.getId());
+      throw new IllegalSecuredObjectAccessException();
     }
+  }
 
-    @AfterReturning(value = "@annotation(dev.dnpm.oshelper.security.FormSecuredResult)", returning = "procedure")
-    public void afterProcedureFormBased(Procedure procedure) {
-        if (
-                null != procedure
-                        && ! permissionEvaluator.hasPermission(SecurityContextHolder.getContext().getAuthentication(), procedure, PermissionType.READ_WRITE)
-        ) {
-            logger.warn("Rückgabe von Prozedur blockiert: {}", procedure.getId());
-            throw new IllegalSecuredObjectAccessException();
-        }
-    }
-
-    @Before(value = "@annotation(dev.dnpm.oshelper.security.FormSecured)")
-    public void beforeProcedureFormBased(JoinPoint jp) {
-        Arrays.stream(jp.getArgs())
-                .filter(arg -> arg instanceof Procedure)
-                .forEach(procedure -> {
-                    if (! permissionEvaluator.hasPermission(SecurityContextHolder.getContext().getAuthentication(), procedure, PermissionType.READ_WRITE)) {
-                        logger.warn("Zugriff auf Prozedur blockiert: {}", ((Procedure)procedure).getId());
-                        throw new IllegalSecuredObjectAccessException();
-                    }
-                });
-    }
+  @Before(value = "@annotation(dev.dnpm.oshelper.security.FormSecured)")
+  public void beforeProcedureFormBased(JoinPoint jp) {
+    Arrays.stream(jp.getArgs())
+        .filter(arg -> arg instanceof Procedure)
+        .forEach(
+            procedure -> {
+              if (!permissionEvaluator.hasPermission(
+                  SecurityContextHolder.getContext().getAuthentication(),
+                  procedure,
+                  PermissionType.READ_WRITE)) {
+                logger.warn("Zugriff auf Prozedur blockiert: {}", ((Procedure) procedure).getId());
+                throw new IllegalSecuredObjectAccessException();
+              }
+            });
+  }
 }

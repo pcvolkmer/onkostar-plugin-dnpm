@@ -23,16 +23,15 @@ import de.itc.onkostar.api.analysis.IProcedureAnalyzer;
 
 public interface IPluginPart extends IProcedureAnalyzer {
 
-    default String getVersion() {
-        return "2.0.0"; // x-release-please
-    }
+  default String getVersion() {
+    return "2.2.0"; // x-release-please
+  }
 
-    default String getName() {
-        return "DNPM Plugin";
-    }
+  default String getName() {
+    return "DNPM Plugin";
+  }
 
-    default String getDescription() {
-        return String.format("Plugin-Bestandteil '%s'", this.getClass().getSimpleName());
-    }
-
+  default String getDescription() {
+    return String.format("Plugin-Bestandteil '%s'", this.getClass().getSimpleName());
+  }
 }

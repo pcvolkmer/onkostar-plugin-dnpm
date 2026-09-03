@@ -27,8 +27,7 @@ package dev.dnpm.oshelper.exceptions;
  */
 public class FileParsingException extends RuntimeException {
 
-    public FileParsingException(final String msg) {
-        super(msg);
-    }
-
+  public FileParsingException(final String msg) {
+    super(msg);
+  }
 }

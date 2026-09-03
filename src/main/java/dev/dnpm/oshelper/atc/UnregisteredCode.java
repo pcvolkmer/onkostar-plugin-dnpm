@@ -29,58 +29,58 @@ import java.util.Objects;
  */
 public class UnregisteredCode implements AgentCode {
 
-    private final String code;
-    private final String name;
+  private final String code;
+  private final String name;
 
-    private final String synonyms;
+  private final String synonyms;
 
-    public UnregisteredCode(String code, String name) {
-        this(code, name, "");
-    }
+  public UnregisteredCode(String code, String name) {
+    this(code, name, "");
+  }
 
-    public UnregisteredCode(String code, String name, String synonyms) {
-        this.code = code;
-        this.name = name;
-        this.synonyms = synonyms;
-    }
+  public UnregisteredCode(String code, String name, String synonyms) {
+    this.code = code;
+    this.name = name;
+    this.synonyms = synonyms;
+  }
 
-    public String getCode() {
-        return code;
-    }
+  public String getCode() {
+    return code;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getSynonyms() {
-        return synonyms;
-    }
+  public String getSynonyms() {
+    return synonyms;
+  }
 
-    public CodeSystem getSystem() {
-        return CodeSystem.UNREGISTERED;
-    }
+  public CodeSystem getSystem() {
+    return CodeSystem.UNREGISTERED;
+  }
 
-    public String getVersion() {
-        return null;
-    }
+  public String getVersion() {
+    return null;
+  }
 
-    @Override
-    public int compareTo(final AgentCode agentCode) {
-        return this.name.toLowerCase().compareTo(agentCode.getName().toLowerCase());
-    }
+  @Override
+  public int compareTo(final AgentCode agentCode) {
+    return this.name.toLowerCase().compareTo(agentCode.getName().toLowerCase());
+  }
 
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AgentCode otherAgentCode = (AgentCode) o;
-        return Objects.equals(code.toLowerCase(), otherAgentCode.getCode().toLowerCase())
-                && Objects.equals(name.toLowerCase(), otherAgentCode.getName().toLowerCase())
-                && Objects.equals(this.getVersion(), otherAgentCode.getVersion());
-    }
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AgentCode otherAgentCode = (AgentCode) o;
+    return Objects.equals(code.toLowerCase(), otherAgentCode.getCode().toLowerCase())
+        && Objects.equals(name.toLowerCase(), otherAgentCode.getName().toLowerCase())
+        && Objects.equals(this.getVersion(), otherAgentCode.getVersion());
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(code.toLowerCase(), name.toLowerCase());
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(code.toLowerCase(), name.toLowerCase());
+  }
 }

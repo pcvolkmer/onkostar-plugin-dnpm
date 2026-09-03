@@ -19,21 +19,19 @@
 
 package dev.dnpm.oshelper.services.molekulargenetik;
 
-import dev.dnpm.oshelper.dto.Variant;
 import de.itc.onkostar.api.Procedure;
-
+import dev.dnpm.oshelper.dto.Variant;
 import java.util.List;
 
-/**
- * Schnittstellenbeschreibung für Methoden zum Formular "OS.Molekulargenetik"
- */
+/** Schnittstellenbeschreibung für Methoden zum Formular "OS.Molekulargenetik" */
 public interface MolekulargenetikFormService {
 
-    /**
-     * Ermittelt alle (unterstützten) Varianten zur Prozedur eines Formulars "OS.Molekulargenetik"
-     * @param procedure Die Prozedur zum Formular "OS.Molekulargenetik"
-     * @return Die unterstützten Varianten oder eine leere Liste, wenn keine Varianten gefunden wurden.
-     */
-    List<Variant> getVariants(Procedure procedure);
-
+  /**
+   * Ermittelt alle (unterstützten) Varianten zur Prozedur eines Formulars "OS.Molekulargenetik"
+   *
+   * @param procedure Die Prozedur zum Formular "OS.Molekulargenetik"
+   * @return Die unterstützten Varianten oder eine leere Liste, wenn keine Varianten gefunden
+   *     wurden.
+   */
+  List<Variant> getVariants(Procedure procedure);
 }

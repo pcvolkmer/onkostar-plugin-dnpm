@@ -24,66 +24,60 @@ import de.itc.onkostar.api.Procedure;
 import de.itc.onkostar.api.analysis.AnalyseTriggerEvent;
 import de.itc.onkostar.api.analysis.AnalyzerRequirement;
 import dev.dnpm.oshelper.services.therapieplan.TherapieplanServiceFactory;
+import java.util.Set;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
-
 /**
- * Diese Klasse implementiert ein Plugin, welches Aktionen nach Bearbeitung eines Therapieplans durchführt.
+ * Diese Klasse implementiert ein Plugin, welches Aktionen nach Bearbeitung eines Therapieplans
+ * durchführt.
  *
  * @since 0.0.2
  */
 @Component
 public class TherapieplanAnalyzer extends Analyzer {
 
-    private final TherapieplanServiceFactory therapieplanServiceFactory;
+  private final TherapieplanServiceFactory therapieplanServiceFactory;
 
-    public TherapieplanAnalyzer(
-            final TherapieplanServiceFactory therapieplanServiceFactory
-    ) {
-        this.therapieplanServiceFactory = therapieplanServiceFactory;
-    }
+  public TherapieplanAnalyzer(final TherapieplanServiceFactory therapieplanServiceFactory) {
+    this.therapieplanServiceFactory = therapieplanServiceFactory;
+  }
 
-    @Override
-    public String getDescription() {
-        return "Aktualisiert Unterformulare nach Änderungen im Therapieplan-Formular";
-    }
+  @Override
+  public String getDescription() {
+    return "Aktualisiert Unterformulare nach Änderungen im Therapieplan-Formular";
+  }
 
-    /**
-     * @deprecated
-     */
-    @Override
-    public boolean isRelevantForDeletedProcedure() {
-        return false;
-    }
+  /**
+   * @deprecated
+   */
+  @Override
+  public boolean isRelevantForDeletedProcedure() {
+    return false;
+  }
 
-    @Override
-    public boolean isRelevantForAnalyzer(Procedure procedure, Disease disease) {
-        return null != procedure && procedure.getFormName().equals("DNPM Therapieplan");
-    }
+  @Override
+  public boolean isRelevantForAnalyzer(Procedure procedure, Disease disease) {
+    return null != procedure && procedure.getFormName().equals("DNPM Therapieplan");
+  }
 
-    @Override
-    public boolean isSynchronous() {
-        return false;
-    }
+  @Override
+  public boolean isSynchronous() {
+    return false;
+  }
 
-    @Override
-    public AnalyzerRequirement getRequirement() {
-        return AnalyzerRequirement.PROCEDURE;
-    }
+  @Override
+  public AnalyzerRequirement getRequirement() {
+    return AnalyzerRequirement.PROCEDURE;
+  }
 
-    @Override
-    public Set<AnalyseTriggerEvent> getTriggerEvents() {
-        return Set.of(
-                AnalyseTriggerEvent.EDIT_SAVE,
-                AnalyseTriggerEvent.EDIT_LOCK,
-                AnalyseTriggerEvent.REORG
-        );
-    }
+  @Override
+  public Set<AnalyseTriggerEvent> getTriggerEvents() {
+    return Set.of(
+        AnalyseTriggerEvent.EDIT_SAVE, AnalyseTriggerEvent.EDIT_LOCK, AnalyseTriggerEvent.REORG);
+  }
 
-    @Override
-    public void analyze(Procedure procedure, Disease disease) {
-        therapieplanServiceFactory.currentUsableInstance().updateRequiredMtbEntries(procedure);
-    }
-
+  @Override
+  public void analyze(Procedure procedure, Disease disease) {
+    therapieplanServiceFactory.currentUsableInstance().updateRequiredMtbEntries(procedure);
+  }
 }
