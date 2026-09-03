@@ -21,8 +21,7 @@ package dev.dnpm.oshelper.exceptions;
 
 public class FormException extends RuntimeException {
 
-    public FormException(String message) {
-        super(message);
-    }
-
+  public FormException(String message) {
+    super(message);
+  }
 }

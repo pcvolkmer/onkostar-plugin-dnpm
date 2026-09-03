@@ -26,11 +26,11 @@ package dev.dnpm.oshelper.atc;
  * @since 2.0.0
  */
 public interface AgentCode extends Comparable<AgentCode> {
-    String getCode();
+  String getCode();
 
-    String getName();
+  String getName();
 
-    CodeSystem getSystem();
+  CodeSystem getSystem();
 
-    String getVersion();
+  String getVersion();
 }

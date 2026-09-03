@@ -20,7 +20,6 @@
 package dev.dnpm.oshelper.services.systemtherapie;
 
 import de.itc.onkostar.api.Procedure;
-
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
@@ -30,4 +29,5 @@ import java.util.function.Function;
  *
  * @since 0.2.0
  */
-public interface ProzedurToProzedurwerteMapper extends Function<Procedure, Optional<Map<String, String>>> {}
+public interface ProzedurToProzedurwerteMapper
+    extends Function<Procedure, Optional<Map<String, String>>> {}

@@ -20,6 +20,6 @@
 package dev.dnpm.oshelper.security;
 
 public enum PermissionType {
-    READ,
-    READ_WRITE
+  READ,
+  READ_WRITE
 }

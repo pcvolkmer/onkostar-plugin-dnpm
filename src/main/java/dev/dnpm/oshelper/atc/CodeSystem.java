@@ -26,6 +26,6 @@ package dev.dnpm.oshelper.atc;
  * @since 2.0.0
  */
 public enum CodeSystem {
-    ATC,
-    UNREGISTERED
+  ATC,
+  UNREGISTERED
 }

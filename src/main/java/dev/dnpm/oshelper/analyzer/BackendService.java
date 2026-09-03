@@ -25,20 +25,20 @@ import de.itc.onkostar.api.analysis.OnkostarPluginType;
 
 public abstract class BackendService implements IPluginPart {
 
-    @Override
-    public final OnkostarPluginType getType() {
-        return OnkostarPluginType.BACKEND_SERVICE;
-    }
+  @Override
+  public final OnkostarPluginType getType() {
+    return OnkostarPluginType.BACKEND_SERVICE;
+  }
 
-    /**
-     * Ein Backend-Service verwendet die Methode nicht, daher wird hier eine final Stub-Implementierung
-     * verwendet, die ein Überschreiben verhindert.
-     * @param procedure
-     * @param disease
-     */
-    @Override
-    public final void analyze(Procedure procedure, Disease disease) {
-        // No op
-    }
-
+  /**
+   * Ein Backend-Service verwendet die Methode nicht, daher wird hier eine final
+   * Stub-Implementierung verwendet, die ein Überschreiben verhindert.
+   *
+   * @param procedure
+   * @param disease
+   */
+  @Override
+  public final void analyze(Procedure procedure, Disease disease) {
+    // No op
+  }
 }

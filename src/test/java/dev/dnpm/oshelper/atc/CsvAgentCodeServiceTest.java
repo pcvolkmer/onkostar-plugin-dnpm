@@ -19,22 +19,21 @@
 
 package dev.dnpm.oshelper.atc;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import dev.dnpm.oshelper.atc.services.AgentCodeService;
 import dev.dnpm.oshelper.atc.services.CsvAgentCodeService;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 class CsvAgentCodeServiceTest {
 
-    AgentCodeService agentCodeService = new CsvAgentCodeService();
+  AgentCodeService agentCodeService = new CsvAgentCodeService();
 
-    @Test
-    void shouldReturnAtcCodeFromEmbeddedResource() {
-        var actual = agentCodeService.findAgentCodes("Cisplatin", 10);
+  @Test
+  void shouldReturnAtcCodeFromEmbeddedResource() {
+    var actual = agentCodeService.findAgentCodes("Cisplatin", 10);
 
-        assertThat(actual).hasSize(1);
-        assertThat(actual.get(0).getCode()).isEqualTo("L01XA01");
-    }
-
+    assertThat(actual).hasSize(1);
+    assertThat(actual.get(0).getCode()).isEqualTo("L01XA01");
+  }
 }

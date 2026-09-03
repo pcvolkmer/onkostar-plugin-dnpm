@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id("com.gradleup.shadow") version "8.3.8"
+    id("com.diffplug.spotless") version "7.2.1"
 }
 
 group = 'DNPMHelper'
@@ -66,6 +68,7 @@ processResources {
 
 test {
     useJUnitPlatform()
+    dependsOn(tasks.spotlessCheck)
 }
 
 jacoco {
@@ -78,5 +81,13 @@ jacocoTestReport {
     reports {
         xml.required = true
         html.required = true
+    }
+}
+
+spotless {
+    java {
+        importOrder()
+        removeUnusedImports()
+        googleJavaFormat()
     }
 }
