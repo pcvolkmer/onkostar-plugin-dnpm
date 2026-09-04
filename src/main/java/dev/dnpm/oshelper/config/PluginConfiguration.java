@@ -25,7 +25,6 @@ import dev.dnpm.oshelper.atc.services.CsvAgentCodeService;
 import dev.dnpm.oshelper.atc.services.OnkostarAgentCodeService;
 import dev.dnpm.oshelper.database.SettingsRepository;
 import dev.dnpm.oshelper.services.*;
-import dev.dnpm.oshelper.services.consent.ConsentManagerServiceFactory;
 import dev.dnpm.oshelper.services.molekulargenetik.MolekulargenetikFormService;
 import dev.dnpm.oshelper.services.molekulargenetik.OsMolekulargenetikFormService;
 import dev.dnpm.oshelper.services.strahlentherapie.DefaultStrahlentherapieService;
@@ -74,11 +73,6 @@ public class PluginConfiguration {
   public StrahlentherapieService strahlentherapieService(
       final IOnkostarApi onkostarApi, final SettingsService settingsService) {
     return new DefaultStrahlentherapieService(onkostarApi, settingsService);
-  }
-
-  @Bean
-  public ConsentManagerServiceFactory consentManagerServiceFactory(final IOnkostarApi onkostarApi) {
-    return new ConsentManagerServiceFactory(onkostarApi);
   }
 
   @Bean

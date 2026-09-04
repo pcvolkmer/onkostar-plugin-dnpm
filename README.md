@@ -42,59 +42,6 @@ curl \
   | sed '/^\s*$/d' | sed 's/\t\t/\t/g' | sed 's/^/2026\t/g' | sed '0,/2026/{s/2026/Version/}' > src/main/resources/atc.csv
 ```
 
-
-## DNPM-Consent (Veraltet)
-
-*Achtung!* Dieser Teil ist veraltet und wird durch den allgemeinen MV-Consent abgelöst.
-
-Das Plugin ist auf die Übernahme des DNPM-Consents ausgelegt. Hierzu muss die Einstellung `consentform` festgelegt werden.
-Diese Einstellung muss manuell in der Datenbank angelegt werden und kann danach in Onkostar verändert werden.
-
-```
-INSERT INTO einstellung (name, wert, kategorie, beschreibung)
-VALUES (
- 'consentform',
- 'MR.Consent',
- 'DNPM',
- 'Zu verwendendes Consent-Formular'
-);
-```
-
-Aktuell werden folgende Consent-Formulare unterstützt:
-
-* `MR.Consent`
-* `Excel-Formular` (UKW - beinhaltet Consent-Angaben)
-
-```mermaid
-classDiagram
-class ConsentManagerService {
-<<Interface>>
-  + applyConsent(Procedure) void
-  + canApply(Procedure) boolean
-}
-class ConsentManagerServiceFactory {
-  + ConsentManagerServiceFactory(IOnkostarApi)
-  + currentUsableInstance() ConsentManagerService
-}
-class MrConsentManagerService {
-  + MrConsentManagerService(IOnkostarApi)
-  + canApply(Procedure) boolean
-  + applyConsent(Procedure) void
-}
-class UkwConsentManagerService {
-  + UkwConsentManagerService(IOnkostarApi)
-  + canApply(Procedure) boolean
-  + applyConsent(Procedure) void
-}
-
-ConsentManagerServiceFactory  ..>  MrConsentManagerService : «create»
-ConsentManagerServiceFactory  ..>  UkwConsentManagerService : «create»
-MrConsentManagerService  ..|>  ConsentManagerService
-UkwConsentManagerService  ..|>  ConsentManagerService
-```
-
-Eine Übernahme von Consent-Daten aus unbekannten Formularen ist nur manuell möglich.
-
 ## Therapieplan
 
 ### Mehrere MTBs in Therapieplan (Veraltet - nicht mehr unterstützt!)
