@@ -24,7 +24,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import de.itc.onkostar.api.IOnkostarApi;
 import dev.dnpm.oshelper.services.FormService;
 import dev.dnpm.oshelper.services.SettingsService;
-import dev.dnpm.oshelper.services.consent.ConsentManagerServiceFactory;
 import dev.dnpm.oshelper.services.therapieplan.TherapieplanServiceFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,12 +45,6 @@ class PluginConfigurationTest {
   @BeforeEach
   void setup() {
     this.configuration = new PluginConfiguration();
-  }
-
-  @Test
-  void testShouldReturnConsentManagerServiceFactory() {
-    var actual = this.configuration.consentManagerServiceFactory(onkostarApi);
-    assertThat(actual).isInstanceOf(ConsentManagerServiceFactory.class);
   }
 
   @Test
