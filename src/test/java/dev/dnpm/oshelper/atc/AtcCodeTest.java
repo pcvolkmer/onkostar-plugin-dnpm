@@ -28,8 +28,6 @@ class AtcCodeTest {
 
   @Test
   void testShouldDetectAtcCodeScheme() {
-    assertTrue(AtcCode.isAtcCode("L01"));
-    assertTrue(AtcCode.isAtcCode("L01A"));
     assertTrue(AtcCode.isAtcCode("L01AA"));
     assertTrue(AtcCode.isAtcCode("L01AA01"));
   }
@@ -42,5 +40,11 @@ class AtcCodeTest {
     assertFalse(AtcCode.isAtcCode("L00AA"));
     assertFalse(AtcCode.isAtcCode("Z01AA"));
     assertFalse(AtcCode.isAtcCode("L01AA0"));
+  }
+
+  @Test
+  void testShouldNotAcceptAtcCodeShorterThanLevel4Or5() {
+    assertFalse(AtcCode.isAtcCode("L01"));
+    assertFalse(AtcCode.isAtcCode("L01A"));
   }
 }

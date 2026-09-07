@@ -25,6 +25,7 @@ import dev.dnpm.oshelper.atc.AgentCode;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.NullMarked;
@@ -100,4 +101,12 @@ public interface AgentCodeService {
    * @return A list with agent codes
    */
   List<AgentCode> findAgentCodes(String query, int size);
+
+  /**
+   * Queries source for agents with code matching code string.
+   *
+   * @param code The code string
+   * @return An optional agent code if found
+   */
+  Optional<AgentCode> getAgentCode(String code);
 }

@@ -23,6 +23,7 @@ import dev.dnpm.oshelper.atc.AgentCode;
 import dev.dnpm.oshelper.atc.AtcCode;
 import dev.dnpm.oshelper.atc.UnregisteredCode;
 import java.util.List;
+import java.util.Optional;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -74,5 +75,41 @@ public class OnkostarAgentCodeService implements AgentCodeService {
           }
           return new UnregisteredCode(code, shortdesc, synonyms);
         });
+  }
+
+  /**
+   * Queries source for agents with code matching code string.
+   *
+   * @param code The code string
+   * @return An optional agent code if found
+   */
+  @Override
+  public Optional<AgentCode> getAgentCode(final String code) {
+    var sql =
+        "SELECT code, shortdesc, synonyms\n"
+            + "    FROM property_catalogue\n"
+            + "    JOIN property_catalogue_version ON (property_catalogue_version.datacatalog_id = property_catalogue.id)\n"
+            + "    JOIN property_catalogue_version_entry p ON (p.property_version_id = property_catalogue_version.id)\n"
+            + "    WHERE name = 'OS.Substanzen'\n"
+            + "    AND LOWER(code) = ?";
+
+    final var result =
+        jdbcTemplate.query(
+            sql,
+            new Object[] {code},
+            (resultSet, i) -> {
+              var c = resultSet.getString("code");
+              var shortdesc = resultSet.getString("shortdesc");
+              var synonyms = resultSet.getString("synonyms");
+              if (AtcCode.isAtcCode(c)) {
+                return new AtcCode(c, shortdesc);
+              }
+              return new UnregisteredCode(c, shortdesc, synonyms);
+            });
+
+    if (result.size() == 1) {
+      return Optional.of(result.get(0));
+    }
+    return Optional.empty();
   }
 }
