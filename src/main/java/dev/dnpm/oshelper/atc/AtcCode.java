@@ -91,7 +91,7 @@ public class AtcCode implements AgentCode {
   }
 
   /**
-   * Checks for usable ATC code starting at level 2
+   * Checks for usable ATC code starting at level 4
    *
    * @param code Code to be checked
    * @return Will return <code>true</code> if code matches ATC code scheme
@@ -99,6 +99,6 @@ public class AtcCode implements AgentCode {
   public static boolean isAtcCode(String code) {
     return null != code
         && !code.isBlank()
-        && code.matches("[ABCDGHJLMNPRSV][0-2][1-9]([A-Z]([A-Z](\\d{2})?)?)?");
+        && code.matches("[ABCDGHJLMNPRSV][0-2][1-9][A-Z][A-Z](\\d{2})?");
   }
 }

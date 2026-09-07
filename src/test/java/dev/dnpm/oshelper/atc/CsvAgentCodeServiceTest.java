@@ -24,6 +24,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.dnpm.oshelper.atc.services.AgentCodeService;
 import dev.dnpm.oshelper.atc.services.CsvAgentCodeService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CsvAgentCodeServiceTest {
 
@@ -35,5 +37,12 @@ class CsvAgentCodeServiceTest {
 
     assertThat(actual).hasSize(1);
     assertThat(actual.get(0).getCode()).isEqualTo("L01XA01");
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"L", "L01", "L01E"})
+  void shouldNotReturnIgnoredAtcCodeLevels(String code) {
+    var actual = agentCodeService.getAgentCode(code);
+    assertThat(actual).isEmpty();
   }
 }

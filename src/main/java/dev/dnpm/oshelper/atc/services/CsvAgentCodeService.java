@@ -27,6 +27,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.apache.commons.csv.CSVFormat;
 import org.slf4j.Logger;
@@ -74,6 +75,17 @@ public class CsvAgentCodeService implements AgentCodeService {
     return resultStream.collect(Collectors.toList());
   }
 
+  /**
+   * Queries source for agents with code matching code string.
+   *
+   * @param code The code string
+   * @return An optional agent code if found
+   */
+  @Override
+  public Optional<AgentCode> getAgentCode(final String code) {
+    return this.codeList.stream().filter(agentCode -> agentCode.getCode().equals(code)).findFirst();
+  }
+
   protected List<AgentCode> parseFile() {
     var result = new ArrayList<AgentCode>();
 
@@ -91,14 +103,15 @@ public class CsvAgentCodeService implements AgentCodeService {
         if (!row.isMapped(ATC_CODE_COLUMN) || !row.isMapped(ATC_NAME_COLUMN)) {
           throw new FileParsingException("No CSV column for ATC code or name found");
         }
+        final var atcCode = row.get(ATC_CODE_COLUMN).trim();
+        if (!AtcCode.isAtcCode(atcCode)) {
+          logger.warn("Unusable ATC code '{}' - ignored", atcCode);
+          continue;
+        }
         if (row.isMapped(ATC_VERSION_COLUMN)) {
-          result.add(
-              new AtcCode(
-                  row.get(ATC_CODE_COLUMN).trim(),
-                  row.get(ATC_NAME_COLUMN),
-                  row.get(ATC_VERSION_COLUMN)));
+          result.add(new AtcCode(atcCode, row.get(ATC_NAME_COLUMN), row.get(ATC_VERSION_COLUMN)));
         } else {
-          result.add(new AtcCode(row.get(ATC_CODE_COLUMN).trim(), row.get(ATC_NAME_COLUMN)));
+          result.add(new AtcCode(atcCode, row.get(ATC_NAME_COLUMN)));
         }
       }
       return result;
