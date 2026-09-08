@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.2.1](https://github.com/pcvolkmer/onkostar-plugin-dnpm/compare/v2.2.0...v2.2.1) (2026-09-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* only add level 4/5 ATC codes ([#295](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/295))
+
+### Features
+
+* only add level 4/5 ATC codes ([#295](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/295)) ([37314fc](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/37314fca05468a3bfa8d4c3d23584586463a97fa))
+* update ATC codes and use version 2026 ([#291](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/291)) ([ba8011f](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/ba8011f6a2be5bf5630c1580924137840717dbd8))
+
+
+### Miscellaneous Chores
+
+* release 2.2.1 ([62e1046](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/62e10461421401afb8db396fe8e6ea278eddca0f))
+
 ## [2.2.0](https://github.com/pcvolkmer/onkostar-plugin-dnpm/compare/v2.1.1...v2.2.0) (2026-06-30)
 
 
