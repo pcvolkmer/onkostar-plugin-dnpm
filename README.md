@@ -1,14 +1,15 @@
-# Onkostar-Plugin zur Verwendung mit der DNPM-Formularsammlung
+# Onkostar-Plugin und Formularsammlung zur Verwendung im Modellvorhaben Genomsequenzierung gem. §64e SGB V
 
-Die Formulare befinden sich im Verzeichnis [`/forms`](/forms) und liegen hier in gekürzter und sortierter Fassung einer OSC-Datei vor.
+Dieses Projekt stellt sowohl ein unterstützendes Plugin für Onkostar als auch eine Formularsammlung zur Verfügung, die für den
+Modellvorhaben Genomsequenzierung gemäß §64e SGB V konzipiert ist.
 
-Zum Erstellen einer neuen Version der enthaltenen Datei(en) bitte den folgenden Befehl verwenden:
+Die Formulare befinden sich im Verzeichnis [`/forms`](/forms) und liegen hier in optimierter Fassung einer
+OSC-Datei vor.
+Sie wurden mit dem Tool [osc-variant](https://github.com/pcvolkmer/osc-variant) erstellt und mit weiteren
+Ausfüllhinweisen versehen.
 
-```shell
-osc-variant modify --sorted --strip --output dnpm-formulare.osc <QUELLDATEI> 
-```
-
-Die für die Formulare verwendeten Formularscripte sind zudem im Verzeichnis [`/scripts``](/scripts) hinterlegt und können dort eingesehen werden.  
+Die für die Formulare verwendeten Formularscripte sind zudem im Verzeichnis [`/scripts``](/scripts) hinterlegt und
+können dort eingesehen werden.
 
 ## Voraussetzungen
 
@@ -46,12 +47,15 @@ curl \
 
 ### Mehrere MTBs in Therapieplan (Veraltet - nicht mehr unterstützt!)
 
-**Achtung!** Dies wird nun nicht mehr angewendet. Es werden immer das Datum und der Verweis auf das MTB des Hauptformulars verwendet.
+**Achtung!** Dies wird nun nicht mehr angewendet. Es werden immer das Datum und der Verweis auf das MTB des
+Hauptformulars verwendet.
 Zu den Gründen, siehe auch: https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/211#issuecomment-3498119327
 
 **Im Zweifelsfall ist die Dokumentation entsprechend anzupassen, zumindest zu prüfen!**
 
-Soll das automatische Befüllen des MTB-Datums Datum der Unterformulare *Einzelempfehlung* und *Rebiopsie* nicht durchgeführt werden, weil es mehrere MTBs je MTB-Episode gibt, so muss die Einstellung `mehrere_mtb_in_mtbepisode` vorhanden sein und auf den Wert `true` gesetzt sein.
+Soll das automatische Befüllen des MTB-Datums Datum der Unterformulare *Einzelempfehlung* und *Rebiopsie* nicht
+durchgeführt werden, weil es mehrere MTBs je MTB-Episode gibt, so muss die Einstellung `mehrere_mtb_in_mtbepisode`
+vorhanden sein und auf den Wert `true` gesetzt sein.
 
 ```
 INSERT INTO einstellung (name, wert, kategorie, optionen, beschreibung)
@@ -66,20 +70,25 @@ VALUES (
 
 ### Mapping MTB zu Therapieplan-Protokollauszug
 
-Das Plugin ermöglicht die Übernahme von Inhalten aus einem MTB in den Protokollauszug des DNPM Therapieplans. Für die Formulare
+Das Plugin ermöglicht die Übernahme von Inhalten aus einem MTB in den Protokollauszug des DNPM Therapieplans. Für die
+Formulare
 
 * `OS.Tumorkonferenz`
 * `OS.Tumorkonferenz.VarianteUKW`
 * `MR.MTB_Anmeldung`
 
-liegen bereits Implementierungen vor. Um eigene Implementierungen vorzunehmen, die sich an andere Formulare oder Formularvarianten richtet,
-muss hierzu das Interface `ProcedureToProtocolMapper` implementiert werden. Dazu muss die Methode `apply(Procedure)` derart implementiert werden,
-sodass aus einer Prozedur ein entsprechender Abschnitt als Text für den Protokollauszug gewandelt wird.
+liegen bereits Implementierungen vor. Um eigene Implementierungen vorzunehmen, die sich an andere Formulare oder
+Formularvarianten richtet, muss hierzu das Interface `ProcedureToProtocolMapper` implementiert werden. Dazu muss die
+Methode `apply(Procedure)`
+derart implementiert werden, sodass aus einer Prozedur ein entsprechender Abschnitt als Text für den Protokollauszug
+gewandelt wird.
 
-Als Rückgabewert wird hierbei ein Wert vom Typ `Optional<String>` erwartet, dabei z.B. `Optional.of("Text")`, wenn ein zu verwendender Text oder
+Als Rückgabewert wird hierbei ein Wert vom Typ `Optional<String>` erwartet, dabei z.B. `Optional.of("Text")`, wenn ein
+zu verwendender Text oder
 z.B. `Optional.empty()` wenn kein zu verwendender Text zurückgegeben wird.
 
-Anschließend ist das Mapping in `DefaultMtbService` in der Methode `procedureToProtocolMapper(Procedure)` einzutragen, beispielsweise durch
+Anschließend ist das Mapping in `DefaultMtbService` in der Methode `procedureToProtocolMapper(Procedure)` einzutragen,
+beispielsweise durch
 
 ```
 ...
@@ -90,59 +99,62 @@ Anschließend ist das Mapping in `DefaultMtbService` in der Methode `procedureTo
 
 ```mermaid
 classDiagram
+    class MtbService {
+        <<Interface>>
+        + getProtocol(List~Procedure~) String
+        + procedureToProtocolMapper(Procedure) ProcedureToProtocolMapper
+    }
+    class DefaultMtbService {
+        + DefaultMtbService(IOnkostarApi)
+        + getProtocol(List~Procedure~) String
+        + procedureToProtocolMapper(Procedure) ProcedureToProtocolMapper
+    }
+    class MrMtbAnmeldungToProtocolMapper {
+        + MrMtbAnmeldungToProtocolMapper(IOnkostarApi)
+        + apply(Procedure) Optional~String~
+    }
+    class OsTumorkonferenzToProtocolMapper {
+        + OsTumorkonferenzToProtocolMapper()
+        + apply(Procedure) Optional~String~
+    }
+    class OsTumorkonferenzVarianteUkwToProtocolMapper {
+        + OsTumorkonferenzVarianteUkwToProtocolMapper()
+        + apply(Procedure) Optional~String~
+    }
+    class ProcedureToProtocolMapper {
+        <<Interface>>
+    }
 
-class MtbService {
-<<Interface>>
-  + getProtocol(List~Procedure~) String
-  + procedureToProtocolMapper(Procedure) ProcedureToProtocolMapper
-}
-class DefaultMtbService {
-  + DefaultMtbService(IOnkostarApi)
-  + getProtocol(List~Procedure~) String
-  + procedureToProtocolMapper(Procedure) ProcedureToProtocolMapper
-}
-class MrMtbAnmeldungToProtocolMapper {
-  + MrMtbAnmeldungToProtocolMapper(IOnkostarApi)
-  + apply(Procedure) Optional~String~
-}
-class OsTumorkonferenzToProtocolMapper {
-  + OsTumorkonferenzToProtocolMapper()
-  + apply(Procedure) Optional~String~
-}
-class OsTumorkonferenzVarianteUkwToProtocolMapper {
-  + OsTumorkonferenzVarianteUkwToProtocolMapper()
-  + apply(Procedure) Optional~String~
-}
-class ProcedureToProtocolMapper {
-<<Interface>>
-
-}
-
-DefaultMtbService  ..|>  MtbService
-DefaultMtbService  ..>  MrMtbAnmeldungToProtocolMapper : «create»
-DefaultMtbService  ..>  OsTumorkonferenzToProtocolMapper : «create»
-DefaultMtbService  ..>  OsTumorkonferenzVarianteUkwToProtocolMapper : «create»
-MrMtbAnmeldungToProtocolMapper  ..|>  ProcedureToProtocolMapper
-OsTumorkonferenzToProtocolMapper  ..|>  ProcedureToProtocolMapper
-OsTumorkonferenzVarianteUkwToProtocolMapper  ..|>  ProcedureToProtocolMapper
+    DefaultMtbService ..|> MtbService
+    DefaultMtbService ..> MrMtbAnmeldungToProtocolMapper: «create»
+    DefaultMtbService ..> OsTumorkonferenzToProtocolMapper: «create»
+    DefaultMtbService ..> OsTumorkonferenzVarianteUkwToProtocolMapper: «create»
+    MrMtbAnmeldungToProtocolMapper ..|> ProcedureToProtocolMapper
+    OsTumorkonferenzToProtocolMapper ..|> ProcedureToProtocolMapper
+    OsTumorkonferenzVarianteUkwToProtocolMapper ..|> ProcedureToProtocolMapper
 ```
 
 Idealerweise werden entsprechende UnitTests hinzugefügt.
 
 ### Mapping Systemtherapie-Formular zu Prozedurwerten
 
-Das Formular `DNPM KlinikAnamnese` verwendet eine Backend-Service-Funktion zum Ermitteln vorliegender Therapielinien. Für die Formulare
+Das Formular `DNPM KlinikAnamnese` verwendet eine Backend-Service-Funktion zum Ermitteln vorliegender Therapielinien.
+Für die Formulare
 
 * `OS.Systemische Therapie`
 * `OS.Systemische Therapie.VarianteUKW`
 
-wird analog zum Mapping MTB auf Therapieplan-Protokollauszug eine formularspezifische Entscheidung getroffen, welcher Mapper zur
+wird analog zum Mapping MTB auf Therapieplan-Protokollauszug eine formularspezifische Entscheidung getroffen, welcher
+Mapper zur
 Laufzeit verwendet werden soll. Der Mapper muss hierbei das Interface `ProzedurToProzedurwerteMapper` implementieren.
 
-In der Klasse `DefaultSystemtherapieService` wird zur Laufzeit der erforderliche Mapper für das verwendete Formular ausgewählt.
+In der Klasse `DefaultSystemtherapieService` wird zur Laufzeit der erforderliche Mapper für das verwendete Formular
+ausgewählt.
 
-An dieser Stelle kann auch eine eigene Implementierung - eine neue Klasse, die das Interface `ProzedurToProzedurwerteMapper` implementiert -
-integriert werden, indem das zu verwendende Formular (Formularname) und die zu verwendende Mapping-Klasse für den Formularnamen angegeben wird.
+An dieser Stelle kann auch eine eigene Implementierung - eine neue Klasse, die das Interface
+`ProzedurToProzedurwerteMapper` implementiert -
+integriert werden, indem das zu verwendende Formular (Formularname) und die zu verwendende Mapping-Klasse für den
+Formularnamen angegeben wird.
 
 Hierbei kann in der Einstellung `systemtherapieform` festgelegt werden, dass ein anderes Formular als "OS.
 Systemische Therapie" verwendet werden soll.
@@ -160,7 +172,8 @@ VALUES (
 
 ## Berechtigungsprüfung
 
-Dieses Plugin unterstützt eine Berechtigungsprüfung anhand von personenstammbasierten als auch formularbasierten Berechtigungen.
+Dieses Plugin unterstützt eine Berechtigungsprüfung anhand von personenstammbasierten als auch formularbasierten
+Berechtigungen.
 
 Mögliche Berechtigungsanforderungen sind sowohl für die `PermissionEvaluator`en, als auch die Annotationen:
 
@@ -169,7 +182,8 @@ Mögliche Berechtigungsanforderungen sind sowohl für die `PermissionEvaluator`e
 
 ### Prüfung der Berechtigung mithilfe eines Permission Evaluators
 
-Zur Prüfung der Berechtigung können die implementierten `PermissionEvaluator`en einzeln als auch gemeinsam genutzt werden:
+Zur Prüfung der Berechtigung können die implementierten `PermissionEvaluator`en einzeln als auch gemeinsam genutzt
+werden:
 
 * `PersonPoolBasedPermissionEvaluator`: Berechtigungsprüfung basierend auf dem zugehörigen Personenstamm
 * `FormBasedPermissionEvaluator`: Berechtigungsprüfung basierend auf dem zugehörigen Formular
@@ -234,10 +248,14 @@ class DemoAnalyzer implements IProcedureAnalyzer {
 
 Zusätzlich zur Prüfung mit einem Permisison Evaluator sind, basierend auf Spring AOP, folgende Annotationen verfügbar:
 
-* `FormSecured`: Berechtigungsprüfung wird für alle Argumente vom Typ `Procedure` anhand der Berechtigung auf das zugehörige Formular durchgeführt und erlaubt immer Zugriff auf Argumente vom Typ `Patient`
-* `FormSecuredResult`: Berechtigungsprüfung wird für Rückgabewerte vom Typ `Procedure` anhand der Berechtigung auf das zugehörige Formular durchgeführt und erlaubt immer Zugriff auf Rückgabewerte vom Typ `Patient`
-* `PersonPoolSecured`: Berechtigungsprüfung wird für alle Argumente vom Typ `Procedure` und `Procedure` anhand des zugehörigen Personenstamms durchgeführt.
-* `PersonPoolSecuredResult`: Berechtigungsprüfung wird für Rückgabewerte vom Typ `Procedure` und `Procedure` anhand des zugehörigen Personenstamms durchgeführt.
+* `FormSecured`: Berechtigungsprüfung wird für alle Argumente vom Typ `Procedure` anhand der Berechtigung auf das
+  zugehörige Formular durchgeführt und erlaubt immer Zugriff auf Argumente vom Typ `Patient`
+* `FormSecuredResult`: Berechtigungsprüfung wird für Rückgabewerte vom Typ `Procedure` anhand der Berechtigung auf das
+  zugehörige Formular durchgeführt und erlaubt immer Zugriff auf Rückgabewerte vom Typ `Patient`
+* `PersonPoolSecured`: Berechtigungsprüfung wird für alle Argumente vom Typ `Procedure` und `Procedure` anhand des
+  zugehörigen Personenstamms durchgeführt.
+* `PersonPoolSecuredResult`: Berechtigungsprüfung wird für Rückgabewerte vom Typ `Procedure` und `Procedure` anhand des
+  zugehörigen Personenstamms durchgeführt.
 
 #### Beispiel für Anwendung
 
@@ -330,7 +348,8 @@ Danach Ausführen des Befehls:
 
 ## Testen des Plugins und Code-Voverage
 
-Die Entwicklung des Plugins erfolgt mit automatisierten Tests. Diese können zusammen mit einem Bericht über die Testabdeckung
+Die Entwicklung des Plugins erfolgt mit automatisierten Tests. Diese können zusammen mit einem Bericht über die
+Testabdeckung
 durch Ausführung des Befehls
 
 ```shell
@@ -347,5 +366,6 @@ Treten Fehler auf, so wird dies angezeigt. Einen Bericht über die Testabdeckung
 Wie im Februar 2026 angekündigt, wird dieses Plugin ab Version 2.2.0 unter
 der [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl-3.0.en.html) (LGPL) lizenziert.
 
-Versionen bis einschließlich Version 2.1 (oder zukünftige Patches 2.1.1, 2.1.2, ...) bleiben weiterhin unter der [MIT Lizenz](https://opensource.org/licenses/MIT)
+Versionen bis einschließlich Version 2.1 (oder zukünftige Patches 2.1.1, 2.1.2, ...) bleiben weiterhin unter
+der [MIT Lizenz](https://opensource.org/licenses/MIT)
 lizenziert.
