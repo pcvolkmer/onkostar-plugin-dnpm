@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.2](https://github.com/pcvolkmer/onkostar-plugin-dnpm/compare/v2.2.1...v2.2.2) (2026-11-11)
+
+
+### Bug Fixes
+
+* remove obsolete plausibility checks ([#303](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/303)) ([c802e2f](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/c802e2f19c58297c6b6dac3bf67be68fbccde47b))
+* startup of consent manager ([#302](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/302)) ([eaa7252](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/eaa725259972f277cd4e45364ac6226d0d8ebe61))
+
+
+### Documentation
+
+* update README.md ([5cd6f82](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/5cd6f823c86d51cbff983877d5bbdc24640f823b))
+
 ## [2.2.1](https://github.com/pcvolkmer/onkostar-plugin-dnpm/compare/v2.2.0...v2.2.1) (2026-09-08)
 
 
