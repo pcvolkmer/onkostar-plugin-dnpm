@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'DNPMHelper'
-version = '2.2.1' // x-release-please-version
+version = '2.2.2-SNAPSHOT' // x-release-please-version
 
 java {
     toolchain {
