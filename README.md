@@ -170,6 +170,17 @@ VALUES (
 );
 ```
 
+## Datenbankmigration
+
+Zur Durchführung von Aktualisierungen in den Datenkatalogtabellen dieses Plugins ist ab Version 2.3.0 eine
+Datenbankmigration enthalten, die nach Aktualisierung des Plugins und Neustart von Onkostar automatisch durchgeführt
+wird.
+
+Dadurch ist es möglich, einige Anpassungen an neue Formularinhalte bzw. für neue Versionen des DNPM-Datenmodells 2.1 
+durchzuführen, ohne wie bisher ein Formular zu öffnen und nach Abarbeitung von Formularscripts zu speichern.
+
+Dies ist vor allem zur Vorbereitung auf eine Migration von Onkostar 2.x zu Onkostar 3.8 gedacht.
+
 ## Berechtigungsprüfung
 
 Dieses Plugin unterstützt eine Berechtigungsprüfung anhand von personenstammbasierten als auch formularbasierten

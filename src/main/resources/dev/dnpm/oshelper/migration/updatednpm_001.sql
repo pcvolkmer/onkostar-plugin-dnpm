@@ -1,0 +1,1 @@
+ALTER TABLE dk_dnpm_uf_einzelempfehlung MODIFY COLUMN studie VARCHAR(255);
