@@ -19,7 +19,6 @@
     </bean>
     <bean id="ConsentManager" class="dev.dnpm.oshelper.analyzer.ConsentManager">
         <constructor-arg ref="localOnkostarApi" />
-        <constructor-arg ref="consentManagerServiceFactory" />
     </bean>
 
     <context:component-scan base-package="dev.dnpm.oshelper.config" />
