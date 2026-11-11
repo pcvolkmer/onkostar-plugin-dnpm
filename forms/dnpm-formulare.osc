@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OnkostarEditor>
   <InfoXML>
-    <DatumXML>2026-07-10Z</DatumXML>
+    <DatumXML>2026-11-11Z</DatumXML>
     <Name>OnkoStar</Name>
     <Version>2.14.2</Version>
   </InfoXML>
@@ -5138,13 +5138,14 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Revision>10</Revision>
         </Entry>
         <Entry>
+          <PropertyCatalogue>OS.Studien</PropertyCatalogue>
           <Name>studie</Name>
           <NameExport>studie</NameExport>
           <Description>Studie</Description>
-          <Type>shorttext</Type>
+          <Type>propertyCatalogue</Type>
           <SubTable/>
           <ScaleUnit/>
-          <MaxLength>255</MaxLength>
+          <MaxLength>0</MaxLength>
           <DefaultValue/>
           <Active>true</Active>
           <Readonly>false</Readonly>
@@ -9474,8 +9475,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>studie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>studie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9617,8 +9618,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>(hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch') and studienallejson &lt;&gt; '' and studienallejson &lt;&gt; '[]'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>studienallejson</RefEntry>
             </RefEntries>
           </Filter>
@@ -9766,8 +9767,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -9845,8 +9846,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>empfehlungskategorie &lt;&gt; 'studie'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>studie</RefEntry>
               <RefEntry>empfehlungskategorie</RefEntry>
+              <RefEntry>studie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -10866,7 +10867,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <hatUnterformulare>false</hatUnterformulare>
               <SID>20119</SID>
               <GUID>12415fe7-8785-41ee-ad32-8e4dd69d504b</GUID>
-              <Revision>83</Revision>
+              <Revision>85</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -11119,8 +11120,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11194,8 +11195,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11269,8 +11270,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>(hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch') and studienallejson &lt;&gt; '' and studienallejson &lt;&gt; '[]'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>studienallejson</RefEntry>
             </RefEntries>
           </Filter>
@@ -11420,8 +11421,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11495,8 +11496,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -11570,8 +11571,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>hatstudie = '1' or empfehlungskategorie &lt;&gt; 'systemisch'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>empfehlungskategorie</RefEntry>
               <RefEntry>hatstudie</RefEntry>
+              <RefEntry>empfehlungskategorie</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -12015,7 +12016,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       </ScriptBeimBearbeiten>
       <SID>20119</SID>
       <GUID>fdfe26b7-ef73-4a8a-88b2-4e5698b2921f</GUID>
-      <Revision>61</Revision>
+      <Revision>62</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry>
@@ -12109,7 +12110,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent/>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -12130,7 +12130,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog/>
           <SucheAuswahldialog/>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -12304,7 +12303,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent/>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -12325,7 +12323,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
           <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -12436,7 +12433,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent/>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -12457,7 +12453,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog/>
           <SucheAuswahldialog/>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -12692,7 +12687,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent>Feldgruppe2</ElementParent>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -12713,7 +12707,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
           <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -12828,7 +12821,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent/>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -12849,7 +12841,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
           <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -12897,7 +12888,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent/>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -12918,7 +12908,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
           <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -12966,7 +12955,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent/>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -12987,7 +12975,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
           <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -13105,7 +13092,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent/>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
@@ -13126,7 +13112,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
           <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -13451,6 +13436,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Active>true</Active>
           <Editable>true</Editable>
           <Valid>true</Valid>
+          <Condition>Status.equals("stopped") or Status.equals("completed")</Condition>
+          <ConditionValid>false</ConditionValid>
           <Statusauswirkung>0</Statusauswirkung>
           <DataFormEntries>
             <EntryName>Ende</EntryName>
@@ -13964,18 +13951,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <DataFormReferences>
             <ReferencedDataForm>
               <Category>0</Category>
-              <Name>OS.Pathologiebefund</Name>
-              <Readonly>false</Readonly>
-              <TudokPosition>0</TudokPosition>
-              <hatUnterformulare>false</hatUnterformulare>
-              <SID>1001</SID>
-              <GUID>64965dc0-d708-11e5-b199-0050568f1add</GUID>
-              <Revision>214</Revision>
-            </ReferencedDataForm>
-          </DataFormReferences>
-          <DataFormReferences>
-            <ReferencedDataForm>
-              <Category>0</Category>
               <Name>OS.Molekulargenetik</Name>
               <Readonly>false</Readonly>
               <TudokPosition>0</TudokPosition>
@@ -13983,6 +13958,18 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
               <SID>1001</SID>
               <GUID>a5ff1d01-6c9d-425f-a608-bc08049cf90b</GUID>
               <Revision>114</Revision>
+            </ReferencedDataForm>
+          </DataFormReferences>
+          <DataFormReferences>
+            <ReferencedDataForm>
+              <Category>0</Category>
+              <Name>OS.Pathologiebefund</Name>
+              <Readonly>false</Readonly>
+              <TudokPosition>0</TudokPosition>
+              <hatUnterformulare>false</hatUnterformulare>
+              <SID>1001</SID>
+              <GUID>64965dc0-d708-11e5-b199-0050568f1add</GUID>
+              <Revision>214</Revision>
             </ReferencedDataForm>
           </DataFormReferences>
         </Entry>
@@ -17902,7 +17889,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
       <hatUnterformulare>true</hatUnterformulare>
       <SID>20119</SID>
       <GUID>12415fe7-8785-41ee-ad32-8e4dd69d504b</GUID>
-      <Revision>83</Revision>
+      <Revision>85</Revision>
       <SeitenzahlSichtbar>true</SeitenzahlSichtbar>
       <Entries>
         <Entry parentRefId="12443">
@@ -18847,10 +18834,16 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <ElementParent/>
           <ProcedureDateStatus>none</ProcedureDateStatus>
           <ZuordnungErkrankung>0</ZuordnungErkrankung>
-          <Grafik/>
           <GrafikAusrichtung>0</GrafikAusrichtung>
           <Mandatory>false</Mandatory>
           <Datenart>BOTH</Datenart>
+          <Filter>
+            <Condition>LostToFollowUp = false</Condition>
+            <Valid>true</Valid>
+            <RefEntries>
+              <RefEntry>LostToFollowUp</RefEntry>
+            </RefEntries>
+          </Filter>
           <NotSpecified>false</NotSpecified>
           <Anzeige/>
           <AnzeigeAuswahl/>
@@ -18868,7 +18861,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Vorschlaege>false</Vorschlaege>
           <AnzeigeAuswahldialog>code</AnzeigeAuswahldialog>
           <SucheAuswahldialog>code,kurz</SucheAuswahldialog>
-          <InfoAuswahldialog/>
           <MindestbreiteLabel>0</MindestbreiteLabel>
           <MindestbreiteFeld>0</MindestbreiteFeld>
           <OrganisationunitFilter>0</OrganisationunitFilter>
@@ -18878,7 +18870,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Resizable>false</Resizable>
           <Verschluesselt>false</Verschluesselt>
           <MemoArt>1</MemoArt>
-          <DateValidFrom>0</DateValidFrom>
+          <DateValidFrom>14104</DateValidFrom>
           <DateValidTo>0</DateValidTo>
           <DateValidFuture>true</DateValidFuture>
           <Titel/>
@@ -18891,7 +18883,7 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <SucheArt>0</SucheArt>
           <SID>20119</SID>
           <GUID>72306a30-838f-4f66-ae81-d9972f996884</GUID>
-          <Revision>1</Revision>
+          <Revision>2</Revision>
           <vorherigeWerte>false</vorherigeWerte>
           <EinfuegenVerhindern>false</EinfuegenVerhindern>
         </Entry>
@@ -19070,8 +19062,8 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
             <Condition>AntragKostenuebernahme = '1'&amp;#10;and&amp;#10;StatusKostenuebernahme = 'rejected'</Condition>
             <Valid>true</Valid>
             <RefEntries>
-              <RefEntry>AntragKostenuebernahme</RefEntry>
               <RefEntry>StatusKostenuebernahme</RefEntry>
+              <RefEntry>AntragKostenuebernahme</RefEntry>
             </RefEntries>
           </Filter>
           <NotSpecified>false</NotSpecified>
@@ -20860,20 +20852,6 @@ Gemäß DNPM-Datenmodell 2.1</Anmerkung>
           <Description>Prüfung, ob das Datum des Follow up in der Zukunft liegt</Description>
           <Bezeichnung>DatumGrenze_DatumFollowUp_GueltigZukunft</Bezeichnung>
           <Formula>dateAfterOrEquals(getNow(), DatumFollowUp)</Formula>
-          <Active>true</Active>
-          <Editable>true</Editable>
-          <Valid>true</Valid>
-          <Statusauswirkung>0</Statusauswirkung>
-          <DataFormEntries>
-            <EntryName>DatumFollowUp</EntryName>
-          </DataFormEntries>
-        </PlausibilityRule>
-        <PlausibilityRule>
-          <Type>2</Type>
-          <Message>Das Datum liegt nach dem Sterbedatum</Message>
-          <Description>Prüfung, ob das Datum des Follow up nach dem Sterbedatum liegt</Description>
-          <Bezeichnung>DatumGrenze_DatumFollowUp_GueltigBis</Bezeichnung>
-          <Formula>dateAfterOrEquals(patientData.getDeathdate(), DatumFollowUp)</Formula>
           <Active>true</Active>
           <Editable>true</Editable>
           <Valid>true</Valid>
