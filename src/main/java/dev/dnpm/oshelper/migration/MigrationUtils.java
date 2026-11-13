@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -37,6 +38,19 @@ class MigrationUtils {
     return jdbcTemplate.query(
         "SELECT id FROM update_db WHERE update_script LIKE 'updatednpm_%'",
         (rs, rowNum) -> rs.getString("update_script"));
+  }
+
+  static boolean requiredFormRevisionAvailable(
+      JdbcTemplate jdbcTemplate, String formName, String minRev, String maxRev) {
+    try {
+      return 1
+          == jdbcTemplate.queryForObject(
+              "SELECT COUNT(*) FROM data_form WHERE name = ? AND revision >= ? AND revision <= ?",
+              new Object[] {formName, minRev, maxRev},
+              Integer.class);
+    } catch (EmptyResultDataAccessException e) {
+      return false;
+    }
   }
 
   static List<String> getDatabaseMigrationScripts(ResourcePatternResolver resourcePatternResolver)

@@ -19,7 +19,10 @@
 
 package dev.dnpm.oshelper.migration;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,6 +56,11 @@ public class DatabaseMigrationService {
     log.info("Starting database migration");
     try {
       for (var migration : this.getNewMigrationIds()) {
+        if (!requiredFormRevisionAvailable(migration)) {
+          log.info("Skipping database migration due to pre-condition: '{}'", migration);
+          continue;
+        }
+
         log.info("Apply database migration: '{}'", migration);
         try {
           jdbcTemplate.execute(MigrationUtils.getSqlQuery(resourcePatternResolver, migration));
@@ -72,6 +80,39 @@ public class DatabaseMigrationService {
     } catch (Exception e) {
       log.error("Error while migrating database", e);
     }
+  }
+
+  private boolean requiredFormRevisionAvailable(String migration) throws IOException {
+    final var sqlQuery = MigrationUtils.getSqlQuery(resourcePatternResolver, migration);
+
+    String formName = null;
+    Pattern formNamePattern = Pattern.compile("(?m)^-- form: (.+)$");
+    Matcher formNameMatcher = formNamePattern.matcher(sqlQuery);
+    if (formNameMatcher.find()) {
+      formName = formNameMatcher.group(1);
+    }
+
+    String minRev = "0";
+    Pattern minRevPattern = Pattern.compile("(?m)^-- min-rev: (\\d+)$");
+    Matcher minRevMatcher = minRevPattern.matcher(sqlQuery);
+    if (minRevMatcher.find()) {
+      minRev = minRevMatcher.group(1);
+    }
+
+    String maxRev = "99999999999999";
+    Pattern maxRevPattern = Pattern.compile("(?m)^-- max-rev: (\\d+)$");
+    Matcher maxRevMatcher = maxRevPattern.matcher(sqlQuery);
+    if (maxRevMatcher.find()) {
+      maxRev = maxRevMatcher.group(1);
+    }
+
+    if (formName == null) {
+      // No spezial form revision required
+      return true;
+    }
+
+    return MigrationUtils.requiredFormRevisionAvailable(
+        this.jdbcTemplate, formName, minRev, maxRev);
   }
 
   List<String> getNewMigrationIds() throws Exception {

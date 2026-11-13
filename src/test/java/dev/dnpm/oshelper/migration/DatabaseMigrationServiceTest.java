@@ -21,13 +21,14 @@ package dev.dnpm.oshelper.migration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
@@ -108,6 +109,117 @@ class DatabaseMigrationServiceTest {
       var argumentCaptor = ArgumentCaptor.forClass(String.class);
       verify(jdbcTemplate, times(1)).execute(argumentCaptor.capture());
       assertThat(argumentCaptor.getValue()).isEqualTo("UPDATE TABLE test;");
+    }
+  }
+
+  @ParameterizedTest
+  @ValueSource(booleans = {false, true})
+  void shouldIgnoreMigrationFileDueToMissingFormRev(boolean formRevisionAvailable) {
+    try (MockedStatic<MigrationUtils> databaseUtils = Mockito.mockStatic(MigrationUtils.class)) {
+      databaseUtils
+          .when(
+              () -> MigrationUtils.getDatabaseMigrationScripts(any(ResourcePatternResolver.class)))
+          .thenReturn(List.of("updatednpm_001.sql", "updatednpm_002.sql"));
+
+      databaseUtils
+          .when(() -> MigrationUtils.getExecutedDatabaseMigrations(any(JdbcTemplate.class)))
+          .thenReturn(List.of("updatednpm_001.sql"));
+
+      databaseUtils
+          .when(
+              () ->
+                  MigrationUtils.requiredFormRevisionAvailable(
+                      any(JdbcTemplate.class), anyString(), anyString(), anyString()))
+          .thenReturn(formRevisionAvailable);
+
+      databaseUtils
+          .when(() -> MigrationUtils.getSqlQuery(any(ResourcePatternResolver.class), anyString()))
+          .thenReturn("-- form: DNPM Test\n-- min-rev: 1\n-- max-rev: 2\nUPDATE TABLE test;");
+
+      databaseMigration.migrate();
+
+      if (formRevisionAvailable) {
+        verify(jdbcTemplate, times(1)).execute(anyString());
+      } else {
+        verify(jdbcTemplate, times(0)).execute(anyString());
+      }
+    }
+  }
+
+  @Test
+  void shouldNotCheckRequiredRevsionRange() {
+    try (MockedStatic<MigrationUtils> databaseUtils = Mockito.mockStatic(MigrationUtils.class)) {
+      databaseUtils
+          .when(
+              () -> MigrationUtils.getDatabaseMigrationScripts(any(ResourcePatternResolver.class)))
+          .thenReturn(List.of("updatednpm_001.sql", "updatednpm_002.sql"));
+
+      databaseUtils
+          .when(() -> MigrationUtils.getExecutedDatabaseMigrations(any(JdbcTemplate.class)))
+          .thenReturn(List.of("updatednpm_001.sql"));
+
+      databaseUtils
+          .when(
+              () ->
+                  MigrationUtils.requiredFormRevisionAvailable(
+                      any(JdbcTemplate.class), anyString(), anyString(), anyString()))
+          .thenReturn(false);
+
+      databaseUtils
+          .when(() -> MigrationUtils.getSqlQuery(any(ResourcePatternResolver.class), anyString()))
+          .thenReturn("UPDATE TABLE test;");
+
+      databaseMigration.migrate();
+
+      databaseUtils.verify(
+          () -> {
+            MigrationUtils.requiredFormRevisionAvailable(
+                any(JdbcTemplate.class), anyString(), anyString(), anyString());
+          },
+          never());
+    }
+  }
+
+  @Test
+  void shouldUseDefaultRequiredRevsionRange() {
+    try (MockedStatic<MigrationUtils> databaseUtils = Mockito.mockStatic(MigrationUtils.class)) {
+      databaseUtils
+          .when(
+              () -> MigrationUtils.getDatabaseMigrationScripts(any(ResourcePatternResolver.class)))
+          .thenReturn(List.of("updatednpm_001.sql", "updatednpm_002.sql"));
+
+      databaseUtils
+          .when(() -> MigrationUtils.getExecutedDatabaseMigrations(any(JdbcTemplate.class)))
+          .thenReturn(List.of("updatednpm_001.sql"));
+
+      databaseUtils
+          .when(
+              () ->
+                  MigrationUtils.requiredFormRevisionAvailable(
+                      any(JdbcTemplate.class), anyString(), anyString(), anyString()))
+          .thenReturn(false);
+
+      databaseUtils
+          .when(() -> MigrationUtils.getSqlQuery(any(ResourcePatternResolver.class), anyString()))
+          .thenReturn("-- form: DNPM Test\nUPDATE TABLE test;");
+
+      databaseMigration.migrate();
+
+      var formNameCaptor = ArgumentCaptor.forClass(String.class);
+      var minRevCaptor = ArgumentCaptor.forClass(String.class);
+      var maxRevCaptor = ArgumentCaptor.forClass(String.class);
+      databaseUtils.verify(
+          () -> {
+            MigrationUtils.requiredFormRevisionAvailable(
+                any(JdbcTemplate.class),
+                formNameCaptor.capture(),
+                minRevCaptor.capture(),
+                maxRevCaptor.capture());
+          },
+          times(1));
+      assertThat(formNameCaptor.getValue()).isEqualTo("DNPM Test");
+      assertThat(minRevCaptor.getValue()).isEqualTo("0");
+      assertThat(maxRevCaptor.getValue()).isEqualTo("99999999999999");
     }
   }
 }
