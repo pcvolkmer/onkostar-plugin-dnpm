@@ -37,7 +37,7 @@ import org.springframework.stereotype.Component;
 /**
  * Diese Klasse implementiert einen Analyzer zur Durchführung von Migrationen des Plugins
  *
- * @since 2.3.0
+ * @since 2.2.3
  */
 @Component
 public class MigrationAnalyzer extends Analyzer {

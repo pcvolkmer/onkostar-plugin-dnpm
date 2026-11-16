@@ -33,7 +33,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 /**
  * Diese Klasse implementiert die Durchführung einer Datenbankmigration
  *
- * @since 2.3.0
+ * @since 2.2.3
  */
 public class DatabaseMigrationService {
 

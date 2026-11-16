@@ -30,7 +30,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 /**
  * In dieser Klasse werden Hilfsmethoden zur Durchführung von Migrationen des Plugins implementiert
  *
- * @since 2.3.0
+ * @since 2.2.3
  */
 class MigrationUtils {
 

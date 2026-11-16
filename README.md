@@ -170,11 +170,14 @@ VALUES (
 );
 ```
 
-## Datenbankmigration
+## Datenmigration
 
-Zur Durchführung von Aktualisierungen in den Datenkatalogtabellen dieses Plugins ist ab Version 2.3.0 eine
-Datenbankmigration enthalten, die nach Aktualisierung des Plugins und Neustart von Onkostar automatisch durchgeführt
+Zur Durchführung von Aktualisierungen in den Datenkatalogen dieses Plugins wird ab Version 2.3.0 eine
+Datenmigration enthalten, die nach Aktualisierung des Plugins und Neustart von Onkostar automatisch durchgeführt
 wird.
+
+Eine erste Datenbank-basierte Migration ist ab Version 2.2.3 als Vorschau zur Behebung des folgenden Problems enthalten:
+https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/299
 
 Dadurch ist es möglich, einige Anpassungen an neue Formularinhalte bzw. für neue Versionen des DNPM-Datenmodells 2.1 
 durchzuführen, ohne wie bisher ein Formular zu öffnen und nach Abarbeitung von Formularscripts zu speichern.
