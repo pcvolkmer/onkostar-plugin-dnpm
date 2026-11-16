@@ -81,7 +81,7 @@ public class DefaultStrahlentherapieService implements StrahlentherapieService {
               try {
                 return new EcogStatusWithDate(
                     procedure.getStartDate(), procedure.getValue(ECOG_FIELD).getString());
-              } catch (IllegalArgumentException e) {
+              } catch (IllegalArgumentException | NullPointerException e) {
                 return null;
               }
             })

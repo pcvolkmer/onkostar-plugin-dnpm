@@ -178,7 +178,9 @@ public class DNPMHelper extends BackendService {
     List<Procedure> prozeduren = onkostarApi.getProceduresByPatientId(patientId.get());
     for (Procedure Prozedur : prozeduren) {
       // Formular gehört zur aktuellen Diagnose und hat den angegebenen Namen
-      if (Prozedur.getDiseaseIds().contains(diagnoseId.get())
+      if (null != Prozedur.getDiseaseIds()
+          && null != Prozedur.getFormName()
+          && Prozedur.getDiseaseIds().contains(diagnoseId.get())
           && Prozedur.getFormName().contains(dataForm.get())) {
         // alle Werte auslesen
         // System.out.println(WerteListe.getKey() + ": " + WerteListe.getValue());

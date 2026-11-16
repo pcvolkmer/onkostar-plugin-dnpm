@@ -47,7 +47,10 @@ public abstract class AbstractTherapieplanService implements TherapieplanService
         .flatMap(
             diseaseId ->
                 onkostarApi.getProceduresForDiseaseByForm(diseaseId, "DNPM FollowUp").stream())
-        .filter(p -> p.getValue("LinkTherapieempfehlung").getInt() == procedure.getId())
+        .filter(
+            p ->
+                null != p.getValue("LinkTherapieempfehlung")
+                    && p.getValue("LinkTherapieempfehlung").getInt() == procedure.getId())
         .collect(Collectors.toList());
   }
 
