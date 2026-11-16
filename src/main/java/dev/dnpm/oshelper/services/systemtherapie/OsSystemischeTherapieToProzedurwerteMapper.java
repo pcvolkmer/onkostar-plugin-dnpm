@@ -75,7 +75,9 @@ public class OsSystemischeTherapieToProzedurwerteMapper implements ProzedurToPro
       for (var substanz : substanzList) {
         var substanzCodes = getSubstanzCode(substanz);
         substanzenCodesListe.add(substanzCodes);
-        wirkstoffListe.add(substanzCodes.get("substance"));
+        if (substanzCodes.containsKey("substance")) {
+          wirkstoffListe.add(substanzCodes.get("substance"));
+        }
       }
     }
 

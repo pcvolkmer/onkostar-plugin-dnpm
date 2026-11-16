@@ -110,6 +110,11 @@ public class DefaultTherapieplanService extends AbstractTherapieplanService {
       return;
     }
 
+    if (null == procedure.getValue(FORMFIELD_REFERSTEMTB)
+        || null == procedure.getValue(FORMFIELD_DATUM)) {
+      return;
+    }
+
     var mtbReference = procedure.getValue(FORMFIELD_REFERSTEMTB).getInt();
     var mtbDate = procedure.getValue(FORMFIELD_DATUM).getDate();
     var noUpdateRequired = true;
@@ -197,6 +202,8 @@ public class DefaultTherapieplanService extends AbstractTherapieplanService {
 
   private static boolean isUsableRebiopsie(Procedure subform, int mtbReference, Date mtbDate) {
     return subform.getFormName().equals("DNPM UF Rebiopsie")
+        && null != subform.getValue(FORMFIELD_REFTUMORKONFERENZ)
+        && null != subform.getValue(FORMFIELD_UFRBDATUM)
         && mtbReference != subform.getValue(FORMFIELD_REFTUMORKONFERENZ).getInt()
         && !mtbDate.equals(subform.getValue(FORMFIELD_UFRBDATUM).getDate());
   }
@@ -204,6 +211,8 @@ public class DefaultTherapieplanService extends AbstractTherapieplanService {
   private static boolean isUsableEinzelempfehlung(
       Procedure subform, int mtbReference, Date mtbDate) {
     return subform.getFormName().equals("DNPM UF Einzelempfehlung")
+        && null != subform.getValue(FORMFIELD_MTB)
+        && null != subform.getValue(FORMFIELD_UFEEDATUM)
         && mtbReference != subform.getValue(FORMFIELD_MTB).getInt()
         && !mtbDate.equals(subform.getValue(FORMFIELD_UFEEDATUM).getDate());
   }
