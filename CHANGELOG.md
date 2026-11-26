@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.3.0](https://github.com/pcvolkmer/onkostar-plugin-dnpm/compare/v2.2.2...v2.3.0) (2026-11-26)
+
+
+### Features
+
+* add 'Studieneinschluss' to FollowUp form ([#312](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/312)) ([4987ad1](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/4987ad17d28d51f41dd8c359a2f2c01543d8e57f))
+* allow manual change of export-success checkboxes ([#309](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/309)) ([df2401e](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/df2401e9ee14da59b3d66296aad0a6ec4243c0d0))
+* initial support for data(base) migration infrastructure ([#306](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/306)) ([b50bda4](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/b50bda49e7bbdd581a837e4109a83a83749eaecc))
+* make board type required ([#313](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/313)) ([7c9e23e](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/7c9e23e1c19177a1b94ca055fc5dbcc266a015e9))
+
+
+### Bug Fixes
+
+* cleanup some possible NPE ([#308](https://github.com/pcvolkmer/onkostar-plugin-dnpm/issues/308)) ([75c4142](https://github.com/pcvolkmer/onkostar-plugin-dnpm/commit/75c4142fbda1e7d949b731660049474e2b50a112))
+
 ## [2.2.2](https://github.com/pcvolkmer/onkostar-plugin-dnpm/compare/v2.2.1...v2.2.2) (2026-11-11)
 
 
