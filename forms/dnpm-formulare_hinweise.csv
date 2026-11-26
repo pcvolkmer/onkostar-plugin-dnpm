@@ -23,7 +23,7 @@ DNPM FollowUp;Ergänzendes Bemerkungsfeld zur Therapieumsetzung;Therapieumsetzun
 DNPM FollowUp;Ausstellungsdatum des Antrags auf Kostenübernahme;AusstellungsdatumAntrag;9341d092-6156-4ae9-9b0d-d72619ab4471;
 DNPM FollowUp;Bemerkung;BewertungMemo;1fd81b59-e343-46dc-82d9-18bfdb05ac42;
 DNPM FollowUp;Bemerkung zur Nicht-Umsetzung;EmpfehlungsumsetzungNein;f85312b5-c779-4568-aa5e-b5319a04c351;
-DNPM FollowUp;Verweis zur Therapieempfehlung;LinkTherapieempfehlung;2c5897aa-6ab4-474c-b94d-67ca74ffb7ea;
+DNPM FollowUp;Verweis zur Empfehlung;LinkTherapieempfehlung;2c5897aa-6ab4-474c-b94d-67ca74ffb7ea;
 DNPM FollowUp;ECOG-Status bei FollowUp;ECOG;72306a30-838f-4f66-ae81-d9972f996884;
 DNPM FollowUp;Datum Antwort zum Kostenübernahmeantrag;DatumAntwortKueAntrag;bb993bc1-fcfd-4d66-ad78-e14ea5be28a2;
 DNPM FollowUp;Datum der Progression;DatumProgression;ede81488-4147-4f03-8a94-bdc94e3679e9;
@@ -79,7 +79,7 @@ DNPM Therapieplan;Grund humangenetische Beratung;humangenbergrund;3733e1c3-369e-
 DNPM Therapieplan;Erstellungsdatum;datum;e8a23bd7-debe-487c-b89b-7793c869c670;"Geben Sie hier das Datum des ersten MTBs ein, auf die sich dieses Formular bezieht.&#10;&#10;Dieses Feld wird automatisch durch Auswahl des ersten MTBs aktualisiert."
 DNPM Therapieplan;Begründung;humangenberbegruendung;4730a146-55a9-4f5e-adba-7da5116272da;Geben Sie hier die Begründung zur Empfehlung ein. Eine Angabe hierzu ist verpflichtend, wenn eine Empfehlung erfolgte.
 DNPM Therapieplan;Molekulargenetische Untersuchung.;refreevaltumorprobe;39e0e1ab-6a4d-4619-9031-7ce71524477d;
-DNPM Therapieplan;Besprechungsart;mtbtyp;ddf0f450-e0ab-4959-888b-e5216f2cc7f9;
+DNPM Therapieplan;Besprechungsart;mtbtyp;ddf0f450-e0ab-4959-888b-e5216f2cc7f9;"Geben Sie hier an, ob es sich bei dem MTB um eine Indikations- oder Befundbesprechung handelt.&#10;&#10;Dieses Feld ist seit DNPM:DIP Version 1.4.1 verpflichtend."
 DNPM Therapieplan;Mit Empfehlung zur Reevaluation;mitempfehlungreeval;30bead1f-5cad-47a7-a657-e4019e8abb31;
 DNPM Therapieplan;Mit Empfehlung zu Rebiopsie;mitempfehlungrebiopsie;00e961e5-26e1-4d94-8c81-acb441fb329d;
 DNPM Therapieplan;Mit Einzelempfehlung;miteinzelempfehlung;8aa53d95-66bf-4a5e-b029-646f01cb0b72;
@@ -146,6 +146,20 @@ DNPM UF Prozedur;Anmerkungen;Anmerkungen;0fad96c8-b6bf-4520-bf63-d1b2921cff42;
 DNPM UF Prozedur;bis;Ende;db65fc5a-f39a-423e-a26e-fa08a1fad24d;
 DNPM UF Rebiopsie;Molekulargenetische Untersuchung;refmolekulargenetik;5dc3f7a6-d2f0-4a51-8301-153c36a7dbd3;"Wählen Sie hier das Formular zur Molekulargenetischen Untersuchung aus, welches das Ergebnis der Rebiopsie beinhaltet.&#10;&#10;Die Auswahl der Molekulargenetischen Untersuchung kann auch später erfolgen, wenn das Ergebnis zum aktuellen Zeitpunkt noch nicht vorliegt."
 DNPM UF Reevaluation;Molekulargenetische Untersuchung;refmolekulargenetik;fa95472e-2cb8-4ee3-963f-37292a3c909c;"Wählen Sie hier das Formular zur Molekulargenetischen Untersuchung aus, welches das Ergebnis der Rebiopsie beinhaltet.&#10;&#10;Die Auswahl der Molekulargenetischen Untersuchung kann auch später erfolgen, wenn das Ergebnis zum aktuellen Zeitpunkt noch nicht vorliegt."
+DNPM UF Studieneinschluss;Beginn;Beginn;8fdb891c-45de-4128-a68a-edabcfa12dd5;
+DNPM UF Studieneinschluss;Studiendauer;Feldgruppe1;5d703880-856a-4a9e-9f59-19cbc6f7556a;
+DNPM UF Studieneinschluss;;StudieWirkstoffe;163bf03c-7ac2-4f9e-90d6-81b8c231da6a;
+DNPM UF Studieneinschluss;System;Studiensystem;020eaac2-56af-4c7f-9b85-7250e84d1d7a;
+DNPM UF Studieneinschluss;Ende;Ende;28476a0d-f8b7-41a7-bcdd-b88bfe0223e3;
+DNPM UF Studieneinschluss;Studie;Feldgruppe3;e96a6952-b694-46e9-bd4a-31c6e03af19f;
+DNPM UF Studieneinschluss;Erfassungsdatum;Erfassungsdatum;7c55202b-17a2-4f36-99a9-63c972125db8;
+DNPM UF Studieneinschluss;Wirkstoffe;Feldgruppe2;00d3fcf9-e8db-4906-8dec-af9b7134e3ac;
+DNPM UF Studieneinschluss;Kennung;StudienID;3690fe6a-d86f-4a6d-a285-3247801adc1b;
+DNPM UF Studieneinschluss;Wirkstoffe bearbeiten;btnaddwirkstoff;576fb549-1f6f-4f78-9ac4-feee01f39e00;
+DNPM UF Studieneinschluss;Studienempfehlung;refeinzelempfehlung;8b436c2a-c724-4fa6-bdb9-fdb6ceaab309;
+DNPM UF Studieneinschluss;Status;Status;2f667905-6ed4-4e23-a9e1-25a5120a84cd;
+DNPM UF Studieneinschluss;Status-Grund;StatusGrund;088f0a3e-370f-4e44-b695-0d9b3cb1aca1;
+DNPM UF Studieneinschluss;Auswählen;StudieButton;54bedbeb-216e-45cd-a7fb-72a12664622e;
 DNPM UF Therapielinie;Therapielinie;Feldgruppe2;a1a0c396-00f8-4840-86e7-0e58ea988eaa;
 DNPM UF Therapielinie;;Nummer;88af944b-c2dd-460e-98ad-c3da71add6c4;
 DNPM UF Therapielinie;;Wirkstoffe;ae8a899e-c650-4d93-a1e7-284a3c6aa516;
